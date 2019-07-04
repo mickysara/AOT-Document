@@ -55,6 +55,42 @@
 
         event.preventDefault();
     });
+
+    $(document).on('submit', '#notify_form', function () {
+          
+          $.post("<?=base_url('index.php/LinenotifyController/notify')?>", $("#notify_form").serialize(),
+              function (data) {
+                  
+                  d = JSON.parse(data)
+                  var test = JSON.parse(data)
+                  if(d.status == 1)
+                  {
+                      swal({
+                            icon: "success",
+                            text: d.msg,
+                      });
+                      
+                     setTimeout("location.href = 'http://localhost/AOT-Document/index.php/LoginController';",1000);
+                      //document.getElementById("demo").innerHTML = d[0].msg;
+                      //alert("asd")
+                  }
+                  else
+                  {
+                      
+                      swal({
+                            icon: "error",
+                             text: d.msg,
+                          
+                      });
+                      //base_url('index.php/RegisterController/insert_user');
+                      //setTimeout("location.href = 'http://localhost/SystemOfUniver/index.php/RegisterController/insert_user';",5000);
+                  }
+
+              }
+          );
+
+        event.preventDefault();
+    });
  </script>
 
 </body>

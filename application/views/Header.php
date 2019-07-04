@@ -58,7 +58,7 @@
               </div>
               <ul class="navbar-nav ml-lg-auto" style=" margin-left: 800px; text-align: right; width: 300px;">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="#"  >
+                    <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
                         แจ้งปัญหาการใช้งาน
                     </a>
                 </li>
