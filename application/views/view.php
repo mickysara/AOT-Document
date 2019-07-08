@@ -29,7 +29,6 @@
   </tr>
   <?php } endif; ?>
 </table>
-<br>
-<p align="center"><a href="http://localhost:8080/Aot/Aot_Home_Control"><button type="button" class="cancelbtn">Back</button>
+<p align="center"><a href="<?php echo site_url("/IndexController");?>"><button type="button" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">Back</button>
     
 </div>

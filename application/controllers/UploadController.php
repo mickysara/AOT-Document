@@ -7,12 +7,16 @@ class UploadController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Welcome_model','welcome'); 
+        $this->load->model('Upload_model','Upload'); 
     }
 
     public function index()
     {
-        $this->load->view('welcome_message');       //เรียกใช้หน้าฟอร์ม
+        $this->load->view('Header');
+        $this->load->view('Footer');
+        $this->load->view('Upload');       //เรียกใช้หน้าฟอร์ม
+      
+        
     }
 
     public function file_upload(){
@@ -98,4 +102,10 @@ class UploadController extends CI_Controller {
                 }
                 redirect('multipleupload/view');
                 }
+
+
+
+
+
+        
     }

@@ -21,7 +21,7 @@ class EmailController extends CI_Controller{
         $params['savename'] = FCPATH.'asd.png';
         $this->ciqrcode->generate($params);
         
-        echo '<img src="'.base_url().'asd.png" style="width: 500px; height: 500px;" />';
+        echo '<img src="'.base_url().'asd.png" style="width: 250px; height: 250px;" />';
 
         $config['source_image'] = './asd.png';
         $config['image_library'] = 'gd2';
