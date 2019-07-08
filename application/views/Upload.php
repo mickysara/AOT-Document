@@ -13,7 +13,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>Name</div>
-                      <input type="Text" class="form-control form-control-alternative" name="username" placeholder="22014" required>
+                      <input type="Text" class="form-control form-control-alternative" name="name" placeholder="name" required>
                     </div>
                   </div>
                   <div class="col-md-12">

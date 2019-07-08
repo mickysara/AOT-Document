@@ -22,7 +22,7 @@
     <td><?php echo $i++ ?></td>
     <td><?php echo $data['name']; ?></td> 
     <td><?php echo $data['url']; ?></td>
-    <td><a href="<?php echo site_url(); ?>/multipleupload/edit/<?php echo $data['u_id'];?>"><button type="button" class="cancelbtn">Edit</button></td>
+    <td><a href="<?php echo site_url(); ?>/UploadController/edit/<?php echo $data['u_id'];?>"><button type="button" class="cancelbtn">Edit</button></td>
     <td><a href="<?=base_url ()?>uploads"><button type="button" class="cancelbtn">Download</button></td>
     
     <!-- <td><a href="<?php echo site_url(); ?>/multipleupload/edit/<?php echo $data['u_id']; ?>">Edit</a></td> -->

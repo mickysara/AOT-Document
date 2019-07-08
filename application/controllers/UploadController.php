@@ -49,13 +49,13 @@ class UploadController extends CI_Controller {
                 }
 
         public function view(){
-            $this->data['view_data']= $this->welcome->view_data(); //welcome คือชื่อของโมเดล
+            $this->data['view_data']= $this->Upload->view_data(); //welcome คือชื่อของโมเดล
             $this->load->view('view', $this->data, FALSE);
                 }
 
         public function edit($edit_id){
-            $this->data['edit_data']= $this->welcome->edit_data($edit_id);
-            $this->data['edit_data_image']= $this->welcome->edit_data_image($edit_id);
+            $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+            $this->data['edit_data_image']= $this->Upload->edit_data_image($edit_id);
             $this->load->view('edit', $this->data, FALSE);
                 }
 
