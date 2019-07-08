@@ -17,7 +17,9 @@
   <!-- sweetalert -->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="<?php echo base_url('/assets/js/ajax.js'); ?>"></script>
-
+  <!-- DashBoard -->
+  <script src="<?php echo base_url('/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js'); ?>"></script>
+  <script src="<?php echo base_url('/assets/js/argon-dashboard.js?v=1.0.0'); ?>"></script>
  <!-- My Script -->
  <script>
          $(document).on('submit', '#login_form', function () {

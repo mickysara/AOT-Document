@@ -16,6 +16,8 @@
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/vendor/font-awesome/css/font-awesome.min.css">
   <!-- Argon CSS -->
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon.css?v=1.0.1">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon-dashboard.css?v=1.0.0">
+
   <style>
         body,h1,h2,h3,h4,h5,.tooltip,h6,a {
         font-family: 'Athiti', sans-serif !important;
