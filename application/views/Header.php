@@ -85,8 +85,7 @@
                 {?>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        <?=$this->session->userdata('firstName')?>
-                        <?=$this->session->userdata('lastName')?>
+                        <?=$this->session->userdata('accountName')?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <a class="dropdown-item" href="#">Action</a>

@@ -14,6 +14,6 @@
         background-size: cover;
         height: 570px;"
         >
-            <h6 style="color: #fff;margin-top: 90px;">ระบบเอกสารออนไลน์</h6>
+            <h2 style="color: #fff;margin-top: 90px;">ระบบเอกสารออนไลน์</h2>
             <h1 class="display-1" style="color: #fff;">บริษัท ท่าอากาศยานไทย จำกัด</h1>
 </div>
