@@ -13,8 +13,8 @@ class Upload_model extends CI_Model
     {
         $addurl = ''.random_string('alnum',30).br();
         $addbaseurl = ($addurl);
-        // echo $addbaseurl;
         
+        // echo $addbaseurl;
         $fill_user = array(
           'name' => $inputdata['name'],
           'url'=> $addbaseurl

@@ -45,7 +45,7 @@ class UploadController extends CI_Controller {
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
                   $this->Upload->upload_image($this->input->post(),$fileName);
-                  redirect('UploadController/view');
+                  redirect('ViewController');
                 }
 
         public function view(){
@@ -94,13 +94,13 @@ class UploadController extends CI_Controller {
                 $images[] = $fileName;
                 }
                   $fileName = implode(',',$images);
-                  $this->welcome->edit_upload_image($user_id,$this->input->post(),$fileName);
+                  $this->Upload->edit_upload_image($user_id,$this->input->post(),$fileName);
                 }else
                 {
               $user_id = $this->input->post('user_id');
-              $this->welcome->edit_upload_image($user_id,$this->input->post());
+              $this->Upload->edit_upload_image($user_id,$this->input->post());
                 }
-                redirect('multipleupload/view');
+                redirect('ViewControllers');
                 }
 
 
