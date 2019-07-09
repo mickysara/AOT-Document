@@ -59,7 +59,7 @@ class LoginController extends CI_Controller {
            
            $this->session->set_userdata($data);
          
-           //echo $this->session->userdata('_success');
+
           
            
          }else{
