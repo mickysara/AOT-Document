@@ -12,7 +12,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>Name</div>
-                      <input type="Text" class="form-control form-control-alternative" name="name" placeholder="name" required id="name">
+                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?=$this->session->userdata('firstName')?> <?=$this->session->userdata('lastName')?>" required id="name" readonly>
                     </div>
                   </div>
                   <div class="col-md-12">
