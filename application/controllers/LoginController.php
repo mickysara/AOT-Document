@@ -13,7 +13,7 @@ class LoginController extends CI_Controller {
         $this->load->view('Header');
         $this->load->view('Login');
         $this->load->view('Footer');
-        echo $this->session->userdata('_success');
+        //echo $this->session->userdata('_success');
       
     }
     public function Login()
