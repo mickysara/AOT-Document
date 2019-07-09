@@ -2,8 +2,10 @@
             border-radius: .25rem;
             background-color: #f7f8f9;">
 
-            <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form name="login" id="login_form" method="post" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
+
+
+            <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
+            <form method="post" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
                 <div class="row">
@@ -15,10 +17,6 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                    <!-- <div>Password</div>
-                    <input type="password" class="form-control form-control-alternative" id="password" name="password" placeholder="Password" required>
-                    </div>
-                  </div> -->
                     <tr>
                     <td>File</td>
                     <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx" multiple></td>

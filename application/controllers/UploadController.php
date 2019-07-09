@@ -44,8 +44,8 @@ class UploadController extends CI_Controller {
                 $images[] = $fileName;
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
-                  $this->welcome->upload_image($this->input->post(),$fileName);
-                  redirect('multipleupload/view');
+                  $this->Upload->upload_image($this->input->post(),$fileName);
+                  redirect('UploadController/view');
                 }
 
         public function view(){
