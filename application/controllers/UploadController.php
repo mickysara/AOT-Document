@@ -100,7 +100,7 @@ class UploadController extends CI_Controller {
               $user_id = $this->input->post('user_id');
               $this->Upload->edit_upload_image($user_id,$this->input->post());
                 }
-                redirect('EditController');
+                redirect('ViewControllers');
                 }
 
 

@@ -1,4 +1,8 @@
-<div align="center" class="container">
+<div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
+            border-radius: .25rem;
+            background-color: #f7f8f9;">
+<div align="center" >
+
 <form method="POST" action="<?php echo site_url('UploadController/edit_file_upload');?>" enctype='multipart/form-data'>
 <table border="1">
 
@@ -44,8 +48,10 @@
 </table>
 </form>
 </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  <!--ต้องมีการเรียกใช้เจคิวรี่สำหรับลบรูป-->
 <script type="text/javascript">
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function deleteimage(image_id)
