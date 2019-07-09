@@ -59,8 +59,14 @@
                 </div>
               </div>
               <ul class="navbar-nav ml-lg-auto" style=" margin-left: 800px; text-align: right; width: 300px;">
+<<<<<<< Updated upstream
               <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="<?php echo site_url('/FileController');?>"  >
+=======
+
+              <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="<?php echo site_url('#');?>"  >
+>>>>>>> Stashed changes
                         ไฟล์
                     </a>
                 </li>
@@ -70,6 +76,7 @@
                         แจ้งปัญหาการใช้งาน
                     </a>
                 </li>
+                
                 
                 <?php if($this->session->userdata('_success') == '')
                 { ?>
