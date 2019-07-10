@@ -13,7 +13,7 @@
               <h3 class="mb-0">ตารางเอกสารทั้งหมด</h3>
             </div>
             <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+              <table class="table align-items-center table-flush" id="Filetable">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col"><h4>ชื่อไฟล์</h4></th>
@@ -21,7 +21,7 @@
                     <th scope="col"><h4>เมื่อวันที่</h4></th>
                     <th scope="col"><h4>จัดการ</h4></th>
                         
-                    <th scope="col"></th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -49,37 +49,37 @@
                       </span>
                     </td>   
                     <td class="">
-                    <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#modal-default">Default</button>
-                  
-                        
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Edit
-                        </button>
+                        <div>
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#modal-default">Default</button>                           
+                            <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                <div class="modal-content" style="color: #2d3436; height: 608px;">
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                            </div>
-                        </div>
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : </h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+
+                                        <p>รายละเอียด : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
+                                        <p>โดย : </p>
+                                        <p>เมื่อวันที่ : </p>
+                                        <p>หมดอายุ : </p>
+                                        <p>สถานะ : </p>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
                         </div>
                     </td>
                   </tr>
-                  <?php } endif; ?>
+                   <?php } endif; ?> 
                 </tbody>
               </table>
             </div>
@@ -117,32 +117,7 @@
 </div>
 
 
-    <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-        <div class="modal-content" style="color: #2d3436;">
-
-            <div class="modal-header">
-                <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : </h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-
-                <p>รายละเอียด : </p>
-                <p>โดย : </p>
-                <p>เมื่อวันที่ : </p>
-                <p>หมดอายุ : </p>
-                <p>สถานะ : </p>
-
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
-            </div>
-
-        </div>
+        
 
 
 
