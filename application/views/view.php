@@ -3,80 +3,23 @@
             background-color: #f7f8f9;">
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form name="login" id="login_form" method="post">
+        <form name="login" id="login_form" method="post">
                 <h1 class="display-2" style="color:#2d3436;">ระบบจัดการเอกสาร</h1>
                 <hr>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                    <div class="table-responsive">
-         <div>
-      <table class="table align-items-center table-dark">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">
-                    S.No
-                </th>
-                <th scope="col">
-                    Name
-                </th>
-                <th scope="col">
-                    Class
-                </th>
-                <th scope="col">
-                    Manage
-                </th>
                 
-            </tr>
-        </thead>
-        <tbody class="list">
-
-            <tr>
-                <th scope="row" class="S.No">
-                    <div class="media align-items-center">
-                      <?php echo $i++ ?>
-                    </div>
-                </th>
-                <td class="Name">
-                      <?php echo $data['name']; ?>
-                </td>
-                <td class="Class">
-                    <?php echo $data['url']; ?>
-                </td>
-                <td>
-                    <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#">Delete</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                    
-                </td>
-              
-            </tr>
-            </tbody>
-    </table>
-</div>
-                
-                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" >ยืนยัน</button>
-                
-                <div class="col">
+        <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">Card tables</h3>
+              <h3 class="mb-0">ตารางเอกสารทั้งหมด</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">S.No</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Class</th>
-                    <th scope="col">Manage</th>
+                    <th scope="col"><h4>ชื่อไฟล์</h4></th>
+                    <th scope="col"><h4>สร้างโดย</h4></th>
+                    <th scope="col"><h4>เมื่อวันที่</h4></th>
+                    <th scope="col"><h4>จัดการ</h4></th>
                         
                     <th scope="col"></th>
                   </tr>
@@ -90,7 +33,7 @@
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                          <img alt="Image placeholder" src="../assets/img/logofile/excel1.png">
                         </a>
                         <div class="media-body">
                           <span class="mb-0 text-sm">ชื่อไฟล์ที่อัพ</span>
@@ -102,20 +45,38 @@
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i> pending
+                        <i class="bg-success"></i> เดือน/วัน/ปี 11:31:21 AM
                       </span>
                     </td>   
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(32px, -2px, 0px);">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                    <td class="">
+                    <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#modal-default">Default</button>
+                  
+                        
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Edit
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                            </div>
                         </div>
-                      </div>
+                        </div>
                     </td>
                   </tr>
                   <?php } endif; ?>
@@ -152,8 +113,36 @@
             </form>
             </div>
   </div>
+  
 </div>
 
+
+    <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content" style="color: #2d3436;">
+
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : </h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <p>รายละเอียด : </p>
+                <p>โดย : </p>
+                <p>เมื่อวันที่ : </p>
+                <p>หมดอายุ : </p>
+                <p>สถานะ : </p>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
 
 
 
@@ -163,6 +152,6 @@
  
     
 
-<p align="center"><a href="<?php echo site_url("/IndexController");?>"><button type="button" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">Back</button>
+
     
 </div>
