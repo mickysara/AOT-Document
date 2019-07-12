@@ -26,7 +26,7 @@
                     <div class="form-group">
                     <tr>
                     <td>File</td>
-                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx" multiple></td>
+                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx,.csv" multiple></td>
                     </tr>
                     </div>
 
@@ -43,7 +43,7 @@
                     
 
                 <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit"  >ยืนยัน</button>
-                
+                <a href="<?php echo site_url('Welcome');?>" class="btn btn-primary"> TEST</a> 
                 
             </form>
             </div>
