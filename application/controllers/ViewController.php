@@ -8,14 +8,14 @@ class ViewController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Upload_Model','Upload'); 
+        $this->load->model('UploadFile_Model','Upload'); 
     }
     public function index()
     {
         $this->load->view('Header');
         $this->load->view('Footer');
         $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
-        $this->load->view('view', $this->data, FALSE);
+        $this->load->view('ViewData', $this->data, FALSE);
         
         
         

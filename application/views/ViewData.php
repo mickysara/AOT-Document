@@ -36,16 +36,16 @@
                           <img alt="Image placeholder" src="../assets/img/logofile/excel1.png">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm">ชื่อไฟล์ที่อัพ</span>
+                          <span class="mb-0 text-sm"><?php echo $data['file'];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                    โดย ชื่อผู้อัพ
+                    <?php echo $data['name'];?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i> เดือน/วัน/ปี 11:31:21 AM
+                        <i class="bg-success"></i> <?php echo $data['date'];?>
                       </span>
                     </td>   
                     <td class="">
