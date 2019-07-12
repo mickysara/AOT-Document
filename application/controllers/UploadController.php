@@ -20,11 +20,12 @@ class UploadController extends CI_Controller {
     }
 
     public function file_upload(){
+              
               $files = $_FILES;
               $count = count($_FILES['userfile']['name']);
               for($i=0; $i<$count; $i++)
                 {
-                $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
+                $_FILES['userfile']['name']= $files['userfile']['name'][$i];
                 $_FILES['userfile']['type']= $files['userfile']['type'][$i];
                 $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
                 $_FILES['userfile']['error']= $files['userfile']['error'][$i];
@@ -38,7 +39,7 @@ class UploadController extends CI_Controller {
                 $config['max_height'] = '';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
-
+                
                 $this->upload->do_upload();
                 $fileName = $_FILES['userfile']['name'];
                 $images[] = $fileName;
@@ -46,6 +47,10 @@ class UploadController extends CI_Controller {
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
                   $this->Upload->upload_image($this->input->post(),$fileName);
                   redirect('ViewController');
+                  
+               
+
+                  
                 }
 
         public function view(){

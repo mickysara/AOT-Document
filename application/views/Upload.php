@@ -5,7 +5,7 @@
 
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
+            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 
@@ -42,7 +42,7 @@
 
                     
 
-                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit" >ยืนยัน</button>
+                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit"  >ยืนยัน</button>
                 
                 
             </form>
