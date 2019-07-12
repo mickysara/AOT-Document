@@ -7,7 +7,7 @@ class UploadController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Upload_model','Upload'); 
+        $this->load->model('UploadFile_model','Upload'); 
     }
 
     public function index()
@@ -100,6 +100,9 @@ class UploadController extends CI_Controller {
               $user_id = $this->input->post('user_id');
               $this->Upload->edit_upload_image($user_id,$this->input->post());
                 }
+                // echo'<script type="text/javascript">
+                // swal("ADD DATA", "You clicked the button!", "success");
+                // </script>'; //ต้องใช้ echo ในแท้กphp ข้างในมีดับเบิ้ลโคดอยู่แล้ว
                 redirect('ViewControllers');
                 }
 

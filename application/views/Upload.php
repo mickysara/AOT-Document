@@ -20,7 +20,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>Topic</div>
-                    <input type="text" class="form-control form-control-alternative" id="Topic" name="Topic" placeholder="Topic" required>
+                    <input type="text" class="form-control form-control-alternative" id="topic" name="topic" placeholder="topic" required>
                     </div>
 
                     <div class="form-group">
@@ -31,8 +31,13 @@
                     </div>
 
                     <div class="form-group">
+                    <div>date</div>
+                    <input type="text" class="form-control form-control-alternative" id="date" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
+                    </div>
+
+                    <div class="form-group">
                     <div>Detail</div>
-                    <textarea class="form-control form-control-alternative" rows="4" id="Detail" name="Detail" placeholder="Write a large text here ..." required></textarea>
+                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" placeholder="Write a large text here ..." required></textarea>
                     </div>
 
                     
