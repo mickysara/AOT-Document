@@ -29,7 +29,7 @@
     <div class="card" style="width: 18rem; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
             <img class="card-img-top" src="../assets/img/card/powerpoint.png" alt="Card image cap">
             <div class="card-body">
-                <h3 class="card-title">ชื่อ : </h3>
+                <h3 class="card-title" style="color: #2d3436;">ชื่อ : </h3>
                 <p class="card-text" style="font-weight: 500;">รายละเอียด : </p>
                 <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : </p>
                 <a href="#" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
