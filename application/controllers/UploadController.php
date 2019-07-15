@@ -40,6 +40,8 @@ class UploadController extends CI_Controller {
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 
+                
+
                 $this->upload->do_upload();
                 $fileName = $_FILES['userfile']['name'];
                 $images[] = $fileName;
@@ -48,8 +50,7 @@ class UploadController extends CI_Controller {
                   $this->Upload->upload_image($this->input->post(),$fileName);
                   redirect('ViewController');
                   
-               
-
+                 
                   
                 }
 

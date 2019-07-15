@@ -28,12 +28,20 @@
                 <?php
                     if(isset($view_data) && is_array($view_data) && count($view_data)): $i=1;
                     foreach ($view_data as $key => $data) { 
+                         $str = $data['file'];
+                         $arraystate = (explode(".",$str));
+                          //echo ($arraystate[1]);
+                           $aa = "../assets/img/logofile/xlsx.png";
+                           $typefile = $arraystate[1];
+                           $localfile = "../assets/img/logofile/";
+                           $dotpng = ".png";
+                           $show = $localfile.$typefile.$dotpng;
                     ?>
                   <tr>
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/logofile/excel1.png">
+                           <?php echo "<img src= '$show'>"?>
                         </a>
                         <div class="media-body">
                           <span class="mb-0 text-sm"><?php echo $data['file'];?></span>
