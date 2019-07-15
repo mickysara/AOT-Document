@@ -1,9 +1,45 @@
 <div class="container">
   <div class="row">
-    <div class="col mt-5 mr-5" style="width: 500px; height: 500px; background-color: #fff;"><span>รูปภาพ</span></div>
+    <div class="col mt-5 mr-5" style="width: 500px; height: 500px; background-color: #fff;"><span></span>
+        <div id="slider" class="flexslider">
+                <ul class="slides" style="margin-top: 50px;">
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <!-- items mirrored twice, total of 12 -->
+                </ul>
+                </div>
+                <div id="carousel" class="flexslider">
+                <ul class="slides">
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <li>
+                    <img src="../assets/img/card/powerpoint.png" />
+                    </li>
+                    <!-- items mirrored twice, total of 12 -->
+                </ul>
+        </div>
+    </div>
+    
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h2>ชื่อไฟล์ : </h2>    
-        <div>ประเภท : </div>
+        <h1>ชื่อไฟล์ : </h1>  
+        <p>ประเภท : </p>
         <p>เพิ่มโดย : </p>
         <p>เมื่อวันที่ : </p>
         <p>หมดอายุวันที่ : </p>

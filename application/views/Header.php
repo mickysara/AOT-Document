@@ -21,6 +21,13 @@
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon.css?v=1.0.1">
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon.min.css">
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon-dashboard.css?v=1.0.0">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/Flex/flexslider.css">
+
+
+  <!-- Syntax Highlighter -->
+  <!-- Demo CSS -->
+
+  <script src="<?php echo base_url('/assets/js/modernizr.js'); ?>"></script>
 
   <style>
         body,h1,h2,h3,h4,h5,.tooltip,h6,a {

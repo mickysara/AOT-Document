@@ -1,5 +1,6 @@
   
   <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+  <script>jQuerynew = jQuery.noConflict( true );</script>
   <!-- Core -->
   <script src="<?php echo base_url('/assets/vendor/jquery/jquery.min.js'); ?>"></script>
   <script src="<?php echo base_url('/assets/vendor/popper/popper.min.js'); ?>"></script>
@@ -8,10 +9,9 @@
   <!-- Optional JS -->
   <script src="<?php echo base_url('/assets/vendor/onscreen/onscreen.min.js'); ?>"></script>
   <script src="<?php echo base_url('/assets/vendor/nouislider/js/nouislider.min.js'); ?>"></script>
-    <!-- DatePicker -->
-
-    <script src="<?php echo base_url('/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
-  
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<!-- DatePicker -->
+<script src="<?php echo base_url('/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
   <!-- Argon JS -->
   <script src="<?php echo base_url('/assets/js/argon.js?v=1.0.1'); ?>"></script>
   <!-- sweetalert -->
@@ -21,6 +21,8 @@
   <!-- DashBoard -->
   <script src="<?php echo base_url('/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js'); ?>"></script>
   <script src="<?php echo base_url('/assets/js/argon-dashboard.js?v=1.0.0'); ?>"></script>
+
+
  <!-- My Script -->
  <script>
          $(document).on('submit', '#login_form', function () {
@@ -102,7 +104,53 @@ $(document).ready( function () {
 } );
 
 </script>
- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>jQueryold = jQuery.noConflict( true );</script>
+
+<!-- FlexSlider -->
+<script src="<?php echo base_url('/assets/js/jquery.flexslider.js'); ?>"></script>
+<script type="text/javascript">
+  $(function(){
+    SyntaxHighlighter.all();
+  });
+  jQueryold(window).load(function(){
+    $('#carousel').flexslider({
+      animation: "slide",
+      controlNav: false,
+      animationLoop: false,
+      slideshow: false,
+      itemWidth: 210,
+      itemMargin: 5,
+      asNavFor: '#slider'
+    });
+
+    $('#slider').flexslider({
+      animation: "slide",
+      controlNav: false,
+      animationLoop: false,
+      slideshow: false,
+      sync: "#carousel",
+      start: function(slider){
+        $('body').removeClass('loading');
+      }
+    });
+  });
+</script>
+
+
+<!-- Syntax Highlighter -->
+<script src="<?php echo base_url('/assets/js/shCore.js'); ?>"></script>
+<script src="<?php echo base_url('/assets/js/shBrushXml.js'); ?>"></script>
+<script src="<?php echo base_url('/assets/js/shBrushJScript.js'); ?>"></script>
+
+
+
+<!-- Optional FlexSlider Additions -->
+<script src="<?php echo base_url('/assets/js/jquery.easing.js'); ?>"></script>
+<script src="<?php echo base_url('/assets/js/jquery.mousewheel.js'); ?>"></script>
+<script src="<?php echo base_url('/assets/js/demo.js'); ?>"></script>
+
+
 </body>
 
 </html>
