@@ -31,17 +31,19 @@
                          $str = $data['file'];
                          $arraystate = (explode(".",$str));
                           //echo ($arraystate[1]);
-                           $aa = "../assets/img/logofile/xlsx.png";
+                          
                            $typefile = $arraystate[1];
                            $localfile = "../assets/img/logofile/";
                            $dotpng = ".png";
                            $show = $localfile.$typefile.$dotpng;
+
+                        
                     ?>
                   <tr>
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                           <?php echo "<img src= '$show'>"?>
+                           <?php echo "<img src= '$show'>" ?>
                         </a>
                         <div class="media-body">
                           <span class="mb-0 text-sm"><?php echo $data['file'];?></span>
@@ -49,27 +51,28 @@
                       </div>
                     </th>
                     <td>
-                    <?php echo $data['name'];?>
+                    <?php echo $data['name']; $name = $data['name']?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
                         <i class="bg-success"></i> <?php echo $data['date'];?>
                       </span>
                     </td>   
+
                     <td class="">
                         <div>
                             <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#modal-default">Default</button>                           
                             <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
-
+                               
                                     <div class="modal-header">
                                         <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : </h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
-
+                                    
                                     <div class="modal-body">
 
                                         <p>รายละเอียด : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
@@ -85,9 +88,11 @@
                                     </div>
                                 </div>
                         </div>
+                       
                     </td>
+                    
                   </tr>
-                   <?php } endif; ?> 
+                 <?php } endif; ?> 
                 </tbody>
               </table>
             </div>

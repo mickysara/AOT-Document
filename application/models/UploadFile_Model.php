@@ -41,7 +41,13 @@ class UploadFile_model extends CI_Model
                                ORDER BY upid.id_upload DESC");
       return $query->result_array();
   }
-
+  
+  public function edit_data($id){
+    $query=$this->db->query("SELECT upid.*
+                             FROM upload upid
+                             WHERE upid.id_upload = $id");
+    return $query->result_array();
+}
     
 
 
