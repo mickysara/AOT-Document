@@ -25,6 +25,7 @@
                   </tr>
                 </thead>
                 <tbody>
+
                 <?php
                     if(isset($view_data) && is_array($view_data) && count($view_data)): $i=1;
                     foreach ($view_data as $key => $data) { 
@@ -37,6 +38,7 @@
                         $dotpng = ".png";
                         $show = $localfile.$typefile.$dotpng;
                     ?>
+
                   <tr>
                     <th scope="row">
                       <div class="media align-items-center">
@@ -49,7 +51,7 @@
                       </div>
                     </th>
                     <td>
-                    <?php echo $data['name']; $name = $data['name']?>
+                    <?php echo $data['name'];?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
@@ -65,16 +67,16 @@
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : </h2>
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['file'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
                                     
                                     <div class="modal-body">
-                                        <p>รายละเอียด : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
-                                        <p>โดย : </p>
-                                        <p>เมื่อวันที่ : </p>
+                                        <p>รายละเอียด : <?php echo $data['detail'];?> </p>
+                                        <p>โดย : <?php echo $data['name'];?></p>
+                                        <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
                                         <p>หมดอายุ : </p>
                                         <p>สถานะ : </p>
 
