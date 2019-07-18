@@ -72,7 +72,6 @@
                                     </div>
                                     
                                     <div class="modal-body">
-
                                         <p>รายละเอียด : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
                                         <p>โดย : </p>
                                         <p>เมื่อวันที่ : </p>
