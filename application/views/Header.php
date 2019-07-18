@@ -84,15 +84,11 @@
 
 
               
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
                         แจ้งปัญหาการใช้งาน
                     </a>
-                </li> 
-                
-                
-
-                
+                </li>  -->
                 <?php if($this->session->userdata('_success') == '')
                 { ?>
                 <li class="nav-item">
@@ -114,6 +110,7 @@
                         </div>
                     </li> 
                 <?php } ?>
+                
  
             </ul>
             </div>
