@@ -69,35 +69,42 @@
                 </div>
               </div>
               <ul class="navbar-nav ml-lg-auto" style=" margin-left: 800px; text-align: right; width: 300px;">
-
-
-
-
-
-              <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="<?php echo site_url('/FileController');?>"  >
-                        ไฟล์
-                    </a>
-                </li>
-
-
-
-
-              
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
-                        แจ้งปัญหาการใช้งาน
+                        แจ้งปัญหา
                     </a>
-                </li>  -->
+                </li> 
+
                 <?php if($this->session->userdata('_success') == '')
                 { ?>
                 <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url("/LoginController");?>"  >เข้าสู่ระบบ</a>
                 </li>
                 <?php } ?>
-
+                
                 <?php if($this->session->userdata('_success') == 1 )
                 {?>
+                    <!---------------------- Notification----------------------------------------- -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        <i class="ni ni-planet"></i>
+                        <span class="badge badge-danger" id="Noti" style="font-size: 14px; color: #fff; border-color: #f5365c; background-color: #f5365c;"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="">ออกจากระบบ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="">ออกจากระบบ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="">ออกจากระบบ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="">ออกจากระบบ</a>
+                        </div>
+                    </li> 
+                    <!--------------------------------------------------------------- -->
+
+
+                    <!---------------------- Property ----------------------------------------- -->
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                         <?=$this->session->userdata('accountName')?>
@@ -109,6 +116,7 @@
                             <a class="dropdown-item" href="<?php echo site_url('/LoginController/Logout');?>">ออกจากระบบ</a>
                         </div>
                     </li> 
+                    <!--------------------------------------------------------------- -->
                 <?php } ?>
                 
  

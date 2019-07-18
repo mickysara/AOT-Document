@@ -6213,7 +6213,7 @@ button.close {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 900px;
+    max-width: 500px;
     margin: 1.75rem auto;
   }
 
@@ -18385,6 +18385,7 @@ textarea[resize="horizontal"] {
 .table td,
 .table th {
   font-size: 0.8125rem;
+  white-space: nowrap;
 }
 
 .table.align-items-center td,

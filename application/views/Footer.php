@@ -1,6 +1,5 @@
   
   <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-  <script>jQuerynew = jQuery.noConflict( true );</script>
   <!-- Core -->
   <script src="<?php echo base_url('/assets/vendor/jquery/jquery.min.js'); ?>"></script>
   <script src="<?php echo base_url('/assets/vendor/popper/popper.min.js'); ?>"></script>
@@ -18,8 +17,7 @@
  
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="<?php echo base_url('/assets/js/ajax.js'); ?>"></script>
-  <!-- DashBoard -->
-  <script src="<?php echo base_url('/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js'); ?>"></script>
+  <!-- DashBoard -->>
   <script src="<?php echo base_url('/assets/js/argon-dashboard.js?v=1.0.0'); ?>"></script>
 
 
@@ -109,32 +107,33 @@ $(document).ready( function () {
 
 <!-- FlexSlider -->
 <script src="<?php echo base_url('/assets/js/jquery.flexslider.js'); ?>"></script>
-<script type="text/javascript">
-  $(function(){
-    SyntaxHighlighter.all();
-  });
-  jQueryold(window).load(function(){
-    $('#carousel').flexslider({
-      animation: "slide",
-      controlNav: false,
-      animationLoop: false,
-      slideshow: false,
-      itemWidth: 210,
-      itemMargin: 5,
-      asNavFor: '#slider'
-    });
 
-    $('#slider').flexslider({
-      animation: "slide",
-      controlNav: false,
-      animationLoop: false,
-      slideshow: false,
-      sync: "#carousel",
-      start: function(slider){
-        $('body').removeClass('loading');
-      }
-    });
-  });
+<script type="text/javascript">
+          $(function(){
+            SyntaxHighlighter.all();
+          });
+          jQueryold(window).load(function(){
+            $('#carousel').flexslider({
+              animation: "slide",
+              controlNav: false,
+              animationLoop: false,
+              slideshow: false,
+              itemWidth: 210,
+              itemMargin: 5,
+              asNavFor: '#slider'
+            });
+
+            $('#slider').flexslider({
+              animation: "slide",
+              controlNav: false,
+              animationLoop: false,
+              slideshow: false,
+              sync: "#carousel",
+              start: function(slider){
+                $('body').removeClass('loading');
+              }
+            });
+          });
 </script>
 
 <script>
