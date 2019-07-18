@@ -16674,21 +16674,22 @@ textarea[resize="horizontal"] {
 
 .nav-pills .nav-link {
   padding: 0.75rem 1rem;
-  color: #2d3436;
+  color: #5e72e4;
   font-weight: 500;
   font-size: 0.875rem;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
   transition: all 0.15s ease;
 }
 
 .nav-pills .nav-link:hover {
-  color: #464646;
+  color: #485fe0;
 }
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
   color: #fff;
-  background-color: #2d3436;
+  background-color: #5e72e4;
 }
 
 @media (max-width: 575.98px) {

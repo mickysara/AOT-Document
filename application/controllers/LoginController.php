@@ -76,6 +76,20 @@ class LoginController extends CI_Controller {
         
       redirect('/IndexController','refresh');
     }
+    
+    public function IncreaseNoti()
+    {
+      $accname = $this->session->userdata('accountName');
+
+      $this->db->where('accname', $accname);
+      $user = $this->db->get('Noti');
+
+ 
+      echo json_decode($user->num_rows());
+      
+      
+
+    }
 }
 
 /* End of file LoginController.php */
