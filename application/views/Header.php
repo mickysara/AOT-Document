@@ -43,7 +43,7 @@
     
 </style>
 </head>
-<body style="background: #ffffff;">
+<body style="background-color: #f1f1fb;">
 
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center; position: sticky; position: sticky; z-index: 1071; top: 0; height: 100px;">
@@ -69,33 +69,12 @@
                 </div>
               </div>
               <ul class="navbar-nav ml-lg-auto" style=" margin-left: 800px; text-align: right; width: 300px;">
-<<<<<<< HEAD
-=======
-
-
-
-
-
-              <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="<?php echo site_url('/FileController');?>"  >
-                        ไฟล์
-                    </a>
-                </li>
-
-
-
-
-              
->>>>>>> 1545bc0d4c61b06af3898c06f8aa3c74f1092ec0
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
                         แจ้งปัญหา
                     </a>
                 </li> 
-<<<<<<< HEAD
 
-=======
->>>>>>> 1545bc0d4c61b06af3898c06f8aa3c74f1092ec0
                 <?php if($this->session->userdata('_success') == '')
                 { ?>
                 <li class="nav-item">
@@ -139,7 +118,6 @@
                     </li> 
                     <!--------------------------------------------------------------- -->
                 <?php } ?>
-                
  
             </ul>
             </div>

@@ -43,9 +43,6 @@
         <p>เพิ่มโดย : </p>
         <p>เมื่อวันที่ : </p>
         <p>หมดอายุวันที่ : </p>
-        <p>สถานะการใช้งาน : </p>
-        <p>จำนวนผู้เข้าถึง : </p>
-        <p>จำนวนผู้ดาวน์โหลด : </p>
         <button type="button" class="btn btn-success" style="margin-top: 10px; margin-bottom: 15px;">ดาวน์โหลดไฟล์</button>
     </div>
     <div class="w-100"></div>
