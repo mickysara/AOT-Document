@@ -27,7 +27,7 @@
                 <tbody>
 
                 <?php
-                    if(isset($view_data) && is_array($view_data) && count($view_data)): $i=1;
+                    if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
                     foreach ($view_data as $key => $data) { 
                       $str = $data['file'];
                       $arraystate = (explode(".",$str));
@@ -61,8 +61,8 @@
 
                     <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal" data-target="#modal-default">Default</button>                           
-                            <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['detail'];?>">Default</button>                           
+                            <div class="modal fade" id="<?php echo $data['detail'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['detail'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
                                
@@ -86,13 +86,15 @@
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
+                                
                         </div>
                        
                     </td>
-                    
+                   
                   </tr>
-                 <?php } endif; ?> 
+           
                 </tbody>
+                <?php } endif; ?> 
               </table>
             </div>
             <div class="card-footer py-4">

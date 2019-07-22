@@ -13,9 +13,9 @@ class ViewController extends CI_Controller {
     public function index()
     {
         $this->load->view('Header');
-        $this->load->view('Footer');
         $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
         $this->load->view('ViewData', $this->data, FALSE);
+        $this->load->view('Footer');
         
         
         
