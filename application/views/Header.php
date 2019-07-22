@@ -84,12 +84,12 @@
                 <?php if($this->session->userdata('_success') == 1 )
                 {?>
                     <!---------------------- Notification----------------------------------------- -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <li class="nav-item dropdown " id="Hi" style=>
+                        <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width 50px;">
                         <i class="ni ni-planet"></i>
                         <span class="badge badge-danger" id="Noti" style="font-size: 14px; color: #fff; border-color: #f5365c; background-color: #f5365c;"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" style=" height: auto; max-height: 200px; overflow-x: hidden;">
                         <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="">ออกจากระบบ</a>
                             <div class="dropdown-divider"></div>

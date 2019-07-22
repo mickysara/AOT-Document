@@ -143,12 +143,31 @@ $(document).ready(function(e) {
 function increaseNotify(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
           $.get("<?=base_url('index.php/LoginController/IncreaseNoti')?>", 
               function (data) {
-                  
-                $("#Noti").html(data)
+                if(data > 0)
+                {
+                  $("#Noti").html(data)
+                }  
+            
 
               }
           );
 }
+
+</script>
+
+<script>
+
+var myEl = document.getElementById('Hi');
+
+        myEl.addEventListener('click', function() {
+          $.get("<?=base_url('index.php/LoginController/DecreaseNoti')?>",
+                    function(data){
+
+                      $("#Noti").html(data)
+
+                    }
+                  )
+        }, true);
 </script>
 
 
