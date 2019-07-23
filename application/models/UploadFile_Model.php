@@ -9,22 +9,38 @@ class UploadFile_model extends CI_Model
 
     public function upload_image($inputdata,$filename)
     {
-        $addurl = ''.random_string('alnum',30).br();
+        $addurl = ''.random_string('alnum',30);
         $addbaseurl = ($addurl);
         $dateshow = date("Y/m/d");
         $insert_id = $this->db->insert_id();
-        
-        if($filename!='' ){
-        $filename1 = explode(',',$filename);
-        foreach($filename1 as $file){
-        
+
+            if($filename!='' ){
+            $filename1 = explode(',',$filename);
+            foreach($filename1 as $file){
+            
+              $str = $file;
+              $arraystate = (explode(".",$str));
+              echo ($arraystate[1]);
+
+         if($arraystate[1]=="pdf"){
+           $pdfshow = "PDF File";
+         }else if($arraystate[1]=="docx"){
+          $wordshow = "Microsolfword";
+         }else if($arraystate[1]=="pptx"){
+          $powerpointshow = "Microsolfpowerpoint";
+         }else if($arraystate[1]=="xlsx"){
+          $excelshow = "Microsolfexcel";
+         }
+          $showtype = $pdfshow.$wordshow.$powerpointshow.$excelshow;
+
         $fill_user = array(
           'name' => $inputdata['name'],
           'topic' => $inputdata['topic'],
           'detail' => $inputdata['detail'],
           'url'=> $addbaseurl,
           'file' => $file,
-          'date'=> $dateshow 
+          'date'=> $dateshow,
+          'type'=> $showtype
         );
         
       $this->db->insert('upload', $fill_user); 
