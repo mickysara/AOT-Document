@@ -81,8 +81,8 @@ class LoginController extends CI_Controller {
     {
       $accname = $this->session->userdata('accountName');
       $this->db->where('Notification', '1');
-      $this->db->where('accname', $accname);
-      $user = $this->db->get('Noti');
+      $this->db->where('accname', 'sontaya.w');
+      $user = $this->db->get('noti');
 
  
       echo json_decode($user->num_rows());
@@ -94,12 +94,13 @@ class LoginController extends CI_Controller {
 
       $this->db->set('Notification', '0');
       $this->db->where('accname', $accname);
-      $this->db->update('Noti');
+      $this->db->update('noti');
       
 
  
       
     }
+    
 }
 
 /* End of file LoginController.php */

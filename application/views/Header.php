@@ -91,10 +91,10 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" style=" height: 500; max-height: 200px; overflow-x: hidden; width: 300px;">
                            
-                            <?php $this->db->select('*');
+                          <?php $this->db->select('*');
                                 $this->db->where('accname', $this->session->userdata('accountName'));
                                 $this->db->order_by('Timestamp', 'desc');
-                                $query = $this->db->get('Noti',2);
+                                $query = $this->db->get('noti',2);
                                 foreach($query->result_array() as $d)
                                 {
                                   ?>

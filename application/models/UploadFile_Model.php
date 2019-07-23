@@ -33,9 +33,9 @@ class UploadFile_model extends CI_Model
      
     }
     public function view_data(){
-      $query=$this->db->query("SELECT upid.*
-                               FROM upload upid 
-                               ORDER BY upid.id_upload DESC
+      $query=$this->db->query("SELECT *
+                               FROM upload  
+                               ORDER BY upload.id_upload DESC
                                limit 6");
       return $query->result_array();
   }

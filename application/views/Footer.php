@@ -48,7 +48,7 @@
                       
                       swal({
                           icon: "error",
-                          text: data,
+                          text: "username หรือ Password นี้ไม่มีในระบบ",
                           
                       });
                   }
