@@ -1,4 +1,6 @@
+
 <div class="container">
+           
   <div class="row">
     <div class="col mt-5 mr-5" style="width: 500px; height: 500px; background-color: #fff;"><span></span>
         <div id="slider" class="flexslider">
@@ -36,15 +38,20 @@
                 </ul>
         </div>
     </div>
-    
+
+                <?php          
+                    if(isset($edit_data) && is_array($edit_data) && count($edit_data)): $i=1;
+                    foreach ($edit_data as $key => $data) {   
+                ?>
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อไฟล์ : </h1>  
-        <p>ประเภท : </p>
-        <p>เพิ่มโดย : </p>
-        <p>เมื่อวันที่ : </p>
+        <h1>ชื่อไฟล์ : <?php echo $data['file'];?> </h1>  
+        <p>ประเภท : <?php echo $data['type'];?></p>
+        <p>เพิ่มโดย : <?php echo $data['name'];?></p>
+        <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
         <p>หมดอายุวันที่ : </p>
         <button type="button" class="btn btn-success" style="margin-top: 10px; margin-bottom: 15px;">ดาวน์โหลดไฟล์</button>
     </div>
+    <?php } endif; ?>
     <div class="w-100"></div>
     <div class="nav-wrapper">
     <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">

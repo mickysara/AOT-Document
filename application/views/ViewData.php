@@ -32,7 +32,7 @@
                       $str = $data['file'];
                       $arraystate = (explode(".",$str));
                        //echo ($arraystate[1]);
-                        $aa = "../assets/img/logofile/xlsx.png";
+                        //$aa = "../assets/img/logofile/xlsx.png";
                         $typefile = $arraystate[1];
                         $localfile = "../assets/img/logofile/";
                         $dotpng = ".png";
@@ -61,8 +61,8 @@
 
                     <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['detail'];?>">Default</button>                           
-                            <div class="modal fade" id="<?php echo $data['detail'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['detail'];?>" aria-hidden="true">
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['url'];?>">Default</button>                           
+                            <div class="modal fade" id="<?php echo $data['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['url'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
                                

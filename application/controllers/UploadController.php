@@ -59,9 +59,9 @@ class UploadController extends CI_Controller {
                 }
 
         public function edit($edit_id){
-            $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-            $this->data['edit_data_image']= $this->Upload->edit_data_image($edit_id);
-            $this->load->view('edit', $this->data, FALSE);
+             $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+             $this->data['edit_data_image']= $this->Upload->edit_data_image($edit_id);
+            $this->load->view('DetailDoc', $this->data, FALSE);
                 }
 
         public function deleteimage(){

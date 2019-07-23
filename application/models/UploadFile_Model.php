@@ -13,6 +13,7 @@ class UploadFile_model extends CI_Model
         $addbaseurl = ($addurl);
         $dateshow = date("Y/m/d");
         $insert_id = $this->db->insert_id();
+        
         if($filename!='' ){
         $filename1 = explode(',',$filename);
         foreach($filename1 as $file){
