@@ -31,7 +31,7 @@ class UploadController extends CI_Controller {
                 $_FILES['userfile']['error']= $files['userfile']['error'][$i];
                 $_FILES['userfile']['size']= $files['userfile']['size'][$i];
                 $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|pptx|docx';
+                $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
                 $config['max_size'] = '2000000';
                 $config['remove_spaces'] = true; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
                 $config['overwrite'] = false;
@@ -86,7 +86,7 @@ class UploadController extends CI_Controller {
                 $_FILES['userfile']['error']= $files['userfile']['error'][$i];
                 $_FILES['userfile']['size']= $files['userfile']['size'][$i];
                 $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf|pptx|docx';
+                $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
                 $config['max_size'] = '2000000';
                 $config['remove_spaces'] = true;
                 $config['overwrite'] = false;

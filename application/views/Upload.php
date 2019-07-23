@@ -26,7 +26,7 @@
                     <div class="form-group">
                     <tr>
                     <td>File</td>
-                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx" multiple></td>
+                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx" multiple></td>
                     </tr>
                     </div>
 
