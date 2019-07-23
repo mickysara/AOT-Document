@@ -1,12 +1,15 @@
 
 <div class="container">
-           
+<?php          
+                    if(isset($edit_data) && is_array($edit_data) && count($edit_data)): $i=1;
+                    foreach ($edit_data as $key => $data) {   
+                ?>
   <div class="row">
     <div class="col mt-5 mr-5" style="width: 500px; height: 500px; background-color: #fff;"><span></span>
         <div id="slider" class="flexslider">
                 <ul class="slides" style="margin-top: 50px;">
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
@@ -23,7 +26,7 @@
                 <div id="carousel" class="flexslider">
                 <ul class="slides">
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
@@ -39,10 +42,7 @@
         </div>
     </div>
 
-                <?php          
-                    if(isset($edit_data) && is_array($edit_data) && count($edit_data)): $i=1;
-                    foreach ($edit_data as $key => $data) {   
-                ?>
+
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
         <h1>ชื่อไฟล์ : <?php echo $data['file'];?> </h1>  
         <p>ประเภท : <?php echo $data['type'];?></p>
