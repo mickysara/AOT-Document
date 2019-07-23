@@ -89,15 +89,26 @@
                         <i class="ni ni-planet"></i>
                         <span class="badge badge-danger" id="Noti" style="font-size: 14px; color: #fff; border-color: #f5365c; background-color: #f5365c;"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" style=" height: auto; max-height: 200px; overflow-x: hidden;">
-                        <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">ออกจากระบบ</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">ออกจากระบบ</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">ออกจากระบบ</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">ออกจากระบบ</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" style=" height: 500; max-height: 200px; overflow-x: hidden; width: 300px;">
+                           
+                            <?php $this->db->select('*');
+                                $this->db->where('accname', $this->session->userdata('accountName'));
+                                $this->db->order_by('Timestamp', 'desc');
+                                $query = $this->db->get('Noti',2);
+                                foreach($query->result_array() as $d)
+                                {
+                                  ?>
+                                  <div>
+                                      <a class="dropdown-item" href="">
+                                        <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
+                                        <p> <?=trim($d['Content'])?> </p> 
+                                      </a>
+                                        <div class="dropdown-divider"></div>
+                                     
+                                  </div>
+                                <?php  
+                                }
+                                ?>
                         </div>
                     </li> 
                     <!--------------------------------------------------------------- -->
