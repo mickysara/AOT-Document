@@ -6,16 +6,16 @@
         <div id="slider" class="flexslider">
                 <ul class="slides" style="margin-top: 50px;">
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
@@ -23,16 +23,16 @@
                 <div id="carousel" class="flexslider">
                 <ul class="slides">
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <li>
-                    <img src="../assets/img/card/powerpoint.png" />
+                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
