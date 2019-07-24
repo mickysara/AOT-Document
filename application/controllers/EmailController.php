@@ -15,7 +15,22 @@ class EmailController extends CI_Controller{
    
         $this->load->library('ciqrcode');
         $this->load->library('image_lib');
-        $params['data'] = 'https://www.youtube.com/watch?v=tcb90H-FtRU';
+        
+        $this->db->select('*');
+        $this->db->where('id_upload', '24');
+        $data = $this->db->get('upload');
+        foreach($data->result_array() as $d)
+        {
+        
+        $urlfile = 'uploads/';
+        $namefile = $d['file'];
+        $loadfile = $urlfile.$namefile;
+        
+ 
+        
+        
+        
+        $params['data'] = base_url ().$loadfile;
         $params['level'] = 'H';
         $params['size'] = 50;
         $params['savename'] = FCPATH.'asd.png';
@@ -44,6 +59,7 @@ class EmailController extends CI_Controller{
             $response['wm_status'] = 'success';
         }
         echo json_encode($response);
+    }
         
     
     }
