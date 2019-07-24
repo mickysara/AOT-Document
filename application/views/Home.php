@@ -30,8 +30,10 @@
             <?php
              if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
              foreach ($view_data as $key => $data) { 
-            ?>
 
+              
+            ?>
+              
             
                  
               <div class="col-sm" style="margin-right: auto; margin-left: auto;">

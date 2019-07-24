@@ -12,13 +12,13 @@
                     <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
@@ -29,13 +29,13 @@
                     <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/powerpoint.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
@@ -49,7 +49,13 @@
         <p>เพิ่มโดย : <?php echo $data['name'];?></p>
         <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
         <p>หมดอายุวันที่ : </p>
-        <button type="button" class="btn btn-success" style="margin-top: 10px; margin-bottom: 15px;">ดาวน์โหลดไฟล์</button>
+
+            <?php $urlfile = 'uploads/';
+                $namefile = $data['file'];
+                $loadfile = $urlfile.$namefile
+            ?>
+         
+         <a href="<?=base_url ()?><?php echo $loadfile?>" class="btn btn-success" style="margin-top: 10px; margin-bottom: 15px;">ดาวน์โหลดไฟล์</a>
     </div>
     <?php } endif; ?>
     <div class="w-100"></div>

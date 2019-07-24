@@ -27,7 +27,7 @@ class UploadFile_model extends CI_Model
          }else if($arraystate[1]=="docx"){
           $wordshow = "Microsoftword";
          }else if($arraystate[1]=="pptx"){
-          $powerpointshow = "Microsolfpowerpoint";
+          $powerpointshow = "Microsoftpowerpoint";
          }else if($arraystate[1]=="xlsx"){
           $excelshow = "Microsoftexcel";
          }
