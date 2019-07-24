@@ -32,7 +32,7 @@ class UploadController extends CI_Controller {
                 $_FILES['userfile']['size']= $files['userfile']['size'][$i];
                 $config['upload_path'] = './uploads/';
                 $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
-                $config['max_size'] = '2000000';
+                $config['max_size'] = '10000000'; //หน่วยเป็น byte กำหนดใน config xammps php.ini search post และ up
                 $config['remove_spaces'] = true; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
                 $config['overwrite'] = false;
                 $config['max_width'] = '';
@@ -87,7 +87,7 @@ class UploadController extends CI_Controller {
                 $_FILES['userfile']['size']= $files['userfile']['size'][$i];
                 $config['upload_path'] = './uploads/';
                 $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
-                $config['max_size'] = '2000000';
+                $config['max_size'] = '10000000';
                 $config['remove_spaces'] = true;
                 $config['overwrite'] = false;
                 $config['max_width'] = '';
