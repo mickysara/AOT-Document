@@ -17,7 +17,7 @@ class EmailController extends CI_Controller{
         $this->load->library('image_lib');
         
         $this->db->select('*');
-        $this->db->where('id_upload', '24');
+        $this->db->where('id_upload', '31');
         $data = $this->db->get('upload');
         foreach($data->result_array() as $d)
         {
