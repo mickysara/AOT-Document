@@ -25,11 +25,11 @@ class UploadFile_model extends CI_Model
          if($arraystate[1]=="pdf"){
            $pdfshow = "PDF File";
          }else if($arraystate[1]=="docx"){
-          $wordshow = "Microsolfword";
+          $wordshow = "Microsoftword";
          }else if($arraystate[1]=="pptx"){
-          $powerpointshow = "Microsolfpowerpoint";
+          $powerpointshow = "Microsoftpowerpoint";
          }else if($arraystate[1]=="xlsx"){
-          $excelshow = "Microsolfexcel";
+          $excelshow = "Microsoftexcel";
          }
           $showtype = $pdfshow.$wordshow.$powerpointshow.$excelshow;
 
