@@ -39,7 +39,7 @@
               <div class="col-sm" style="margin-right: auto; margin-left: auto;">
                  
               <div class="card" style="width: 18rem; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
-                      <img class="card-img-top" src="../assets/img/card/<?php echo $data['type'];?>.png" alt="Card image cap">
+                      <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" alt="Card image cap">
                       <div class="card-body">
                       
                           <h3 class="card-title" style="color: #2d3436;">ชื่อ : <?php echo $data['topic'];?> </h3>
