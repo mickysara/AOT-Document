@@ -55,7 +55,7 @@
                 $loadfile = $urlfile.$namefile
             ?>
          
-         <a href="<?=base_url ()?><?php echo $loadfile?>" class="btn btn-success" style="margin-top: 10px; margin-bottom: 15px;">ดาวน์โหลดไฟล์</a>
+         <a href="<?=base_url ()?><?php echo $loadfile?>" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
     </div>
     <?php } endif; ?>
     <div class="w-100"></div>

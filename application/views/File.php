@@ -18,9 +18,12 @@
                <a href="<?=base_url ()?>uploads" class="btn btn-primary">DOWNLOAD FILE</a>
                <a href="<?php echo site_url('UploadController');?>" class="btn btn-primary">UPLOAD FILE</a> 
                <a href="<?php echo site_url('ViewController');?>" class="btn btn-primary">VIEW FILE</a>  
+             
             </div>
         </div>
     </div>
+           
+
 </body>
  
 </html>

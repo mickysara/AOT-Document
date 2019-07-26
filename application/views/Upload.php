@@ -2,7 +2,7 @@
             border-radius: .25rem;
             background-color: #f7f8f9;">
 
-
+          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
@@ -40,15 +40,35 @@
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" placeholder="Write a large text here ..." required></textarea>
                     </div>
 
-                    
-
-                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit"  >ยืนยัน</button>
-                
-                
+                    <script>
+            </script>
+                <button onclick="javascript:sweetalertclick()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
-            </div>
-            </div>
 
-            
-            
+
+             <script type="text/javascript">
+                function sweetalertclick(){
+              var name = $("#name").val();
+              var topic = $("#topic").val();
+              var file = $("#image_file").val();
+              var date = $("#date").val();
+              var detail = $("#detail").val();
+                 if(name=='' || topic=='' || file=='' || date=='' || detail==''){
+                    swal({
+                          title: "Fail Upload",
+                          text: "กรุณากรอกข้อมูลให้ครบถ้วน",
+                          icon: "error",
+                        });
+                 }else{
+                    swal({
+                          title: "Upload Success",
+                          text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
+                          icon: "success", 
+                        });
+                        
+                 }
+              }
+            </script> 
+      
+            </div>
 </div>

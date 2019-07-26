@@ -14,7 +14,8 @@ class UploadController extends CI_Controller {
     {
         $this->load->view('Header');
         $this->load->view('Footer');
-        $this->load->view('Upload');       //เรียกใช้หน้าฟอร์ม
+        $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
+        $this->load->view('Upload', $this->data, FALSE);       //เรียกใช้หน้าฟอร์ม
       
         
     }
