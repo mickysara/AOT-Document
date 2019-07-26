@@ -79,4 +79,14 @@ class Upload_model extends CI_Model
       }
     }
 
+    public function searchFile($file_name)
+    {
+      $this->db->like('file', $file_name);
+      $data = $this->db->get('upload');
+
+      return $data->result_array();
+      
+      
+    }
+
 }

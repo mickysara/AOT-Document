@@ -8,22 +8,14 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                             </div>
-                            <input class="form-control" placeholder="กรุณากรอกชื่อเอกสาร" type="text"><br>
+                            <input class="form-control" id="searchtxt" placeholder="กรุณากรอกชื่อเอกสาร" type="text">
                             
         </div>
-        <button type="button" class="btn btn-success" style="width: 192px; height: 52px;"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
+        <button type="button" class="btn btn-success" id="Search" style="width: 192px; height: 52px;"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
     </div>
 
   </div>
-  <div class="row mt-5" align="center">
-    <div class="col">
-      <span>1 of 3</span>
-    </div>
-    <div class="col">
-      <span>2 of 3</span>
-    </div>
-    <div class="col">
-      <span>3 of 3</span>
-    </div>
+  <div class="row mt-5" id="Showsearch" align="center">
+
   </div>
 </div>
