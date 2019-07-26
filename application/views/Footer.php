@@ -175,6 +175,25 @@ var myEl = document.getElementById('Hi');
                   )
         }, true);
 </script>
+<script>
+
+
+
+var myEl = document.getElementById('Search');
+
+
+        myEl.addEventListener('click', function() {
+          var val = document.getElementById('searchtxt').value  
+          console.log(val)
+          $.get("<?=base_url('index.php/SearchController/serach/')?>"+val,
+                    function(data){
+
+                      $("#Showsearch").html(data)
+
+                    }
+                  )
+        }, true);
+</script>
 
 
 <!-- Syntax Highlighter -->
