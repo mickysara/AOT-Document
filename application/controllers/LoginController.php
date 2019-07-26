@@ -88,6 +88,41 @@ class LoginController extends CI_Controller {
       echo json_decode($user->num_rows());
     }
 
+    public function IncreaseDetailNoti()
+    {
+      $this->db->where('accname', $this->session->userdata('accountName'));
+      $this->db->order_by('Timestamp', 'desc');
+      $query = $this->db->get('noti');
+      foreach($query->result_array() as $d)
+      {
+        if($d['Action'] == "comment") 
+        {?>
+        <div>
+            <a class="dropdown-item" href="#">
+              <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
+              <p> ได้แสดงความคิดเห็นในเอกสารของคุณ </p> 
+              <p> <i class="fa fa-comment" aria-hidden="true" style="color: #46bf2e;">  </i> เมื่อ <?=trim($d['Timestamp'])?></p>
+            </a>
+              <div class="dropdown-divider"></div>
+           
+        </div>
+      <?php 
+        }else{ ?>
+            <div>
+              <a class="dropdown-item" href="#">
+                <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
+                <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสารแก่คุณ</p> 
+                <p> <i class="fa fa-user-plus" aria-hidden="true" style="color: #172b4d;"></i> เมื่อ <?=trim($d['Timestamp'])?></p>
+              </a>
+            <div class="dropdown-divider"></div>
+           
+        </div>
+      <?php  } 
+      }
+    
+  
+    }
+
     public function DecreaseNoti()
     {
       $accname = $this->session->userdata('accountName');

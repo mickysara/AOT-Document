@@ -70,6 +70,11 @@
                 </div>
               </div>
               <ul class="navbar-nav ml-lg-auto" style=" margin-left: 800px; text-align: right; width: 300px;">
+              <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
+                        ค้นหา
+                    </a>
+                </li> 
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
                         แจ้งปัญหา
@@ -90,26 +95,9 @@
                         <i class="ni ni-planet"></i>
                         <span class="badge badge-danger" id="Noti" style="font-size: 14px; color: #fff; border-color: #f5365c; background-color: #f5365c;"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" style=" height: 500; max-height: 200px; overflow-x: hidden; width: 300px;">
+                        <div class="dropdown-menu dropdown-menu-right" id="DetailNoti" aria-labelledby="navbar-default_dropdown_1" style="max-height: 500px; overflow-x: hidden; width: 350px;">
                            
-                          <?php $this->db->select('*');
-                                $this->db->where('accname', $this->session->userdata('accountName'));
-                                $this->db->order_by('Timestamp', 'desc');
-                                $query = $this->db->get('noti',2);
-                                foreach($query->result_array() as $d)
-                                {
-                                  ?>
-                                  <div>
-                                      <a class="dropdown-item" href="">
-                                        <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
-                                        <p> <?=trim($d['Content'])?> </p> 
-                                      </a>
-                                        <div class="dropdown-divider"></div>
-                                     
-                                  </div>
-                                <?php  
-                                }
-                                ?>
+                        
                         </div>
                     </li> 
                     <!--------------------------------------------------------------- -->

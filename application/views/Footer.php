@@ -151,6 +151,12 @@ function increaseNotify(){ // โหลดตัวเลขทั้งหม�
 
               }
           );
+          $.get("<?=base_url('index.php/LoginController/IncreaseDetailNoti')?>",
+            function (data)
+            {
+                $("#DetailNoti").html(data)
+            }
+          );
 }
 
 </script>

@@ -19,11 +19,16 @@ class EmailController extends CI_Controller{
         $this->db->select('*');
         $this->db->where('id_upload', '31');
         $data = $this->db->get('upload');
-        foreach($data->result_array() as $d)
-        {
+        $r = $data->row_array();
+
+        
+        
+        print_r($r);
+
+
         
         $urlfile = 'uploads/';
-        $namefile = $d['file'];
+        $namefile = $r['file'];
         $loadfile = $urlfile.$namefile;
         
  
@@ -36,7 +41,7 @@ class EmailController extends CI_Controller{
         $params['savename'] = FCPATH.'asd.png';
         $this->ciqrcode->generate($params);
         
-        echo '<img src="'.base_url().'asd.png" style="width: 250px; height: 250px;" />';
+       // echo '<img src="'.base_url().'asd.png" style="width: 250px; height: 250px;" />';
 
         $config['source_image'] = './asd.png';
         $config['image_library'] = 'gd2';
@@ -59,7 +64,7 @@ class EmailController extends CI_Controller{
             $response['wm_status'] = 'success';
         }
         echo json_encode($response);
-    }
+    
         
     
     }
