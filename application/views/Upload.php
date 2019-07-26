@@ -1,8 +1,23 @@
-<div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <script src="<?php echo base_url('/assets/vendor/jquery/jquery.min.js'); ?>"></script>
+  <script src="<?php echo base_url('/assets/js/jquery.form.validator.min.js'); ?>"></script>
+  <script src="<?php echo base_url('/assets/js/security.js'); ?>"></script>
+  <script src="<?php echo base_url('/assets/js/file.js'); ?>"></script>
+
+  <link href="validator.css" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
 
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+                  
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
@@ -20,24 +35,24 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>Topic</div>
-                    <input type="text" class="form-control form-control-alternative" id="topic" name="topic" placeholder="topic" required>
+                    <input type="text" class="form-control form-control-alternative" id="topic" name="topic" placeholder="topic"  required>
                     </div>
 
                     <div class="form-group">
                     <tr>
                     <td>File</td>
-                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx" multiple></td>
+                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx"></td>
                     </tr>
                     </div>
 
                     <div class="form-group">
-                    <div>date</div>
+                    <div>Date</div>
                     <input type="text" class="form-control form-control-alternative" id="date" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
                     </div>
 
                     <div class="form-group">
                     <div>Detail</div>
-                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" placeholder="Write a large text here ..." required></textarea>
+                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  placeholder="Write a large text here ..." required></textarea>
                     </div>
 
                     <script>
@@ -55,7 +70,7 @@
               var detail = $("#detail").val();
                  if(name=='' || topic=='' || file=='' || date=='' || detail==''){
                     swal({
-                          title: "Fail Upload",
+                          title: "Upload Fail",
                           text: "กรุณากรอกข้อมูลให้ครบถ้วน",
                           icon: "error",
                         });
@@ -69,6 +84,14 @@
                  }
               }
             </script> 
-      
+            <script>
+                    $.validate({
+                    modules: 'security, file',
+                    onModulesLoaded: function () {
+                    $('input[name="pass_confirmation"]').displayPasswordStrength();
+                    }
+                    });
+            </script>
+      </body>
             </div>
 </div>
