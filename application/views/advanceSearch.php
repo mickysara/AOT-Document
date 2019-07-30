@@ -53,7 +53,9 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-success" id="Search" style="margin: 30px 150px; width: 800px; padding: 10px"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
+    <div align="center">
+        <button type="submit" class="btn btn-success" id="Search" style="margin: 30px 150px; width: 800px; padding: 10px"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
+    </div>
     </form>
     <div class="row mt-5" id="Showsearch" align="center">
 
