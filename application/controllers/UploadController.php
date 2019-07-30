@@ -24,6 +24,8 @@ class UploadController extends CI_Controller {
               
               $files = $_FILES;
               $count = count($_FILES['userfile']['name']);
+            
+
               for($i=0; $i<$count; $i++)
                 {
                 $_FILES['userfile']['name']= $files['userfile']['name'][$i];
@@ -40,7 +42,6 @@ class UploadController extends CI_Controller {
                 $config['max_height'] = '';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
-                
                 $this->upload->do_upload();
                 $fileName = $_FILES['userfile']['name'];
                 $images[] = $fileName;
@@ -51,7 +52,7 @@ class UploadController extends CI_Controller {
                   
                
 
-                  
+              
                 }
 
         public function view(){
