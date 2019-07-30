@@ -32,7 +32,7 @@
                     <div class="form-group">
                     <tr>
                     <td>File</td>
-                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx" ></td>
+                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx"></td>
                     </tr>
                     </div>
 
@@ -52,25 +52,33 @@
             </form>
 
 
-             <script type="text/javascript">
-                function sweetalertclick(){
-              var name = $("#name").val();
-              var topic = $("#topic").val();
-              var file = $("#image_file").val();
-              var date = $("#date").val();
-              var detail = $("#detail").val();
+              <script type="text/javascript">
+                  function sweetalertclick(){
+                var name = $("#name").val();
+                var topic = $("#topic").val();
+                var file = $("#image_file").val();
+                var date = $("#date").val();
+                var detail = $("#detail").val();
+                  
                     swal({
                           title: "Upload Success",
                           text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
                           icon: "success", 
                         }); 
-                 
-              }
-            </script> 
+                 }
 
+                  </script> 
             
-            
+                                <script> 
+                            var uploadField = document.getElementById("image_file");
 
+                            uploadField.onchange = function() {
+                                if(this.files[0].size > 2000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
+                                  alert("ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB");
+                                  this.value = "";
+                                };
+                               };
+                                </script> 
            
       </body>
             </div>

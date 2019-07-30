@@ -8,10 +8,24 @@ class UploadFile_model extends CI_Model
 
 
     public function upload_image($inputdata,$filename)
-    {
+    { 
+
+      function randtext($range){
+        $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ';
+        $start = rand(1,(strlen($char)-$range));
+        $shuffled = str_shuffle($char);
+        return substr($shuffled,$start,$range);
+        } 
+        //echo randtext(1);  
+         $firststring = randtext(1);
         $addurl = ''.random_string('alnum',30);
-        $addbaseurl = ($addurl);
+        $addbaseurl = $firststring.$addurl;
+
         $dateshow = date("Y/m/d");
+        $d=strtotime("+10 Days");
+        $dateendshow = date("Y/m/d",$d);
+        
+
         $insert_id = $this->db->insert_id();
 
             if($filename!='' ){
@@ -40,6 +54,7 @@ class UploadFile_model extends CI_Model
           'url'=> $addbaseurl,
           'file' => $file,
           'date'=> $dateshow,
+          'dateend'=> $dateendshow,
           'type'=> $showtype
         );
         
