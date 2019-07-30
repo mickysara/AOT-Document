@@ -62,7 +62,16 @@ class UploadFile_model extends CI_Model
                              WHERE upid.id_upload = $id");
     return $query->result_array();
 }
-    
+
+public function searchFile($file_name)
+{
+  $this->db->like('file', $file_name);
+  $data = $this->db->get('upload');
+
+  return $data->result_array();
+  
+  
+}
 
 
 }
