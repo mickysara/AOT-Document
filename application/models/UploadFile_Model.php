@@ -18,12 +18,14 @@ class UploadFile_model extends CI_Model
         } 
         //echo randtext(1);  
          $firststring = randtext(1);
-
-
-
         $addurl = ''.random_string('alnum',30);
         $addbaseurl = $firststring.$addurl;
+
         $dateshow = date("Y/m/d");
+        $d=strtotime("+10 Days");
+        $dateendshow = date("Y/m/d",$d);
+        
+
         $insert_id = $this->db->insert_id();
 
             if($filename!='' ){
@@ -52,6 +54,7 @@ class UploadFile_model extends CI_Model
           'url'=> $addbaseurl,
           'file' => $file,
           'date'=> $dateshow,
+          'dateend'=> $dateendshow,
           'type'=> $showtype
         );
         

@@ -34,7 +34,17 @@
 
                 ?>
 
-
+<div>
+            <?php  
+            echo date("Y-m-d") . "<br>";
+            
+            $d=strtotime("next Saturday");
+            echo date("Y-m-d", $d) . "<br>";
+            
+            $d=strtotime("+10 Days");
+            echo date("Y-m-d", $d) . "<br>";
+            ?>
+</div>
 
  </body>
 </html>
