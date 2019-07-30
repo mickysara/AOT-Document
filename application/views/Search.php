@@ -4,7 +4,7 @@
         <div>
             <h1>ระบบค้นหาเอกสาร</h1>
         </div>
-        <div class="input-group mt-4 mb-4" style="width: 800px;">
+        <div class="input-group mt-4 mb-4" style="width: 800px;" align="center">
                             <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                             </div>
