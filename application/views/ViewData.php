@@ -78,7 +78,7 @@
                                         <p>รายละเอียด : <?php echo $data['detail'];?> </p>
                                         <p>โดย : <?php echo $data['name'];?></p>
                                         <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
-                                        <p>หมดอายุ : </p>
+                                        <p>หมดอายุ : <?php echo $data['dateend'];?></p>
                                         <p>สถานะ : </p>
 
                                     </div>

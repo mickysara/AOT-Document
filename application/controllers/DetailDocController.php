@@ -17,12 +17,15 @@ class DetailDocController extends CI_Controller {
         // $this->data['edit_data']= $this->Upload->edit_data($edit_id);
         $this->load->view('DetailDoc');
         $this->load->view('Footer');  
+        
+
+
     }
     public function edit($edit_id){
         $this->data['edit_data']= $this->Upload->edit_data($edit_id);
         $this->load->view('Header');
-       $this->load->view('DetailDoc', $this->data, FALSE);
-       $this->load->view('Footer');
+        $this->load->view('DetailDoc', $this->data, FALSE);
+        $this->load->view('Footer');
            }
 
 }

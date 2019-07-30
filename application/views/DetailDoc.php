@@ -48,7 +48,7 @@
         <p>ประเภท : <?php echo $data['type'];?></p>
         <p>เพิ่มโดย : <?php echo $data['name'];?></p>
         <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
-        <p>หมดอายุวันที่ : </p>
+        <p>หมดอายุวันที่ : <?php echo $data['dateend'];?></p>
 
             <?php $urlfile = 'uploads/';
                 $namefile = $data['file'];
