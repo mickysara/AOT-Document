@@ -195,6 +195,22 @@ var myEl = document.getElementById('Search');
         }, true);
 </script>
 
+<script>
+      $(document).on('submit', '#AdSearch', function () {
+          
+          $.post("<?=base_url('index.php/AdvanceSearchController/AdvanceSearch')?>", $("#AdSearch").serialize(),
+              function (data) {
+                  
+                 $("#Showsearch").html(data);
+
+
+              }
+          );
+
+        event.preventDefault();
+    });
+</script>
+
 
 <!-- Syntax Highlighter -->
 <script src="<?php echo base_url('/assets/js/shCore.js'); ?>"></script>

@@ -46,15 +46,15 @@
             <div class="col">
                 <h2>ปีที่อัพโหลด</h2>
                 <p>ระหว่าง ปี </p>
-                <input type="email" class="form-control form-control-alternative" id="years" placeholder="2560">
+                <input type="number" class="form-control form-control-alternative" id="years" name="years1" placeholder="2560">
                 <p class="mt-3">ถึงปี</p>
-                <input type="email" class="form-control form-control-alternative" id="years" placeholder="2562">
+                <input type="number" class="form-control form-control-alternative" id="years" name="years2" placeholder="2562">
                 
             </div>
         </div>
     </div>
     <div align="center">
-        <button type="submit" class="btn btn-success" id="Search" style="margin: 30px 150px; width: 800px; padding: 10px"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
+        <button type="submit" class="btn btn-success" id="AdvanceSearch" style="width: 600px; text-align: center; margin-left: auto; margin-right: auto;"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
     </div>
     </form>
     <div class="row mt-5" id="Showsearch" align="center">

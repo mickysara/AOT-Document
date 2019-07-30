@@ -868,6 +868,10 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		return $this->_like($field, $match, 'AND ', $side, '', $escape);
 	}
 
+	public function where_between($field, $min, $max){
+		$CI = get_instance();
+		return $CI->db->where("$field BETWEEN $min AND $max");
+   } 
 	// --------------------------------------------------------------------
 
 	/**
