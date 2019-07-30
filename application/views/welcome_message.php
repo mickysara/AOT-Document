@@ -20,7 +20,21 @@
                 $filename = "uploads/1561692394gpa.docx";
                 echo $filename . ': ' . filesize($filename) . ' bytes';
 
+
+                
+                            
+                            function randtext($range){
+                            $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ';
+                            $start = rand(1,(strlen($char)-$range));
+                            $shuffled = str_shuffle($char);
+                            return substr($shuffled,$start,$range);
+                            } 
+                            echo randtext(1);
+                            
+
                 ?>
+
+
 
  </body>
 </html>

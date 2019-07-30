@@ -8,9 +8,21 @@ class UploadFile_model extends CI_Model
 
 
     public function upload_image($inputdata,$filename)
-    {
+    { 
+
+      function randtext($range){
+        $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ';
+        $start = rand(1,(strlen($char)-$range));
+        $shuffled = str_shuffle($char);
+        return substr($shuffled,$start,$range);
+        } 
+        //echo randtext(1);  
+         $firststring = randtext(1);
+
+
+
         $addurl = ''.random_string('alnum',30);
-        $addbaseurl = ($addurl);
+        $addbaseurl = $firststring.$addurl;
         $dateshow = date("Y/m/d");
         $insert_id = $this->db->insert_id();
 
