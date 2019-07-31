@@ -55,8 +55,8 @@
           <?php } endif; ?>
   </div>
   
-          <button type="button" class="btn btn-primary btn-lg btn-block mb-5 mt-5" style="width: 1056px; font-size: 20px; background-color: #2d3436;">ดูเอกสารทั้งหมด</button>
-          <div class="container page-styling row-wrap-container row-wrap-nottl front-icons" style="width: 1056px; margin-bottom: 40px;">
+          <button type="button" class="btn btn-primary btn-lg btn-block mb-5 mt-5" style="width: max; font-size: 20px; background-color: #2d3436;">ดูเอกสารทั้งหมด</button>
+          <div class="container page-styling row-wrap-container row-wrap-nottl front-icons" style="max; margin-bottom: 40px;">
                 <div class="row">
                 <div class="cf-lg-4 col-sm-4">
                   <div class="iconbox-item iconbox-i">
@@ -86,12 +86,10 @@
                       <h1 style="font-size: 45px;  text-align: center; color:#2d3436;">ดาวน์โหลด!</h1>
                     </div>
                     <p style="font-size: 18px;">เมื่อท่านแสกน Qr Code ที่มีโลโก้บริษัทเสร็จแล้วจะเด้งเข้าสู่หน้า Link ที่ในข้างในนั้นจะมีไฟล์เอกสารอยู่และท่านสามารถดาวน์โหลดได้เลยจาก Link นั้นในทันทีโดยไม่ต้องรอให้เสียเวลา</p>
-                    </div>
                   </div>
                 </div>
-                </div>
-                </div>
-                <div class="ct-example tab-content tab-example-result" style="width: 1110px; margin-left: auto; margin-right: auto; margin-top: 62px; padding: 1.25rem;
+
+                <div class="ct-example tab-content tab-example-result" style=" margin-left: auto; margin-right: auto; margin-top: 62px; padding: 1.25rem;
                 border-radius: .25rem;
                 background-color: #f7f8f9;">
                 <div class="row mb55" style="padding: 50px; ">

@@ -31,7 +31,7 @@ class DetailDocController extends CI_Controller {
     {
         $this->load->helper('download');
 
-        $this->db->where('url',$url);
+        $this->db->where('url', $url);
         $data = $this->db->get('upload', 1);
         
         $fileInfo = $data->result_array();
@@ -47,4 +47,5 @@ class DetailDocController extends CI_Controller {
     }
 
 }
+
 /* End of file DetailDocController.php */

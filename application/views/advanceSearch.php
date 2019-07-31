@@ -5,7 +5,7 @@
             <h1>ระบบค้นหาเอกสาร</h1>
         </div>
         <form name="AdSearch" id="AdSearch" method="post" action='<?php echo base_url();?>index.php/AdvanceSearchController/AdvanceSearch'>
-        <div class="input-group mt-4 mb-4" style="width: 800px;" align="center">
+        <div class="input-group mt-4 mb-4"  align="center">
                             <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                             </div>
@@ -14,7 +14,7 @@
         </div>
     </div>
     </div>
-    <div style="margin: auto; width: 800px; padding: 10px">
+    <div style="margin: auto;  padding: 10px">
         <div class="row">
             <div class="col">
             <h2>ประเภทไฟล์</h2>
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div align="center">
-        <button type="submit" class="btn btn-success" id="AdvanceSearch" style="width: 600px; text-align: center; margin-left: auto; margin-right: auto;"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
+        <button type="submit" class="btn btn-success" id="AdvanceSearch" style=" text-align: center; margin-left: auto; margin-right: auto;"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
     </div>
     </form>
     <div class="row mt-5" id="Showsearch" align="center">

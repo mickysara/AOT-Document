@@ -51,7 +51,7 @@
         <p>หมดอายุวันที่ : <?php echo $data['dateend'];?></p>
 
          
-         <a href="<?php echo site_url(); ?>/DetailDocController/download/<?php echo $data['url'];?>" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
+         <a href="<?php echo site_url(); ?>DetailDocController/download/<?php echo $data['url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
     </div>
     <?php } endif; ?>
     <div class="w-100"></div>
