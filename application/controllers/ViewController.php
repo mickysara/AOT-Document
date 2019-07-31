@@ -20,7 +20,12 @@ class ViewController extends CI_Controller {
         
         
     }
-
+    
+     public function del($id){
+        $this->data['delete_data']= $this->Upload->delete_data($id);
+       redirect('ViewController','refresh');
+       
+     }
 }
 
 /* End of file IndexController.php */

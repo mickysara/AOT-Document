@@ -27,7 +27,5 @@ class DetailDocController extends CI_Controller {
         $this->load->view('DetailDoc', $this->data, FALSE);
         $this->load->view('Footer');
            }
-
 }
-
 /* End of file DetailDocController.php */
