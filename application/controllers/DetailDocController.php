@@ -27,11 +27,11 @@ class DetailDocController extends CI_Controller {
         $this->load->view('DetailDoc', $this->data, FALSE);
         $this->load->view('Footer');
     }
-    public function download($id)
+    public function download($url)
     {
         $this->load->helper('download');
 
-        $this->db->where('url', $id);
+        $this->db->where('url',$url);
         $data = $this->db->get('upload', 1);
         
         $fileInfo = $data->result_array();

@@ -35,7 +35,7 @@
                        //echo ($arraystate[1]);
                         //$aa = "../assets/img/logofile/xlsx.png";
                         $typefile = $arraystate[1];
-                        $localfile = "../assets/img/logofile/";
+                        $localfile = base_url()."/assets/img/logofile/";
                         $dotpng = ".png";
                         $show = $localfile.$typefile.$dotpng;
                     ?>
