@@ -12,10 +12,10 @@
                     <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
+                    <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/>
                     </li>
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
@@ -29,10 +29,10 @@
                     <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
+                    <img style="width:100px; height:100px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/>
                     </li>
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />

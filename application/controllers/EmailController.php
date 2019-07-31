@@ -17,35 +17,19 @@ class EmailController extends CI_Controller{
         $this->load->library('image_lib');
         
         $this->db->select('*');
-        $this->db->where('id_upload', '31');
-        $data = $this->db->get('upload');
+        $this->db->order_by('id_upload', 'desc');
+        $data = $this->db->get('upload',1);
         $r = $data->row_array();
 
-        
-        
-        print_r($r);
-
-
-        
-        $urlfile = 'uploads/';
-        $namefile = $r['file'];
-        $loadfile = $urlfile.$namefile;
-
-        $pic_name = random_string('alpha',20);
-
-        echo $pic_name;
-        
-        
-        
-        $params['data'] = base_url ().$loadfile;
+        $params['data'] = site_url().'/DetailDocController/download/'.$r['url'];
         $params['level'] = 'H';
         $params['size'] = 50;
-        $params['savename'] = FCPATH.'./assets/img/qrcode/'.$pic_name.'.png';
+        $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['qr_codename'].'.png';
         $this->ciqrcode->generate($params);
         
        // echo '<img src="'.base_url().'asd.png" style="width: 250px; height: 250px;" />';
 
-        $config['source_image'] = FCPATH.'./assets/img/qrcode/'.$pic_name.'.png';
+        $config['source_image'] = FCPATH.'./assets/img/qrcode/'.$r['qr_codename'].'.png';
         $config['image_library'] = 'gd2';
         $config['wm_type'] = 'overlay';
         $config['wm_overlay_path'] = './AOT.jpg';//the overlay image
@@ -65,7 +49,9 @@ class EmailController extends CI_Controller{
         } else {
             $response['wm_status'] = 'success';
         }
-        echo json_encode($response);
+        redirect('ViewController');
+
+        
 
     }
 }

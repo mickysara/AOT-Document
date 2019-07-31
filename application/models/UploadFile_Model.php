@@ -17,14 +17,14 @@ class UploadFile_model extends CI_Model
         return substr($shuffled,$start,$range);
         } 
         //echo randtext(1);  
-         $firststring = randtext(1);
+        $firststring = randtext(1);
         $addurl = ''.random_string('alnum',30);
         $addbaseurl = $firststring.$addurl;
 
         $dateshow = date("Y/m/d");
         $d=strtotime("+10 Days");
         $dateendshow = date("Y/m/d",$d);
-        
+        $randomqrcode = random_string('alpha', 20);
 
         $insert_id = $this->db->insert_id();
 
@@ -55,10 +55,14 @@ class UploadFile_model extends CI_Model
           'file' => $file,
           'date'=> $dateshow,
           'dateend'=> $dateendshow,
-          'type'=> $showtype
+          'type'=> $showtype,
+          'qr_codename'=> $randomqrcode
         );
         
       $this->db->insert('upload', $fill_user); 
+      
+
+
         } 
       }
      

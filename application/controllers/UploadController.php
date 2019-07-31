@@ -8,6 +8,7 @@ class UploadController extends CI_Controller {
         parent::__construct();
         //$this->load->helper('url');
         $this->load->model('UploadFile_model','Upload'); 
+        
     }
 
     public function index()
@@ -21,10 +22,9 @@ class UploadController extends CI_Controller {
     }
 
     public function file_upload(){
-              
               $files = $_FILES;
               $count = count($_FILES['userfile']['name']);
-            
+
 
               for($i=0; $i<$count; $i++)
                 {
@@ -48,8 +48,8 @@ class UploadController extends CI_Controller {
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
                   $this->Upload->upload_image($this->input->post(),$fileName);
-                  redirect('ViewController');
-                  
+                  redirect('EmailController/send');
+
                
 
               
