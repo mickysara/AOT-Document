@@ -60,12 +60,16 @@
                 var date = $("#date").val();
                 var detail = $("#detail").val();
                   
+                  if(topic ==""|| file ==""| detail ==""){
+                      alert("กรุณากรอกข้อมูลให้ครบ");
+                  }else{
                     swal({
                           title: "Upload Success",
                           text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
                           icon: "success", 
                         }); 
                  }
+                  }
 
                   </script> 
             
@@ -74,8 +78,13 @@
 
                             uploadField.onchange = function() {
                                 if(this.files[0].size > 2000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
-                                  alert("ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB");
+                                  swal({
+                                      title: "Upload Fail",
+                                      text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB",
+                                      icon: "error", 
+                                    }); 
                                   this.value = "";
+                                  
                                 };
                                };
                                 </script> 

@@ -93,11 +93,13 @@
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['id_upload'];?>" class="btn btn-danger mb-3">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
-           
                 </tbody>
+
+
+
                 <?php } endif; ?> 
               </table>
             </div>
@@ -131,20 +133,53 @@
             </form>
             </div>
   </div>
-  
+
+
+
+
+               <script type="text/javascript">
+                  function sweetalertclick(){
+                       swal({
+                        title: "คุณต้องการลบไฟล์ใช่หรือไม่",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                          swal("ลบไฟล์สำเร็จ", {
+                            icon: "success",
+                          });
+                          
+                        }else{
+                        }
+                      });
+                  }
+                  </script>
+                              <script>
+                              function archiveFunction() {
+                              event.preventDefault(); // prevent form submit
+                              var form = event.target.form; // storing the form
+                                      swal({
+                                title: "Are you sure?",
+                                text: "But you will still be able to retrieve this file.",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Yes, archive it!",
+                                cancelButtonText: "No, cancel please!",
+                                closeOnConfirm: false,
+                                closeOnCancel: false
+                              },
+                              function(isConfirm){
+                                if (isConfirm) {
+                                  form.submit();          // submitting the form when user press yes
+                                } else {
+                                  swal("Cancelled", "Your imaginary file is safe :)", "error");
+                                }
+                              });
+                              }
+                              </script>
 </div>
-
-
-        
-
-
-
-
-
-
- 
-    
-
-
-    
+   
 </div>
