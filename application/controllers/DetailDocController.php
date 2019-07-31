@@ -47,5 +47,4 @@ class DetailDocController extends CI_Controller {
     }
 
 }
-
 /* End of file DetailDocController.php */

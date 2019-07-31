@@ -19,7 +19,8 @@
                     <th scope="col"><h4>ชื่อไฟล์</h4></th>
                     <th scope="col"><h4>สร้างโดย</h4></th>
                     <th scope="col"><h4>เมื่อวันที่</h4></th>
-                    <th scope="col"><h4>จัดการ</h4></th>
+                    <th scope="col"><h4>View</h4></th>
+                    <th scope="col"><h4>Delete</h4></th>
                         
                     
                   </tr>
@@ -91,7 +92,9 @@
                         </div>
                        
                     </td>
-                   
+                    <td>
+                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['id_upload'];?>" class="btn btn-danger mb-3">Delete</a>
+                    </td>   
                   </tr>
            
                 </tbody>

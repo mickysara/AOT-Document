@@ -87,6 +87,9 @@ public function searchFile($file_name)
   
   
 }
-
+public function delete_data($id){
+  $this->db->query("DELETE FROM upload WHERE id_upload = $id");
+  
+}
 
 }
