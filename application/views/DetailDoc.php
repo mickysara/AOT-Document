@@ -52,6 +52,7 @@
 
          
          <a href="<?php echo site_url(); ?>DetailDocController/download/<?php echo $data['url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
+         <a href="<?php echo site_url(); ?>DetailDocController/downloadqrcode/<?php echo $data['url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดQR CODE</a>
     </div>
     <?php } endif; ?>
     <div class="w-100"></div>
