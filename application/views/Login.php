@@ -1,4 +1,6 @@
-<div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
+
+<div class="container" style="margin-top: 60px;">
+<div class="ct-example tab-content tab-example-result" style=" margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
 
@@ -30,4 +32,5 @@
 
             
             
+</div>
 </div>

@@ -18,12 +18,15 @@ class AdvanceSearchController extends CI_Controller {
         $years1 =  $this->input->post("years1");
         $years2 =  $this->input->post("years2");
 
+        if($years1 != "" && $years2 != "" )
+        {
+            $min = "'".$years1."-01-01'";
+            $max = "'".$years2."-12-31'";
+    
+            $this->db->like('file',  $name);
+            $this->db->where_between('date', $min, $max); 
+        }
 
-        $min = "'".$years1."-01-01'";
-        $max = "'".$years2."-12-31'";
-
-        $this->db->like('file',  $name);
-        $this->db->where_between('date', $min, $max); 
 
             
         
@@ -111,20 +114,20 @@ class AdvanceSearchController extends CI_Controller {
                 } 
                 ?>
           
-                <div class="col-sm" style="margin-right: auto; margin-left: auto;">
-                     
-                     <div class="card" style="width: 18rem; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
-                             <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" alt="Card image cap">
-                             <div class="card-body">
-                             
-                                 <h3 class="card-title" style="color: #2d3436;">ชื่อ : <?php echo $data['topic'];?> </h3>
-                                 <p class="card-text" style="font-weight: 500;">รายละเอียด : <?php echo $data['detail'];?></p>
-                                 <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['date'];?></p>
-                                 <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
-                                
-                             </div>
+          <div class="col-sm" style="margin-right: auto; margin-left: auto;">
+                 
+                 <div class="card" style="width: 18rem; height: 385.828px; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+                         <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" alt="Card image cap">
+                         <div class="card-body">
+                         
+                             <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['topic'];?> </h3>
+                             <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['file'];?></p>
+                             <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['date'];?></p>
+                             <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="margin-top: 30px; background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
+                            
                          </div>
-                     </div> 
+                     </div>
+                 </div>
             
     
            <?php }
