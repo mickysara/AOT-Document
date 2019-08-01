@@ -21,7 +21,10 @@ class DetailDocController extends CI_Controller {
 
 
     }
-    public function edit($edit_id){
+
+    
+    public function edit($edit_id)
+    {
         $this->data['edit_data']= $this->Upload->edit_data($edit_id);
         $this->load->view('Header');
         $this->load->view('DetailDoc', $this->data, FALSE);
@@ -45,6 +48,25 @@ class DetailDocController extends CI_Controller {
             force_download($file, NULL);
         }
     }
+    public function downloadqrcode($url)
+    {
+        $this->load->helper('download');
+
+        $this->db->where('url', $url);
+        $data = $this->db->get('upload', 1);
+        
+        $fileInfo = $data->result_array();
+
+        foreach($fileInfo as $d)
+        {
+            echo $d['qr_codename'];
+
+            //Path File
+            $file = './assets/img/qrcode/'.$d['qr_codename'].'.png';
+            force_download($file, NULL);
+        }
+    }
+    
 
 }
 
