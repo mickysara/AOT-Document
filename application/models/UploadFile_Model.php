@@ -95,5 +95,11 @@ public function delete_data($id){
   $this->db->query("DELETE FROM upload WHERE id_upload = $id");
   
 }
-
+public function editdataupload(){
+   $data = array(
+     'topic' =>$this->input->post('topic')
+);
+   $this->db->where('id_upload', $this->input->post('id_upload'));
+   $query=$this->db->update('upload',$data);
+}
 }
