@@ -15,7 +15,9 @@ class DateTest_Controller extends CI_Controller {
     public function date()
     {
         $dateget = $this->input->post('date');
-        $datenow =  date('m/d/Y');
+        $newDate = date("Y-m-d", strtotime($dateget));
+        $datenow =  date('Y-m-d');
+        echo $newDate;
         if($dateget >= $datenow)
         {
             echo('หมดอายุแล้ว');

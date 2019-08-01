@@ -18,32 +18,47 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                    <div>Name</div>
+                    <div>ชื่อ</div>
                       <input type="Text" class="form-control form-control-alternative" name="name" value="<?=$this->session->userdata('firstName')?> <?=$this->session->userdata('lastName')?>" required id="name" readonly>
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="form-group">
-                    <div>Topic</div>
+                    <div>หัวข้อ</div>
                     <input type="text" class="form-control form-control-alternative" id="topic" name="topic" placeholder="topic" required>
                     </div>
 
                     <div class="form-group">
                     <tr>
-                    <td>File</td>
+                    <td>ไฟล์</td>
                     <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx"></td>
                     </tr>
                     </div>
 
                     <div class="form-group">
-                    <div>Date</div>
+                    <div>ใช้วันที่</div>
                     <input type="text" class="form-control form-control-alternative" id="date" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
                     </div>
 
                     <div class="form-group">
-                    <div>Detail</div>
+                    <div>ถึงวันที่</div>
+                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" type="text" value="<?php echo"".date("d/m/Y") ?>"  required>
+                    </div>
+
+                    <div class="form-group">
+                    <div>รายละเอียด</div>
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  placeholder="Write a large text here ..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                    <div>ระดับความเป็นส่วนตัว</div>
+                    <select name="privacy" id="privacy">
+                      <option value="" disabled selected>กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์</option>
+                      <option value="Private">ส่วนตัว</option>
+                      <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
+                      <option value="Public">สาธารณะ</option>
+                    </select>
                     </div>
 
                     <script>
@@ -58,7 +73,9 @@
                 var topic = $("#topic").val();
                 var file = $("#image_file").val();
                 var date = $("#date").val();
+                var dateend = $("#date_end").val();
                 var detail = $("#detail").val();
+                var privacy = $("#privacy").val();
                   
                   if(topic ==""|| file ==""| detail ==""){
                       alert("กรุณากรอกข้อมูลให้ครบ");
