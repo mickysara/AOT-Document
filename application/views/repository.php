@@ -1,8 +1,10 @@
 
 <div class="container">
+        
+<div class="container">
 <?php          
-                    if(isset($edit_data) && is_array($edit_data) && count($edit_data)): $i=1;
-                    foreach ($edit_data as $key => $data) {   
+                    if(isset($repository_data) && is_array($repository_data) && count($repository_data)): $i=1;
+                    foreach ($repository_data as $key => $data) {   
                 ?>
   <div class="row">
     <div class="col mt-5 mr-5" style="width: 500px; height: 500px; background-color: #fff;"><span></span>
@@ -10,12 +12,6 @@
                 <ul class="slides" style="margin-top: 50px;">
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
-                    </li>
-                    <li>
-                    <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/>
-                    </li>
-                    <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
@@ -25,12 +21,6 @@
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
                     </li>
-                    <li>
-                    <img style="width:100px; height:100px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/>
-                    </li>
-                    <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
-                    </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
         </div>
@@ -38,16 +28,10 @@
 
 
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อไฟล์ : <?php echo $data['file'];?> </h1>  
-        <p style="font-weight: 500;">ประเภท : <?php echo $data['type'];?></p>
-        <p style="font-weight: 500;">เพิ่มโดย : <?php echo $data['name'];?></p>
+        <h1>ชื่อ Repository : <?php echo $data['topic'];?> </h1>  
+        <p style="font-weight: 500;">สร้างโดย : <?php echo $data['createby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $data['date'];?></p>
-        <p style="font-weight: 500;">หมดอายุวันที่ : <?php echo $data['dateend'];?></p>
-        <p style="font-weight: 500;">สถานะ : <?php echo $data['status'];?> </p>
-
-         
-         <a href="<?php echo site_url(); ?>DetailDocController/download/<?php echo $data['url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
-         <a href="<?php echo site_url(); ?>DetailDocController/downloadqrcode/<?php echo $data['url'];?>" target="_blank" class="btn btn-default"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลด QR CODE</a>
+        <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $data['privacy'];?> </p>
     </div>
   
     <div class="w-100"></div>
@@ -57,7 +41,7 @@
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ความคิดเห็น</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ใน Repository นี้</a>
         </li>
     </ul>
 </div>
@@ -69,6 +53,28 @@
                 <p class="description" style=></p>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                
+                <?php 
+                    $this->db->where('id_repository',  $data['id']);
+                    $data = $this->db->get('upload');
+                    foreach($data->result_array() as $r)
+                    {?>
+                        <div class="col-sm" style="margin-right: auto; margin-left: auto;">
+                 
+                            <div class="card" style="width: 18rem; height: 385.828px; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+                                    <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$r['type'].'.png');?>" alt="Card image cap">
+                                    <div class="card-body">
+                                    
+                                        <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $r['topic'];?> </h3>
+                                        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $r['file'];?></p>
+                                        <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $r['date'];?></p>
+                                        <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $r['id_upload'];?>" class="btn btn" style="margin-top: 30px; background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                    <?php }?>
+            
                 <h2 class="description">แสดงความคิดเห็นกับเอกสารนี้</h2>
                 <form>
                     <textarea class="form-control form-control-alternative" rows="3" placeholder="เขียนอะไรสักอย่างเพื่อแสดงความคิดเห็นแก่ผู้โพสต์ไฟล์ ..."></textarea>
@@ -80,4 +86,6 @@
 </div>
   </div>
   <?php } endif; ?>
+</div>
+
 </div>
