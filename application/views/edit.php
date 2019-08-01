@@ -4,7 +4,7 @@
   </head>
   <body>
  
-  <?php          
+                <?php          
                     if(isset($edit_data) && is_array($edit_data) && count($edit_data)): $i=1;
                     foreach ($edit_data as $key => $data) {   
                 ?>
@@ -15,7 +15,8 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/edit_file_upload');?>" enctype='multipart/form-data'>
+            
+            <form method="post" id="upload_form" action="<?php echo site_url('EditController/editdata');?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">แก้ไขไฟล์</h1>
                 <hr>
 
@@ -49,14 +50,15 @@
                     <div>Detail</div>
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" required><?php echo $data['detail'];?></textarea>
                     </div>
-                    
-                    <script>
-            </script>
-                <a href="<?php echo site_url("/EditController/editdata/");?>" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</a>
-                <a href="<?php echo site_url("/ViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
-            </form>
-            <?php } endif; ?>
 
+                    <input type="hidden" name="id_upload" value= <?php echo $data['id_upload'];?>>
+                  <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
+
+                <a href="<?php echo site_url("/ViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
+                <?php } endif; ?>
+            </form>
+           
+            
               <script type="text/javascript">
                   function sweetalertclick(){
                 var name = $("#name").val();
@@ -98,5 +100,4 @@
                                         
       </body>
             </div>
-</div>
 </div>

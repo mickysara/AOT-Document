@@ -84,7 +84,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>/EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>
+                                        <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>

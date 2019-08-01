@@ -99,11 +99,22 @@ public function delete_data($id){
   $this->db->query("DELETE FROM upload WHERE id_upload = $id");
   
 }
-public function editdataupload(){
+
+
+public function editdataupload($inputdata,$filename){
+  if($filename!='' ){
+    $filename1 = explode(',',$filename);
+    foreach($filename1 as $file){
+
    $data = array(
-     'topic' =>$this->input->post('topic')
+    'name' => $inputdata['name'],
+    'topic' => $inputdata['topic'],
+     'file' => $file,
+     'date' => $inputdata['date'],
+     'detail' => $inputdata['detail']
 );
    $this->db->where('id_upload', $this->input->post('id_upload'));
    $query=$this->db->update('upload',$data);
 }
 }
+}}
