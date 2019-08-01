@@ -25,7 +25,9 @@ class UploadFile_model extends CI_Model
         $d=strtotime("+10 Days");
         $dateendshow = date("Y/m/d",$d);
         $randomqrcode = random_string('alpha', 20);
-
+        $status = 'ใช้งาน';
+        $dateget = $inputdata['date_end'];
+        $newDate = date("Y-m-d", strtotime($dateget));
         $insert_id = $this->db->insert_id();
 
             if($filename!='' ){
@@ -54,9 +56,11 @@ class UploadFile_model extends CI_Model
           'url'=> $addbaseurl,
           'file' => $file,
           'date'=> $dateshow,
-          'dateend'=> $dateendshow,
+          'dateend'=> $newDate,
           'type'=> $showtype,
-          'qr_codename'=> $randomqrcode
+          'qr_codename'=> $randomqrcode,
+          'privacy' => $inputdata['privacy'],
+          'status' => $status
         );
         
       $this->db->insert('upload', $fill_user); 
