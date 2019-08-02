@@ -53,7 +53,7 @@ class EditController extends CI_Controller {
           $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
           $this->Upload->editdataupload($this->input->post(),$fileName);
     //    $this->Upload->editdataupload();
-       redirect('ViewController','refresh');
+        redirect('ViewController','refresh');
     }
 
 }

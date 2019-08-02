@@ -102,6 +102,8 @@ public function delete_data($id){
 
 
     public function editdataupload($inputdata,$filename){
+      $dateget = $inputdata['date_end'];
+      $newDate = date("Y-m-d", strtotime($dateget));
       if($filename!='' ){
         $filename1 = explode(',',$filename);
         foreach($filename1 as $file){
@@ -111,7 +113,9 @@ public function delete_data($id){
         'topic' => $inputdata['topic'],
         'file' => $file,
         'date' => $inputdata['date'],
-        'detail' => $inputdata['detail']
+        'dateend' => $newDate,
+        'detail' => $inputdata['detail'],
+        'privacy' => $inputdata['privacy']
     );
       $this->db->where('id_upload', $this->input->post('id_upload'));
       $query=$this->db->update('upload',$data);
