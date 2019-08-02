@@ -11,7 +11,7 @@
         <div id="slider" class="flexslider">
                 <ul class="slides" style="margin-top: 50px;">
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/repository.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
@@ -19,7 +19,7 @@
                 <div id="carousel" class="flexslider">
                 <ul class="slides">
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/repository.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
