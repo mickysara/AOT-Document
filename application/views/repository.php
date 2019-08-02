@@ -53,7 +53,9 @@
                 <p class="description" style=></p>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-                
+
+          
+                <div class="row">
                 <?php 
                     $this->db->where('id_repository',  $data['id']);
                     $data = $this->db->get('upload');
@@ -74,6 +76,7 @@
                                 </div>
                             </div>
                     <?php }?>
+                </div>
             
                 <h2 class="description">แสดงความคิดเห็นกับเอกสารนี้</h2>
                 <form>
