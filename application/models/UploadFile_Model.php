@@ -101,20 +101,42 @@ public function delete_data($id){
 }
 
 
-public function editdataupload($inputdata,$filename){
-  if($filename!='' ){
-    $filename1 = explode(',',$filename);
-    foreach($filename1 as $file){
+    public function editdataupload($inputdata,$filename){
+      if($filename!='' ){
+        $filename1 = explode(',',$filename);
+        foreach($filename1 as $file){
 
-   $data = array(
-    'name' => $inputdata['name'],
-    'topic' => $inputdata['topic'],
-     'file' => $file,
-     'date' => $inputdata['date'],
-     'detail' => $inputdata['detail']
-);
-   $this->db->where('id_upload', $this->input->post('id_upload'));
-   $query=$this->db->update('upload',$data);
+      $data = array(
+        'name' => $inputdata['name'],
+        'topic' => $inputdata['topic'],
+        'file' => $file,
+        'date' => $inputdata['date'],
+        'detail' => $inputdata['detail']
+    );
+      $this->db->where('id_upload', $this->input->post('id_upload'));
+      $query=$this->db->update('upload',$data);
+    }
+  }
+
+
+  }
+  public function insertRepo($inputdata){
+    $dateshow = date("Y/m/d");
+
+     $data = array(
+      'createby' => $inputdata['name'],
+      'topic' => $inputdata['topic'],
+      'date'=> $dateshow,
+      'detail' => $inputdata['detail'],
+      'privacy' => $inputdata['privacy']
+
+      // 'topic' => $inputdata['topic'],
+      // 'detail' => $inputdata['detail'],
+      // 'date' => $inputdata['date'],
+      // 'privacy' => $inputdata['privacy'],
+      // 'name' => $inputdata['name']
+  );
+     $this->db->insert('repository', $data); 
+  }
+  
 }
-}
-}}
