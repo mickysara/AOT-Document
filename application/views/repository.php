@@ -53,29 +53,74 @@
                 <p class="description" style=></p>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
-
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush" id="Filetable">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col"><h4>ชื่อไฟล์</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>สร้างโดย</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>View</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
+                        
+                    
+                  </tr>
+                </thead>
+                <tbody>
           
-                <div class="row">
                 <?php 
                     $this->db->where('id_repository',  $data['id']);
                     $data = $this->db->get('upload');
                     foreach($data->result_array() as $r)
                     {?>
-                        <div class="col-sm" style="margin-right: auto; margin-left: auto;">
-                 
-                            <div class="card" style="width: 18rem; height: 385.828px; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
-                                    <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$r['type'].'.png');?>" alt="Card image cap">
-                                    <div class="card-body">
-                                    
-                                        <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $r['topic'];?> </h3>
-                                        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $r['file'];?></p>
-                                        <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $r['date'];?></p>
-                                        <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $r['id_upload'];?>" class="btn btn" style="margin-top: 30px; background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
-                                        
+
+                        
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                        <img src="<?php echo base_url().'assets/img/logofile/'. $r['type']?>.png" alt="">
+                        </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm"><?php echo  $r['file'];?></span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                    <?php echo  $r['name'];?>
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                        <i class="bg-success"></i> <?php echo  $r['date'];?>
+                      </span>
+                    </td>   
+
+                    <td class="">
+                        <div>
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo  $r['url'];?>">Default</button>                           
+                            <div class="modal fade" id="<?php echo  $r['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo  $r['url'];?>" aria-hidden="true">
+                            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                <div class="modal-content" style="color: #2d3436; height: 608px;">
+                               
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo  $r['file'];?></h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
+                                
+                        </div>
+                       
+                    </td>
+                    <td>
+                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    </td>   
+                  </tr>
+                </tbody>
+             
                     <?php }?>
+                    </table>
                 </div>
             
                 <h2 class="description">แสดงความคิดเห็นกับเอกสารนี้</h2>
