@@ -54,7 +54,7 @@
                     <div class="form-group">
                     <div>ระดับความเป็นส่วนตัว</div>
                     <select name="privacy" id="privacy">
-                      <option value="" disabled selected>กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์</option>
+                      <option value="Public">กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์</option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
@@ -77,7 +77,7 @@
                 var detail = $("#detail").val();
                 var privacy = $("#privacy").val();
                   
-                  if(topic ==""|| file ==""| detail ==""){
+                  if(topic ==""|| file ==""|| detail ==""||privacy ==""){
                       alert("กรุณากรอกข้อมูลให้ครบ");
                   }else{
                     swal({

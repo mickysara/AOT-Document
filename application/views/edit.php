@@ -56,10 +56,21 @@
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" required><?php echo $data['detail'];?></textarea>
                     </div>
 
+
+                     <?php if($data['privacy']== 'Private'){
+                       $showPri ="ส่วนตัว";
+                          }else if($data['privacy']== 'Authen'){
+                            $showPri = "เฉพาะผู้ที่มีรหัส";
+                          }else if($data['privacy']== 'Public'){
+                           $showPri = "สาธารณะ"; 
+                          }else{
+                            $showPri = "กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์";
+                          }?>
+
                     <div class="form-group">
                     <div>ระดับความเป็นส่วนตัว</div>
                     <select name="privacy" id="privacy">
-                      <option value="" disabled selected>กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์</option>
+                      <option value="<?php echo $data['privacy']?>"><?php echo $showPri?></option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
@@ -67,7 +78,7 @@
                     </div>
 
                     <input type="hidden" name="id_upload" value= <?php echo $data['id_upload'];?>>
-                  <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
+                  <button onclick="javascript:privacyalert()" type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
 
                 <a href="<?php echo site_url("/ViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
                 <?php } endif; ?>
@@ -90,6 +101,24 @@
                                };
                                 </script> 
 
+
+                         <script type="text/javascript">
+                            function privacyalert(){
+                              var file = $("#image_file").val();
+                              var privacy = $("#privacy").val();
+                            
+                            if(privacy ==""||file ==""){
+                                alert("กรุณากรอกข้อมูลให้ครบ");
+                            }else{
+                              swal({
+                                    title: "Upload Success",
+                                    text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
+                                    icon: "success", 
+                                  }); 
+                          }
+                            }
+
+                            </script> 
                                        
                                         
       </body>
