@@ -46,9 +46,9 @@
             <div class="col">
                 <h2>ปีที่อัพโหลด</h2>
                 <p>ระหว่าง ปี </p>
-                <input type="number" class="form-control form-control-alternative" id="years" name="years1" placeholder="2560">
+                <input type="number" class="form-control form-control-alternative" id="years" name="years1" placeholder="2018">
                 <p class="mt-3">ถึงปี</p>
-                <input type="number" class="form-control form-control-alternative" id="years" name="years2" placeholder="2562">
+                <input type="number" class="form-control form-control-alternative" id="years" name="years2" placeholder="2019">
                 
             </div>
         </div>

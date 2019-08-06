@@ -32,6 +32,8 @@
         <p style="font-weight: 500;">สร้างโดย : <?php echo $data['createby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $data['date'];?></p>
         <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $data['privacy'];?> </p>
+        
+        <button class="btn btn-1 btn-success"> <i class="fa fa-user-plus" aria-hidden="true" ></i> เพิ่มบุคคลที่เกี่ยวข้อง</button>
     </div>
   
     <div class="w-100"></div>
@@ -49,8 +51,8 @@
     <div class="card-body">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" style="width: max;">
+                <p class="description" style=><p style="font-weight: 500;">บุคคลที่เกี่ยวข้อง : </p></p>
                 <p class="description"><?php echo $data['detail'];?></p>
-                <p class="description" style=></p>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
             <div class="table-responsive">
@@ -111,12 +113,7 @@
                     <?php }?>
                     </table>
                 </div>
-            
-                <h2 class="description">แสดงความคิดเห็นกับเอกสารนี้</h2>
-                <form>
-                    <textarea class="form-control form-control-alternative" rows="3" placeholder="เขียนอะไรสักอย่างเพื่อแสดงความคิดเห็นแก่ผู้โพสต์ไฟล์ ..."></textarea>
-                </form>
-                <button type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">ยืนยันแสดงความคิดเห็น</button>
+                <button type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</button>
             </div>
         </div>
     </div>
