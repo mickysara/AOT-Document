@@ -23,62 +23,67 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                    <div>Name</div>
+                    <div>ชื่อ</div>
                       <input type="Text" class="form-control form-control-alternative" name="name" value="<?php echo $data['name'];?>" required id="name" readonly>
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="form-group">
-                    <div>Topic</div>
+                    <div>หัวข้อ</div>
                     <input type="text" class="form-control form-control-alternative" id="topic" value="<?php echo $data['topic'];?>" name="topic" placeholder="topic" required>
                     </div>
 
                     <div class="form-group">
                     <tr>
-                    <td>File</td>
+                    <td>ไฟล์</td>
                     <td><input type="file" name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx"></td>
                     </tr>
                     </div>
 
                     <div class="form-group">
-                    <div>Date</div>
+                    <div>ใช้วันที่</div>
                     <input type="text" class="form-control form-control-alternative" id="date" value="<?php echo $data['date'];?>" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
                     </div>
 
                     <div class="form-group">
-                    <div>Detail</div>
+                    <div>ถึงวันที่</div>
+                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" type="text" value="<?php echo"".date("d/m/Y") ?>"  required>
+                    </div>
+
+                    <div class="form-group">
+                    <div>รายละเอียด</div>
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" required><?php echo $data['detail'];?></textarea>
                     </div>
 
+
+                     <?php if($data['privacy']== 'Private'){
+                       $showPri ="ส่วนตัว";
+                          }else if($data['privacy']== 'Authen'){
+                            $showPri = "เฉพาะผู้ที่มีรหัส";
+                          }else if($data['privacy']== 'Public'){
+                           $showPri = "สาธารณะ"; 
+                          }else{
+                            $showPri = "กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์";
+                          }?>
+
+                    <div class="form-group">
+                    <div>ระดับความเป็นส่วนตัว</div>
+                    <select name="privacy" id="privacy">
+                      <option value="<?php echo $data['privacy']?>"><?php echo $showPri?></option>
+                      <option value="Private">ส่วนตัว</option>
+                      <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
+                      <option value="Public">สาธารณะ</option>
+                    </select>
+                    </div>
+
                     <input type="hidden" name="id_upload" value= <?php echo $data['id_upload'];?>>
-                  <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
+                  <button onclick="javascript:privacyalert()" type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
 
                 <a href="<?php echo site_url("/ViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
                 <?php } endif; ?>
             </form>
-           
-            
-              <script type="text/javascript">
-                  function sweetalertclick(){
-                var name = $("#name").val();
-                var topic = $("#topic").val();
-                var file = $("#image_file").val();
-                var date = $("#date").val();
-                var detail = $("#detail").val();
-                  
-                  if(topic ==""|| file ==""| detail ==""){
-                      alert("กรุณากรอกข้อมูลให้ครบ");
-                  }else{
-                    swal({
-                          title: "Upload Success",
-                          text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
-                          icon: "success", 
-                        }); 
-                 }
-                  }
 
-                  </script> 
             
                                 <script> 
                             var uploadField = document.getElementById("image_file");
@@ -96,6 +101,24 @@
                                };
                                 </script> 
 
+
+                         <script type="text/javascript">
+                            function privacyalert(){
+                              var file = $("#image_file").val();
+                              var privacy = $("#privacy").val();
+                            
+                            if(privacy ==""||file ==""){
+                                alert("กรุณากรอกข้อมูลให้ครบ");
+                            }else{
+                              swal({
+                                    title: "Upload Success",
+                                    text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
+                                    icon: "success", 
+                                  }); 
+                          }
+                            }
+
+                            </script> 
                                        
                                         
       </body>
