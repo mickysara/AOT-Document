@@ -113,6 +113,7 @@
                 </tbody>
              
                     <?php }?>
+                    
                     </table>
                 </div>
             </div>
@@ -207,6 +208,12 @@
                     <?php }?>
                     </table>
                 </div>
+               <?php $url = current_url();
+                    // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
+                    $arraystate2 = (explode("/",$url));
+                    $idRepo = ($arraystate2[6]);?>
+
+                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>" type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</a>
             </div>
         </div>
     </div>

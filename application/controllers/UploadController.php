@@ -24,8 +24,6 @@ class UploadController extends CI_Controller {
     public function file_upload(){
               $files = $_FILES;
               $count = count($_FILES['userfile']['name']);
-
-
               for($i=0; $i<$count; $i++)
                 {
                 $_FILES['userfile']['name']= $files['userfile']['name'][$i];
@@ -37,7 +35,7 @@ class UploadController extends CI_Controller {
                 $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
                 $config['max_size'] = '10000000'; //หน่วยเป็น byte กำหนดใน config xammps php.ini search post และ up
                 $config['remove_spaces'] = true; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
-                $config['overwrite'] = true;
+                $config['overwrite'] = false;
                 $config['max_width'] = '';
                 $config['max_height'] = '';
                 $this->load->library('upload', $config);
@@ -75,43 +73,43 @@ class UploadController extends CI_Controller {
         }
 
 
-       public function edit_file_upload(){
-              $files = $_FILES;
-              if(!empty($files['userfile']['name'][0])){
-              $count = count($_FILES['userfile']['name']);
-              $user_id = $this->input->post('user_id');
-              for($i=0; $i<$count; $i++)
-                {
-                $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
-                $_FILES['userfile']['type']= $files['userfile']['type'][$i];
-                $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
-                $_FILES['userfile']['error']= $files['userfile']['error'][$i];
-                $_FILES['userfile']['size']= $files['userfile']['size'][$i];
-                $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
-                $config['max_size'] = '10000000';
-                $config['remove_spaces'] = true;
-                $config['overwrite'] = false;
-                $config['max_width'] = '';
-                $config['max_height'] = '';
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                $this->upload->do_upload();
-                $fileName = $_FILES['userfile']['name'];
-                $images[] = $fileName;
-                }
-                  $fileName = implode(',',$images);
-                  $this->Upload->edit_upload_image($id_upload,$this->input->post(),$fileName);
-                }else
-                {
-              $user_id = $this->input->post('id_upload');
-              $this->Upload->edit_upload_image($id_upload,$this->input->post());
-                }
-                // echo'<script type="text/javascript">
-                // swal("ADD DATA", "You clicked the button!", "success");
-                // </script>'; //ต้องใช้ echo ในแท้กphp ข้างในมีดับเบิ้ลโคดอยู่แล้ว
-                redirect('ViewControllers');
-                }
+      //  public function edit_file_upload(){
+      //         $files = $_FILES;
+      //         if(!empty($files['userfile']['name'][0])){
+      //         $count = count($_FILES['userfile']['name']);
+      //         $user_id = $this->input->post('user_id');
+      //         for($i=0; $i<$count; $i++)
+      //           {
+      //           $_FILES['userfile']['name']= time().$files['userfile']['name'][$i];
+      //           $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+      //           $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+      //           $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+      //           $_FILES['userfile']['size']= $files['userfile']['size'][$i];
+      //           $config['upload_path'] = './uploads/';
+      //           $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
+      //           $config['max_size'] = '10000000';
+      //           $config['remove_spaces'] = true;
+      //           $config['overwrite'] = false;
+      //           $config['max_width'] = '';
+      //           $config['max_height'] = '';
+      //           $this->load->library('upload', $config);
+      //           $this->upload->initialize($config);
+      //           $this->upload->do_upload();
+      //           $fileName = $_FILES['userfile']['name'];
+      //           $images[] = $fileName;
+      //           }
+      //             $fileName = implode(',',$images);
+      //             $this->Upload->edit_upload_image($id_upload,$this->input->post(),$fileName);
+      //           }else
+      //           {
+      //         $user_id = $this->input->post('id_upload');
+      //         $this->Upload->edit_upload_image($id_upload,$this->input->post());
+      //           }
+      //           // echo'<script type="text/javascript">
+      //           // swal("ADD DATA", "You clicked the button!", "success");
+      //           // </script>'; //ต้องใช้ echo ในแท้กphp ข้างในมีดับเบิ้ลโคดอยู่แล้ว
+      //           redirect('ViewControllers');
+      //           }
 
 
 
