@@ -45,7 +45,7 @@
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                        <img src="<?php echo base_url().'assets/img/logofile/'. $r['type']?>.png" alt="">
+                        <img src="<?php echo base_url().'assets/img/logofile/'. $data['type']?>.png" alt="">
                         </a>
                         <div class="media-body">
                           <span class="mb-0 text-sm"><?php echo $data['file'];?></span>

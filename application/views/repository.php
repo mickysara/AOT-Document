@@ -97,18 +97,7 @@
 
                     <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo  $r['url'];?>">Default</button>                           
-                            <div class="modal fade" id="<?php echo  $r['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo  $r['url'];?>" aria-hidden="true">
-                            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                <div class="modal-content" style="color: #2d3436; height: 608px;">
-                               
-                                    <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo  $r['file'];?></h2>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                </div>
+                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                 
                         </div>
                        

@@ -56,11 +56,7 @@
             <div class="collapse navbar-collapse" id="navbar-primary">
               <div class="navbar-collapse-header">
                 <div class="row">
-                  <div class="col-6 collapse-brand">
-                    <a href="index.html">
-                      <img src="assets/img/brand/blue.png">
-                    </a>
-                  </div>
+
                   <div class="col-6 collapse-close">
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
                       <span></span>
