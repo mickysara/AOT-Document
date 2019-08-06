@@ -9,9 +9,11 @@
             background-color: #f7f8f9;">
 
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+          <?php $repostrnono = base_url(uri_string());
+             $arraystate2 = (explode("/",$repostrnono));
+             $idRepo = ($arraystate2[6]);?>
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
+            <form method="post" id="upload_form" action="<?php echo site_url('UploadFileRepoController/file_upload/').$idRepo;?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 

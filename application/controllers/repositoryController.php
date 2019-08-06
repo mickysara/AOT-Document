@@ -12,7 +12,8 @@ class repositoryController extends CI_Controller {
     public function index()
     {
         $this->load->view('Header');
-        $this->load->view('repository');
+        $this->data['repository_view']= $this->repository_model->repository_view(); //Upfile คือชื่อของโมเดล
+        $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
         
     }

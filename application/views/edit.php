@@ -114,6 +114,7 @@
                                     title: "Upload Success",
                                     text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
                                     icon: "success", 
+                                    
                                   }); 
                           }
                             }
