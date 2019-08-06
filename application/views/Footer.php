@@ -100,7 +100,9 @@
 $(document).ready( function () {
     $('#Filetable').DataTable();
 } );
-
+$(document).ready( function () {
+    $('#member').DataTable();
+} );
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>jQueryold = jQuery.noConflict( true );</script>

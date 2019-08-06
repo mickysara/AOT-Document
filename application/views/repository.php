@@ -4,7 +4,7 @@
 <div class="container">
 <?php          
                     if(isset($repository_data) && is_array($repository_data) && count($repository_data)): $i=1;
-                    foreach ($repository_data as $key => $data) {   
+                    foreach ($repository_data as $key => $repo) {   
                 ?>
   <div class="row">
     <div class="col mt-5 mr-5" style="width: 500px; height: 500px; background-color: #fff;"><span></span>
@@ -28,12 +28,11 @@
 
 
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อ Repository : <?php echo $data['topic'];?> </h1>  
-        <p style="font-weight: 500;">สร้างโดย : <?php echo $data['createby'];?></p>
-        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $data['date'];?></p>
-        <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $data['privacy'];?> </p>
-        
-        <button class="btn btn-1 btn-success"> <i class="fa fa-user-plus" aria-hidden="true" ></i> เพิ่มบุคคลที่เกี่ยวข้อง</button>
+        <h1>ชื่อ Repository : <?php echo $repo['topic'];?> </h1>  
+        <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['createby'];?></p>
+        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $repo['date'];?></p>
+        <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['privacy'];?> </p>
+        <button>เพิ่มเอกสารลงใน Repository นี้</button>
     </div>
   
     <div class="w-100"></div>
@@ -43,7 +42,10 @@
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ใน Repository นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ใน Repository นี้</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>จัดการสมาชิกใน Repository นี้</a>
         </li>
     </ul>
 </div>
@@ -51,10 +53,10 @@
     <div class="card-body">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" style="width: max;">
-                <p class="description" style=><p style="font-weight: 500;">บุคคลที่เกี่ยวข้อง : </p></p>
-                <p class="description"><?php echo $data['detail'];?></p>
+                <p class="description"><?php echo $repo['detail'];?></p>
+                <p class="description" style=></p>
             </div>
-            <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+            <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
             <div class="table-responsive">
               <table class="table align-items-center table-flush" id="Filetable">
                 <thead class="thead-light">
@@ -71,7 +73,7 @@
                 <tbody>
           
                 <?php 
-                    $this->db->where('id_repository',  $data['id']);
+                    $this->db->where('id_repository',  $repo['id']);
                     $data = $this->db->get('upload');
                     foreach($data->result_array() as $r)
                     {?>
@@ -113,7 +115,98 @@
                     <?php }?>
                     </table>
                 </div>
-                <button type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</button>
+            </div>
+            <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush" id="member">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col"><h4>ชื่อ</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>ระดับ</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>เพิ่มโดย</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>View</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
+                        
+                    
+                  </tr>
+                </thead>
+                <tbody>
+          
+                <?php 
+                    $query=$this->db->query("SELECT repository_member.*,repository.topic,repository.createby 
+                    FROM repository_member,repository 
+                    WHERE repository_member.id_repository = repository.id 
+                    AND repository_member.id_repository =".$repo['id']);
+                    foreach($query->result_array() as $mem)
+                    {?>
+
+                        
+                  <tr>
+                    <th scope="row">
+                    <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-3">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        </a>
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <span class="mb-0 text-sm"><?php echo  $mem['accname'];?></span>
+                        </div>
+                      </div>
+                    </th>
+                    <td >
+                    <?php echo  $mem['level'];?>
+                    </td>
+                    <td>
+                    <?php echo  $mem['addBy'];?>
+                    </td>
+                    <td>
+                      <div class="ml-4">
+                        <span class="badge badge-dot mr-4">
+                          <i class="bg-success"></i> <?php echo  $mem['Date'];?>
+                        </span>
+                      </div>
+ 
+                    </td>   
+                      <?php 
+                      $t = explode(".", $mem['accname']);
+                      echo   $t[0]; ?>
+                    <td class="">
+                        <div class="ml-4">
+                        <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $t[0] ?>">Edit</button>                           
+                            <div class="modal fade" id="<?php echo $t[0] ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $t[0] ?>" aria-hidden="true">
+                            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                                <div class="modal-content" style="color: #2d3436; height: 608px;">
+                               
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="modal-title-default">แก้ไขสิทธิ์ : <?php echo $mem['accname'];?></h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="modal-body">
+                                        Hello
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <a href="<?php echo site_url(); ?>EditController/edit/"class="btn btn-success">Edit</a>
+                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                
+                        </div>
+                       
+                    </td>
+                    <td>
+                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    </td>   
+                  </tr>
+                </tbody>
+             
+                    <?php }?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
