@@ -111,10 +111,16 @@
                     </td>   
                   </tr>
                 </tbody>
-             
+                      
                     <?php }?>
                     
                     </table>
+                    <?php $url = current_url();
+                    // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
+                    $arraystate2 = (explode("/",$url));
+                    $idRepo = ($arraystate2[6]);?>
+
+                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>" type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</a>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
@@ -133,7 +139,45 @@
                   </tr>
                 </thead>
                 <tbody>
-          
+                   <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#Addmember">
+                      เพิ่มบุคคลที่เกี่ยวข้อง
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="Addmember" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h2 class="modal-title" id="exampleModalLabel">เพิ่มบุคคลที่เกี่ยวข้อง</h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+
+                              <form name="login" id="addmember_form" method="post">
+                              กรุณากรอกรหัสพนักงาน :
+                              <input type="text" class="form-control mt-3 mb-3 ml-2" id="id_emp" name="id_emp" placeholder="682423">
+                              กรุณาเลือกระดับในการเกี่ยวข้องกับ Repository นี้ :
+                              <select name="Level" id="Level">
+                                <option value="" disabled selected>กรุณาเลือกระดับ</option>
+                                <option value="Viewer">Viewer</option>
+                                <option value="Edittor">Edittor</option>
+                                <option value="Manager">Manager</option>
+                              </select>
+                              <input type="hidden" id="repository_id" name="repository_id" value="<?php echo $repo['id']?>">
+                              
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+                            <button type="submit" class="btn btn-success">ยืนยัน</button>
+
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 <?php 
                     $query=$this->db->query("SELECT repository_member.*,repository.topic,repository.createby 
                     FROM repository_member,repository 
@@ -171,13 +215,13 @@
                     </td>   
                       <?php 
                       $t = explode(".", $mem['accname']);
-                      echo   $t[0]; ?>
+                       ?>
                     <td class="">
                         <div class="ml-4">
                         <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $t[0] ?>">Edit</button>                           
                             <div class="modal fade" id="<?php echo $t[0] ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $t[0] ?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                <div class="modal-content" style="color: #2d3436; height: 608px;">
+                                <div class="modal-content" style="color: #2d3436;">
                                
                                     <div class="modal-header">
                                         <h2 class="modal-title" id="modal-title-default">แก้ไขสิทธิ์ : <?php echo $mem['accname'];?></h2>
@@ -187,15 +231,22 @@
                                     </div>
                                     
                                     <div class="modal-body">
-                                        Hello
+                                    <p style="font-size: 15px;"> กรุณาเลือกระดับในการเกี่ยวข้อง : </p>
+                                    <form name="login" id="editmember_form" method="post" action="<?php echo site_url("Membercontroller/editmember/".$mem['ID']."")?>">
+                                    <select name="Level" id="Level" style="width: 100%; font-size: 15px;">
+                                      
+                                      <option value="" disabled selected>กรุณาเลือกระดับ</option>
+                                      <option value="Viewer">Viewer</option>
+                                      <option value="Edittor">Edittor</option>
+                                      <option value="Manager">Manager</option>
+                                    </select>
                                     </div>
-
                                     <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>EditController/edit/"class="btn btn-success">Edit</a>
-                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+                                        <button type="submit" class="btn btn-success" value="<?php echo $mem['ID']; ?>">ยืนยัน</button>
                                     </div>
                                 </div>
-                                
+                              </form>
                         </div>
                        
                     </td>
@@ -208,12 +259,6 @@
                     <?php }?>
                     </table>
                 </div>
-               <?php $url = current_url();
-                    // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
-                    $arraystate2 = (explode("/",$url));
-                    $idRepo = ($arraystate2[6]);?>
-
-                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>" type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</a>
             </div>
         </div>
     </div>
@@ -221,5 +266,43 @@
   </div>
   <?php } endif; ?>
 </div>
-
 </div>
+
+<script>
+   var val = document.getElementById('repository_id').value
+    $(document).on('submit', '#addmember_form', function () {
+          $.post("<?=base_url('index.php/MemberController/checkmember/')?>"+val, $("#addmember_form").serialize(),
+              function (data) {
+                  
+                  d = JSON.parse(data)
+                  var test = JSON.parse(data)
+                  if(d.status == 1)
+                  {
+                      swal({
+                            icon: "success",
+                            text: d.msg,
+                      });
+                      setTimeout(location.reload(),4000);
+                      
+                      //document.getElementById("demo").innerHTML = d[0].msg;
+                      //alert("asd")
+                  }
+                  else
+                  {
+                      
+                      swal({
+                            icon: "error",
+                             text: "ไม่พบรหัสพนักงานนี้กรุณากรอกใหม่อีกครั้ง",
+                          
+                      });
+                      //base_url('index.php/RegisterController/insert_user');
+                      //setTimeout("location.href = 'http://localhost/SystemOfUniver/index.php/RegisterController/insert_user';",5000);
+                  }
+
+              }
+          );
+
+        event.preventDefault();
+    });
+    
+</script>

@@ -39,7 +39,7 @@
                           
                           
                       })
-                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/IndexController';",5000);
+                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/IndexController';",3000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -94,6 +94,43 @@
 
         event.preventDefault();
     });
+    var val = document.getElementById('repository_id').value
+    $(document).on('submit', '#addmember_form', function () {
+          $.post("<?=base_url('index.php/MemberController/checkmember/')?>"+val, $("#addmember_form").serialize(),
+              function (data) {
+                  
+                  d = JSON.parse(data)
+                  var test = JSON.parse(data)
+                  if(d.status == 1)
+                  {
+                      swal({
+                            icon: "success",
+                            text: d.msg,
+                      });
+                      setTimeout(location.reload(),4000);
+                      
+                      //document.getElementById("demo").innerHTML = d[0].msg;
+                      //alert("asd")
+                  }
+                  else
+                  {
+                      
+                      swal({
+                            icon: "error",
+                             text: "ไม่พบรหัสพนักงานนี้กรุณากรอกใหม่อีกครั้ง",
+                          
+                      });
+                      //base_url('index.php/RegisterController/insert_user');
+                      //setTimeout("location.href = 'http://localhost/SystemOfUniver/index.php/RegisterController/insert_user';",5000);
+                  }
+
+              }
+          );
+
+        event.preventDefault();
+    });
+
+
     
  </script>
 <script>
