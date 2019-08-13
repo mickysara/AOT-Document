@@ -26,24 +26,11 @@ class LinenotifyController extends CI_Controller
         $data = $probem.("/").$Name.("/").$email.("/").$tel;
         echo $data;
         $this->load->model('Linenotify_Model');
+        $this->Linenotify_Model->insert_Linenotify($data);
         $this->Linenotify_Model->LineNotify($data);
         echo json_encode(['status' => 1, 'msg' => '555']);
-        redirect('LinenotifyController/InsertLineNotify');
+        redirect('IndexController','refresh');
+        
     }
 
-
-
-    public function InsertLineNotify(){
-
-        $probem =  $this->input->post('probem');
-        $Name = $this->input->post('Name');
-        $email = $this->input->post('email');
-        $tel = $this->input->post('tel');
-
-        $data = $probem.("/").$Name.("/").$email.("/").$tel;
-        $this->load->model('Linenotify_Model');
-        $this->Linenotify_Model->insert_Linenotify($data);
-        // $this->Linenotify->insert_Linenotify($this->input->post());
-         redirect('IndexController','refresh');
-    }
 }
