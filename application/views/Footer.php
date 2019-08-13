@@ -72,6 +72,7 @@
                             icon: "success",
                             text: d.msg,
                       });
+                    
                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/LoginController';",1000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")

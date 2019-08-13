@@ -1,18 +1,18 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class repositoryController extends CI_Controller {
+class RepositoryController extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('repository_model'); 
+        $this->load->model('Repository_model'); 
     }  
 
     public function index()
     {
         $this->load->view('Header');
-        $this->data['repository_view']= $this->repository_model->repository_view(); //Upfile คือชื่อของโมเดล
+        $this->data['repository_view']= $this->Repository_model->repository_view(); //Upfile คือชื่อของโมเดล
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
         
@@ -20,7 +20,7 @@ class repositoryController extends CI_Controller {
 
     public function showdata($repository_id)
     {
-        $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+        $this->data['repository_data']= $this->Repository_model->repository_data($repository_id);
         $this->load->view('Header');
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
