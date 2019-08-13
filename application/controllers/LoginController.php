@@ -18,8 +18,8 @@ class LoginController extends CI_Controller {
     }
     public function Login()
     {
-      $username =  $this->input->post("username");
-      $password =  $this->input->post("password");
+      $username =  "484074";//$this->input->post("username");
+      $password =  "Aot02276$";//$this->input->post("password");
 
       $curl = curl_init();
 
