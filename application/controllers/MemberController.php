@@ -7,7 +7,7 @@ class MemberController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('repositoty_member'); 
+        $this->load->model('Repositoty_member'); 
     }  
 
     public function index()
@@ -20,7 +20,7 @@ class MemberController extends CI_Controller {
 
     public function showmember($repository_id)
     {
-        $this->data['repositoty_memberdata']= $this->repositoty_member->repository_memberdata($repository_id);
+        $this->data['repositoty_memberdata']= $this->Repositoty_member->repository_memberdata($repository_id);
         print_r($this->data);
     }
     
@@ -72,7 +72,7 @@ class MemberController extends CI_Controller {
                             'addBy' => $this->session->userdata('accountName'),
                             'Date' => date("Y-m-d")
                             );
-                            $this->db->insert('repository_member', $insert);
+                            $this->db->insert('Repository_member', $insert);
                             echo json_encode(['status' => 1, 'msg' => 'Success']);
                     }
 
@@ -90,7 +90,7 @@ class MemberController extends CI_Controller {
          );
 
          $this->db->where('ID', $id);
-         $this->db->update('repository_member', $data);
+         $this->db->update('Repository_member', $data);
          
         
     }

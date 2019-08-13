@@ -8,7 +8,7 @@ class UploadFileRepoController extends CI_Controller {
         parent::__construct();
         //$this->load->helper('url');
         $this->load->model('UploadFile_model','Upload'); 
-        $this->load->model('repository_model','RePo'); 
+        $this->load->model('Repository_model','RePo'); 
         
     }
 
