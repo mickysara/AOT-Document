@@ -23,12 +23,12 @@ class LinenotifyController extends CI_Controller
         $email = $this->input->post('email');
         $tel = $this->input->post('tel');
 
-        $data = 'แจ้งปัญหารายละเอียด :'.$probem.'|ชื่อผู้แจ้ง :'.$Name.'|Email :'.$email.'|เบอร์ติดต่อ :'.$tel;
+        $data = $probem.("/").$Name.("/").$email.("/").$tel;
         echo $data;
         $this->load->model('Linenotify_Model');
         $this->Linenotify_Model->LineNotify($data);
         echo json_encode(['status' => 1, 'msg' => '555']);
-        redirect('http://localhost/SystemOfUniver/index.php/LoginController','refresh');
+        redirect('LinenotifyController/InsertLineNotify');
     }
 
 
