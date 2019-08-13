@@ -5,6 +5,7 @@ class LinenotifyController extends CI_Controller
     public function _construct()
     {
         parent::_construct();
+        $this->load->model('Linenotify_Model','Linenotify'); 
     }
     public function index()
     {
@@ -28,5 +29,21 @@ class LinenotifyController extends CI_Controller
         $this->Linenotify_Model->LineNotify($data);
         echo json_encode(['status' => 1, 'msg' => '555']);
         redirect('http://localhost/SystemOfUniver/index.php/LoginController','refresh');
+    }
+
+
+
+    public function InsertLineNotify(){
+
+        $probem =  $this->input->post('probem');
+        $Name = $this->input->post('Name');
+        $email = $this->input->post('email');
+        $tel = $this->input->post('tel');
+
+        $data = $probem.("/").$Name.("/").$email.("/").$tel;
+        $this->load->model('Linenotify_Model');
+        $this->Linenotify_Model->insert_Linenotify($data);
+        // $this->Linenotify->insert_Linenotify($this->input->post());
+         redirect('IndexController','refresh');
     }
 }

@@ -5,7 +5,7 @@
             background-color: #f7f8f9;">
 
             <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form name="notify" id="notify_form" method="post">
+            <form name="notify" id="notify_form" action="<?php echo site_url('LinenotifyController/InsertLineNotify');?>" method="post">
                 <h1 class="display-2">แจ้งปัญหา</h1>
                 <hr>
                 <div class="row">
@@ -29,10 +29,31 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; width:120px;" >ยืนยัน</button>
+                <button onclick="javascript:sweetalertclick()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
             </div>
             </div>
-                        
+
+
+            <script type="text/javascript">
+                  function sweetalertclick(){
+                var probem = $("#probem").val();
+                var Name = $("#Name").val();
+                var email = $("#email").val();
+                var tel = $("#tel").val();
+               
+                  
+                  if(probem ==""|| Name ==""|| email ==""||tel ==""){
+                      alert("กรุณากรอกข้อมูลให้ครบ");
+                  }else{
+                    swal({
+                          title: "แจ้งปัญหาเรียบร้อย",
+                          text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
+                          icon: "success", 
+                        }); 
+                 }
+                  }
+                  </script> 
+ 
 </div>
 </div>
