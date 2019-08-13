@@ -6,8 +6,8 @@
         define('LINE_API',"https://notify-api.line.me/api/notify");
 
 
-            //  $lineapi = ""; //ใส่Token ที่copy เอาไว้
-            $lineapi = "pL7Zkh47MrbJJ9a615UkObW27movggJ4O2uXxC6pFc2"; //ใส่Token ที่copy เอาไว้
+             $lineapi = ""; //ใส่Token ที่copy เอาไว้
+            // $lineapi = "pL7Zkh47MrbJJ9a615UkObW27movggJ4O2uXxC6pFc2"; //ใส่Token ที่copy เอาไว้
 
             $mms =  trim($data); // ข้อความที่ต้องการส่ง
             date_default_timezone_set("Asia/Bangkok");
@@ -40,14 +40,17 @@
 
         public function insert_Linenotify($data)
     { 
-  
+        $status = "ยังไม่ได้รับการแก้ไข";
+        $dateshow = date("Y/m/d");
         $insert = $data;
         $arraystate = (explode("/",$data));
         $fill_user = array(
           'notify' => $arraystate[0],
           'name' => $arraystate[1],
           'email' => $arraystate[2],
-          'tel' => $arraystate[3]
+          'tel' => $arraystate[3],
+          'date' => $dateshow,
+          'status' => $status
         );
 
       $this->db->insert('linenotify', $fill_user); 
@@ -60,5 +63,35 @@
                                    limit 6");
           return $query->result_array();
       }
+      public function delete_data($id){
+        $this->db->query("DELETE FROM linenotify WHERE id_linenoti = $id");
+        
+      }
+
+      public function edit_linenotify($inputdata){
+        $data = array(
+          'notify' => $inputdata["probem"],
+          'name' => $inputdata["Name"],
+          'email' => $inputdata["email"],
+          'tel' => $inputdata["tel"],
+          'status' => $inputdata['status']
+      );
+        $this->db->where('id_linenoti', $this->input->post('id_linenoti'));
+        $query=$this->db->update('linenotify',$data);
+      }
     
+      public function edit_data($id){
+        $query=$this->db->query("SELECT *
+                                 FROM linenotify
+                                 WHERE linenotify.id_linenoti = $id");
+        return $query->result_array();
     }
+  
+    
+  
+    
+
+      
+  
+    
+  }

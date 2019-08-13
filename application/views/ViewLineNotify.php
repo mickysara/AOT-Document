@@ -27,67 +27,73 @@
                 </thead>
                 <tbody>
 
+                <?php
+                    if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
+                    foreach ($view_data as $key => $data) { 
+
+      
+                    ?>
 
                   <tr>
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                        <img src="" alt="">
+                        <img src="assets/img/logo/linenotify.png" alt="">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"></span>
+                          <span class="mb-0 text-sm"> <?php echo $data['notify'];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                    <?php ?>
+                    <?php echo $data['name']; ?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i> ?>
+                        <i class="bg"> <?php echo $data['date'];?></i>
                       </span>
                     </td>   
 
-                    <!-- <td class="">
+                    <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['url'];?>">Default</button>                           
-                            <div class="modal fade" id="<?php echo $data['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['url'];?>" aria-hidden="true">
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['notify'];?>">View</button>                           
+                            <div class="modal fade" id="<?php echo $data['notify'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['notify'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['file'];?></h2>
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อหัวข้อแจ้งปัญหา : <?php echo $data['notify'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
                                     
                                     <div class="modal-body">
-                                        <p>รายละเอียด : <?php echo $data['detail'];?> </p>
                                         <p>โดย : <?php echo $data['name'];?></p>
-                                        <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
-                                        <p>หมดอายุ : <?php echo $data['dateend'];?></p>
-                                        <p>สถานะ :  </p>
+                                        <p>อีเมล :  <?php echo $data['email'];?></p>
+                                        <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
+                                        <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
+                                        <h4>สถานะ : <?php echo $data['status'];?></h4>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>
+                                        <a href="<?php echo site_url(); ?>EditLineNotifyController/edit/<?php echo $data['id_linenoti'];?>"class="btn btn-success">เปลี่ยนสถานะการแก้ปัญหา</a>
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                                 
                         </div>
                        
-                    </td> -->
-                    <!-- <td>
-                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    </td>
+                    <td>
+                    <a href="<?php echo site_url(); ?>/ViewLineNotifyController/del/<?php echo $data['id_linenoti'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
-                  </tr> -->
+                  </tr>
                 </tbody>
 
 
 
-                
+                <?php } endif; ?> 
               </table>
             </div>
             <div class="card-footer py-4">
@@ -167,6 +173,14 @@
                               });
                               }
                               </script>
+
+
+                  <script type="text/javascript">
+                  function ifelse(){
+                         if()
+                      });
+                  }
+                  </script>
 </div>
    
 </div>

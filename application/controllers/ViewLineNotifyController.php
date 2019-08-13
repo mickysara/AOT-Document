@@ -22,10 +22,17 @@ class ViewLineNotifyController extends CI_Controller {
     }
     
      public function del($id){
-        $this->data['delete_data']= $this->Upload->delete_data($id);
-       redirect('ViewController','refresh');
+        $this->data['delete_data']= $this->LineNotify->delete_data($id);
+       redirect('ViewLineNotifyController','refresh');
        
      }
+     
+     public function editlinenotify(){
+
+        $this->LineNotify->edit_linenotify($this->input->post());
+            redirect('ViewLineNotifyController','refresh');
+     }
+
 }
 
 /* End of file IndexController.php */
