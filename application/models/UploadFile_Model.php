@@ -39,15 +39,15 @@ class UploadFile_model extends CI_Model
               echo ($arraystate[1]);
 
          if($arraystate[1]=="pdf"){
-           $showtype = "PDF File";
+          $showtype = "PDF File";
          }else if($arraystate[1]=="docx"){
-          $wordshow = "Microsoftword";
+          $showtype = "Microsoftword";
          }else if($arraystate[1]=="pptx"){
-          $powerpointshow = "Microsoftpowerpoint";
+          $showtype = "Microsoftpowerpoint";
          }else if($arraystate[1]=="xlsx"){
-          $excelshow = "Microsoftexcel";
+          $showtype = "Microsoftexcel";
          }
-          $showtype = $pdfshow.$wordshow.$powerpointshow.$excelshow;
+          $showtypeall = $showtype;
 
         $fill_user = array(
           'name' => $inputdata['name'],
@@ -57,7 +57,7 @@ class UploadFile_model extends CI_Model
           'file' => $file,
           'date'=> $dateshow,
           'dateend'=> $newDate,
-          'type'=> $showtype,
+          'type'=> $showtypeall,
           'qr_codename'=> $randomqrcode,
           'privacy' => $inputdata['privacy'],
           'status' => $status
