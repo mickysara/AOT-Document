@@ -22,7 +22,7 @@ class EditController extends CI_Controller {
     {
         $this->data['edit_data']= $this->Upload->edit_data($edit_id);
         $this->load->view('Header');
-        $this->load->view('Edit', $this->data, FALSE);
+        $this->load->view('edit', $this->data, FALSE);
         $this->load->view('Footer');
     }
 

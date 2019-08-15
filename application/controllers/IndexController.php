@@ -7,7 +7,8 @@ class IndexController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('UploadFile_Model','Upload'); 
+        $this->load->model('UploadFile_Model','Upload');
+        $this->output->set_header('Access-Control-Allow-Origin: *');
     }
     public function index()
     {

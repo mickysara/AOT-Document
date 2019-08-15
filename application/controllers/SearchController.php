@@ -14,8 +14,8 @@ class SearchController extends CI_Controller {
     }
     public function serach($file_name)
     {
-        $this->load->model('Upload_Model');
-        $result = $this->Upload_Model->searchFile($file_name);
+        $this->load->model('UploadFile_Model');
+        $result = $this->UploadFile_Model->searchFile($file_name);
         foreach($result as $data)
         {?>
 

@@ -29,26 +29,22 @@
                     <div class="form-group">
                     <tr>
                     <td>รูปภาพโลโก้ของไฟล์</td>
-                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg"></td>
+                    <td><input type="file"  name="userfile[]asd" required id="image_file" accept=".png,.jpg,.jpeg"></td>
                     </tr>
                     </div>
 
-            
+                    <input type="hidden" name="id_type" value= <?php echo $data['id_type'];?>>
                 <button onclick="javascript:sweetalertclick()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                <a href="<?php echo site_url("/TypeViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
             </form>
             <?php } endif; ?>
 
               <script type="text/javascript">
                   function sweetalertclick(){
-                var name = $("#name").val();
-                var topic = $("#topic").val();
+                var name = $("#nametype").val();
                 var file = $("#image_file").val();
-                var date = $("#date").val();
-                var dateend = $("#date_end").val();
-                var detail = $("#detail").val();
-                var privacy = $("#privacy").val();
                   
-                  if(topic ==""|| file ==""|| detail ==""||privacy ==""){
+                  if(name ==""|| file ==""){
                       alert("กรุณากรอกข้อมูลให้ครบ");
                   }else{
                     swal({

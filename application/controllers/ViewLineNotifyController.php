@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -8,7 +8,7 @@ class ViewLineNotifyController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('LineNotify_Model','LineNotify'); 
+        $this->load->model('Linenotify_Model','LineNotify'); 
     }
     public function index()
     {

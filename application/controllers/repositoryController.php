@@ -6,7 +6,7 @@ class RepositoryController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Repository_model'); 
+        $this->load->model('Repository_Model'); 
     }  
 
     public function index()

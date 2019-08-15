@@ -49,6 +49,7 @@ class EditTypeController extends CI_Controller {
         $fileName = $_FILES['userfile']['name'];
         $images[] = $fileName;
         }
+          $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
           $this->Type->edit_type($this->input->post(),$fileName);
           redirect('TypeViewController','refresh');
     }
