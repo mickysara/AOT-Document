@@ -6,10 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>AOT - Document</title>
+<?php
+    header('Access-Control-Allow-Origin: http://www.harmonicmix.xyz');
+    ?>
   <!-- Favicon -->
 
   <!-- Fonts -->
-  <link rel="icon" type="image/ico" href="<?php echo base_url(); ?>./assets/img/logo/logo.png" />
+<link rel="icon" type="image/ico" href="<?php echo base_url(); ?>./assets/img/Logo/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=Athiti:300,400,700&amp;subset=thai" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">

@@ -104,10 +104,26 @@ public function delete_data($id){
     public function editdataupload($inputdata,$filename){
       $dateget = $inputdata['date_end'];
       $newDate = date("Y-m-d", strtotime($dateget));
+    
       if($filename!='' ){
         $filename1 = explode(',',$filename);
         foreach($filename1 as $file){
 
+          $str = $file;
+          $arraystate = (explode(".",$str));
+          echo ($arraystate[1]);
+
+          if($arraystate[1]=="pdf"){
+            $pdfshow = "PDF File";
+          }else if($arraystate[1]=="docx"){
+           $wordshow = "Microsoftword";
+          }else if($arraystate[1]=="pptx"){
+           $powerpointshow = "Microsoftpowerpoint";
+          }else if($arraystate[1]=="xlsx"){
+           $excelshow = "Microsoftexcel";
+          }
+           $showtype = $pdfshow.$wordshow.$powerpointshow.$excelshow;
+             
       $data = array(
         'name' => $inputdata['name'],
         'topic' => $inputdata['topic'],
@@ -115,6 +131,7 @@ public function delete_data($id){
         'date' => $inputdata['date'],
         'dateend' => $newDate,
         'detail' => $inputdata['detail'],
+        'type' => $showtype,
         'privacy' => $inputdata['privacy']
     );
       $this->db->where('id_upload', $this->input->post('id_upload'));

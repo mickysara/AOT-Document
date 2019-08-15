@@ -8,7 +8,7 @@
                     foreach ($edit_data as $key => $data) {   
                 ?>
             <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form name="notify" id="editnotify_form" action="<?php echo site_url('EditLinenotifyController/editdata');?>" method="post">
+            <form name="notify" id="editnotify_form" action="<?php echo site_url('EditLineNotifyController/editdata');?>" method="post">
                 <h1 class="display-2">แจ้งปัญหา</h1>
                 <hr>
                 <div class="row">

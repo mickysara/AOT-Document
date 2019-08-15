@@ -85,10 +85,10 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
  
 <body>
 
-<div class="cards-list">
+<!-- <div class="cards-list">
   
   <div class="card 1">
-    <div class="card_image"> <img src="assets/img/logo/efc_alpha_wallpaper_iphone.jpg"/> </div>
+    <div class="card_image"> <img src="https://www.harmonicmix.xyz/assets/img/Logo/efc_alpha_wallpaper_iphone.jpg"/> </div>
     <div class="card_title title-white">
       <p>Card Title</p>
     </div>
@@ -96,7 +96,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   
     <div class="card 2">
     <div class="card_image">
-      <img src="assets/img/logo/efc_alpha_wallpaper_iphone.jpg" />
+      <img src="https://www.harmonicmix.xyz/assets/img/Logo/efc_alpha_wallpaper_iphone.jpg" />
       </div>
     <div class="card_title title-white">
       <p>Card Title</p>
@@ -105,7 +105,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   
   <div class="card 3">
     <div class="card_image">
-      <img src="assets/img/logo/efc_alpha_wallpaper_iphone.jpg" />
+      <img src="https://www.harmonicmix.xyz/assets/img/Logo/efc_alpha_wallpaper_iphone.jpg" />
     </div>
     <div class="card_title">
       <p>Card Title</p>
@@ -114,12 +114,12 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
     
     <div class="card 4">
     <div class="card_image">
-      <img src="assets/img/logo/efc_alpha_wallpaper_iphone.jpg" />
+      <img src="https://www.harmonicmix.xyz/assets/img/Logo/efc_alpha_wallpaper_iphone.jpg" />
       </div>
     <div class="card_title title-black">
       <p>Card Title</p>
     </div>
-    </div>
+    </div> -->
   
   </div>
     <div class="container">
@@ -128,12 +128,14 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
                 <br>
                 <br>
                 <h1>ระบบหลังบ้าน</h1>
-               <button class="btn btn-primary">DOWNLOAD FILE</button> 
+               <!-- <button class="btn btn-primary">DOWNLOAD FILE</button>  -->
                <a href="<?php echo site_url('UploadController');?>" class="btn btn-primary">UPLOAD FILE</a> 
                <a href="<?php echo site_url('ViewController');?>" class="btn btn-primary">VIEW FILE</a>  
                <a href="<?php echo site_url('RepoController');?>" class="btn btn-primary">REPOSITORY</a> 
                <a href="<?php echo site_url('ViewLineNotifyController');?>" class="btn btn-primary">View LineNotify</a>
-            
+               <a href="<?php echo site_url('TypeController');?>" class="btn btn-primary">Type</a>
+               <a href="<?php echo site_url('TypeViewController');?>" class="btn btn-primary">TypeView</a>
+
             </div>
         </div>
     </div>

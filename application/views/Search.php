@@ -12,7 +12,7 @@
                             
         </div>
         <button type="button" class="btn btn-success" id="Search" style="width: 192px; height: 52px;"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
-        <button type="button" class="btn btn-primary btn-lg" style="width: 192px; height: 52px;" onclick="location.href='<?php echo base_url();?>/Advancesearchcontroller'">Advancesearch</button>
+        <button type="button" class="btn btn-primary btn-lg" style="width: 192px; height: 52px;" onclick="location.href='<?php echo base_url();?>AdvanceSearchController'">Advancesearch</button>
                 
     </div>
 

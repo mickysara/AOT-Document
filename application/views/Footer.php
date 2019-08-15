@@ -1,5 +1,5 @@
   
-  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
   <!-- Core -->
   <script src="<?php echo base_url('/assets/vendor/jquery/jquery.min.js'); ?>"></script>
   <script src="<?php echo base_url('/assets/vendor/popper/popper.min.js'); ?>"></script>
@@ -15,7 +15,7 @@
   <script src="<?php echo base_url('/assets/js/argon.js?v=1.0.1'); ?>"></script>
   <!-- sweetalert -->
  
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="<?php echo base_url('/assets/js/ajax.js'); ?>"></script>
   <!-- DashBoard -->>
   <script src="<?php echo base_url('/assets/js/argon-dashboard.js?v=1.0.0'); ?>"></script>
@@ -104,7 +104,7 @@ $(document).ready( function () {
     $('#member').DataTable();
 } );
 </script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>jQueryold = jQuery.noConflict( true );</script>
 
 <!-- FlexSlider -->
@@ -200,7 +200,7 @@ var myEl = document.getElementById('Search');
 <script>
       $(document).on('submit', '#AdSearch', function () {
           
-          $.post("<?=base_url('index.php/AdvanceSearchController/AdvanceSearch')?>", $("#AdSearch").serialize(),
+          $.post("<?=base_url('index.php/AdvanceSearchController/advanceSearch')?>", $("#AdSearch").serialize(),
               function (data) {
                   
                  $("#Showsearch").html(data);
