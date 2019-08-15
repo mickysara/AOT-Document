@@ -33,7 +33,11 @@ class Example extends \Restserver\Libraries\REST_Controller {
 
     public function index_get()
     {
-        $this->response("hi");
+        $query = $this->db->get('upload');
+        $data = $query->result(); 
+         
+        $this->response($data);
+        
     }
 
 }
