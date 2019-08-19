@@ -22,7 +22,7 @@
                       <input type="Text" class="form-control form-control-alternative" name="nametype" value="" required id="nametype">
                     </div>
                   </div>
-
+                  <div class="col-md-12">
                     <div class="form-group">
                     <tr>
                     <td>รูปภาพโลโก้ของไฟล์</td>
