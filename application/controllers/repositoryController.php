@@ -12,7 +12,7 @@ class RepositoryController extends CI_Controller {
     public function index()
     {
         $this->load->view('Header');
-        $this->data['repository_view']= $this->Repository_model->repository_view(); //Upfile คือชื่อของโมเดล
+        $this->data['repository_view']= $this->Repository_Model->repository_view(); //Upfile คือชื่อของโมเดล
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
         
@@ -20,7 +20,7 @@ class RepositoryController extends CI_Controller {
 
     public function showdata($repository_id)
     {
-        $this->data['repository_data']= $this->Repository_model->repository_data($repository_id);
+        $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
         $this->load->view('Header');
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
