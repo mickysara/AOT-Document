@@ -1,15 +1,12 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class MemberController extends CI_Controller {
-
     public function __construct()
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Repositoty_member'); 
+        $this->load->model('repositoty_member'); 
     }  
-
     public function index()
     {
         $this->load->view('Header');
@@ -17,10 +14,9 @@ class MemberController extends CI_Controller {
         $this->load->view('Footer');
         
     }
-
     public function showmember($repository_id)
     {
-        $this->data['repositoty_memberdata']= $this->Repositoty_member->repository_memberdata($repository_id);
+        $this->data['repositoty_memberdata']= $this->repositoty_member->repository_memberdata($repository_id);
         print_r($this->data);
     }
     
@@ -28,9 +24,7 @@ class MemberController extends CI_Controller {
     {
         $id_emp =  $this->input->post("id_emp");
         $Level  =  $this->input->post("Level");
-
         $curl = curl_init();
-
             curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.airportthai.co.th/v2/ActiveDirectory/GetAccountProfile/",
             CURLOPT_RETURNTRANSFER => true,
@@ -46,23 +40,17 @@ class MemberController extends CI_Controller {
                 "x-api-key: 0HyLnGPCibLKetyPyzZJzhfI32d3V3kC2e8FkSt4"
             ),
             ));
-
             $response = curl_exec($curl);
             $err = curl_error($curl);
-
             curl_close($curl);
-
             if ($err) {
             echo "cURL Error #:" . $err;
             } else {
                $data =  json_decode($response,1);
-
                     if($data['accountName'] == "")
                     {
                         echo json_encode(['status' => 0, 'msg' => 'Fail']);
-
                         
-
                     }else{
                         $insert = array(
                             'id_emp' => $data['employeeId'],
@@ -72,29 +60,32 @@ class MemberController extends CI_Controller {
                             'addBy' => $this->session->userdata('accountName'),
                             'Date' => date("Y-m-d")
                             );
-                            $this->db->insert('Repository_member', $insert);
+                            $this->db->insert('repository_member', $insert);
                             echo json_encode(['status' => 1, 'msg' => 'Success']);
                     }
-
             }
     }
     
-    public function editmember($id)
+    public function editmember($id,$repository_id)
     {
         $level =  $this->input->post("Level");
-
          $data = array(
-
              'level' => $level
             
          );
-
          $this->db->where('ID', $id);
-         $this->db->update('Repository_member', $data);
-         
+         $this->db->update('repository_member', $data);
+
+         redirect('repositorycontroller/showdata/'.$repository_id,'refresh');
         
     }
-
+    
+    public function Deletemember($id,$repository_id)
+    {
+        $this->db->where('ID', $id);
+        $this->db->delete('repository_member');
+        
+        redirect('repositorycontroller/showdata/'.$repository_id,'refresh');
+        
+    }
 }
-
-/* End of file MemberController.php */

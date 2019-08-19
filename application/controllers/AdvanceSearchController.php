@@ -15,15 +15,19 @@ class AdvanceSearchController extends CI_Controller {
         $c = 0;
         $name   =  $this->input->post("name_txt");
 
+ 
+
         $years1 =  $this->input->post("years1");
         $years2 =  $this->input->post("years2");
+
+        $this->db->like('file',  $name);
 
         if($years1 != "" && $years2 != "" )
         {
             $min = "'".$years1."-01-01'";
             $max = "'".$years2."-12-31'";
     
-            $this->db->like('file',  $name);
+
             $this->db->where_between('date', $min, $max); 
         }
 

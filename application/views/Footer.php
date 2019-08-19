@@ -23,6 +23,46 @@
 
  <!-- My Script -->
  <script>
+   var val = document.getElementById('repository_id').value
+    $(document).on('submit', '#addmember_form', function () {
+          $.post("<?=base_url('index.php/MemberController/checkmember/')?>"+val, $("#addmember_form").serialize(),
+              function (data) {
+                  
+                  d = JSON.parse(data)
+                  var test = JSON.parse(data)
+                  if(d.status == 1)
+                  {
+                      swal({
+                            icon: "success",
+                            text: "ระบบได้ทำการเพิ่มผู้ใช้ลงใน Repository นี้เรียบร้อยแล้ว",
+                      });
+                      setTimeout(myfunction,2000);
+
+                      function myfunction(){
+                        location.reload();
+                      }
+                      
+                      //document.getElementById("demo").innerHTML = d[0].msg;
+                      //alert("asd")
+                  }
+                  else
+                  {
+                      
+                      swal({
+                            icon: "error",
+                             text: "ไม่พบรหัสพนักงานนี้กรุณากรอกใหม่อีกครั้ง",
+                          
+                      });
+                      //base_url('index.php/RegisterController/insert_user');
+                      //setTimeout("location.href = 'http://localhost/SystemOfUniver/index.php/RegisterController/insert_user';",5000);
+                  }
+              }
+          );
+        event.preventDefault();
+    });
+    
+</script>
+ <script>
          $(document).on('submit', '#login_form', function () {
           
           $.post("<?=base_url('index.php/LoginController/Login')?>", $("#login_form").serialize(),
@@ -177,30 +217,12 @@ var myEl = document.getElementById('Hi');
                   )
         }, true);
 </script>
-<script>
 
-
-
-var myEl = document.getElementById('Search');
-
-
-        myEl.addEventListener('click', function() {
-          var val = document.getElementById('searchtxt').value  
-          console.log(val)
-          $.get("<?=base_url('index.php/SearchController/serach/')?>"+val,
-                    function(data){
-
-                      $("#Showsearch").html(data)
-
-                    }
-                  )
-        }, true);
-</script>
 
 <script>
       $(document).on('submit', '#AdSearch', function () {
           
-          $.post("<?=base_url('index.php/AdvanceSearchController/advanceSearch')?>", $("#AdSearch").serialize(),
+          $.post("<?=base_url('index.php/AdvanceSearchController/AdvanceSearch')?>", $("#AdSearch").serialize(),
               function (data) {
                   
                  $("#Showsearch").html(data);
