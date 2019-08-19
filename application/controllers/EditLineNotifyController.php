@@ -25,10 +25,8 @@ class EditLineNotifyController extends CI_Controller {
     }
 
     public function editdata(){
-        
-          
           $this->Linenotify->edit_linenotify($this->input->post());
-          redirect('ViewLineNotifyController','refresh');
+           redirect('ViewLineNotifyController','refresh');
     }
 
 }
