@@ -108,7 +108,7 @@ class AdvanceSearchController extends CI_Controller {
 
             foreach($d->result_array() as $data)
             {?>
-                <?if($d['topic'] == "null")
+                <?if($data['topic'] == "null")
                 {
     
                 } 
