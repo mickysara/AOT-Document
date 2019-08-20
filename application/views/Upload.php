@@ -34,10 +34,10 @@
 
                     
                     <div class="form-group">
-                    <td>รูปภาพโลโก้ของไฟล์</td>
+                    <td>ไฟล์</td>
                     <div class="custom-file mb-3">
                       <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx">
-                      <label class="custom-file-label">กรุณาเลือกรูปภาพโลโก้</label>
+                      <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
                     </div>
                     
