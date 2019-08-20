@@ -34,17 +34,19 @@
                 </div>
                 <br>
                 
+                
                 <div class="form-group">
                     <div>สถานะของปัญหา</div>
-                    <select name="status" id="status">
+                    <select  name="status" id="status">
                       <option value="<?php echo $data['status']?>"><?php echo $data['status']?></option>
-                      <option value="ยังไมไ่ด้รับการแก้ไข">ยังไม่ได้รับการแก้ไข</option>
+                      <option value="ยังไม่ได้รับการแก้ไข">ยังไม่ได้รับการแก้ไข</option>
                       <option value="แก้ไขแล้ว">แก้ไขแล้ว</option>
+                      
                     </select>
                     </div>
 
                     <input type="hidden" name="id_linenoti" value= <?php echo $data['id_linenoti'];?>>
-                    <button  onclick="javascript:sweetalertclick()"  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยันการแก้ไข</button>
+                    <button  onclick="javascript:checkstatus()"  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">แก้ไขสถานะ</button>
                     <a href="<?php echo site_url("/ViewLineNotifyController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
             </form>
             </div>
@@ -56,11 +58,19 @@
                     swal({
                           title: "แก้ไขสถานะเรียบร้อย",
                           text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
-                          icon: "success", 
-                        }); 
-                 
+                          icon: "success"
+                        }
+                      ); 
                   }
                   </script> 
- 
+
+
+              <script type="text/javascript">
+                var status = $("#status").val();
+                  function checkstatus(){
+                    alert("ยืนยันการแก้ไขสถานะ");
+
+                  }
+                  </script> 
 </div>
 </div>

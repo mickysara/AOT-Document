@@ -125,7 +125,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   <div class="card">
       <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
       <div class="card-body">
-        <h2 class="card-title">ดูข้อมูลการแจ้งเตือน</h2>
+        <h2 class="card-title">ดูข้อมูลการแจ้งปัญหา</h2>
         <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
         <p class="card-text">ตรวจสอบการมีอยู่ของข้อมูลการแจ้งเตือนทั้งหมดที่มีอยู่ในฐานข้อมูล และสามารถแก้ไขข้อมูลนั้นได้</p>
         <a href="<?php echo site_url('ViewLineNotifyController');?>" class="card-link text-primary">Go to Link</a>
