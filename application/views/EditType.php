@@ -18,7 +18,7 @@
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('EditTypeController/editdata');?>" enctype='multipart/form-data'>
-                <h1 class="display-2" style="color:#2d3436;">อัพโหลดประเภทไฟล์</h1>
+                <h1 class="display-2" style="color:#2d3436;">แก้ไขประเภทไฟล์</h1>
                 <hr>
 
                 <div class="row">

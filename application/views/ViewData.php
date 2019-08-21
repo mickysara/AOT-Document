@@ -2,6 +2,8 @@
             border-radius: .25rem;
             background-color: #f7f8f9;">
 
+
+
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
         <form name="login" id="login_form" method="post">
                 <h1 class="display-2" style="color:#2d3436;">ระบบจัดการเอกสาร</h1>
@@ -63,7 +65,7 @@
 
                     <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['url'];?>">Default</button>                           
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['url'];?>">View</button>                           
                             <div class="modal fade" id="<?php echo $data['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['url'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
