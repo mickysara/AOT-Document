@@ -49,15 +49,18 @@
     
 </style>
 </head>
-<body style="background-color: #f1f1fb;">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center; position: sticky; position: sticky; z-index: 1071; top: 0; height: 100px;">
           <div class="container">
-          <a class="navbar-brand" href="<?php echo site_url("/IndexController");?>" style="font-size: 20px;">AOT-Document</a>
+          <a class="navbar-brand" href="<?php echo site_url("/IndexController");?>" style="font-size: 20px; margin-left: -180px;">AOT-Document</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+             <a id="close-sidebar" class="btn btn-sm btn-dark" href="#">
+                <i class="fas fa-bars"></i>
+             </a>
             <div class="collapse navbar-collapse" id="navbar-primary">
               <div class="navbar-collapse-header">
                 <div class="row">
@@ -125,3 +128,40 @@
           </div>
           </div>
         </nav>
+        <script>
+    jQuery(function ($) {
+
+          $(".sidebar-dropdown > a").click(function() {
+          $(".sidebar-submenu").slideUp(200);
+          if (
+          $(this)
+            .parent()
+            .hasClass("active")
+          ) {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this)
+            .parent()
+            .removeClass("active");
+          } else {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this)
+            .next(".sidebar-submenu")
+            .slideDown(200);
+          $(this)
+            .parent()
+            .addClass("active");
+          }
+          });
+
+          $("#close-sidebar").click(function() {
+          $(".page-wrapper").removeClass("toggled");
+          });
+          $("#show-sidebar").click(function() {
+          $(".page-wrapper").addClass("toggled");
+          });
+
+
+
+
+          });
+  </script>

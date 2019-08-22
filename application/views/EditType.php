@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
   <body>
   <?php          
@@ -15,7 +18,7 @@
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('EditTypeController/editdata');?>" enctype='multipart/form-data'>
-                <h1 class="display-2" style="color:#2d3436;">อัพโหลดประเภทไฟล์</h1>
+                <h1 class="display-2" style="color:#2d3436;">แก้ไขประเภทไฟล์</h1>
                 <hr>
 
                 <div class="row">
@@ -25,12 +28,14 @@
                       <input type="Text" class="form-control form-control-alternative" name="nametype" value="<?php echo $data['typename']?>" required id="nametype">
                     </div>
                   </div>
-
+                    <div class="col-md-12">
                     <div class="form-group">
-                    <tr>
                     <td>รูปภาพโลโก้ของไฟล์</td>
-                    <td><input type="file"  name="userfile[]asd" required id="image_file" accept=".png,.jpg,.jpeg"></td>
-                    </tr>
+                    <div class="custom-file mb-3">
+                      <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg">
+                      <label class="custom-file-label">กรุณาเลือกรูปภาพโลโก้</label>
+                    </div>
+                    </div>
                     </div>
 
                     <input type="hidden" name="id_type" value= <?php echo $data['id_type'];?>>
@@ -72,7 +77,13 @@
                                 };
                                };
                                 </script> 
-           
+                        <script>
+                        // Add the following code if you want the name of the file appear on select
+                        $(".custom-file-input").on("change", function() {
+                          var fileName = $(this).val().split("\\").pop();
+                          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                        });
+                        </script>
       </body>
             </div>
 </div>

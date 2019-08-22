@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+ 
   </head>
   <body>
     
@@ -22,12 +23,14 @@
                       <input type="Text" class="form-control form-control-alternative" name="nametype" value="" required id="nametype">
                     </div>
                   </div>
-
+                  <div class="col-md-12">
                     <div class="form-group">
-                    <tr>
                     <td>รูปภาพโลโก้ของไฟล์</td>
-                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg"></td>
-                    </tr>
+                    <div class="custom-file mb-3">
+                      <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg">
+                      <label class="custom-file-label">กรุณาเลือกรูปภาพโลโก้</label>
+                    </div>
+                    </div>
                     </div>
 
             
@@ -73,7 +76,13 @@
                                 };
                                };
                                 </script> 
-           
+                        <script>
+                        // Add the following code if you want the name of the file appear on select
+                        $(".custom-file-input").on("change", function() {
+                          var fileName = $(this).val().split("\\").pop();
+                          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                        });
+                        </script>
       </body>
             </div>
 </div>
