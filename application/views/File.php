@@ -159,7 +159,7 @@
             #show-sidebar {
               position: fixed;
               left: 0;
-              top: 10px;
+              top: 100px;
               border-radius: 0 4px 4px 0px;
               width: 35px;
               transition-delay: 0.3s;
@@ -554,16 +554,13 @@
 <body>
 
 <div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-    <i class="fas fa-bars"></i>
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 15px;">
+    <i class="fas fa-bars" ></i>
   </a>
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand">
-        <a href="<?php echo site_url('IndexController');?>">Homepage</a>
-        <div id="close-sidebar">
-          <i class="fas fa-times"></i>
-        </div>
+        <a align = "center" style="margin-left: -80px;" href="<?php echo site_url('IndexController');?>"><i class="fa fa-home" aria-hidden="true"></i>   Homepage</a>
       </div>
       <div class="sidebar-header">
         
@@ -646,16 +643,11 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-    <div class="sidebar-footer" id="close-sidebar">
-      <a href="#">
-        <i class="fa fa-power-off"></i>
-      </a>
+
+    <div class="sidebar-footer" >
+      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa");?></font></p>
     </div>
   </nav>
-
-
-
-  
   <!-- sidebar-wrapper  -->
   <main class="page-content">
     <div class="container-fluid">
@@ -665,6 +657,8 @@
             </div>
         </div>
     </div>
+
+    
 <div class="container">
   <div class="card-group">
   <div class="card">
@@ -817,17 +811,14 @@
             .addClass("active");
           }
           });
-
           $("#close-sidebar").click(function() {
           $(".page-wrapper").removeClass("toggled");
           });
           $("#show-sidebar").click(function() {
           $(".page-wrapper").addClass("toggled");
           });
-
-
-
-
+          
+        
           });
   </script>
 </body>
