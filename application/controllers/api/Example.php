@@ -39,5 +39,29 @@ class Example extends \Restserver\Libraries\REST_Controller {
         
     }
 
+    public function index_post()
+    {
+        $query = $this->db->get('upload');
+        $data = $query->result();
+        $this->response($data);
+        
+    }
+    public function update_put()
+	{
+		$ID = $this->put('ID');
+        $data = array( 
+			'id_emp' => '354268',
+        ); 	
+
+        $this->db->where('ID', $ID);
+        
+        $this->db->update('repository_member', $data);
+
+        			$this->response(array(
+				'message' => 'success', 
+				'status' => 'true'));
+        
+	}
+
 
 }

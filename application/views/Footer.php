@@ -60,8 +60,44 @@
           );
         event.preventDefault();
     });
-    
 </script>
+<script>    
+$(document).on('submit', '#chatroom_form', function () {
+          
+          $.post("<?=base_url('index.php/ChatroomController/joinroom')?>", $("#chatroom_form").serialize(),
+              function (data) {
+                  console.log(data)
+                  d = JSON.parse(data);
+
+                  if(d.status == 1)
+                  {
+                      swal({
+                          icon: "success",
+                          text: "เข้าสู่ห้องแชทสำเร็จ กรุณารอสักครุ่ระบบจะนำท่านไปยังห้องแชท " + d.data ,
+                          
+                          
+                          
+                      })
+                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/IndexController';",5000);
+                      //document.getElementById("demo").innerHTML = d[0].msg;
+                      //alert("asd")
+                  }
+                  else
+                  {
+                      
+                      swal({
+                          icon: "error",
+                          text: "ไม่พบห้องแชท กรุณากรอกรหัสห้องแชทใหม่",
+                          
+                      });
+                  }
+
+              }
+          );
+
+        event.preventDefault();
+    });
+    </script>
  <script>
          $(document).on('submit', '#login_form', function () {
           
@@ -137,12 +173,52 @@
     
  </script>
 <script>
+    $(document).on('submit', '#createchat', function () {
+          
+          $.post("<?=base_url('CreatechatroomController/createchatroom')?>", $("#createchat").serialize(),
+              function (data) {
+                  
+                  d = JSON.parse(data)
+                  var test = JSON.parse(data)
+                  if(d.status == 1)
+                  {
+                      swal({
+                            icon: "success",
+                            text: d.id,
+                      });
+                    var x = location.href = "http://localhost/AOT-Document/AdminChatroomController/showchat/" + d.id;
+                     setTimeout(x,1000);
+                      //document.getElementById("demo").innerHTML = d[0].msg;
+                      //alert("asd")
+                  }
+                  else
+                  {
+                      
+                      swal({
+                            icon: "error",
+                             text: d.msg,
+                          
+                      });
+                      //base_url('index.php/RegisterController/insert_user');
+                      //setTimeout("location.href = 'http://localhost/SystemOfUniver/index.php/RegisterController/insert_user';",5000);
+                  }
+
+              }
+          );
+
+        event.preventDefault();
+    });
+</script>
+<script>
 $(document).ready( function () {
     $('#Filetable').DataTable();
 } );
 $(document).ready( function () {
     $('#member').DataTable();
 } );
+$(document).ready( function(){
+    $('#imgqr').EZView();
+});
 </script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>jQueryold = jQuery.noConflict( true );</script>
@@ -202,7 +278,6 @@ function increaseNotify(){ // โหลดตัวเลขทั้งหม�
 }
 
 </script>
-
 <script>
 
 var myEl = document.getElementById('Hi');
@@ -235,6 +310,35 @@ var myEl = document.getElementById('Hi');
     });
 </script>
 
+<script>
+$(document).ready(function(e) {
+	IncreaseChatByAsc();
+    IncreaseChatRecent();
+    setInterval(IncreaseChatByAsc, 1000);
+    setInterval(IncreaseChatRecent, 1000);
+});
+function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
+    var val = document.getElementById('idchat').value
+          $.get("<?=base_url('AdminChatroomController/IncreaseChatByAsc/')?>"+val,
+            function (data)
+            {
+                $("#Message_Chatroom").html(data)
+            }
+          );
+}
+function IncreaseChatRecent(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
+    var val = document.getElementById('idchat').value
+          $.get("<?=base_url('AdminChatroomController/IncreaseChatRecent/')?>"+val,
+            function (data)
+            {
+                $("#recent_message").html(data)
+            }
+          );
+}
+</script>
+
+
+
 
 <!-- Syntax Highlighter -->
 <script src="<?php echo base_url('/assets/js/shCore.js'); ?>"></script>
@@ -249,6 +353,8 @@ var myEl = document.getElementById('Hi');
 <script src="<?php echo base_url('/assets/js/demo.js'); ?>"></script>
 
 
+<script src="<?php echo base_url('/assets/js/EZView.js'); ?>"></script>
+<script src="<?php echo base_url('/assets/js/draggable.js'); ?>"></script>
 </body>
 
 </html>
