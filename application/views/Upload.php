@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                     <div>ถึงวันที่</div>
-                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" type="text" value="<?php echo"".date("d/m/Y") ?>"  required>
+                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" autocomplete="off" type="text" value="">
                     </div>
 
                     <div class="form-group">

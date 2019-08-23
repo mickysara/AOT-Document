@@ -11,7 +11,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
           <?php $repostrnono = base_url(uri_string());
              $arraystate2 = (explode("/",$repostrnono));
-             $idRepo = ($arraystate2[5]);?>
+             $idRepo = ($arraystate2[6]);?>
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('UploadFileRepoController/file_upload/').$idRepo;?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
@@ -32,11 +32,10 @@
                     </div>
 
                     <div class="form-group">
-                    <tr>
                     <td>ไฟล์</td>
-                    <td><input type="file"  name="userfile[]" required id="image_file" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx"></td>
-                    </tr>
+                      <input type="file" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx">
                     </div>
+                 
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>

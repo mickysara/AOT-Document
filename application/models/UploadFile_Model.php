@@ -26,9 +26,15 @@ class UploadFile_model extends CI_Model
         $dateendshow = date("Y/m/d",$d);
         $randomqrcode = random_string('alpha', 20);
         $status = 'ใช้งาน';
-        $dateget = $inputdata['date_end'];
         $newDate = date("Y-m-d", strtotime($dateget));
         $insert_id = $this->db->insert_id();
+
+         if($inputdata['date_end'] ==""){
+          $dateget = "ไม่จำกัดเวลาหมดอายุ";
+         }else{
+          $dateget = $inputdata['date_end'];
+         }
+          $showdateget = $dateget;
 
             if($filename!='' ){
             $filename1 = explode(',',$filename);
@@ -56,7 +62,7 @@ class UploadFile_model extends CI_Model
           'url'=> $addbaseurl,
           'file' => $file,
           'date'=> $dateshow,
-          'dateend'=> $newDate,
+          'dateend'=> $showdateget,
           'type'=> $showtypeall,
           'qr_codename'=> $randomqrcode,
           'privacy' => $inputdata['privacy'],
@@ -86,15 +92,15 @@ class UploadFile_model extends CI_Model
     return $query->result_array();
 }
 
-public function searchFile($file_name)
-{
-  $this->db->like('file', $file_name);
-  $data = $this->db->get('upload');
+  public function searchFile($file_name)
+  {
+    $this->db->like('file', $file_name);
+    $data = $this->db->get('upload');
 
-  return $data->result_array();
-  
-  
-}
+    return $data->result_array();
+    
+    
+  }
 public function delete_data($id){
   $this->db->query("DELETE FROM upload WHERE id_upload = $id");
   
@@ -159,4 +165,6 @@ public function delete_data($id){
      $this->db->insert('repository', $data); 
   }
   
-}
+  }
+
+  

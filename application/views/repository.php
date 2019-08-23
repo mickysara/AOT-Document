@@ -63,6 +63,7 @@
                     <th scope="col"><h4>ชื่อไฟล์</h4></th>
                     <th style="text-align:center;" scope="col"><h4>สร้างโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
                     <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
                         
@@ -97,7 +98,13 @@
                         <i class="bg-success"></i> <?php echo  $r['date'];?>
                       </span>
                     </td>   
-
+                    <td class="">
+                        <div>
+                        <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['id_upload'];?>"  class="btn btn mb-3" style="background-color: #0066ff; color: #fff;">Edit</a>              
+                                
+                        </div>
+                       
+                    </td>
                     <td class="">
                         <div>
                         <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              

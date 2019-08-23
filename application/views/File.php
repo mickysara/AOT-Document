@@ -13,8 +13,7 @@
       margin: 20px auto;
       width: 350px;
       height: 550px;
-      border-radius: 40px;
-    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
       cursor: pointer;
       transition: 0.4s;
     }
@@ -55,6 +54,9 @@
     .title-black {
       color: black;
     }
+
+
+
 
 
     @media all and (max-width: 500px) {
@@ -562,14 +564,9 @@
       <div class="sidebar-brand">
         <a align = "center" style="margin-left: -80px;" href="<?php echo site_url('IndexController');?>"><i class="fa fa-home" aria-hidden="true"></i>   Homepage</a>
       </div>
-      <div class="sidebar-header">
-        
-        <div class="user-info">
-          
-          <span class="user-status">
-          </span>
-        </div>
-      </div>
+      <br>
+      <br>
+      <br>
       <!-- sidebar-search  -->
       <div class="sidebar-menu">
         <ul>
@@ -578,26 +575,26 @@
           </li>
           <li class="sidebar">
             <a href="<?php echo site_url('UploadController');?>">
-              <i class="fa fa-tachometer-alt"></i>
+              <i class="fa fa-upload"></i>
               <span>อัปโหลดเอกสาร</span>
             </a>
           </li>
           <li class="sidebar">
             <a href="<?php echo site_url('TypeController');?>">
-              <i class="fa fa-shopping-cart"></i>
+              <i class="fa fa-file"></i>
               <span>อัปโหลดประเภทเอกสาร</span>
            </a>
           </li>
           <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
-              <i class="far fa-gem"></i>
+              <i class="fa fa-address-card"></i>
               <span>อัปโหลดเอกสารตามสิทธิ์</span>
             </a>
           
           </li>
           <li class="sidebar">
             <a href="#">
-              <i class="fa fa-chart-line"></i>
+              <i class="fa fa-bar-chart"></i>
               <span>แผนภูมิแสดงสถิติ</span>
             </a>       
           </li>
@@ -633,8 +630,14 @@
             </a>
           </li>
           <li>
+            <a href="<?php echo site_url('repositoryController/showdata/1');?>">
+              <i class="fa fa-file"></i>
+              <span>Repository</span>
+            </a>
+          </li>
+          <li>
             <a href="<?php echo site_url('ViewLineNotifyController');?>">
-              <i class="fa fa-folder"></i>
+              <i class="fa fa-bullhorn"></i>
               <span>ดูข้อมูลการแจ้งปัญหา</span>
             </a>
           </li>
@@ -654,11 +657,34 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+
             </div>
         </div>
     </div>
 
-    
+    <div class="container">
+  <div class="card-group">
+  <div class="card" style ="height: 250px; width: 10px; margin-left: -150px; margin-top: -40px;">
+    <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card" style ="height: 350px; margin-left: -620px; margin-top: 215px;">
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card" style ="height: 605px; margin-left: 25px; margin-top: -40px;">
+   
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                          <!-- -----------------Test------------------------------------------------ -->
 <div class="container">
   <div class="card-group">
   <div class="card">
