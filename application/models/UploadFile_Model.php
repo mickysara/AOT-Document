@@ -84,6 +84,13 @@ class UploadFile_model extends CI_Model
                                limit 6");
       return $query->result_array();
   }
+  public function view_dataBackend(){
+    $query=$this->db->query("SELECT *
+                             FROM upload  
+                             ORDER BY upload.id_upload DESC
+                              ");
+    return $query->result_array();
+}
   
   public function edit_data($id){
     $query=$this->db->query("SELECT upid.*

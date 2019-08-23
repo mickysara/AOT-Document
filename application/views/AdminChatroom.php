@@ -37,9 +37,12 @@
                 <input type="hidden" id="idchat" name="idchat" value="<?php echo $chat_data['code_chatroom'] ?>">
                 <p class="idchat" style="text-align: center;">Qr Code</p>
                 <img id="imgqr" style="width:250px; height:250px; margin-left: auto; margin-right: auto;   display: block;"  src="<?php echo base_url('/assets/img/qrcode/AotfMerqhTYjsalKyCcH.png');?>"/>
-                
                 <div style="text-align:center;">
-                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;"> คำถามที่ตอบแล้ว </button>
+                    <button class="btn btn-success btn-lg mt-5" onclick="openFullscreen();"> Open Fullscreen</button>
+                    <br>
+                    <button class="btn btn-success btn-lg mt-3" onclick="closeFullscreen();">Close Fullscreen</button>
+                    <br>
+                    <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;"> คำถามที่ตอบแล้ว </button>
                 </div>
                 
             </div>
@@ -54,8 +57,7 @@
         </div>
     </div>
 </div>
-<button onclick="openFullscreen();">Open Fullscreen</button>
-<button onclick="closeFullscreen();">Close Fullscreen</button>
+
 
 <script>
 var elem = document.documentElement;

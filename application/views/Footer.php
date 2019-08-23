@@ -216,6 +216,9 @@ $(document).ready( function () {
 $(document).ready( function () {
     $('#member').DataTable();
 } );
+$(document).ready( function () {
+    $('#Filesearch').DataTable();
+} );
 $(document).ready( function(){
     $('#imgqr').EZView();
 });
@@ -301,7 +304,7 @@ var myEl = document.getElementById('Hi');
               function (data) {
                   
                  $("#Showsearch").html(data);
-
+                 $('#Filesearch').DataTable();
 
               }
           );
@@ -316,6 +319,7 @@ $(document).ready(function(e) {
     IncreaseChatRecent();
     setInterval(IncreaseChatByAsc, 1000);
     setInterval(IncreaseChatRecent, 1000);
+    setInterval(hi, 1000);
 });
 function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
     var val = document.getElementById('idchat').value
