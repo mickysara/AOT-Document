@@ -675,7 +675,6 @@
       </div>
     </div>
     <div class="card" style ="height: 605px; margin-left: 25px; margin-top: -40px;">
-   
       <div class="card-footer">
         <!-- <small class="text-muted">Last updated yesterday</small> -->
       </div>
