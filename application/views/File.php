@@ -759,10 +759,9 @@
               </div>
             </div>
             <?php } endif; ?> 
-            <!-- Pie Chart -->
+            <!-- type file -->
             <div class="col-xl-4 col-lg-5"style= "margin-left: -260px;">
               <div class="card shadow mb-4"style= "width: 605px;">
-                <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h2 class="m-0 font-weight-bold text-primary">จำนวนไฟล์แต่ละประเภท</h2>
                   <div class="dropdown no-arrow">
@@ -800,6 +799,10 @@
                 $wordcal = $wordshow * 100;
                 $wordcal2 = $wordcal / $d->num_rows();
                 $wordcal3 = $wordcal2.'%';
+
+                //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
+                $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
+                $calanotherfile = $d->num_rows() - $anotherfile;
                 ?>
                 
 
@@ -808,25 +811,25 @@
           <!-- Project Card Example -->
           <div class="card shadow mb-4" style= "width: 605px; height: 487px; margin-left: -67px;">
             <div class="card-body">
-              <h4 class="small font-weight-bold">PDF File <span class="float-right"><?php echo $pdfcal2?></span></h4>
+              <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span></h4>
               <div class="progress mb-4" style="height: 10px">
                 <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Microsolfpowerpoint <span class="float-right"><?php echo $pointcal2?></span></h4>
+              <h4 class="small font-weight-bold">Microsolfpowerpoint <?php echo $pointshow?> <span class="float-right"><?php echo number_format($pointcal2,1).'%'?></span></h4>
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $pointcal3?>" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Microsolfexcel <span class="float-right"><?php echo $excelcal2?></span></h4>
+              <h4 class="small font-weight-bold">Microsolfexcel <?php echo $excelshow?><span class="float-right"><?php echo number_format($excelcal2,1).'%'?></span></h4>
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $excelcal3?>" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Microsolfword <span class="float-right"><?php echo $wordcal2?></span></h4>
+              <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span></h4>
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Another <span class="float-right">10</span></h4>
+              <h4 class="small font-weight-bold">Another <?php echo $calanotherfile?><span class="float-right">0.0%</span></h4>
               <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
 
               <div class="" style= "margin-left: 20px;">
@@ -841,8 +844,24 @@
           </div>
                       </div>
                     </div>
-        
-
+        <!--------------------------------------------------- ส่วนที่ 3 ----------------------------------------------------------->
+        <div class="row">
+            <div class="col-xl-8 col-lg-7"style= "margin-top: -20px; margin-left: -505px;">
+              <div class="card shadow mb-4" style= "height: 400px; width: 1110px;">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h2 class="m-0 font-weight-bold text-primary">ขนาดไฟล์โดยเฉลี่ย</h2>
+                  <div class="dropdown no-arrow">
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
