@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+     <!DOCTYPE html>
 <html lang="en">
 <style>
     .cards-list {
@@ -551,12 +552,13 @@
 
 </style>
 <head>
+  
 </head>
 
 <body>
 
 <div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 15px;">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 14px;">
     <i class="fas fa-bars" ></i>
   </a>
   <nav id="sidebar" class="sidebar-wrapper">
@@ -651,150 +653,162 @@
       <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa");?></font></p>
     </div>
   </nav>
-  <!-- sidebar-wrapper  -->
-  <main class="page-content">
-    <div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+ 
 
+     <!-- --------------------------------------------ส่วนที่1------------------------------------------------------------------------- -->
+  
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4"style= "margin-left: 300px;">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                      <div class="h15 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
 
-    <div class="container">
-  <div class="card-group">
-  <div class="card" style ="height: 250px; width: 10px; margin-left: -150px; margin-top: -40px;">
-    <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-    <div class="card" style ="height: 350px; margin-left: -620px; margin-top: 215px;">
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-    <div class="card" style ="height: 605px; margin-left: 25px; margin-top: -40px;">
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                      <div class="h15 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                      <div class="h15 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-8 col-lg-7"style= "margin-left: 50px;">
+              <div class="card shadow mb-4" style= "width: 480px;">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5"style= "margin-left: -210px;">
+              <div class="card shadow mb-4"style= "width: 555px;">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> Direct
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> Social
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> Referral
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
-                          <!-- -----------------Test------------------------------------------------ -->
-<div class="container">
-  <div class="card-group">
-  <div class="card">
-      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
-      <div class="card-body">
-        <h2 class="card-title">อัปโหลดเอกสาร</h2>
-        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Public</h5>
-        <p class="card-text">คุณสามารถอัปโหลดเอกสารได้ทีละ 1 ไฟล์ ประเภทไฟล์มีดังนี้ PDG DOCX PPTX XLSX</p>
-        <a href="<?php echo site_url('UploadController');?>" class="card-link text-primary">Go to Link</a>
-      </div>
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
-      <div class="card-body">
-        <h2 class="card-title">ดูข้อมูลเอกสาร</h2>
-        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
-        <p class="card-text">ตรวจสอบการมีอยู่ของไฟล์ทั้งหมดในฐานข้อมูล และสามารถดูข้อมูลข้างในได้ และสามารถแก้ไขข้อมูลที่ดูได้</p>
-        <a href="<?php echo site_url('ViewController');?>" class="card-link text-primary">Go to Link</a>
-      </div>
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
-      <div class="card-body">
-        <h2 class="card-title">เพิ่มข้อมูลสิทธ์การเข้าถึง</h2>
-        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
-        <p class="card-text">เพิ่ม Repository</p>
-        <a href="<?php echo site_url('RepoController');?>" class="card-link text-primary">Go to Link</a>
-      </div>
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-  </div>
-</div>
-     <!--------------------------------------------------- picture set 1----------------------------------------------------------->
-    <div class="container">
-  <div class="card-group">
-  <div class="card">
-      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
-      <div class="card-body">
-        <h2 class="card-title">ดูข้อมูลการแจ้งปัญหา</h2>
-        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
-        <p class="card-text">ตรวจสอบการมีอยู่ของข้อมูลการแจ้งเตือนทั้งหมดที่มีอยู่ในฐานข้อมูล และสามารถแก้ไขข้อมูลนั้นได้</p>
-        <a href="<?php echo site_url('ViewLineNotifyController');?>" class="card-link text-primary">Go to Link</a>
-      </div>
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
-      <div class="card-body">
-        <h2 class="card-title">เพิ่มประเภทของเอกสาร</h2>
-        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
-        <p class="card-text">เพิ่มประเภทเอกสาร พร้อมรูป Logo </p>
-        <a href="<?php echo site_url('TypeController');?>" class="card-link text-primary">Go to Link</a>
-      </div>
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
-      <div class="card-body">
-        <h2 class="card-title">ดูข้อมูลประเภทเอกสาร</h2>
-        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
-        <p class="card-text">ตรวจสอบการมีอยู่ของประเภทเอกสารที่มีอยู่ในระบบ และสามารถแก้ไขข้อมูลได้</p>
-        <a href="<?php echo site_url('TypeViewController');?>" class="card-link text-primary">Go to Link</a>
-      </div>
-      <div class="card-footer">
-        <!-- <small class="text-muted">Last updated yesterday</small> -->
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-<br>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
 <!--------------------------------------------------- picture set 2----------------------------------------------------------->
-
-
-<div class="container" style="margin-top: 60px;">
-
-<div class="ct-example tab-content tab-example-result" style=" margin-left: auto; margin-right: auto; margin-top: 62px; padding: 1.25rem;
-                border-radius: .25rem;
-                background-color: #f7f8f9;">
-                <div class="row mb55" style="padding: 50px; ">
-                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
-                     
-                    </div>
-                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
-                      
-                    </div>
-                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
-                      
-                    </div>
-                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
-                     
-                    </div>
-                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center; margin-top: 60px; margin-bottom: 50px;">
-                       
-
-            </div>
-            </div>
-            </div>
-    </div>
 
   </main>
   <!-- page-content" -->
@@ -846,6 +860,140 @@
         
           });
   </script>
+  <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+</body>
+
+</html>
+
+<!--------------------------------------------------- picture set 2----------------------------------------------------------->
+
+  </main>
+  <!-- page-content" -->
+</div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+ 
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#show-sidebar").toggleClass("toggled");
+    });
+  </script>
+
+  <script>
+    jQuery(function ($) {
+
+          $(".sidebar-dropdown > a").click(function() {
+          $(".sidebar-submenu").slideUp(200);
+          if (
+          $(this)
+            .parent()
+            .hasClass("active")
+          ) {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this)
+            .parent()
+            .removeClass("active");
+          } else {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this)
+            .next(".sidebar-submenu")
+            .slideDown(200);
+          $(this)
+            .parent()
+            .addClass("active");
+          }
+          });
+          $("#close-sidebar").click(function() {
+          $(".page-wrapper").removeClass("toggled");
+          });
+          $("#show-sidebar").click(function() {
+          $(".page-wrapper").addClass("toggled");
+          });
+          
+        
+          });
+  </script>
+  <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
 </body>
 
 </html>
