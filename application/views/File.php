@@ -570,7 +570,7 @@
       <br>
       <br>
       <!-- sidebar-search  -->
-      <div class="sidebar-menu">
+      <div class="sidebar-menu" style= "margin-left: 10px;">
         <ul>
           <li class="header-menu">
             <span style="font-size: 20px;">ระบบคลังเอกสาร</span>
@@ -664,7 +664,9 @@
 
           <!-- Content Row -->
           <div class="row">
-
+          <?php
+          $d = $this->db->get('upload');
+          ?>
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4"style= "margin-left: 300px;">
               <div class="card border-left-primary shadow h-100 py-2">
@@ -672,7 +674,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">14</div>
+                      <div class="h15 mb-0 font-weight-bold text-gray-800"><?=$d->num_rows(); ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -681,6 +683,14 @@
                 </div>
               </div>
             </div>
+
+
+           <!-- <?php
+           $this->db->where('type', 'Microsoftword');
+           $data = $this->db->get('upload');?>
+           <?=$data->num_rows();?> -->
+
+
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -722,74 +732,116 @@
           <!-- Content Row -->
 
           <div class="row">
-
+          <?php
+                    if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
+                    foreach ($view_data as $key => $data) { 
+                    ?>
             <!-- Area Chart -->
             <div class="col-xl-8 col-lg-7"style= "margin-left: 50px;">
               <div class="card shadow mb-4" style= "width: 480px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <h2 class="m-0 font-weight-bold text-primary">การแจ้งเตือนล่าสุด</h2>
                   <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
                   </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                <div class="text-center">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
+                    <p>โดย : <?php echo $data['name'];?></p>
+                    <p>อีเมล :  <?php echo $data['email'];?></p>
+                    <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
+                    <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
+                    <h3>สถานะ : <?php echo $data['status'];?></h3>
                   </div>
                 </div>
               </div>
             </div>
-
+            <?php } endif; ?> 
             <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5"style= "margin-left: -210px;">
-              <div class="card shadow mb-4"style= "width: 555px;">
+            <div class="col-xl-4 col-lg-5"style= "margin-left: -260px;">
+              <div class="card shadow mb-4"style= "width: 605px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h2 class="m-0 font-weight-bold text-primary">จำนวนไฟล์แต่ละประเภท</h2>
                   <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
                   </div>
                 </div>
                 <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
-                </div>
+            
+                <!-- calculate percent type -->
+                <?php
+                // pdf file
+                $this->db->where('type', 'PDF File');
+                $pdf = $this->db->get('upload');
+                $pdfshow = $pdf->num_rows();
+                $pdfcal = $pdfshow * 100;
+                $pdfcal2 = $pdfcal / $d->num_rows();
+                $pdfcal3 = $pdfcal2.'%';
+                // powerpoint
+                $this->db->where('type', 'Microsoftpowerpoint');
+                $point = $this->db->get('upload');
+                $pointshow = $point->num_rows();
+                $pointcal = $pointshow * 100;
+                $pointcal2 = $pointcal / $d->num_rows();
+                $pointcal3 = $pointcal2.'%';
+                // excel
+                $this->db->where('type', 'Microsoftexcel');
+                $excel = $this->db->get('upload');
+                $excelshow = $excel->num_rows();
+                $excelcal = $excelshow * 100;
+                $excelcal2 = $excelcal / $d->num_rows();
+                $excelcal3 = $excelcal2.'%';
+                // word
+                $this->db->where('type', 'Microsoftword');
+                $word = $this->db->get('upload');
+                $wordshow = $word->num_rows();
+                $wordcal = $wordshow * 100;
+                $wordcal2 = $wordcal / $d->num_rows();
+                $wordcal3 = $wordcal2.'%';
+                ?>
+                
+
+<!-- Content Column -->
+        <div class="col-lg-6 mb-4" style= "margin-top: -20px; margin-left: 50px;">
+          <!-- Project Card Example -->
+          <div class="card shadow mb-4" style= "width: 605px; height: 487px; margin-left: -67px;">
+            <div class="card-body">
+              <h4 class="small font-weight-bold">PDF File <span class="float-right"><?php echo $pdfcal2?></span></h4>
+              <div class="progress mb-4" style="height: 10px">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
+              <h4 class="small font-weight-bold">Microsolfpowerpoint <span class="float-right"><?php echo $pointcal2?></span></h4>
+              <div class="progress mb-4"style="height: 10px">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $pointcal3?>" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <h4 class="small font-weight-bold">Microsolfexcel <span class="float-right"><?php echo $excelcal2?></span></h4>
+              <div class="progress mb-4"style="height: 10px">
+                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $excelcal3?>" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <h4 class="small font-weight-bold">Microsolfword <span class="float-right"><?php echo $wordcal2?></span></h4>
+              <div class="progress mb-4"style="height: 10px">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <h4 class="small font-weight-bold">Another <span class="float-right">10</span></h4>
+              <div class="progress mb-4"style="height: 10px">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 10%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
+              <div class="" style= "margin-left: 20px;">
+              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt="">
+              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt="">
+              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt="">
+              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt="">
+              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/access.png')?>" alt="">
+              </div>
+
             </div>
           </div>
+                      </div>
+                    </div>
+        
 
 
   <!-- Bootstrap core JavaScript-->

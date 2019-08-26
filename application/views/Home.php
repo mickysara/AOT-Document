@@ -248,6 +248,7 @@
                                                           color: #2d3436;">ไฟล์เอกสารทั้งหมด</p>
                       </div> 
                     </div>
+     
                     <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center; margin-top: 60px; margin-bottom: 50px;">
                         <div class="counter-i">
                           <p data-value="3393" class="counter-i-val" style="    color: #283346;
@@ -255,7 +256,7 @@
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
                                                                                 position: relative;">
-                                                                                  0
+                                                                                 0
                                                                                  </p>
                           <hr>
                           <p class="counter-i-ttl" style="font-weight: 700;
