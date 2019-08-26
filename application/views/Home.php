@@ -73,7 +73,7 @@
                     <div class="iconbox-i-top">
                         <p class="iconbox-i-img withimg">
                         </p>
-                        <h1 style="font-size: 45px; text-align: center; color:#2d3436;">แสกน!</h1>
+                        <h1 style="font-size: 45px; text-align: center; color:#2d3436;">สแกน!</h1>
                       </div>
                       <p style="font-size: 18px; ">Qr Code ที่มีโลโก้บริษัทจะมีอยู่ประจำไฟล์ทุกไฟล์ต่อ Qr Code หนึ่งอัน ท่านสามารถแสกนได้ตามสิทธิ์ของท่านโดยจะมี 3 สิทธิ์ คือ Public Private และ Authen โดยผู้ที่มีสิทธิ์ไม่ตรงกันเมื่อแสกนก็จะไม่แสดงผล</p>
                   </div>

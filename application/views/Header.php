@@ -111,7 +111,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">File</a>
+                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">Dashboard</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo site_url('/LoginController/Logout');?>">ออกจากระบบ</a>
                         </div>

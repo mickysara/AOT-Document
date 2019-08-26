@@ -575,7 +575,7 @@
           <li class="header-menu">
             <span style="font-size: 20px;">ระบบคลังเอกสาร</span>
           </li>
-          <li class="sidebar">
+          <li class="sidebar" style= "margin-top: 20px;">
             <a href="<?php echo site_url('UploadController');?>">
               <i class="fa fa-upload"></i>
               <span>อัปโหลดเอกสาร</span>
@@ -590,11 +590,11 @@
           <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
-              <span>อัปโหลดเอกสารตามสิทธิ์</span>
+              <span>เพิ่ม Repository</span>
             </a>
           
           </li>
-          <li class="sidebar">
+          <!-- <li class="sidebar">
             <a href="#">
               <i class="fa fa-bar-chart"></i>
               <span>แผนภูมิแสดงสถิติ</span>
@@ -615,11 +615,11 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
           <li class="header-menu">
             <span style="font-size: 20px;">ตรวจสอบข้อมูล</span>
           </li>
-          <li>
+          <li style= "margin-top: 20px;">
             <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
               <span>ดูข้อมูลเอกสารทั้งหมด</span>
@@ -671,11 +671,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                      <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
+                      <div class="h15 mb-0 font-weight-bold text-gray-800">14</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-file fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -688,11 +688,11 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                      <div class="h15 mb-0 font-weight-bold text-success text-uppercase mb-1">จำนวนคนโหลดไฟล์ทั้งหมด</div>
+                      <div class="h15 mb-0 font-weight-bold text-gray-800">0</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <i class="fa fa-download fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -707,8 +707,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนคนเข้าถึงเอกสารทั้งหมด</div>
+                      <div class="h15 mb-0 font-weight-bold text-gray-800">0</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>

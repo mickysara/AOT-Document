@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <div>สถานะของปัญหา</div>
                     <select  name="status" id="status">
-                      <option value="<?php echo $data['status']?>"><?php echo $data['status']?></option>
+                      <option value="<?php echo $data['status']?>" disabled selected><?php echo $data['status']?></option>
                       <option value="ยังไม่ได้รับการแก้ไข">ยังไม่ได้รับการแก้ไข</option>
                       <option value="แก้ไขแล้ว">แก้ไขแล้ว</option>
                       
