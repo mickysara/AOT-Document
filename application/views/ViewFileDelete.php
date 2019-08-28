@@ -5,14 +5,14 @@
 
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-        <form name="login" id="login_form" method="post">
-                <h1 class="display-2" style="color:#2d3436;">ระบบจัดการเอกสาร</h1>
+        <form name="viewdelete" id="viewdelete_form" method="post">
+                <h1 class="display-2" style="color:#2d3436;">ไฟล์เอกสารที่ถูกลบทั้งหมด</h1>
                 <hr>
                 
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">ตารางเอกสารทั้งหมด</h3>
+              <h3 class="mb-0">ตารางทั้งไฟล์ที่ถูกลบทั้งหมด</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush" id="Filetable">

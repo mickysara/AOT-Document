@@ -100,14 +100,14 @@
                     </td>   
                     <td class="">
                         <div>
-                        <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['id_upload'];?>"  class="btn btn mb-3" style="background-color: #0066ff; color: #fff;">Edit</a>              
+                        <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['id_upload'];?>"  class="btn btn-success mb-3" >Edit</a>              
                                 
                         </div>
                        
                     </td>
                     <td class="">
                         <div>
-                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn-primary mb-3">View</a>              
                                 
                         </div>
                        

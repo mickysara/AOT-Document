@@ -5,7 +5,7 @@
 
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-        <form name="login" id="login_form" method="post">
+        <form name="view" id="view_form" method="post">
                 <h1 class="display-2" style="color:#2d3436;">ระบบจัดการเอกสาร</h1>
                 <hr>
                 

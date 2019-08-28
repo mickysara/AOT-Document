@@ -746,8 +746,8 @@
             <div class="col-xl-8 col-lg-7"style= "margin-left: 50px;">
               <div class="card shadow mb-4" style= "width: 480px;">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h2 class="m-0 font-weight-bold text-primary">การแจ้งเตือนล่าสุด</h2>
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
+                  <h2 class="m-0 font-weight-bold text-white">การแจ้งเตือนล่าสุด</h2>
                   <div class="dropdown no-arrow">
                   </div>
                 </div>
@@ -768,8 +768,8 @@
             <!-- type file -->
             <div class="col-xl-4 col-lg-5"style= "margin-left: -260px;">
               <div class="card shadow mb-4"style= "width: 605px;">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h2 class="m-0 font-weight-bold text-primary">จำนวนไฟล์แต่ละประเภท</h2>
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;" >
+                  <h2 class="m-0 font-weight-bold text-white">จำนวนไฟล์แต่ละประเภท</h2>
                   <div class="dropdown no-arrow">
                   </div>
                 </div>
@@ -855,8 +855,8 @@
             <div class="col-xl-8 col-lg-7"style= "margin-top: -20px; margin-left: -505px;">
               <div class="card shadow mb-4" style= "height: 400px; width: 1110px;">
                 <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h2 class="m-0 font-weight-bold text-primary">ขนาดไฟล์โดยเฉลี่ย</h2>
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
+                  <h2 class="m-0 font-weight-bold text-white">ขนาดไฟล์โดยเฉลี่ย</h2>
                   <div class="dropdown no-arrow">
                   </div>
                 </div>
