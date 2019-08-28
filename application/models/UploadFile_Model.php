@@ -86,6 +86,14 @@ class UploadFile_model extends CI_Model
                               ");
     return $query->result_array();
 }
+
+public function view_datadelete(){
+  $query=$this->db->query("SELECT *
+                           FROM deletefile  
+                           ORDER BY deletefile.id_delfile DESC
+                            ");
+  return $query->result_array();
+}
   
   public function edit_data($id){
     $query=$this->db->query("SELECT upid.*
@@ -106,7 +114,14 @@ class UploadFile_model extends CI_Model
 public function delete_data($id){
   $this->db->query("DELETE FROM upload WHERE id_upload = $id");
   
+  
 }
+public function deletedelfile_data($id){
+  $this->db->query("DELETE FROM deletefile WHERE id_delfile = $id");
+  
+  
+}
+
 
 
     public function editdataupload($inputdata,$filename){
@@ -166,7 +181,7 @@ public function delete_data($id){
   );
      $this->db->insert('repository', $data); 
   }
-  
-  }
 
+
+ }
   

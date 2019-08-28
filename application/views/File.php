@@ -632,6 +632,12 @@
             </a>
           </li>
           <li>
+          <a href="<?php echo site_url('ViewFileDeleteController');?>">
+              <i class="fa fa-undo"></i>
+              <span>ดูข้อมูลไฟล์ที่ถูกลบไปแล้ว</span>
+            </a>
+          </li>
+          <li>
             <a href="<?php echo site_url('repositoryController/showdata/1');?>">
               <i class="fa fa-file"></i>
               <span>Repository</span>

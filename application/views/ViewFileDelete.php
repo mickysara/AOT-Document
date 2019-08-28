@@ -33,10 +33,9 @@
                     if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
                     foreach ($view_data as $key => $data) { 
 
-                      $str = $data['file'];
+                      $str = $data['filedel'];
                       $arraystate = (explode(".",$str));
-                       //echo ($arraystate[1]);
-                        //$aa = "../assets/img/logofile/xlsx.png";
+
                         $typefile = $arraystate[1];
                         $localfile = base_url()."/assets/img/logofile/";
                         $dotpng = ".png";
@@ -47,52 +46,51 @@
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                        <img src="<?php echo base_url().'assets/img/logofile/'. $data['type']?>.png" alt="">
+                        <img src="<?php echo base_url().'assets/img/logofile/'. $data['typedel']?>.png" alt="">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $data['file'];?></span>
+                          <span class="mb-0 text-sm"><?php echo $data['filedel'];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                    <?php echo $data['name'];?>
+                    <?php echo $data['namedel'];?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i> <?php echo $data['date'];?>
+                        <i class="bg-success"></i> <?php echo $data['datedel'];?>
                       </span>
                     </td>   
 
                     <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['url'];?>">View</button>                           
-                            <div class="modal fade" id="<?php echo $data['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['url'];?>" aria-hidden="true">
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['urldel'];?>">View</button>                           
+                            <div class="modal fade" id="<?php echo $data['urldel'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['urldel'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['file'];?></h2>
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['filedel'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
                                     
-                                    <?php if($data['dateend']=='1970-01-01'){
+                                    <?php if($data['dateenddel']=='1970-01-01'){
                                       $publicdate = 'เอกสารไม่มีวันหมดอายุ';
                                       }else{
                                       $publicdate = $data['dateend'];
                                       }
                                       ?>
                                     <div class="modal-body" >
-                                        <p>รายละเอียด : <?php echo $data['detail'];?> </p>
-                                        <p>โดย : <?php echo $data['name'];?></p>
-                                        <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
+                                        <p>รายละเอียด : <?php echo $data['detaildel'];?> </p>
+                                        <p>โดย : <?php echo $data['namedel'];?></p>
+                                        <p>เมื่อวันที่ : <?php echo $data['datedel'];?></p>
                                         <p>หมดอายุ : <?php echo $publicdate?></p>
-                                        <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
-                                        <p>สถานะ :  <?php echo $data['status'];?></p>
+                                        <p>ระดับการเข้าถึง : <?php echo $data['privacydel'];?></p>
+                                        <p>สถานะ :  <?php echo $data['statusdel'];?></p>
                                     </div>
-                                    <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>
+                                    <div class="modal-footer">                        
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
@@ -101,7 +99,7 @@
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewFileDeleteController/del/<?php echo $data['id_delfile'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
                 </tbody>
