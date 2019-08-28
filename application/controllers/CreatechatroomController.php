@@ -27,8 +27,6 @@ class CreatechatroomController extends CI_Controller {
         $this->db->order_by('id', 'desc');
         $data = $this->db->get('chatroom',1);
         $r = $data->row_array();
-
-
         echo json_encode(['status' => 1, 'msg' => 'Success', 'id' => $r['id']]);
 
        

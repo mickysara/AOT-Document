@@ -9,6 +9,7 @@ class AdminChatroomController extends CI_Controller {
         //$this->load->helper('url');
         $this->load->model('Chatroom_Model'); 
     }  
+    
     public function showchat($id)
     {   
         $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
@@ -21,7 +22,7 @@ class AdminChatroomController extends CI_Controller {
     public function IncreaseChatByAsc($codechat)
     {
         $this->db->where('code_chatroom', $codechat);
-        $this->db->order_by('datetime', 'ASC');
+        $this->db->order_by('datetime', 'DESC');
         $query = $this->db->get('message');
 
         foreach($query->result_array() as $data)
