@@ -64,13 +64,13 @@ class UploadController extends CI_Controller {
             $this->load->view('DetailDoc', $this->data, FALSE);
                 }
 
-        public function deleteimage(){
-            $deleteid  = $this->input->post('image_id');
-            $this->db->delete('photos', array('id' => $deleteid)); //photo ชื่อตาราง
-            $verify = $this->db->affected_rows();
-            echo $verify;
+        // public function deleteimage(){
+        //     $deleteid  = $this->input->post('image_id');
+        //     $this->db->delete('photos', array('id' => $deleteid)); //photo ชื่อตาราง
+        //     $verify = $this->db->affected_rows();
+        //     echo $verify;
 
-        }
+        // }
 
 
       //  public function edit_file_upload(){
