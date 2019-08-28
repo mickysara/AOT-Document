@@ -18,7 +18,7 @@
                   <tr>
                     <th scope="col"><h4>หัวข้อแจ้งปัญหา</h4></th>
                     <th style="text-align:center;" scope="col"><h4>แจ้งโดย</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>สถานะ</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>เบอร์โทรศัพท์</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
                     <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
                         
@@ -50,7 +50,7 @@
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg"> <?php echo $data['status'];?></i>
+                        <i class="bg"> <?php echo $data['date'];?></i>
                       </span>
                     </td>   
 

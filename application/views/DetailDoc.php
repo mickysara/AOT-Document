@@ -36,18 +36,13 @@
         </div>
     </div>
 
-    <?php if($data['dateend']=='1970-01-01'){
-        $publicdate = 'เอกสารไม่มีวันหมดอายุ';
-        }else{
-        $publicdate = $data['dateend'];
-        }
-    ?>
+
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
         <h1>ชื่อไฟล์ : <?php echo $data['file'];?> </h1>  
         <p style="font-weight: 500;">ประเภท : <?php echo $data['type'];?></p>
         <p style="font-weight: 500;">เพิ่มโดย : <?php echo $data['name'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $data['date'];?></p>
-        <p style="font-weight: 500;">หมดอายุวันที่ : <?php echo $publicdate?></p>
+        <p style="font-weight: 500;">หมดอายุวันที่ : <?php echo $data['dateend'];?></p>
         <p style="font-weight: 500;">สถานะ : <?php echo $data['status'];?> </p>
 
          

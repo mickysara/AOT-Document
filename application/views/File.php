@@ -1,5 +1,4 @@
-
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <style>
     .cards-list {
@@ -552,13 +551,12 @@
 
 </style>
 <head>
-  
 </head>
 
 <body>
 
 <div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 14px;">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 15px;">
     <i class="fas fa-bars" ></i>
   </a>
   <nav id="sidebar" class="sidebar-wrapper">
@@ -570,12 +568,12 @@
       <br>
       <br>
       <!-- sidebar-search  -->
-      <div class="sidebar-menu" style= "margin-left: 10px;">
+      <div class="sidebar-menu">
         <ul>
           <li class="header-menu">
             <span style="font-size: 20px;">ระบบคลังเอกสาร</span>
           </li>
-          <li class="sidebar" style= "margin-top: 20px;">
+          <li class="sidebar">
             <a href="<?php echo site_url('UploadController');?>">
               <i class="fa fa-upload"></i>
               <span>อัปโหลดเอกสาร</span>
@@ -590,11 +588,11 @@
           <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
-              <span>เพิ่ม Repository</span>
+              <span>อัปโหลดเอกสารตามสิทธิ์</span>
             </a>
           
           </li>
-          <!-- <li class="sidebar">
+          <li class="sidebar">
             <a href="#">
               <i class="fa fa-bar-chart"></i>
               <span>แผนภูมิแสดงสถิติ</span>
@@ -615,11 +613,11 @@
                 </li>
               </ul>
             </div>
-          </li> -->
+          </li>
           <li class="header-menu">
             <span style="font-size: 20px;">ตรวจสอบข้อมูล</span>
           </li>
-          <li style= "margin-top: 20px;">
+          <li>
             <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
               <span>ดูข้อมูลเอกสารทั้งหมด</span>
@@ -653,233 +651,151 @@
       <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa");?></font></p>
     </div>
   </nav>
- 
-
-     <!-- --------------------------------------------ส่วนที่1------------------------------------------------------------------------- -->
-  
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Content Row -->
-          <div class="row">
-          <?php
-          $d = $this->db->get('upload');
-          ?>
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4"style= "margin-left: 300px;">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800"><?=$d->num_rows(); ?></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-file fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-           <!-- <?php
-           $this->db->where('type', 'Microsoftword');
-           $data = $this->db->get('upload');?>
-           <?=$data->num_rows();?> -->
-
-
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="h15 mb-0 font-weight-bold text-success text-uppercase mb-1">จำนวนคนโหลดไฟล์ทั้งหมด</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">0</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fa fa-download fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนคนเข้าถึงเอกสารทั้งหมด</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">0</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row -->
-
-          <div class="row">
-          <?php
-                    if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
-                    foreach ($view_data as $key => $data) { 
-                    ?>
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7"style= "margin-left: 50px;">
-              <div class="card shadow mb-4" style= "width: 480px;">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h2 class="m-0 font-weight-bold text-primary">การแจ้งเตือนล่าสุด</h2>
-                  <div class="dropdown no-arrow">
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                    <p>โดย : <?php echo $data['name'];?></p>
-                    <p>อีเมล :  <?php echo $data['email'];?></p>
-                    <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
-                    <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
-                    <h3>สถานะ : <?php echo $data['status'];?></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <?php } endif; ?> 
-            <!-- type file -->
-            <div class="col-xl-4 col-lg-5"style= "margin-left: -260px;">
-              <div class="card shadow mb-4"style= "width: 605px;">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h2 class="m-0 font-weight-bold text-primary">จำนวนไฟล์แต่ละประเภท</h2>
-                  <div class="dropdown no-arrow">
-                  </div>
-                </div>
-                <!-- Card Body -->
-            
-                <!-- calculate percent type -->
-                <?php
-                // pdf file
-                $this->db->where('type', 'PDF File');
-                $pdf = $this->db->get('upload');
-                $pdfshow = $pdf->num_rows();
-                $pdfcal = $pdfshow * 100;
-                $pdfcal2 = $pdfcal / $d->num_rows();
-                $pdfcal3 = $pdfcal2.'%';
-                // powerpoint
-                $this->db->where('type', 'Microsoftpowerpoint');
-                $point = $this->db->get('upload');
-                $pointshow = $point->num_rows();
-                $pointcal = $pointshow * 100;
-                $pointcal2 = $pointcal / $d->num_rows();
-                $pointcal3 = $pointcal2.'%';
-                // excel
-                $this->db->where('type', 'Microsoftexcel');
-                $excel = $this->db->get('upload');
-                $excelshow = $excel->num_rows();
-                $excelcal = $excelshow * 100;
-                $excelcal2 = $excelcal / $d->num_rows();
-                $excelcal3 = $excelcal2.'%';
-                // word
-                $this->db->where('type', 'Microsoftword');
-                $word = $this->db->get('upload');
-                $wordshow = $word->num_rows();
-                $wordcal = $wordshow * 100;
-                $wordcal2 = $wordcal / $d->num_rows();
-                $wordcal3 = $wordcal2.'%';
-
-                //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
-                $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
-                $calanotherfile = $d->num_rows() - $anotherfile;
-                ?>
-                
-
-<!-- Content Column -->
-        <div class="col-lg-6 mb-4" style= "margin-top: -20px; margin-left: 50px;">
-          <!-- Project Card Example -->
-          <div class="card shadow mb-4" style= "width: 605px; height: 487px; margin-left: -67px;">
-            <div class="card-body">
-              <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span></h4>
-              <div class="progress mb-4" style="height: 10px">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfpowerpoint <?php echo $pointshow?> <span class="float-right"><?php echo number_format($pointcal2,1).'%'?></span></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $pointcal3?>" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfexcel <?php echo $excelshow?><span class="float-right"><?php echo number_format($excelcal2,1).'%'?></span></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $excelcal3?>" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Another <?php echo $calanotherfile?><span class="float-right">0.0%</span></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-
-              <div class="" style= "margin-left: 20px;">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/access.png')?>" alt="">
-              </div>
-
-            </div>
-          </div>
-                      </div>
-                    </div>
-        <!--------------------------------------------------- ส่วนที่ 3 ----------------------------------------------------------->
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-xl-8 col-lg-7"style= "margin-top: -20px; margin-left: -505px;">
-              <div class="card shadow mb-4" style= "height: 400px; width: 1110px;">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h2 class="m-0 font-weight-bold text-primary">ขนาดไฟล์โดยเฉลี่ย</h2>
-                  <div class="dropdown no-arrow">
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-12">
+
             </div>
+        </div>
+    </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <div class="container">
+  <div class="card-group">
+  <div class="card" style ="height: 250px; width: 10px; margin-left: -150px; margin-top: -40px;">
+    <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card" style ="height: 350px; margin-left: -620px; margin-top: 215px;">
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card" style ="height: 605px; margin-left: 25px; margin-top: -40px;">
+   
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+  </div>
+</div>
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+                          <!-- -----------------Test------------------------------------------------ -->
+<div class="container">
+  <div class="card-group">
+  <div class="card">
+      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
+      <div class="card-body">
+        <h2 class="card-title">อัปโหลดเอกสาร</h2>
+        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Public</h5>
+        <p class="card-text">คุณสามารถอัปโหลดเอกสารได้ทีละ 1 ไฟล์ ประเภทไฟล์มีดังนี้ PDG DOCX PPTX XLSX</p>
+        <a href="<?php echo site_url('UploadController');?>" class="card-link text-primary">Go to Link</a>
+      </div>
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
+      <div class="card-body">
+        <h2 class="card-title">ดูข้อมูลเอกสาร</h2>
+        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
+        <p class="card-text">ตรวจสอบการมีอยู่ของไฟล์ทั้งหมดในฐานข้อมูล และสามารถดูข้อมูลข้างในได้ และสามารถแก้ไขข้อมูลที่ดูได้</p>
+        <a href="<?php echo site_url('ViewController');?>" class="card-link text-primary">Go to Link</a>
+      </div>
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
+      <div class="card-body">
+        <h2 class="card-title">เพิ่มข้อมูลสิทธ์การเข้าถึง</h2>
+        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
+        <p class="card-text">เพิ่ม Repository</p>
+        <a href="<?php echo site_url('RepoController');?>" class="card-link text-primary">Go to Link</a>
+      </div>
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+  </div>
+</div>
+     <!--------------------------------------------------- picture set 1----------------------------------------------------------->
+    <div class="container">
+  <div class="card-group">
+  <div class="card">
+      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
+      <div class="card-body">
+        <h2 class="card-title">ดูข้อมูลการแจ้งปัญหา</h2>
+        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
+        <p class="card-text">ตรวจสอบการมีอยู่ของข้อมูลการแจ้งเตือนทั้งหมดที่มีอยู่ในฐานข้อมูล และสามารถแก้ไขข้อมูลนั้นได้</p>
+        <a href="<?php echo site_url('ViewLineNotifyController');?>" class="card-link text-primary">Go to Link</a>
+      </div>
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
+      <div class="card-body">
+        <h2 class="card-title">เพิ่มประเภทของเอกสาร</h2>
+        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
+        <p class="card-text">เพิ่มประเภทเอกสาร พร้อมรูป Logo </p>
+        <a href="<?php echo site_url('TypeController');?>" class="card-link text-primary">Go to Link</a>
+      </div>
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="http://localhost/AOT-Document/assets/img/Logo/wallpaper.jpg" alt="Oslo">
+      <div class="card-body">
+        <h2 class="card-title">ดูข้อมูลประเภทเอกสาร</h2>
+        <h5 class="card-subtitle mb-2">สถานะการเข้าถึง : Admistrator</h5>
+        <p class="card-text">ตรวจสอบการมีอยู่ของประเภทเอกสารที่มีอยู่ในระบบ และสามารถแก้ไขข้อมูลได้</p>
+        <a href="<?php echo site_url('TypeViewController');?>" class="card-link text-primary">Go to Link</a>
+      </div>
+      <div class="card-footer">
+        <!-- <small class="text-muted">Last updated yesterday</small> -->
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
 <!--------------------------------------------------- picture set 2----------------------------------------------------------->
+
+
+<div class="container" style="margin-top: 60px;">
+
+<div class="ct-example tab-content tab-example-result" style=" margin-left: auto; margin-right: auto; margin-top: 62px; padding: 1.25rem;
+                border-radius: .25rem;
+                background-color: #f7f8f9;">
+                <div class="row mb55" style="padding: 50px; ">
+                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
+                     
+                    </div>
+                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
+                      
+                    </div>
+                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
+                      
+                    </div>
+                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center;">
+                     
+                    </div>
+                    <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center; margin-top: 60px; margin-bottom: 50px;">
+                       
+
+            </div>
+            </div>
+            </div>
+    </div>
 
   </main>
   <!-- page-content" -->
@@ -931,140 +847,6 @@
         
           });
   </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
-</body>
-
-</html>
-
-<!--------------------------------------------------- picture set 2----------------------------------------------------------->
-
-  </main>
-  <!-- page-content" -->
-</div>
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
- 
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#show-sidebar").toggleClass("toggled");
-    });
-  </script>
-
-  <script>
-    jQuery(function ($) {
-
-          $(".sidebar-dropdown > a").click(function() {
-          $(".sidebar-submenu").slideUp(200);
-          if (
-          $(this)
-            .parent()
-            .hasClass("active")
-          ) {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .parent()
-            .removeClass("active");
-          } else {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .next(".sidebar-submenu")
-            .slideDown(200);
-          $(this)
-            .parent()
-            .addClass("active");
-          }
-          });
-          $("#close-sidebar").click(function() {
-          $(".page-wrapper").removeClass("toggled");
-          });
-          $("#show-sidebar").click(function() {
-          $(".page-wrapper").addClass("toggled");
-          });
-          
-        
-          });
-  </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
 </body>
 
 </html>

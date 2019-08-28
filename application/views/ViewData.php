@@ -77,19 +77,12 @@
                                         </button>
                                     </div>
                                     
-                                    <?php if($data['dateend']=='1970-01-01'){
-                                      $publicdate = 'เอกสารไม่มีวันหมดอายุ';
-                                      }else{
-                                      $publicdate = $data['dateend'];
-                                      }
-                                      ?>
                                     <div class="modal-body">
                                         <p>รายละเอียด : <?php echo $data['detail'];?> </p>
                                         <p>โดย : <?php echo $data['name'];?></p>
                                         <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
-                                        <p>หมดอายุ : <?php echo $publicdate?></p>
-                                        <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
-                                        <p>สถานะ :  <?php echo $data['status'];?></p>
+                                        <p>หมดอายุ : <?php echo $data['dateend'];?></p>
+                                        <p>สถานะ :  </p>
                                     </div>
 
                                     <div class="modal-footer">
