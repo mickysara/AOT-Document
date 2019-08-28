@@ -63,15 +63,6 @@
                                    limit 6");
           return $query->result_array();
       }
-
-      public function view_datadashboard(){
-        $query=$this->db->query("SELECT *
-                                 FROM linenotify  
-                                 ORDER BY linenotify.id_linenoti DESC
-                                 limit 1");
-        return $query->result_array();
-    }
-
       public function delete_data($id){
         $this->db->query("DELETE FROM linenotify WHERE id_linenoti = $id");
         

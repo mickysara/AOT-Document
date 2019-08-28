@@ -31,6 +31,15 @@ class ChatroomController extends CI_Controller {
         
     }
 
+    public function inchatroom($id)
+    {
+        $this->load->view('Header');
+        $this->load->view('', $data, FALSE);
+        
+        
+
+    }
+
 }
 
 /* End of file TestfullframeController.php */
