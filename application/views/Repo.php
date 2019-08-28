@@ -44,7 +44,6 @@
                     <div class="form-group">
                     <div>ระดับการเข้าถึงไฟล์</div>
                     <select name="privacy" id="privacy">
-                      <option value="" disabled selected>กรุณาเลือกระดับการเข้าถึงไฟล์</option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
@@ -59,15 +58,10 @@
 
               <script type="text/javascript">
                   function sweetalertclick(){
-                var name = $("#name").val();
-                var topic = $("#topic").val();
-                var file = $("#image_file").val();
-                var date = $("#date").val();
-                var dateend = $("#date_end").val();
-                var detail = $("#detail").val();
                 var privacy = $("#privacy").val();
-                  
-                  if(topic ==""|| file ==""| detail ==""){
+                var topic = $("#topic").val();
+                var detail = $("#detail").val();
+                  if(privacy ==""||topic ==""||detail ==""){
                       alert("กรุณากรอกข้อมูลให้ครบ");
                   }else{
                     swal({

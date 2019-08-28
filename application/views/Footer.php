@@ -17,37 +17,11 @@
  
   <script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="<?php echo base_url('/assets/js/ajax.js'); ?>"></script>
-  <!-- DashBoard -->
+  <!-- DashBoard -->>
   <script src="<?php echo base_url('/assets/js/argon-dashboard.js?v=1.0.0'); ?>"></script>
-  <!-- Pusher -->
-
-  <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
-
 
 
  <!-- My Script -->
-
- <script>
-
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
-    var pusher = new Pusher('fd6ef33b944c8da371ee', {
-      cluster: 'ap1',
-      forceTLS: true
-    });
-
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-    d = JSON.parse(JSON.stringify(data))
-
-    if(d.page == 'chat')
-    {
-        IncreaseChatByAsc()
-    }
-    });
-  </script>
-
  <script>
    var val = document.getElementById('repository_id').value
     $(document).on('submit', '#addmember_form', function () {
@@ -212,12 +186,7 @@ $(document).on('submit', '#chatroom_form', function () {
                             icon: "success",
                             text: d.id,
                       });
-                      $.post("<?=base_url('EmailController/genQrChat/')?>"+val,
-                        function (data) {
-
-                    });
-                    
-                    var x = location.href = "<?=base_url('/AdminChatroomController/showchat/')?>" + d.id;
+                    var x = location.href = "http://localhost/AOT-Document/AdminChatroomController/showchat/" + d.id;
                      setTimeout(x,1000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
@@ -290,7 +259,7 @@ $(document).ready( function(){
 <script>
 $(document).ready(function(e) {
 	increaseNotify();
-    // setInterval(increaseNotify, 3000);
+    setInterval(increaseNotify, 3000);
 });
 function increaseNotify(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
           $.get("<?=base_url('index.php/LoginController/IncreaseNoti')?>", 
@@ -345,27 +314,11 @@ var myEl = document.getElementById('Hi');
 </script>
 
 <script>
-      $(document).on('submit', '#Search', function () {
-          
-          $.post("<?=base_url('index.php/SearchController/serach')?>", $("#Search").serialize(),
-              function (data) {
-                  
-                 $("#Showsearch").html(data);
-                 $('#Filesearch').DataTable();
-
-              }
-          );
-
-        event.preventDefault();
-    });
-</script>
-
-<script>
 $(document).ready(function(e) {
 	IncreaseChatByAsc();
     IncreaseChatRecent();
-    // setInterval(IncreaseChatByAsc, 1000);
-    // setInterval(IncreaseChatRecent, 1000);
+    setInterval(IncreaseChatByAsc, 1000);
+    setInterval(IncreaseChatRecent, 1000);
     setInterval(hi, 1000);
 });
 function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
@@ -386,26 +339,6 @@ function IncreaseChatRecent(){ // โหลดตัวเลขทั้งห�
             }
           );
 }
-</script>
-<script>
-      $(document).on('submit', '#sendchat_form', function () {
-        var val = document.getElementById('idchat').value
-          $.post("<?=base_url('InchatroomController/sendchat/')?>"+val, $("#sendchat_form").serialize(),
-              function (data) {
-                var val = "hello";
-                $.post("<?=base_url('Test/sendmessage/')?>"+val,
-                function (data) {
-
-                    document.getElementById('text').value = "";
-
-
-              });
-
-              }
-          );
-
-        event.preventDefault();
-    });
 </script>
 
 

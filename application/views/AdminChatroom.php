@@ -36,7 +36,7 @@
                 <p class="createby" style="text-align: center;">สร้างโดยคุณ : <?php echo $chat_data['createby'] ?> </p>
                 <input type="hidden" id="idchat" name="idchat" value="<?php echo $chat_data['code_chatroom'] ?>">
                 <p class="idchat" style="text-align: center;">Qr Code</p>
-                <img id="imgqr" style="width:250px; height:250px; margin-left: auto; margin-right: auto;   display: block;"  src="<?php echo base_url('/assets/img/qrcode/chatroom/'.$chat_data['code_chatroom'].".png");?>"/>
+                <img id="imgqr" style="width:250px; height:250px; margin-left: auto; margin-right: auto;   display: block;"  src="<?php echo base_url('/assets/img/qrcode/AotfMerqhTYjsalKyCcH.png');?>"/>
                 <div style="text-align:center;">
                     <button class="btn btn-success btn-lg mt-5" onclick="openFullscreen();"> Open Fullscreen</button>
                     <br>

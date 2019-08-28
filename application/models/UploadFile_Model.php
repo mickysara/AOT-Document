@@ -26,15 +26,10 @@ class UploadFile_model extends CI_Model
         $dateendshow = date("Y/m/d",$d);
         $randomqrcode = random_string('alpha', 20);
         $status = 'ใช้งาน';
+        $dateget = $inputdata['date_end'];
         $newDate = date("Y-m-d", strtotime($dateget));
         $insert_id = $this->db->insert_id();
 
-         if($inputdata['date_end'] ==""){
-          $dateget = "ไม่จำกัดเวลาหมดอายุ";
-         }else{
-          $dateget = $inputdata['date_end'];
-         }
-          $showdateget = $dateget;
 
             if($filename!='' ){
             $filename1 = explode(',',$filename);
@@ -62,7 +57,7 @@ class UploadFile_model extends CI_Model
           'url'=> $addbaseurl,
           'file' => $file,
           'date'=> $dateshow,
-          'dateend'=> $showdateget,
+          'dateend'=> $newDate,
           'type'=> $showtypeall,
           'qr_codename'=> $randomqrcode,
           'privacy' => $inputdata['privacy'],

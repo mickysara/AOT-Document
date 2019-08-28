@@ -142,7 +142,6 @@ class AdvanceSearchController extends CI_Controller {
                                                 <th scope="col"><h4>ชื่อไฟล์</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สร้างโดย</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เพิ่มเติม</h4></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -168,12 +167,6 @@ class AdvanceSearchController extends CI_Controller {
                                                     <i class="bg-success"></i> <?php echo $data['date'];?>
                                                 </span>
                                                 </td>   
-                                                <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
-                                
-                                                </span>
-                                                </td>  
                                             </tr>
                                             <?php } ?> 
                                             </tbody>

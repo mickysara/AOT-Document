@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                     <div>ถึงวันที่</div>
-                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" autocomplete="off" type="text" value="">
+                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" type="text" autocomplete="off" value="">
                     </div>
 
                     <div class="form-group">
@@ -57,7 +57,6 @@
                     <div class="form-group">
                     <div>ระดับความเป็นส่วนตัว</div>
                     <select name="privacy" id="privacy" required>
-                      <option value="">กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์</option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>

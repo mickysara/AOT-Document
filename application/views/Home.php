@@ -73,7 +73,7 @@
                     <div class="iconbox-i-top">
                         <p class="iconbox-i-img withimg">
                         </p>
-                        <h1 style="font-size: 45px; text-align: center; color:#2d3436;">แสกน!</h1>
+                        <h1 style="font-size: 45px; text-align: center; color:#2d3436;">สแกน!</h1>
                       </div>
                       <p style="font-size: 18px; ">Qr Code ที่มีโลโก้บริษัทจะมีอยู่ประจำไฟล์ทุกไฟล์ต่อ Qr Code หนึ่งอัน ท่านสามารถแสกนได้ตามสิทธิ์ของท่านโดยจะมี 3 สิทธิ์ คือ Public Private และ Authen โดยผู้ที่มีสิทธิ์ไม่ตรงกันเมื่อแสกนก็จะไม่แสดงผล</p>
                   </div>
@@ -248,6 +248,7 @@
                                                           color: #2d3436;">ไฟล์เอกสารทั้งหมด</p>
                       </div> 
                     </div>
+     
                     <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center; margin-top: 60px; margin-bottom: 50px;">
                         <div class="counter-i">
                           <p data-value="3393" class="counter-i-val" style="    color: #283346;
@@ -255,7 +256,7 @@
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
                                                                                 position: relative;">
-                                                                                  0
+                                                                                 0
                                                                                  </p>
                           <hr>
                           <p class="counter-i-ttl" style="font-weight: 700;
