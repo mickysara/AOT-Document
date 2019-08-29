@@ -22,9 +22,20 @@ class TypeViewController extends CI_Controller {
     }
     
      public function del($id){
-        $this->data['delete_type']= $this->Type->delete_data($id);
-       redirect('TypeViewController','refresh');
-       
+        $this->db->where('id_type', $id);
+        $query = $this->db->get('typeinsert');
+    
+        foreach($query->result_array() as $data)
+          { ?>
+                  <?php 
+                    $image = $data['image'];
+                    $path = 'type/'.$image;
+                     unlink($path);
+
+                     $this->data['delete_type']= $this->Type->delete_data($id);
+                     redirect('TypeViewController','refresh');
+                   ?>
+      <?php }       
      }
 }
 

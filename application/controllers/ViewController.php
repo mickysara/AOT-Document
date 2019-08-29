@@ -21,13 +21,40 @@ class ViewController extends CI_Controller {
         
     }
     
-     public function del($id){
-        $this->data['delete_data']= $this->Upload->delete_data($id);
-       redirect('ViewController','refresh');
-       
+     public function del($id)
+     {        
+    $this->db->where('id_upload', $id);
+    $query = $this->db->get('upload');
+
+    foreach($query->result_array() as $data)
+      { ?>
+              <?php $insertdelete = array(
+                     'id_delrepository' => $data['id_repository'],
+                     'namedel' => $data['name'],
+                     'topicdel' => $data['topic'],
+                     'detaildel' =>  $data['detail'],
+                     'urldel' => $data['url'],
+                     'filedel' =>  $data['file'],
+                     'datedel' => $data['date'],
+                     'dateenddel' => $data['dateend'],
+                     'typedel' => $data['type'],
+                     'qr_codenamedel' => $data['qr_codename'],
+                     'privacydel' => $data['privacy'],
+                     'statusdel' =>  $data['status']
+                );
+                     $file = $data['file'];
+                     $path = 'uploads/'.$file;
+                     unlink($path);
+
+                    $this->db->insert('deletefile', $insertdelete); 
+                    $this->data['delete_data']= $this->Upload->delete_data($id);
+                    redirect('ViewController','refresh'); 
+               ?>
+
+  <?php } 
+
+   
+ 
      }
 }
-
-/* End of file IndexController.php */
-
-?>
+         

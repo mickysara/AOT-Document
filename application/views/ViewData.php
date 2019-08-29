@@ -5,7 +5,7 @@
 
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-        <form name="login" id="login_form" method="post">
+        <form name="view" id="view_form" method="post">
                 <h1 class="display-2" style="color:#2d3436;">ระบบจัดการเอกสาร</h1>
                 <hr>
                 
@@ -83,7 +83,7 @@
                                       $publicdate = $data['dateend'];
                                       }
                                       ?>
-                                    <div class="modal-body">
+                                    <div class="modal-body" >
                                         <p>รายละเอียด : <?php echo $data['detail'];?> </p>
                                         <p>โดย : <?php echo $data['name'];?></p>
                                         <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
@@ -91,7 +91,6 @@
                                         <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
                                         <p>สถานะ :  <?php echo $data['status'];?></p>
                                     </div>
-
                                     <div class="modal-footer">
                                         <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
@@ -107,7 +106,9 @@
                   </tr>
                 </tbody>
 
+             
 
+               
 
                 <?php } endif; ?> 
               </table>
@@ -192,32 +193,3 @@
 </div>
    
 </div>
-
-
-
-
-
-
-<!-- 
-<div class="modal-footer">
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#<?php echo $data['id_upload'];?>">Edit</button>
-                                            <div class="modal fade" id="<?php echo $data['id_upload'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['id_upload'];?>" aria-hidden="true">
-                                              <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                                <div class="modal-content">
-                                                
-                                                  <div class="modal-header">
-                                                    <h5 class="modal-title" id="modal-title-default">Modal title</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                      <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                  </div>
-                                                  <div class="modal-body">
-                                                    ...
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                  </div>
-                                                </div>
-                                                </div>
-                                              </div> -->
