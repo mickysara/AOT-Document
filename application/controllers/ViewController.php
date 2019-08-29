@@ -44,6 +44,7 @@ class ViewController extends CI_Controller {
                 );
                      $file = $data['file'];
                      $path = 'uploads/'.$file;
+                     copy("uploads/$file","deletefile/$file");
                      unlink($path);
 
                     $this->db->insert('deletefile', $insertdelete); 

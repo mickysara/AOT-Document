@@ -30,10 +30,11 @@ class TypeViewController extends CI_Controller {
                   <?php 
                     $image = $data['image'];
                     $path = 'type/'.$image;
-                     unlink($path);
+                    copy("type/$image","deletefile/$image");
+                      unlink($path);
 
-                     $this->data['delete_type']= $this->Type->delete_data($id);
-                     redirect('TypeViewController','refresh');
+                      $this->data['delete_type']= $this->Type->delete_data($id);
+                      redirect('TypeViewController','refresh');
                    ?>
       <?php }       
      }

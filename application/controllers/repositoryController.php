@@ -25,8 +25,6 @@ class RepositoryController extends CI_Controller {
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
     }
-
-
 }
 
 /* End of file repositoryController.php */
