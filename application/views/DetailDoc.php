@@ -66,7 +66,7 @@
         </li>
     </ul>
 </div>
-<div class="card shadow w-100">
+<div class="card shadow w-100 mb-5">
     <div class="card-body">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" style="width: max;">

@@ -571,6 +571,9 @@
       <br>
       <!-- sidebar-search  -->
       <div class="sidebar-menu" style= "margin-left: 10px;">
+      <a id="close-sidebar" class="btn btn-sm btn-dark" href="#">
+                <i class="fas fa-bars"></i>
+             </a>
         <ul>
           <li class="header-menu">
             <span style="font-size: 20px;">ระบบคลังเอกสาร</span>
@@ -594,28 +597,6 @@
             </a>
           
           </li>
-          <!-- <li class="sidebar">
-            <a href="#">
-              <i class="fa fa-bar-chart"></i>
-              <span>แผนภูมิแสดงสถิติ</span>
-            </a>       
-          </li>
-          <li class="sidebar">
-            <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>แผนที่</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
           <li class="header-menu">
             <span style="font-size: 20px;">ตรวจสอบข้อมูล</span>
           </li>
