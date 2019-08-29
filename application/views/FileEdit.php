@@ -15,7 +15,6 @@
       width: 350px;
       height: 550px;
       box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-      cursor: pointer;
       transition: 0.4s;
     }
 
@@ -41,13 +40,6 @@
       margin-top: -80px;
       height: 40px;
     }
-
-    .card:hover {
-      transform: scale(0.9, 0.9);
-      box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
-        -5px -5px 30px 15px rgba(0,0,0,0.22);
-    }
-
     .title-white {
       color: white;
     }
@@ -548,6 +540,11 @@
             .chiller-theme .sidebar-footer>a:last-child {
                 border-right: none;
             }
+            .col-sm {
+                min-width: 250px;
+                border-radius: .25rem;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
 
 
 </style>
@@ -556,7 +553,7 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container" style="max-width: 860px;">
 <div class="page-wrapper chiller-theme toggled">
   <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 14px;">
     <i class="fas fa-bars" ></i>
@@ -647,171 +644,129 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Content Row -->
-          <div class="row">
-          <?php
-          $d = $this->db->get('upload');
-          ?>
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4"style= "margin-left: 300px;">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800"><?=$d->num_rows(); ?></div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-file fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-           
-
-
-           <!-- <?php
-           $this->db->where('type', 'Microsoftword');
-           $data = $this->db->get('upload');?>
-           <?=$data->num_rows();?> -->
-
-
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="h15 mb-0 font-weight-bold text-success text-uppercase mb-1">จำนวนคนโหลดไฟล์ทั้งหมด</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">0</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fa fa-download fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนคนเข้าถึงเอกสารทั้งหมด</div>
-                      <div class="h15 mb-0 font-weight-bold text-gray-800">0</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Content Row -->
-
-          <div class="row">
-          <?php
-                    if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
-                    foreach ($view_data as $key => $data) { 
+        <div class="Header-Content mt-5">
+            <div class="row">
+                <div class="col-sm mr-4" style="background-color: #fff;">
+                    <div class="content mt-2 mb-2" style="display: -webkit-flex;">
+                    <?php
+                    $d = $this->db->get('upload');
                     ?>
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7"style= "margin-left: 50px;">
-              <div class="card shadow mb-4" style= "width: 480px;">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
-                  <h2 class="m-0 font-weight-bold text-white">การแจ้งเตือนล่าสุด</h2>
-                  <div class="dropdown no-arrow">
-                  </div>
+                        <div>
+                        <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
+                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;"><?=$d->num_rows(); ?></div>
+                        </div>
+                        <i class="fas fa-file fa-2x text-gray-300 ml-5"></i>
+                    </div>
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                    <p>โดย : <?php echo $data['name'];?></p>
-                    <p>อีเมล :  <?php echo $data['email'];?></p>
-                    <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
-                    <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
-                    <h3>สถานะ : <?php echo $data['status'];?></h3>
-                  </div>
+                <div class="col-sm mr-4" style="background-color: #fff;">
+                    <div class="content mt-2 mb-2" style="display: -webkit-flex;">
+                        <div>
+                        <div class="h15 mb-0 font-weight-bold text-success text-uppercase mb-1">จำนวนคนโหลดไฟล์ทั้งหมด</div>
+                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
+                        </div>
+                        <i class="fa fa-download fa-2x text-gray-300 ml-5"></i>
+                    </div>
                 </div>
-              </div>
+                <div class="col-sm mr-4" style="background-color: #fff;">
+                    <div class="content mt-2 mb-2" style="display: -webkit-flex;">
+                        <div>
+                        <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนคนเข้าถึงเอกสารทั้งหมด</div>
+                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
+                        </div>
+                        <i class="fas fa-comments fa-2x text-gray-300 ml-5"></i>
+                    </div>
+                </div>
             </div>
-            <?php } endif; ?> 
-            <!-- type file -->
-            <div class="col-xl-4 col-lg-5"style= "margin-left: -260px;">
-              <div class="card shadow mb-4"style= "width: 605px;">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;" >
-                  <h2 class="m-0 font-weight-bold text-white">จำนวนไฟล์แต่ละประเภท</h2>
-                  <div class="dropdown no-arrow">
-                  </div>
-                </div>
-                <!-- Card Body -->
-            
-                <!-- calculate percent type -->
+            <div class="row mt-5">
+                <div class="col-6" style="padding-left: 0px;">          
                 <?php
-                // pdf file
-                $this->db->where('type', 'PDF File');
-                $pdf = $this->db->get('upload');
-                $pdfshow = $pdf->num_rows();
-                $pdfcal = $pdfshow * 100;
-                $pdfcal2 = $pdfcal / $d->num_rows();
-                $pdfcal3 = $pdfcal2.'%';
-                // powerpoint
-                $this->db->where('type', 'Microsoftpowerpoint');
-                $point = $this->db->get('upload');
-                $pointshow = $point->num_rows();
-                $pointcal = $pointshow * 100;
-                $pointcal2 = $pointcal / $d->num_rows();
-                $pointcal3 = $pointcal2.'%';
-                // excel
-                $this->db->where('type', 'Microsoftexcel');
-                $excel = $this->db->get('upload');
-                $excelshow = $excel->num_rows();
-                $excelcal = $excelshow * 100;
-                $excelcal2 = $excelcal / $d->num_rows();
-                $excelcal3 = $excelcal2.'%';
-                // word
-                $this->db->where('type', 'Microsoftword');
-                $word = $this->db->get('upload');
-                $wordshow = $word->num_rows();
-                $wordcal = $wordshow * 100;
-                $wordcal2 = $wordcal / $d->num_rows();
-                $wordcal3 = $wordcal2.'%';
+                        if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
+                        foreach ($view_data as $key => $data) { 
+                        ?>
+                <!-- Area Chart -->
+                <div class="col-xl-8 col-lg-7"style= "margin-left: 0px;padding-left: 0px;">
+                <div class="card  mb-4" style= "margin-top: 0px;">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
+                    <h2 class="m-0 font-weight-bold text-white">การแจ้งเตือนล่าสุด</h2>
+                    <div class="dropdown no-arrow">
+                    </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                    <div class="text-center">
+                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
+                        <p>โดย : <?php echo $data['name'];?></p>
+                        <p>อีเมล :  <?php echo $data['email'];?></p>
+                        <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
+                        <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
+                        <h3>สถานะ : <?php echo $data['status'];?></h3>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <?php } endif; ?> 
+            </div>
+                <div class="col-6">
+                                <!-- Area Chart -->
+                <div class="col-xl-8 col-lg-7"style= "margin-left: 0px;padding-left: 0px;">
+                <div class="card  mb-4" style= "margin-top: 0px;">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
+                    <h2 class="m-0 font-weight-bold text-white">จำนวนแต่ละประเภทไฟล์</h2>
+                    <div class="dropdown no-arrow">
+                    </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
 
-                //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
-                $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
-                $calanotherfile = $d->num_rows() - $anotherfile;
-                ?>
-                
+                        <?php
+                            // pdf file
+                            $this->db->where('type', 'PDF File');
+                            $pdf = $this->db->get('upload');
+                            $pdfshow = $pdf->num_rows();
+                            $pdfcal = $pdfshow * 100;
+                            $pdfcal2 = $pdfcal / $d->num_rows();
+                            $pdfcal3 = $pdfcal2.'%';
+                            // powerpoint
+                            $this->db->where('type', 'Microsoftpowerpoint');
+                            $point = $this->db->get('upload');
+                            $pointshow = $point->num_rows();
+                            $pointcal = $pointshow * 100;
+                            $pointcal2 = $pointcal / $d->num_rows();
+                            $pointcal3 = $pointcal2.'%';
+                            // excel
+                            $this->db->where('type', 'Microsoftexcel');
+                            $excel = $this->db->get('upload');
+                            $excelshow = $excel->num_rows();
+                            $excelcal = $excelshow * 100;
+                            $excelcal2 = $excelcal / $d->num_rows();
+                            $excelcal3 = $excelcal2.'%';
+                            // word
+                            $this->db->where('type', 'Microsoftword');
+                            $word = $this->db->get('upload');
+                            $wordshow = $word->num_rows();
+                            $wordcal = $wordshow * 100;
+                            $wordcal2 = $wordcal / $d->num_rows();
+                            $wordcal3 = $wordcal2.'%';
 
-<!-- Content Column -->
-        <div class="col-lg-6 mb-4" style= "margin-top: -20px; margin-left: 50px;">
-          <!-- Project Card Example -->
-          <div class="card shadow mb-4" style= "width: 605px; height: 487px; margin-left: -67px;">
-            <div class="card-body">
-              <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span></h4>
+                            //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
+                            $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
+                            $calanotherfile = $d->num_rows() - $anotherfile;
+                        ?>
+            <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
               <div class="progress mb-4" style="height: 10px">
                 <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Microsolfpowerpoint <?php echo $pointshow?> <span class="float-right"><?php echo number_format($pointcal2,1).'%'?></span></h4>
+              <h4 class="small font-weight-bold">Microsolfpowerpoint <?php echo $pointshow?> <span class="float-right"><?php echo number_format($pointcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt=""></h4>
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $pointcal3?>" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Microsolfexcel <?php echo $excelshow?><span class="float-right"><?php echo number_format($excelcal2,1).'%'?></span></h4>
+              <h4 class="small font-weight-bold">Microsolfexcel <?php echo $excelshow?><span class="float-right"><?php echo number_format($excelcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt=""></h4>
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $excelcal3?>" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span></h4>
+              <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt=""></h4>
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -819,38 +774,13 @@
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-
-              <div class="" style= "margin-left: 20px;">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt="">
-              <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 6.1rem;" src="<?php echo base_url('/assets/img/logofile/access.png')?>" alt="">
-              </div>
-
-            </div>
-          </div>
-                      </div>
                     </div>
-        <!--------------------------------------------------- ส่วนที่ 3 ----------------------------------------------------------->
-        <div class="row">
-            <div class="col-xl-8 col-lg-7"style= "margin-top: -20px; margin-left: -505px;">
-              <div class="card shadow mb-4" style= "height: 400px; width: 1110px;">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
-                  <h2 class="m-0 font-weight-bold text-white">ขนาดไฟล์โดยเฉลี่ย</h2>
-                  <div class="dropdown no-arrow">
-                  </div>
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                  </div>
                 </div>
-              </div>
+                 <!-- hi            -->
+                </div>
             </div>
-  </div>
+        </div>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
