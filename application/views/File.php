@@ -552,6 +552,9 @@
       <br>
       <!-- sidebar-search  -->
       <div class="sidebar-menu" style= "margin-left: 10px;">
+      <a id="close-sidebar" class="btn btn-sm btn-dark" href="#">
+                <i class="fas fa-bars"></i>
+             </a>
         <ul>
           <li class="header-menu">
             <span style="font-size: 20px;">ระบบคลังเอกสาร</span>
@@ -575,7 +578,6 @@
             </a>
           
           </li>
-
           <li class="header-menu">
             <span style="font-size: 20px;">ตรวจสอบข้อมูล</span>
           </li>
