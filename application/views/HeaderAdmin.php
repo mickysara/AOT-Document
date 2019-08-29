@@ -54,7 +54,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center; position: sticky; position: sticky; z-index: 1071; top: 0; height: 100px;">
           <div class="container">
-          <a class="navbar-brand" href="<?php echo site_url("/IndexController");?>" style="font-size: 20px; margin-left: -180px;">AOT-Document</a>
+          <a class="navbar-brand" href="<?php echo site_url("/IndexController");?>" style="font-size: 20px; margin-left: 0px;">AOT-Document</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>

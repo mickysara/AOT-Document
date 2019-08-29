@@ -6,8 +6,6 @@
       z-index: 0;
       width: 100%;
       display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
     }
 
     .card {
@@ -15,7 +13,6 @@
       width: 350px;
       height: 550px;
       box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-      cursor: pointer;
       transition: 0.4s;
     }
 
@@ -29,7 +26,6 @@
       width: inherit;
       height: inherit;
       border-radius: 40px;
-      object-fit: cover;
     }
 
     .card .card_title {
@@ -42,12 +38,6 @@
       height: 40px;
     }
 
-    .card:hover {
-      transform: scale(0.9, 0.9);
-      box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
-        -5px -5px 30px 15px rgba(0,0,0,0.22);
-    }
-
     .title-white {
       color: white;
     }
@@ -56,16 +46,7 @@
       color: black;
     }
 
-
-
-
-
-    @media all and (max-width: 500px) {
-      .card-list {
-        /* On small screens, we are no longer using row direction but column */
-        flex-direction: column;
-      }
-    }
+    
 
                                            /* //////////////////////////new//////////////////////////////// */
                                            @keyframes swing {
@@ -594,28 +575,7 @@
             </a>
           
           </li>
-          <!-- <li class="sidebar">
-            <a href="#">
-              <i class="fa fa-bar-chart"></i>
-              <span>แผนภูมิแสดงสถิติ</span>
-            </a>       
-          </li>
-          <li class="sidebar">
-            <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>แผนที่</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
+
           <li class="header-menu">
             <span style="font-size: 20px;">ตรวจสอบข้อมูล</span>
           </li>
@@ -663,7 +623,7 @@
 
      <!-- --------------------------------------------ส่วนที่1------------------------------------------------------------------------- -->
   
-        <!-- End of Topbar -->
+     <!-- <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -691,10 +651,7 @@
             </div>
 
 
-           <!-- <?php
-           $this->db->where('type', 'Microsoftword');
-           $data = $this->db->get('upload');?>
-           <?=$data->num_rows();?> -->
+          
 
 
 
@@ -868,6 +825,7 @@
                 </div>
               </div>
             </div>
+          </div> -->
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -937,45 +895,7 @@
         
           });
   </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
+ 
 </body>
 
 </html>
@@ -1032,45 +952,7 @@ var myChart = new Chart(ctx, {
         
           });
   </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
+ 
 </body>
 
 </html>
