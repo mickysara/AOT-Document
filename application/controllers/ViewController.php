@@ -22,13 +22,8 @@ class ViewController extends CI_Controller {
     }
     
      public function del($id)
-     {
-                                           //    ลบแต่ยังอยู่ในเบสการลบไฟล์
-    //    $this->data['insertdeletefile']= $this->Upload->insertdeletefile($id);
-    //    $this->data['delete_data']= $this->Upload->delete_data($id);
-    //    redirect('ViewController','refresh');                
-   
-  $this->db->where('id_upload', $id);
+     {        
+    $this->db->where('id_upload', $id);
     $query = $this->db->get('upload');
 
     foreach($query->result_array() as $data)
@@ -47,6 +42,10 @@ class ViewController extends CI_Controller {
                      'privacydel' => $data['privacy'],
                      'statusdel' =>  $data['status']
                 );
+                     $file = $data['file'];
+                     $path = 'uploads/'.$file;
+                     unlink($path);
+
                     $this->db->insert('deletefile', $insertdelete); 
                     $this->data['delete_data']= $this->Upload->delete_data($id);
                     redirect('ViewController','refresh'); 
