@@ -407,6 +407,64 @@ function IncreaseChatRecent(){ // โหลดตัวเลขทั้งห�
         event.preventDefault();
     });
 </script>
+<script>
+$(document).ready(function(e) {
+	ShowMydoc();
+});
+        $("#Mydoc").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/myupload')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        $("#MyRepos").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/MyRepository')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        $("#InRepos").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/InRepository')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        function ShowMydoc()   
+        {
+            $.post("<?=base_url('MyDocumentController/myupload')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+        }
+</script>
 
 
 

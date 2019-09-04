@@ -14,9 +14,9 @@ class RepoController extends CI_Controller {
     public function index()
     {
         $this->load->view('Header');
+        $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
         $this->load->view('Footer');
         // $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
-        $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
       
         
     }
