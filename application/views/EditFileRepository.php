@@ -92,7 +92,7 @@
                             var uploadField = document.getElementById("image_file");
 
                             uploadField.onchange = function() {
-                                if(this.files[0].size > 2000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
+                                if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
                                   swal({
                                       title: "Upload Fail",
                                       text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB",

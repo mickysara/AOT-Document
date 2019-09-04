@@ -598,19 +598,19 @@
             <span style="font-size: 20px;">ตรวจสอบข้อมูล</span>
           </li>
           <li style= "margin-top: 20px;">
-            <a href="<?php echo site_url('ViewController/checkstatus');?>">
+            <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
               <span>ดูข้อมูลเอกสารทั้งหมด</span>
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('TypeViewController/checkstatus');?>">
+            <a href="<?php echo site_url('TypeViewController');?>">
               <i class="fa fa-calendar"></i>
               <span>ดูข้อมูลประเภทไฟล์ทั้งหมด</span>
             </a>
           </li>
           <li>
-          <a href="<?php echo site_url('ViewFileDeleteController/checkstatus');?>">
+          <a href="<?php echo site_url('ViewFileDeleteController');?>">
               <i class="fa fa-undo"></i>
               <span>ดูข้อมูลไฟล์ที่ถูกลบไปแล้ว</span>
             </a>
@@ -622,7 +622,7 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('ViewLineNotifyController/checkstatus');?>">
+            <a href="<?php echo site_url('ViewLineNotifyController');?>">
               <i class="fa fa-bullhorn"></i>
               <span>ดูข้อมูลการแจ้งปัญหา</span>
             </a>

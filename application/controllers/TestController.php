@@ -19,6 +19,18 @@ class TestController extends CI_Controller {
         
     }
     
+    public function checklogin()
+    {
+        if($this->session->userdata('_success') == '')
+        {
+            $this->load->view('Header');
+            $this->load->view('Loginalert');     
+            $this->load->view('Footer');
+        }else{
+          redirect('TestController/checkstatus');
+        }
+    }
+
     public function checkstatus()
     {
         $status = $this->session->userdata('employeeId');
@@ -30,13 +42,12 @@ class TestController extends CI_Controller {
               if($data['status']=='admin')
               {
                 $this->load->view('Header');
-                $this->load->view('Test');     
+                $this->load->view('Adminalert');     
                 $this->load->view('Footer');
               }else{
                 $this->load->view('HeaderAdmin');
                 $this->load->view('notfound_view');
                 $this->load->view('Footer');
-                echo $data['status'];
               }
         
                ?>

@@ -12,13 +12,14 @@ class ViewFileDeleteController extends CI_Controller {
     }
     public function index()
     {
-        $this->load->view('Header');
-        $this->data['view_data']= $this->delfile->view_datadelete(); //Upfile คือชื่อของโมเดล
-        $this->load->view('ViewFileDelete', $this->data, FALSE);
-        $this->load->view('Footer');
-        
-        
-        
+      if($this->session->userdata('_success') == '')
+      {
+          $this->load->view('Header');
+          $this->load->view('Loginalert');     
+          $this->load->view('Footer');
+      }else{
+        redirect('ViewFileDeleteController/checkstatus');
+      }
     }
     
      public function del($id)
@@ -44,7 +45,7 @@ class ViewFileDeleteController extends CI_Controller {
                  $this->load->view('Footer');
                }else{
                  $this->load->view('HeaderAdmin');
-                 $this->load->view('Test');
+                 $this->load->view('Adminalert');
                  $this->load->view('Footer');
                }
          

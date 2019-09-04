@@ -12,13 +12,14 @@ class ViewLineNotifyController extends CI_Controller {
     }
     public function index()
     {
-        $this->load->view('Header');
-        $this->data['view_data']= $this->LineNotify->view_data(); //Upfile คือชื่อของโมเดล
-        $this->load->view('ViewLineNotify', $this->data, FALSE);
-        $this->load->view('Footer');
-        
-        
-        
+      if($this->session->userdata('_success') == '')
+      {
+          $this->load->view('Header');
+          $this->load->view('Loginalert');     
+          $this->load->view('Footer');
+      }else{
+        redirect('ViewLineNotifyController/checkstatus');
+      }
     }
     
      public function del($id){
@@ -49,7 +50,7 @@ class ViewLineNotifyController extends CI_Controller {
                  $this->load->view('Footer');
                }else{
                  $this->load->view('HeaderAdmin');
-                 $this->load->view('Test');
+                 $this->load->view('Adminalert');
                  $this->load->view('Footer');
                }
          
