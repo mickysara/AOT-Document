@@ -33,6 +33,30 @@ class ViewLineNotifyController extends CI_Controller {
             redirect('ViewLineNotifyController','refresh');
      }
 
+     public function checkstatus()
+     {
+         $status = $this->session->userdata('employeeId');
+         $this->db->where('employeeId', $status);
+         $query = $this->db->get('admin');
+         foreach($query->result_array() as $data)
+       { ?>
+               <?php 
+               if($data['status']=='admin')
+               {
+                 $this->load->view('Header');
+                  $this->data['view_data']= $this->LineNotify->view_data(); //Upfile คือชื่อของโมเดล
+                  $this->load->view('ViewLineNotify', $this->data, FALSE);
+                 $this->load->view('Footer');
+               }else{
+                 $this->load->view('HeaderAdmin');
+                 $this->load->view('Test');
+                 $this->load->view('Footer');
+               }
+         
+                ?>
+           
+   <?php } 
+     }
 }
 
 /* End of file IndexController.php */

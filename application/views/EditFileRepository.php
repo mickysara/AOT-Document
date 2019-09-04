@@ -3,7 +3,6 @@
  <head>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
   <body>
  
@@ -73,8 +72,8 @@
 
                     <div class="form-group">
                     <div>ระดับความเป็นส่วนตัว</div>
-                    <select name="privacy" id="privacy">
-                      <option value="<?php echo $data['privacy']?>" disabled selected><?php echo $showPri?></option>
+                    <select name="privacy" id="privacy" required>
+                      <option value="" disabled selected>กรุณาเลือกระดับความเป็นส่วนตัว</option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
@@ -82,7 +81,7 @@
                     </div>
 
                     <input type="hidden" name="id_upload" value= <?php echo $data['id_upload'];?>>
-                  <button onclick="javascript:privacyalert()" type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
+                  <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
 
                 <a href="<?php echo site_url("/ViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
                 <?php } endif; ?>

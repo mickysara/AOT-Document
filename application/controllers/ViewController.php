@@ -57,5 +57,30 @@ class ViewController extends CI_Controller {
    
  
      }
+
+     public function checkstatus()
+    {
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('employeeId', $status);
+        $query = $this->db->get('admin');
+        foreach($query->result_array() as $data)
+      { ?>
+              <?php 
+              if($data['status']=='admin')
+              {
+                $this->load->view('Header');
+                $this->data['view_data']= $this->Upload->view_dataBackend(); //Upfile คือชื่อของโมเดล
+                $this->load->view('ViewData', $this->data, FALSE);
+                $this->load->view('Footer');
+              }else{
+                $this->load->view('HeaderAdmin');
+                $this->load->view('Test');
+                $this->load->view('Footer');
+              }
+        
+               ?>
+          
+  <?php } 
+    }
 }
          

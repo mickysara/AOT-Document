@@ -166,7 +166,7 @@
                               กรุณากรอกรหัสพนักงาน :
                               <input type="text" class="form-control mt-3 mb-3 ml-2" id="id_emp" name="id_emp" placeholder="682423">
                               กรุณาเลือกระดับในการเกี่ยวข้องกับ Repository นี้ :
-                              <select name="Level" id="Level">
+                              <select name="Level" id="Level" >
                                 <option value="" disabled selected>กรุณาเลือกระดับ</option>
                                 <option value="Viewer">Viewer</option>
                                 <option value="Edittor">Edittor</option>
@@ -239,7 +239,7 @@
                                     <div class="modal-body">
                                     <p style="font-size: 15px;"> กรุณาเลือกระดับในการเกี่ยวข้อง : </p>
                                     <form name="login" id="editmember_form" method="post" action="<?php echo site_url("Membercontroller/editmember/".$mem['ID']."/".$repo['id'])?>">
-                                    <select name="Level" id="Level" style="width: 100%; font-size: 15px;">
+                                    <select name="Level" id="Level" style="width: 100%; font-size: 15px;" required>
                                       
                                       <option value="" disabled selected>กรุณาเลือกระดับ</option>
                                       <option value="Viewer">Viewer</option>

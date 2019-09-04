@@ -1,8 +1,52 @@
-
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<style>
-    .cards-list {
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>AOT - Document</title>
+<?php
+    header('Access-Control-Allow-Origin: http://localhost/Aot-Document/');
+    ?>
+  <!-- Favicon -->
+
+  <!-- Fonts -->
+  <link rel="icon" type="image/ico" href="<?php echo base_url(); ?>./assets/img/logo/logo.png" />
+  <link href="https://fonts.googleapis.com/css?family=Athiti:300,400,700&amp;subset=thai" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  <!-- Icons -->
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/vendor/nucleo/css/nucleo.css">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/vendor/font-awesome/css/font-awesome.min.css">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/js/plugins/nucleo/css/nucleo.css">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css">
+  <!-- Argon CSS -->
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon.css?v=1.0.1">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon.min.css">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/argon-dashboard.css?v=1.0.0">
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/Flex/flexslider.css">
+
+  
+  <!-- Custom styles for this template -->
+  <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/simple-sidebar.css">
+
+  <!-- Syntax Highlighter -->
+  <!-- Demo CSS -->
+
+  <script src="<?php echo base_url('/assets/js/modernizr.js'); ?>"></script>
+  <style>
+        body,h1,h2,h3,h4,h5,.tooltip,h6,a {
+        font-family: 'Athiti', sans-serif !important;
+    }
+        .swal-footer {
+        background-color: rgb(245, 248, 250);
+        margin-top: 32px;
+        border-top: 1px solid #E9EEF1;
+        overflow: hidden;
+        
+    }
+      .cards-list {
       z-index: 0;
       width: 100%;
       display: flex;
@@ -548,12 +592,84 @@
 
 
 </style>
-<head>
-  
 </head>
-
 <body>
-<div class="container" style="max-width: 860px;">
+
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center; position: sticky; position: sticky; z-index: 1071; top: 0; height: 100px;">
+          <div class="container">
+          <a class="navbar-brand" href="<?php echo site_url("/IndexController");?>" style="font-size: 20px;">AOT-Document</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-primary">
+              <div class="navbar-collapse-header">
+                <div class="row">
+
+                  <div class="col-6 collapse-close">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
+                      <span></span>
+                      <span></span>
+                    </button>
+                  </div>     
+                </div>
+              </div>
+              <ul class="navbar-nav ml-lg-auto" style="">
+              <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="<?php echo site_url('/SearchController');?>"  >
+                        ค้นหา
+                    </a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
+                        แจ้งปัญหา
+                    </a>
+                </li> 
+                <?php if($this->session->userdata('_success') == '')
+                { ?>
+                <li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url("/LoginController");?>"  >เข้าสู่ระบบ</a>
+                </li>
+                <?php } ?>
+                
+                <?php if($this->session->userdata('_success') == 1 )
+                {?>
+                    <!---------------------- Notification----------------------------------------- -->
+                    <li class="nav-item dropdown " id="Hi" style=>
+                        <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width 50px;">
+                        <i class="ni ni-planet"></i>
+                        <span class="badge badge-danger" id="Noti" style="font-size: 14px; color: #fff; border-color: #f5365c; background-color: #f5365c;"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" id="DetailNoti" aria-labelledby="navbar-default_dropdown_1" style="max-height: 500px; overflow-x: hidden; width: 350px;">
+                           
+                        
+                        </div>
+                    </li> 
+                    <!--------------------------------------------------------------- -->
+
+
+                    <!---------------------- Property ----------------------------------------- -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        <?=$this->session->userdata('accountName')?>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
+                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">File</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo site_url('/LoginController/Logout');?>">ออกจากระบบ</a>
+                        </div>
+                    </li> 
+                    <!--------------------------------------------------------------- -->
+                <?php } ?>
+ 
+            </ul>
+            </div>
+          </div>
+          </div>
+        </nav>
+        <div class="container" style="max-width: 860px;">
 <div class="page-wrapper chiller-theme toggled">
   <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 14px;">
     <i class="fas fa-bars" ></i>
@@ -598,19 +714,19 @@
             <span style="font-size: 20px;">ตรวจสอบข้อมูล</span>
           </li>
           <li style= "margin-top: 20px;">
-            <a href="<?php echo site_url('ViewController/checkstatus');?>">
+            <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
               <span>ดูข้อมูลเอกสารทั้งหมด</span>
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('TypeViewController/checkstatus');?>">
+            <a href="<?php echo site_url('TypeViewController');?>">
               <i class="fa fa-calendar"></i>
               <span>ดูข้อมูลประเภทไฟล์ทั้งหมด</span>
             </a>
           </li>
           <li>
-          <a href="<?php echo site_url('ViewFileDeleteController/checkstatus');?>">
+          <a href="<?php echo site_url('ViewFileDeleteController');?>">
               <i class="fa fa-undo"></i>
               <span>ดูข้อมูลไฟล์ที่ถูกลบไปแล้ว</span>
             </a>
@@ -622,7 +738,7 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('ViewLineNotifyController/checkstatus');?>">
+            <a href="<?php echo site_url('ViewLineNotifyController');?>">
               <i class="fa fa-bullhorn"></i>
               <span>ดูข้อมูลการแจ้งปัญหา</span>
             </a>
@@ -637,186 +753,7 @@
       <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa");?></font></p>
     </div>
   </nav>
- 
-
-     <!-- --------------------------------------------ส่วนที่1------------------------------------------------------------------------- -->
-  
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="Header-Content mt-5">
-            <div class="row">
-                <div class="col-sm mr-4" style="background-color: #fff;">
-                    <div class="content mt-2 mb-2" style="display: -webkit-flex;">
-                    <?php
-                    $d = $this->db->get('upload');
-                    ?>
-                        <div>
-                        <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
-                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;"><?=$d->num_rows(); ?></div>
-                        </div>
-                        <i class="fas fa-file fa-2x text-gray-300 ml-5"></i>
-                    </div>
-                </div>
-                <div class="col-sm mr-4" style="background-color: #fff;">
-                    <div class="content mt-2 mb-2" style="display: -webkit-flex;">
-                        <div>
-                        <div class="h15 mb-0 font-weight-bold text-success text-uppercase mb-1">จำนวนคนโหลดไฟล์ทั้งหมด</div>
-                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
-                        </div>
-                        <i class="fa fa-download fa-2x text-gray-300 ml-5"></i>
-                    </div>
-                </div>
-                <div class="col-sm mr-4" style="background-color: #fff;">
-                    <div class="content mt-2 mb-2" style="display: -webkit-flex;">
-                        <div>
-                        <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนคนเข้าถึงเอกสารทั้งหมด</div>
-                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
-                        </div>
-                        <i class="fas fa-comments fa-2x text-gray-300 ml-5"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-6" style="padding-left: 0px;">          
-                <?php
-                        if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
-                        foreach ($view_data as $key => $data) { 
-                        ?>
-                <!-- Area Chart -->
-                <div class="col-xl-8 col-lg-7"style= "margin-left: 0px;padding-left: 0px;">
-                <div class="card  mb-4" style= "margin-top: 0px;">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
-                    <h2 class="m-0 font-weight-bold text-white">การแจ้งเตือนล่าสุด</h2>
-                    <div class="dropdown no-arrow">
-                    </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                    <div class="text-center">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                        <p>โดย : <?php echo $data['name'];?></p>
-                        <p>อีเมล :  <?php echo $data['email'];?></p>
-                        <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
-                        <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
-                        <h3>สถานะ : <?php echo $data['status'];?></h3>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <?php } endif; ?> 
-            </div>
-                <div class="col-6">
-                                <!-- Area Chart -->
-                <div class="col-xl-8 col-lg-7"style= "margin-left: 0px;padding-left: 0px;">
-                <div class="card  mb-4" style= "margin-top: 0px;">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
-                    <h2 class="m-0 font-weight-bold text-white">จำนวนแต่ละประเภทไฟล์</h2>
-                    <div class="dropdown no-arrow">
-                    </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-
-                        <?php
-                            // pdf file
-                            $this->db->where('type', 'PDF File');
-                            $pdf = $this->db->get('upload');
-                            $pdfshow = $pdf->num_rows();
-                            $pdfcal = $pdfshow * 100;
-                            $pdfcal2 = $pdfcal / $d->num_rows();
-                            $pdfcal3 = $pdfcal2.'%';
-                            // powerpoint
-                            $this->db->where('type', 'Microsoftpowerpoint');
-                            $point = $this->db->get('upload');
-                            $pointshow = $point->num_rows();
-                            $pointcal = $pointshow * 100;
-                            $pointcal2 = $pointcal / $d->num_rows();
-                            $pointcal3 = $pointcal2.'%';
-                            // excel
-                            $this->db->where('type', 'Microsoftexcel');
-                            $excel = $this->db->get('upload');
-                            $excelshow = $excel->num_rows();
-                            $excelcal = $excelshow * 100;
-                            $excelcal2 = $excelcal / $d->num_rows();
-                            $excelcal3 = $excelcal2.'%';
-                            // word
-                            $this->db->where('type', 'Microsoftword');
-                            $word = $this->db->get('upload');
-                            $wordshow = $word->num_rows();
-                            $wordcal = $wordshow * 100;
-                            $wordcal2 = $wordcal / $d->num_rows();
-                            $wordcal3 = $wordcal2.'%';
-
-                            //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
-                            $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
-                            $calanotherfile = $d->num_rows() - $anotherfile;
-                        ?>
-            <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
-              <div class="progress mb-4" style="height: 10px">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfpowerpoint <?php echo $pointshow?> <span class="float-right"><?php echo number_format($pointcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt=""></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $pointcal3?>" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfexcel <?php echo $excelshow?><span class="float-right"><?php echo number_format($excelcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt=""></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $excelcal3?>" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt=""></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Another <?php echo $calanotherfile?><span class="float-right">0.0%</span></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-                    </div>
-                </div>
-                </div>
-                 <!-- hi            -->
-                </div>
-            </div>
-        </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-<!--------------------------------------------------- picture set 2----------------------------------------------------------->
-
-  </main>
-  <!-- page-content" -->
-</div>
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
- 
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#show-sidebar").toggleClass("toggled");
-    });
-  </script>
-
-  <script>
+        <script>
     jQuery(function ($) {
 
           $(".sidebar-dropdown > a").click(function() {
@@ -840,150 +777,16 @@
             .addClass("active");
           }
           });
+
           $("#close-sidebar").click(function() {
           $(".page-wrapper").removeClass("toggled");
           });
           $("#show-sidebar").click(function() {
           $(".page-wrapper").addClass("toggled");
           });
-          
-        
+
+
+
+
           });
   </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
-</body>
-
-</html>
-
-<!--------------------------------------------------- picture set 2----------------------------------------------------------->
-
-  </main>
-  <!-- page-content" -->
-</div>
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
- 
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#show-sidebar").toggleClass("toggled");
-    });
-  </script>
-
-  <script>
-    jQuery(function ($) {
-
-          $(".sidebar-dropdown > a").click(function() {
-          $(".sidebar-submenu").slideUp(200);
-          if (
-          $(this)
-            .parent()
-            .hasClass("active")
-          ) {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .parent()
-            .removeClass("active");
-          } else {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .next(".sidebar-submenu")
-            .slideDown(200);
-          $(this)
-            .parent()
-            .addClass("active");
-          }
-          });
-          $("#close-sidebar").click(function() {
-          $(".page-wrapper").removeClass("toggled");
-          });
-          $("#show-sidebar").click(function() {
-          $(".page-wrapper").addClass("toggled");
-          });
-          
-        
-          });
-  </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
-</body>
-
-</html>
