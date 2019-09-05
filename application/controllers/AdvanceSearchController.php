@@ -36,7 +36,7 @@ class AdvanceSearchController extends CI_Controller {
         }
         if($uploadby != "")
         {
-            $this->db->like('uploadby', $uploadby, $max); 
+            $this->db->like('uploadby', $uploadby); 
         }
 
 
