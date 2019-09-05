@@ -79,7 +79,7 @@
                                     <?php if($data['dateenddel']=='1970-01-01'){
                                       $publicdate = 'เอกสารไม่มีวันหมดอายุ';
                                       }else{
-                                      $publicdate = $data['dateend'];
+                                      $publicdate = $data['dateenddel'];
                                       }
                                       ?>
                                     <div class="modal-body" >

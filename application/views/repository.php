@@ -91,7 +91,7 @@
                       </div>
                     </th>
                     <td>
-                    <?php echo  $r['name'];?>
+                    <?php echo  $r['uploadby'];?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">

@@ -28,7 +28,7 @@ class ViewController extends CI_Controller {
       { ?>
               <?php $insertdelete = array(
                      'id_delrepository' => $data['id_repository'],
-                     'namedel' => $data['name'],
+                     'namedel' => $data['uploadby'],
                      'topicdel' => $data['topic'],
                      'detaildel' =>  $data['detail'],
                      'urldel' => $data['url'],

@@ -85,7 +85,7 @@
                                       ?>
                                     <div class="modal-body" >
                                         <p>รายละเอียด : <?php echo $data['detail'];?> </p>
-                                        <p>โดย : <?php echo $data['name'];?></p>
+                                        <p>โดย : <?php echo $data['uploadby'];?></p>
                                         <p>เมื่อวันที่ : <?php echo $data['date'];?></p>
                                         <p>หมดอายุ : <?php echo $publicdate?></p>
                                         <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
