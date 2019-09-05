@@ -63,7 +63,7 @@ class ViewController extends CI_Controller {
     {
         $status = $this->session->userdata('employeeId');
         $this->db->where('employeeId', $status);
-        $query = $this->db->get('admin');
+        $query = $this->db->get('adminaot');
         foreach($query->result_array() as $data)
       { ?>
               <?php 

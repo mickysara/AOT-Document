@@ -48,9 +48,7 @@
         <p style="font-weight: 500;">เพิ่มโดย : <?php echo $data['name'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $data['date'];?></p>
         <p style="font-weight: 500;">หมดอายุวันที่ : <?php echo $publicdate?></p>
-        <p style="font-weight: 500;">สถานะ : <span class="badge badge-dot">
-                                                    <i class="bg-success"></i> <?php echo $data['status'];?>
-                                                </span> </p>
+        <p style="font-weight: 500;">สถานะ : <?php echo $data['status'];?> </p>
 
          
          <a href="<?php echo site_url(); ?>DetailDocController/download/<?php echo $data['url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>

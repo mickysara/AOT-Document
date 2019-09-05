@@ -13,12 +13,14 @@ class UploadController extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('Header');
-        $this->load->view('Footer');
-        $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
-        $this->load->view('Upload', $this->data, FALSE);       //เรียกใช้หน้าฟอร์ม
-      
-        
+        if($this->session->userdata('_success') == '')
+      {
+          $this->load->view('Header');
+          $this->load->view('Loginalert');     
+          $this->load->view('Footer');
+      }else{
+        redirect('ViewController/checkstatus');
+      }
     }
 
     public function file_upload(){
@@ -62,20 +64,11 @@ class UploadController extends CI_Controller {
             $this->load->view('DetailDoc', $this->data, FALSE);
                 }
 
-        // public function deleteimage(){
-        //     $deleteid  = $this->input->post('image_id');
-        //     $this->db->delete('photos', array('id' => $deleteid)); //photo ชื่อตาราง
-        //     $verify = $this->db->affected_rows();
-        //     echo $verify;
-
-        // }
-
-
-    
-
-
-
-
-
-        
+        public function checkstatus()
+        {
+            $this->load->view('Header');
+            $this->load->view('Footer');
+            $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
+            $this->load->view('Upload', $this->data, FALSE);       //เรียกใช้หน้าฟอร์ม
+        }
     }
