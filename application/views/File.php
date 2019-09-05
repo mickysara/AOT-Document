@@ -584,7 +584,7 @@
           <li class="sidebar">
             <a href="<?php echo site_url('TypeController');?>">
               <i class="fa fa-file"></i>
-              <span>อัปโหลดประเภทของเอกสาร</span>
+              <span>อัปโหลดประเภทเอกสาร</span>
            </a>
           </li>
           <li class="sidebar">
@@ -625,12 +625,6 @@
             <a href="<?php echo site_url('ViewLineNotifyController');?>">
               <i class="fa fa-bullhorn"></i>
               <span>ดูข้อมูลการแจ้งปัญหา</span>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('ViewStatusController');?>">
-              <i class="fa fa-address-book"></i>
-              <span>หน้าปรับเปลี่ยนสถานะแอดมิน</span>
             </a>
           </li>
         </ul>

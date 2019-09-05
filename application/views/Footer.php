@@ -104,7 +104,8 @@ $(document).on('submit', '#chatroom_form', function () {
                           
                           
                       })
-                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/IndexController';",5000);
+                      var x = location.href = "<?=base_url('/InchatroomController/showchat/')?>" + d.data;
+                      setTimeout(x,4);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -141,7 +142,10 @@ $(document).on('submit', '#chatroom_form', function () {
                           
                           
                       })
-                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/IndexController';",5000);
+                      var x = location.href = "<?=base_url('/IndexController')?>";
+                     setTimeout(x,4000);
+                      
+                      
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -174,8 +178,8 @@ $(document).on('submit', '#chatroom_form', function () {
                             icon: "success",
                             text: d.msg,
                       });
-                    
-                     setTimeout("location.href = 'http://localhost/AOT-Document/index.php/LoginController';",1000);
+                      var x = location.href = "<?=base_url('/LoginController')?>";
+                     setTimeout(x,1000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -406,6 +410,64 @@ function IncreaseChatRecent(){ // โหลดตัวเลขทั้งห�
 
         event.preventDefault();
     });
+</script>
+<script>
+$(document).ready(function(e) {
+	ShowMydoc();
+});
+        $("#Mydoc").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/myupload')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        $("#MyRepos").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/MyRepository')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        $("#InRepos").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/InRepository')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        function ShowMydoc()   
+        {
+            $.post("<?=base_url('MyDocumentController/myupload')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+        }
 </script>
 
 

@@ -13,14 +13,12 @@ class RepoController extends CI_Controller {
 
     public function index()
     {
-        if($this->session->userdata('_success') == '')
-        {
-            $this->load->view('Header');
-            $this->load->view('Loginalert');     
-            $this->load->view('Footer');
-        }else{
-          redirect('RepoController/checkstatus');
-        }
+        $this->load->view('Header');
+        $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
+        $this->load->view('Footer');
+        // $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
+      
+        
     }
     public function view(){
         $this->data['view_data']= $this->Upload->view_data(); //welcome คือชื่อของโมเดล
@@ -34,10 +32,5 @@ class RepoController extends CI_Controller {
             }
 
 
-            public function checkstatus()
-            {
-                $this->load->view('Header');
-                $this->load->view('Footer');
-                $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
-            }
+        
     }

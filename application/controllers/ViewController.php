@@ -1,7 +1,5 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class ViewController extends CI_Controller {
     
     public function __construct()
@@ -26,7 +24,6 @@ class ViewController extends CI_Controller {
      {        
     $this->db->where('id_upload', $id);
     $query = $this->db->get('upload');
-
     foreach($query->result_array() as $data)
       { ?>
               <?php $insertdelete = array(
@@ -47,18 +44,15 @@ class ViewController extends CI_Controller {
                      $path = 'uploads/'.$file;
                      copy("uploads/$file","deletefile/$file");
                      unlink($path);
-
                     $this->db->insert('deletefile', $insertdelete); 
                     $this->data['delete_data']= $this->Upload->delete_data($id);
                     redirect('ViewController','refresh'); 
                ?>
 
   <?php } 
-
    
  
      }
-
      public function checkstatus()
     {
         $status = $this->session->userdata('employeeId');
@@ -84,4 +78,3 @@ class ViewController extends CI_Controller {
   <?php } 
     }
 }
-         

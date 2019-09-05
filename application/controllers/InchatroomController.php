@@ -32,7 +32,8 @@ class InchatroomController extends CI_Controller {
     {
         $message = $this->input->post('text');
         $sentby  = "354268";//$this->session->userdata('employeeId');
-        $datetime = date("d-m-Y h:i:");
+        date_default_timezone_set('Asia/Bangkok');
+        $datetime = date("Y-m-d h:i:");
 
         $data = array(
             "code_chatroom"  =>  $id_chat,

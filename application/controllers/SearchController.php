@@ -1,6 +1,8 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class SearchController extends CI_Controller {
+
     public function index()
     {
         $this->load->view('Header');
@@ -15,11 +17,14 @@ class SearchController extends CI_Controller {
        
         $c = 0;
         $name   =  $this->input->post("name_txt");
+
         $view =  $this->input->post("custom-radio-1");
+
         $this->db->like('file',  $name);
         $d = $this->db->get('upload');
         $count = $d->num_rows();
         $d->result_array();
+
         if($count == 0)
         {?>
 
@@ -102,5 +107,7 @@ class SearchController extends CI_Controller {
             }
         
     }
+
 }
+
 /* End of file SearchController.php */

@@ -1,5 +1,5 @@
 <?php
-class UploadFile_model extends CI_Model
+class UploadFile_Model extends CI_Model
 {
     public function __construct()
     {
@@ -181,6 +181,21 @@ public function deletedelfile_data($id){
   );
      $this->db->insert('repository', $data); 
   }
+
+    public function getAllData() 
+    { 
+      $query = $this->db->query('SELECT * FROM upload'); 
+      return $query->num_rows();
+    }
+    public function getPageData($page,$per_page)
+    { 
+      $query = $this->db->query('SELECT * FROM upload ORDER BY id_upload DESC LIMIT '.$page.','.$per_page); 
+      if($query->num_rows() > 0 ) {
+        return $query->result_array();
+      } else {
+        return array();
+      }
+    }
 
 
  }

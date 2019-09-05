@@ -26,7 +26,7 @@ class ChatroomController extends CI_Controller {
         }else{
 
             $data = array_shift($data);
-            echo json_encode(['status' => 1, 'msg' => 'Success', 'data' => $data['code_chatroom']]);
+            echo json_encode(['status' => 1, 'msg' => 'Success', 'data' => $data['id']]);
         }
         
     }
