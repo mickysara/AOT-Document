@@ -14,7 +14,7 @@ class SearchController extends CI_Controller {
     }
     public function serach()
     {
-      
+       a
         $c = 0;
         $name   =  $this->input->post("name_txt");
 
