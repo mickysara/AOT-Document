@@ -81,7 +81,7 @@ class SearchController extends CI_Controller {
                                                 </div>
                                                 </th>
                                                 <td>
-                                                <?php echo $data['name'];?>
+                                                <?php echo $data['uploadby'];?>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
