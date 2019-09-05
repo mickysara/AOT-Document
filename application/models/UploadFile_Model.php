@@ -51,7 +51,7 @@ class UploadFile_Model extends CI_Model
           $showtypeall = $showtype;
 
         $fill_user = array(
-          'name' => $inputdata['name'],
+          'uploadby' => $inputdata['name'],
           'topic' => $inputdata['topic'],
           'detail' => $inputdata['detail'],
           'url'=> $addbaseurl,
@@ -147,7 +147,7 @@ public function deletedelfile_data($id){
            $showtypeall = $showtype;
              
       $data = array(
-        'name' => $inputdata['name'],
+        'uploadby' => $inputdata['name'],
         'topic' => $inputdata['topic'],
         'file' => $file,
         'date' => $inputdata['date'],

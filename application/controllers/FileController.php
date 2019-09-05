@@ -13,7 +13,7 @@ class FileController extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('HeaderAdmin');
+        $this->load->view('Header');
         $this->load->view('Footer');
         $this->data['view_data']= $this->LineNotify->view_datadashboard(); //Upfile คือชื่อของโมเดล
         $this->load->view('File', $this->data, FALSE);
@@ -21,7 +21,7 @@ class FileController extends CI_Controller {
     }
     public function edit()
     {
-        $this->load->view('HeaderAdmin');
+        $this->load->view('Header');
         $this->load->view('Footer');
         $this->data['view_data']= $this->LineNotify->view_datadashboard(); //Upfile คือชื่อของโมเดล
         $this->load->view('FileEdit', $this->data, FALSE);

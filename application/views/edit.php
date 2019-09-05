@@ -26,7 +26,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>ชื่อ</div>
-                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?php echo $data['name'];?>" required id="name" readonly>
+                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?php echo $data['uploadby'];?>" required id="name" readonly>
                     </div>
                   </div>
 

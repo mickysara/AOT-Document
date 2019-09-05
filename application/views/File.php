@@ -627,6 +627,12 @@
               <span>ดูข้อมูลการแจ้งปัญหา</span>
             </a>
           </li>
+          <li>
+            <a href="<?php echo site_url('ViewStatusController');?>">
+              <i class="fa fa-file"></i>
+              <span>ปรับเปลี่ยนสถานะแอดมิน</span>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- sidebar-menu  -->
