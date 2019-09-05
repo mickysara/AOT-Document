@@ -8,7 +8,7 @@ class ViewAllController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('pagination');
-		$this->load->model('UploadFile_model');
+		$this->load->model('UploadFile_Model');
 	
 	}
 	public function Viewdata()
@@ -18,7 +18,7 @@ class ViewAllController extends CI_Controller {
         $this->load->library('pagination'); // โหลด pagination library
         $config['attributes'] = array('class' => 'page-link');
 		$config['base_url'] = base_url("ViewAllController/Viewdata"); // ชี้หน้าเพจหลักที่จะใช้งานมาที่ home/member
-		$config['total_rows'] = $this->UploadFile_model->getAllData(); // จำนวนข้อมูลทั้งหมด
+		$config['total_rows'] = $this->UploadFile_Model->getAllData(); // จำนวนข้อมูลทั้งหมด
 		$config['per_page'] = $per_page; // จำนวนข้อมูลต่อหน้า
 		
 		$config['use_page_numbers'] = TRUE; // เพื่อให้เลขหน้าในลิงค์ถูกต้อง ให้เซตค่าส่วนนี้เป็น TRUE
@@ -42,7 +42,7 @@ class ViewAllController extends CI_Controller {
         $config['num_tag_close'] = '</li>';
 
 		$this->pagination->initialize($config);
-		$this->PAGE['member_list'] = $this->UploadFile_model->getPageData($page,$per_page); // รายชื่อสมาชิกที่จะนำไปแสดงในหน้านั้น
+		$this->PAGE['member_list'] = $this->UploadFile_Model->getPageData($page,$per_page); // รายชื่อสมาชิกที่จะนำไปแสดงในหน้านั้น
         $this->PAGE['pagination'] = $this->pagination->create_links(); // เลขหน้า
         $this->load->view('Header');
         $this->load->view('ViewAll',$this->PAGE); // ส่งข้อมูลออกไปที่ member_veiw

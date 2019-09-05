@@ -42,7 +42,7 @@ class AdminChatroomController extends CI_Controller {
                                     <div class="question-item__author truncate">
                                         <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">Anonymous</p>
                                     </div>
-                                    <div class="question-item__date"><p style="font-size: 14px;"><?php echo $data['datetime'] ?> </p></div>
+                                    <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['datetime']));?> </p></div>
                             </div>
                             <div class="question-item_like" style="align:right">
                                     <button class="btn btn-icon btn-3 btn" type="button" style="background-color: #2181c2; color: #fff;">

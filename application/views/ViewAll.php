@@ -1,7 +1,7 @@
 <div class="container mt-5" id="containerhello" style="">
     <div class="row">
                         
-                        <h1 class="mb-0" style="margin-left: auto; margin-right: auto;">ตารางเอกสารทั้งหมด</h1>
+                        <h1 class="mb-0" style="margin-left: auto; margin-right: auto;">เอกสารทั้งหมด</h1>
                         <div class="col-md-12" style="text-align:center;"></div>
                         <?php                 
                         if(isset($member_list) && is_array($member_list) && count($member_list)): $i=0;

@@ -57,7 +57,23 @@
                 <input type="number" class="form-control form-control-alternative" id="years" name="years1" placeholder="2018">
                 <p class="mt-3">ถึงปี</p>
                 <input type="number" class="form-control form-control-alternative" id="years" name="years2" placeholder="2019">
-                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <h2>ประเภทไฟล์</h2>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="Public" name="Public" type="checkbox">
+                    <label class="custom-control-label" for="Public">Public</label>
+                </div>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="Authen" name="Authen" type="checkbox">
+                    <label class="custom-control-label" for="Authen">Authen</label>
+                </div>
+            </div>
+            <div class="col">
+                <h2>ชื่อผู้อัพโหลด</h2>
+                <input type="text" class="form-control form-control-alternative" id="uploadby" name="uploadby" placeholder="Example.Ex">
             </div>
         </div>
     </div>

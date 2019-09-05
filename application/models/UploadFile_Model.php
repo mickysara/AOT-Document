@@ -1,5 +1,5 @@
 <?php
-class UploadFile_model extends CI_Model
+class UploadFile_Model extends CI_Model
 {
     public function __construct()
     {
