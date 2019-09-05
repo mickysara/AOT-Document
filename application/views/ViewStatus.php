@@ -3,7 +3,7 @@
             background-color: #f7f8f9;">
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-        <form name="view" id="view_form" method="post">
+        <form name="login" id="login_form" method="post">
                 <h1 class="display-2" style="color:#2d3436;">ระบบจัดการประเภทของเอกสาร</h1>
                 <hr>
                 
@@ -16,8 +16,8 @@
               <table class="table align-items-center table-flush" id="Filetable">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col"><h4>ชื่อรูปภาพ</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>ชื่อประเภทเอกสาร</h4></th>
+                    <th scope="col"><h4>หมายเลขไอดี</h4></th>
+                    <th style="text-align:center;" scope="col"><h4>สถานะ</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
                     <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
                         
@@ -27,55 +27,31 @@
                 <tbody>
 
                 <?php
-                    if(isset($view_type) && is_array($view_type) && count($view_type)): $i=0;
-                    foreach ($view_type as $key => $data) { 
+                    if(isset($status_view) && is_array($status_view) && count($status_view)): $i=0;
+                    foreach ($status_view as $key => $data) { 
                     ?>
 
                   <tr>
                     <th scope="row">
                       <div class="media align-items-center">
-                        <a href="#" class="avatar rounded-circle mr-3">
-                        <img src="<?php echo base_url().'assets/img/logofile/'. $data['image']?>" alt="">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $data['image'];?></span>
+                          <span class="mb-0 text-sm"> <?php echo $data['employeeId'];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                    <?php echo $data['typename'];?>
+                    <?php echo $data['status'];?>
                     </td>
 
                     <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['typename'];?>">ViewType</button>                           
-                            <div class="modal fade" id="<?php echo $data['typename'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['typename'];?>" aria-hidden="true">
-                            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                <div class="modal-content" style="color: #2d3436; height: 608px;">
-                               
-                                    <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['image'];?></h2>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    
-                                    <div class="modal-body">
-                                        <p>ชื่อประเภทไฟล์ : <?php echo $data['typename'];?> </p>
-                                        <p>ชื่อรูปภาพ : <?php echo $data['image'];?></p>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>EditTypeController/edit/<?php echo $data['id_type'];?>"class="btn btn-success">Edit</a>
-                                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                                
+                        <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['id_admin'];?>"class="btn btn-primary">Edit</a>                  
                         </div>
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/TypeViewController/del/<?php echo $data['id_type'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
                     </td>   
                   </tr>
                 </tbody>

@@ -2,13 +2,13 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TypeViewController extends CI_Controller {
+class ViewStatusController extends CI_Controller {
     
     public function __construct()
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Type_Model','Type'); 
+        $this->load->model('Admin_Model','Admin'); 
     }
     public function index()
     {
@@ -18,14 +18,14 @@ class TypeViewController extends CI_Controller {
           $this->load->view('Loginalert');     
           $this->load->view('Footer');
       }else{
-        redirect('TypeViewController/checkstatus');
+        redirect('ViewStatusController/checkstatus');
       }
    
     }
     
      public function del($id){
-      $this->data['delete_type']= $this->Type->delete_data($id);
-      redirect('TypeViewController','refresh');
+        $this->data['delete_type']= $this->Admin->delete_data($id);
+        redirect('ViewStatusController','refresh');  
      }
 
 
@@ -40,8 +40,8 @@ class TypeViewController extends CI_Controller {
               if($data['status']=='admin')
               {
                 $this->load->view('Header');
-                $this->data['view_type']= $this->Type->view_type(); //Upfile คือชื่อของโมเดล
-                $this->load->view('TypeView', $this->data, FALSE);     
+                $this->data['status_view']= $this->Admin->status_view(); //Upfile คือชื่อของโมเดล
+                $this->load->view('ViewStatus', $this->data, FALSE);     
                 $this->load->view('Footer');
               }else{
                 $this->load->view('HeaderAdmin');
