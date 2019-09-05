@@ -4,22 +4,22 @@
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
         <form name="login" id="login_form" method="post">
-                <h1 class="display-2" style="color:#2d3436;">ระบบจัดการประเภทของเอกสาร</h1>
+                <h1 class="display-2" style="color:#2d3436;">ระบบจัดการสถานะของแอดมิน</h1>
                 <hr>
                 
         <div class="col">
           <div class="card shadow">
             <div class="card-header border-0">
-              <h3 class="mb-0">ตารางประเภทเอกสารทั้งหมด</h3>
+              <h3 class="mb-0">ตารางรายชื่อแอดมินทั้งหมด</h3>
             </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush" id="Filetable">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col"><h4>หมายเลขไอดี</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>สถานะ</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>View</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
+                    <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สถานะ</h4></th>
+                    <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
+                    <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
                         
                     
                   </tr>
@@ -44,14 +44,17 @@
                     <?php echo $data['status'];?>
                     </td>
 
-                    <td class="">
+                    <td>
+                    <span class="badge badge-dot mr-4">
                         <div>
                         <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['id_admin'];?>"class="btn btn-primary">Edit</a>                  
                         </div>
-                       
+                    </span>
                     </td>
                     <td>
+                    <span class="badge badge-dot mr-4">
                     <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
+                    </span>
                     </td>   
                   </tr>
                 </tbody>
