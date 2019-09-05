@@ -14,7 +14,7 @@ class MyDocumentController extends CI_Controller {
     public function myupload()
     {
 
-        $this->db->where('name', $this->session->userdata('accountName'));
+        $this->db->where('uploadby', $this->session->userdata('accountName'));
         $result = $this->db->get('upload');
             
         if($result->num_rows() == 0)

@@ -38,7 +38,17 @@ class AdvanceSearchController extends CI_Controller {
         {
             $this->db->like('uploadby', $uploadby); 
         }
+        if($this->input->post("Public") == "on")
+        {
+            $this->db->like('privacy', "Public");
+            
+        }
+        if($this->input->post("Authen") == "on")
+        {
+            $this->db->like('privacy', "Authen");
+            
 
+        }
 
             
         
@@ -128,7 +138,8 @@ class AdvanceSearchController extends CI_Controller {
                                 <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['topic'];?> </h3>
                                 <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['file'];?></p>
                                 <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['date'];?></p>
-                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="margin-top: 30px; background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
+                                <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['privacy'];?></p>
+                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
                                 
                             </div>
                         </div>
@@ -148,6 +159,7 @@ class AdvanceSearchController extends CI_Controller {
                                                 <th scope="col"><h4>ชื่อไฟล์</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สร้างโดย</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ความเป็นส่วนตัว</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เพิ่มเติม</h4></th>
                                             </tr>
                                             </thead>
@@ -167,13 +179,16 @@ class AdvanceSearchController extends CI_Controller {
                                                 </div>
                                                 </th>
                                                 <td>
-                                                <?php echo $data['name'];?>
+                                                <?php echo $data['uploadby'];?>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
                                                     <i class="bg-success"></i> <?php echo $data['date'];?>
                                                 </span>
                                                 </td>   
+                                                <td>
+                                                <?php echo $data['privacy'];?>
+                                                </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
                                                 <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
