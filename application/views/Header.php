@@ -109,7 +109,7 @@
                         <?=$this->session->userdata('accountName')?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                            <a class="dropdown-item" href="<?php echo site_url('TestController/checkstatus');?>">Action</a>
+                            <a class="dropdown-item" href="<?php echo site_url('MyDocumentController');?>">My Document</a>
                             <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
                             <a class="dropdown-item" href="<?php echo site_url('FileController');?>">File</a>
                             <div class="dropdown-divider"></div>

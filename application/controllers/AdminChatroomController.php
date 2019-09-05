@@ -99,6 +99,7 @@ class AdminChatroomController extends CI_Controller {
                                     <span><?php echo $data['message'] ?></span>
                             </div>
                     </div>
+                    
 
     <?php } 
     }

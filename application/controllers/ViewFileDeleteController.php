@@ -1,7 +1,5 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class ViewFileDeleteController extends CI_Controller {
     
     public function __construct()
@@ -26,9 +24,7 @@ class ViewFileDeleteController extends CI_Controller {
      {            
        $this->data['deletedelfile_data']= $this->delfile->deletedelfile_data($id);
        redirect('ViewFileDeleteController','refresh');                
-
      }
-
      public function checkstatus()
      {
          $status = $this->session->userdata('employeeId');
@@ -54,4 +50,3 @@ class ViewFileDeleteController extends CI_Controller {
    <?php } 
      }
 }
-         

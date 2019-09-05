@@ -1,7 +1,5 @@
 ﻿<?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class ViewLineNotifyController extends CI_Controller {
     
     public function __construct()
@@ -29,11 +27,9 @@ class ViewLineNotifyController extends CI_Controller {
      }
      
      public function editlinenotify(){
-
         $this->LineNotify->edit_linenotify($this->input->post());
             redirect('ViewLineNotifyController','refresh');
      }
-
      public function checkstatus()
      {
          $status = $this->session->userdata('employeeId');
@@ -59,7 +55,5 @@ class ViewLineNotifyController extends CI_Controller {
    <?php } 
      }
 }
-
 /* End of file IndexController.php */
-
 ?>

@@ -35,7 +35,7 @@ class TestController extends CI_Controller {
     {
         $status = $this->session->userdata('employeeId');
         $this->db->where('employeeId', $status);
-        $query = $this->db->get('adminaot');
+        $query = $this->db->get('admin');
         foreach($query->result_array() as $data)
       { ?>
               <?php 

@@ -20,7 +20,7 @@
             <h2 style="color: #fff;margin-top: 90px;">ระบบเอกสารออนไลน์</h2>
             <h1 class="display-1" style="color: #fff;">บริษัท ท่าอากาศยานไทย จำกัด</h1>
 </div>
-
+<a href=""></a>
            
 
         <div class="container" style="margin-top: 60px;">
@@ -55,7 +55,7 @@
           <?php } endif; ?>
   </div>
   
-          <button type="button" class="btn btn-primary btn-lg btn-block mb-5 mt-5" style="width: max; font-size: 20px; background-color: #2d3436;">ดูเอกสารทั้งหมด</button>
+          <a href="<?php echo site_url('ViewAllController/Viewdata/'); ?>" class="btn btn-primary btn-lg btn-block mb-5 mt-5"  style="width: max; font-size: 20px; background-color: #2d3436;">ดูเอกสารทั้งหมด</a>
           <div class="container page-styling row-wrap-container row-wrap-nottl front-icons" style="max; margin-bottom: 40px;">
                 <div class="row">
                 <div class="cf-lg-4 col-sm-4">

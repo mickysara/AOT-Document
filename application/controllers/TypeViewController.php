@@ -1,7 +1,5 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class TypeViewController extends CI_Controller {
     
     public function __construct()
@@ -27,8 +25,6 @@ class TypeViewController extends CI_Controller {
       $this->data['delete_type']= $this->Type->delete_data($id);
       redirect('TypeViewController','refresh');
      }
-
-
      public function checkstatus()
     {
         $status = $this->session->userdata('employeeId');
@@ -54,7 +50,5 @@ class TypeViewController extends CI_Controller {
   <?php } 
     }
 }
-
 /* End of file IndexController.php */
-
 ?>
