@@ -102,7 +102,8 @@ class SearchController extends CI_Controller {
                                 </div>
                             </div>
 
-                 <?}
+                 <?php 
+                }
             }
         
     }
