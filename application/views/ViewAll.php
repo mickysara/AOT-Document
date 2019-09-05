@@ -15,7 +15,8 @@
                                         <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['topic'];?> </h3>
                                         <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['file'];?></p>
                                         <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['date'];?></p>
-                                        <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn" style="margin-top: 30px; background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
+                                        <p class="card-text" style="font-weight: 500;margin-bottom: 10px;">ความเป็นส่วนตัว : <?php echo $data['privacy'];?></p>
+                                        <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn" style="background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
                                         
                                     </div>
                                 </div>

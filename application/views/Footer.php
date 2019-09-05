@@ -142,7 +142,7 @@ $(document).on('submit', '#chatroom_form', function () {
                           
                           
                       })
-                      var x = location.href = "<?=base_url('/IndexController')?>";
+                      var x = location.href = "<?=base_url('/MyDocumentController')?>";
                      setTimeout(x,4000);
                       
                       
