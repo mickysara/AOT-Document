@@ -664,11 +664,19 @@
                         <i class="fas fa-file fa-2x text-gray-300 ml-5"></i>
                     </div>
                 </div>
+
+                <?php $countload = $this->db->query('SELECT sum(download)
+                          as sum
+                            FROM upload');
+                $c =  $countload->row_array();
+                 ?>
+
                 <div class="col-sm mr-4" style="background-color: #fff;">
                     <div class="content mt-2 mb-2" style="display: -webkit-flex;">
+                    
                         <div>
                         <div class="h15 mb-0 font-weight-bold text-success text-uppercase mb-1">จำนวนคนโหลดไฟล์ทั้งหมด</div>
-                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
+                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;"><?php echo $c['sum'];?></div>
                         </div>
                         <i class="fa fa-download fa-2x text-gray-300 ml-5"></i>
                     </div>

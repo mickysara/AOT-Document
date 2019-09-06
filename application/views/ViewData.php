@@ -90,6 +90,7 @@
                                         <p>หมดอายุ : <?php echo $publicdate?></p>
                                         <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
                                         <p>สถานะ :  <?php echo $data['status'];?></p>
+                                        <p>จำนวนครั้งที่ดาวโหลดไฟล์ :  <?php echo $data['download'];?></p>
                                         <p>Q rcode :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/></p>
                                     </div>
                                     <div class="modal-footer">

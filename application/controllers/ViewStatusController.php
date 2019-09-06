@@ -27,8 +27,7 @@ class ViewStatusController extends CI_Controller {
         $this->data['delete_type']= $this->Admin->delete_data($id);
         redirect('ViewStatusController','refresh');  
      }
-
-
+     
      public function checkstatus()
     {
         $status = $this->session->userdata('employeeId');
