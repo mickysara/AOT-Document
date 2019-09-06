@@ -53,11 +53,45 @@ class ViewController extends CI_Controller {
    
  
      }
+
+     public function deldoc($id)
+     {        
+    $this->db->where('id_upload', $id);
+    $query = $this->db->get('upload');
+    foreach($query->result_array() as $data)
+      { ?>
+              <?php $insertdelete = array(
+                     'id_delrepository' => $data['id_repository'],
+                     'namedel' => $data['uploadby'],
+                     'topicdel' => $data['topic'],
+                     'detaildel' =>  $data['detail'],
+                     'urldel' => $data['url'],
+                     'filedel' =>  $data['file'],
+                     'datedel' => $data['date'],
+                     'dateenddel' => $data['dateend'],
+                     'typedel' => $data['type'],
+                     'qr_codenamedel' => $data['qr_codename'],
+                     'privacydel' => $data['privacy'],
+                     'statusdel' =>  $data['status']
+                );
+                     $file = $data['file'];
+                     $path = 'uploads/'.$file;
+                     copy("uploads/$file","deletefile/$file");
+                     unlink($path);
+                    $this->db->insert('deletefile', $insertdelete); 
+                    $this->data['delete_data']= $this->Upload->delete_data($id);
+                    redirect('MyDocumentController','refresh'); 
+               ?>
+
+  <?php } 
+   
+ 
+     }
      public function checkstatus()
     {
         $status = $this->session->userdata('employeeId');
         $this->db->where('employeeId', $status);
-        $query = $this->db->get('adminaot');
+        $query = $this->db->get('users');
         foreach($query->result_array() as $data)
       { ?>
               <?php 
