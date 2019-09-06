@@ -27,7 +27,7 @@ class EditStatusController extends CI_Controller {
     public function editdata(){
 
           $this->Admin->edit_status($this->input->post());
-          redirect('FileController','refresh');
+          redirect('ViewStatusController','refresh');
     }
 
 }

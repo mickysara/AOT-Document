@@ -10,12 +10,11 @@
     header('Access-Control-Allow-Origin: http://localhost/Aot-Document/');
     ?>
   <!-- Favicon -->
-
+  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
   <!-- Fonts -->
   <link rel="icon" type="image/ico" href="<?php echo base_url(); ?>./assets/img/logo/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=Athiti:300,400,700&amp;subset=thai" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <!-- Icons -->
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/vendor/nucleo/css/nucleo.css">
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/vendor/font-awesome/css/font-awesome.min.css">
@@ -46,63 +45,7 @@
         overflow: hidden;
         
     }
-      .cards-list {
-      z-index: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      margin: 20px auto;
-      width: 350px;
-      height: 550px;
-      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-      transition: 0.4s;
-    }
-
-    .card .card_image {
-      width: inherit;
-      height: inherit;
-      border-radius: 40px;
-    }
-
-    .card .card_image img {
-      width: inherit;
-      height: inherit;
-      border-radius: 40px;
-      object-fit: cover;
-    }
-
-    .card .card_title {
-      text-align: center;
-      border-radius: 0px 0px 40px 40px;
-      font-family: sans-serif;
-      font-weight: bold;
-      font-size: 30px;
-      margin-top: -80px;
-      height: 40px;
-    }
-    .title-white {
-      color: white;
-    }
-
-    .title-black {
-      color: black;
-    }
-
-
-
-
-
-    @media all and (max-width: 500px) {
-      .card-list {
-        /* On small screens, we are no longer using row direction but column */
-        flex-direction: column;
-      }
-    }
-
+    
                                            /* //////////////////////////new//////////////////////////////// */
                                            @keyframes swing {
               0% {
@@ -590,15 +533,14 @@
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             }
 
-
 </style>
 </head>
-<body>
+<body style="background-color: #f1f1fb;">
 
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center; position: sticky; position: sticky; z-index: 1071; top: 0; height: 100px;">
           <div class="container">
-          <a class="navbar-brand" href="<?php echo site_url("/TestController/checklogin");?>" style="font-size: 20px;">AOT-Document</a>
+          <a class="navbar-brand" href="<?php echo site_url("/IndexController");?>" style="font-size: 20px;">AOT-Document</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -654,7 +596,7 @@
                         <?=$this->session->userdata('accountName')?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="<?php echo site_url('MyDocumentController');?>">My Document</a>
                             <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
                             <a class="dropdown-item" href="<?php echo site_url('FileController');?>">File</a>
                             <div class="dropdown-divider"></div>
@@ -743,50 +685,19 @@
               <span>ดูข้อมูลการแจ้งปัญหา</span>
             </a>
           </li>
+          <li>
+            <a href="<?php echo site_url('ViewStatusController');?>">
+              <i class="fa fa-file"></i>
+              <span>ปรับเปลี่ยนสถานะแอดมิน</span>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-
+                                       <?php $d=strtotime("+5 hours");?>
     <div class="sidebar-footer" >
-      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa");?></font></p>
+      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa",$d);?></font></p>
     </div>
   </nav>
-        <script>
-    jQuery(function ($) {
-
-          $(".sidebar-dropdown > a").click(function() {
-          $(".sidebar-submenu").slideUp(200);
-          if (
-          $(this)
-            .parent()
-            .hasClass("active")
-          ) {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .parent()
-            .removeClass("active");
-          } else {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .next(".sidebar-submenu")
-            .slideDown(200);
-          $(this)
-            .parent()
-            .addClass("active");
-          }
-          });
-
-          $("#close-sidebar").click(function() {
-          $(".page-wrapper").removeClass("toggled");
-          });
-          $("#show-sidebar").click(function() {
-          $(".page-wrapper").addClass("toggled");
-          });
-
-
-
-
-          });
-  </script>
