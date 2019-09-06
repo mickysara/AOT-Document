@@ -20,17 +20,31 @@ class EditController extends CI_Controller {
     }
     public function edit($edit_id)
     {
-        $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-        $this->load->view('Header');
-        $this->load->view('edit', $this->data, FALSE);
-        $this->load->view('Footer');
+        if($this->session->userdata('_success') == '')
+        {
+         $this->load->view('Header');
+         $this->load->view('Loginalert');     
+         $this->load->view('Footer');
+        }else{
+            $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+            $this->load->view('Header');
+            $this->load->view('edit', $this->data, FALSE);
+            $this->load->view('Footer');
+        }
     }
     public function editrepo($edit_id)
     {
-        $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-        $this->load->view('Header');
-        $this->load->view('EditFileRepository', $this->data, FALSE);
-        $this->load->view('Footer');
+        if($this->session->userdata('_success') == '')
+        {
+         $this->load->view('Header');
+         $this->load->view('Loginalert');     
+         $this->load->view('Footer');
+        }else{
+            $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+            $this->load->view('Header');
+            $this->load->view('EditFileRepository', $this->data, FALSE);
+            $this->load->view('Footer');
+        }
     }
     public function editdata(){
         $files = $_FILES;

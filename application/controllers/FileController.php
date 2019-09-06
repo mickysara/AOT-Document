@@ -13,21 +13,46 @@ class FileController extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('Header');
-        $this->load->view('Footer');
-        $this->data['view_data']= $this->LineNotify->view_datadashboard(); //Upfile คือชื่อของโมเดล
-        $this->load->view('File', $this->data, FALSE);
-        
+        if($this->session->userdata('_success') == '')
+        {
+         $this->load->view('Header');
+         $this->load->view('Loginalert');     
+         $this->load->view('Footer');
+        }else{
+            redirect('FileController/checkstatus');
+        }
     }
     public function edit()
     {
         $this->load->view('Header');
         $this->load->view('Footer');
         $this->data['view_data']= $this->LineNotify->view_datadashboard(); //Upfile คือชื่อของโมเดล
-        $this->load->view('FileEdit', $this->data, FALSE);
-        
+        $this->load->view('FileEdit', $this->data, FALSE);    
     }
-
+    public function checkstatus()
+    {
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('employeeId', $status);
+        $query = $this->db->get('users');
+        foreach($query->result_array() as $data)
+      { ?>
+              <?php 
+              if($data['status']=='admin')
+              {
+                $this->load->view('Header');
+                $this->load->view('Footer');
+                $this->data['view_data']= $this->LineNotify->view_datadashboard(); //Upfile คือชื่อของโมเดล
+                $this->load->view('File', $this->data, FALSE);
+              }else{
+                $this->load->view('HeaderAdmin');
+                $this->load->view('Adminalert');
+                $this->load->view('Footer');
+              }
+        
+               ?>
+          
+  <?php } 
+    }
 }
 
 /* End of file IndexController.php */

@@ -14,9 +14,9 @@ class TestController extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('HeaderAdminTest');
+        $this->load->view('Header');
+        $this->load->view('TestPage');
         $this->load->view('Footer');
-        
     }
     
     public function checklogin()

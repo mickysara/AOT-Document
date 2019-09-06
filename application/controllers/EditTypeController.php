@@ -18,10 +18,17 @@ class EditTypeController extends CI_Controller {
     }
     public function edit($edit_id)
     {
-        $this->data['edit_data']= $this->Type->edit_data($edit_id);
-        $this->load->view('Header');
-        $this->load->view('EditType', $this->data, FALSE);
-        $this->load->view('Footer');
+        if($this->session->userdata('_success') == '')
+        {
+         $this->load->view('Header');
+         $this->load->view('Loginalert');     
+         $this->load->view('Footer');
+        }else{
+         $this->data['edit_data']= $this->Type->edit_data($edit_id);
+         $this->load->view('Header');
+         $this->load->view('EditType', $this->data, FALSE);
+         $this->load->view('Footer');
+        }
     }
 
     public function editdata(){
@@ -53,7 +60,6 @@ class EditTypeController extends CI_Controller {
           $this->Type->edit_type($this->input->post(),$fileName);
           redirect('TypeViewController','refresh');
     }
-
 }
 
 /* End of file IndexController.php */

@@ -18,10 +18,17 @@ class EditStatusController extends CI_Controller {
     }
     public function edit($edit_id)
     {
-        $this->data['edit_data']= $this->Admin->edit_data($edit_id);
+        if($this->session->userdata('_success') == '')
+        {
+         $this->load->view('Header');
+         $this->load->view('Loginalert');     
+         $this->load->view('Footer');
+        }else{
+            $this->data['edit_data']= $this->Admin->edit_data($edit_id);
         $this->load->view('Header');
         $this->load->view('EditStatus', $this->data, FALSE);
         $this->load->view('Footer');
+        }
     }
 
     public function editdata(){
