@@ -10,9 +10,14 @@ class LoginController extends CI_Controller {
   }
     public function index()
     {
+      if($this->session->userdata('_success') == "")
+      {
         $this->load->view('Header');
         $this->load->view('Login');
         $this->load->view('Footer');
+      }else{
+        redirect('IndexController');
+      }
         //echo $this->session->userdata('_success');
       
     }

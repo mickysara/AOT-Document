@@ -143,7 +143,7 @@ $(document).on('submit', '#chatroom_form', function () {
                           
                           
                       })
-                      setTimeout(function () {location.href = '<?=base_url('MyDocumentController')?>'}, 8000);
+                      setTimeout(function () {location.href = '<?=base_url('MyDocumentController')?>'}, 3000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -176,8 +176,7 @@ $(document).on('submit', '#chatroom_form', function () {
                             icon: "success",
                             text: d.msg,
                       });
-                      var x = location.href = "<?=base_url('/LoginController')?>";
-                     setTimeout(x,1000);
+                      setTimeout(function () {location.href = '<?=base_url('IndexController')?>'}, 3000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
