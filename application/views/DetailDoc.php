@@ -63,9 +63,9 @@
         <li class="nav-item">
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a>
         </li>
-        <li class="nav-item">
+<!--         <li class="nav-item">
             <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ความคิดเห็น</a>
-        </li>
+        </li> -->
     </ul>
 </div>
 <div class="card shadow w-100 mb-5">
@@ -75,13 +75,13 @@
                 <p class="description"><?php echo $data['detail'];?></p>
                 <p class="description" style=></p>
             </div>
-            <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+            <!-- <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
                 <h2 class="description">แสดงความคิดเห็นกับเอกสารนี้</h2>
                 <form>
                     <textarea class="form-control form-control-alternative" rows="3" placeholder="เขียนอะไรสักอย่างเพื่อแสดงความคิดเห็นแก่ผู้โพสต์ไฟล์ ..."></textarea>
                 </form>
                 <button type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">ยืนยันแสดงความคิดเห็น</button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

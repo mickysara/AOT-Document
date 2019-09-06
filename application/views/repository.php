@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
         
 <div class="container">
 <?php          
@@ -31,7 +31,25 @@
         <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['createby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $repo['date'];?></p>
         <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['privacy'];?> </p>
-        <button>เพิ่มเอกสารลงใน Repository นี้</button>
+          <?php 
+            $this->db->where('id_repository', $repo['id']);
+            $this->db->where('accname', $this->session->userdata('accountName'));
+            $querystatus = $this->db->get('repository_member', 1);
+            $resultstatus = $querystatus->row_array();
+          ?>
+        
+        <?php 
+              if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager")
+              {
+                $url = current_url();
+                // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
+                $arraystate2 = (explode("/",$url));
+                $idRepo = ($arraystate2[6]);?>
+                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</a>
+              <?php } ?>
+
+
+                
     </div>
   
     <div class="w-100"></div>
@@ -44,7 +62,7 @@
             <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ใน Repository นี้</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>จัดการสมาชิกใน Repository นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>สมาชิกใน Repository นี้</a>
         </li>
     </ul>
 </div>
@@ -63,10 +81,13 @@
                     <th scope="col"><h4>ชื่อไฟล์</h4></th>
                     <th style="text-align:center;" scope="col"><h4>สร้างโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
-                        
+                    <?php 
+                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager")
+                        {?>
+                          <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
+                          <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
+                  <?php } ?>
                     
                   </tr>
                 </thead>
@@ -100,31 +121,28 @@
                     </td>   
                     <td class="">
                         <div>
-                        <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['id_upload'];?>"  class="btn btn-success mb-3" >Edit</a>              
-                                
+                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn-primary mb-3">View</a>                 
                         </div>
                        
                     </td>
-                    <td class="">
-                        <div>
-                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn-primary mb-3">View</a>              
-                                
-                        </div>
-                       
-                    </td>
-                    <td>
-                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
-                    </td>   
+                    <?php 
+                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager")
+                        {?>
+                        <td class="">
+                          
+                          <div>
+                            <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['id_upload'];?>"  class="btn btn-success mb-3" >Edit</a>                
+                            </div>
+                          
+                        </td>
+                        <td>
+                        <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                        </td>   
+                    <?php } ?>
                   </tr>
                   <?php }?>
                 </tbody>
-                    </table>
-                    <?php $url = current_url();
-                    // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
-                    $arraystate2 = (explode("/",$url));
-                    $idRepo = ($arraystate2[6]);?>
-
-                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>" type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</a>
+                </table>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
@@ -136,13 +154,21 @@
                     <th style="text-align:center;" scope="col"><h4>ระดับ</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เพิ่มโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>View</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
-                        
+                    <?php 
+                        if($resultstatus['level'] == "Manager")
+                        {?>
+                        <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
+                        <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
+                    <?php
+                    } ?>
                     
                   </tr>
                 </thead>
                 <tbody>
+                <?php 
+                        if($resultstatus['level'] == "Manager")
+                        {?>
+                    
                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#Addmember">
                       เพิ่มบุคคลที่เกี่ยวข้อง
@@ -182,6 +208,8 @@
                         </div>
                       </div>
                     </div>
+                    <?php 
+                        } ?>
                 <?php 
                     $query=$this->db->query("SELECT repository_member.*,repository.topic,repository.createby 
                     FROM repository_member,repository 
@@ -217,6 +245,9 @@
                       </div>
  
                     </td>   
+                    <?php 
+                        if($resultstatus['level'] == "Manager")
+                        {?>
                       <?php 
                       $t = explode(".", $mem['accname']);
                        ?>
@@ -256,7 +287,10 @@
                     </td>
                     <td>
                     <a href="<?php echo site_url(); ?>/MemberController/Deletemember/<?php echo  $mem['ID'];?>/<?php echo $repo['id'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
-                    </td>   
+                    </td>  
+                    <?php 
+                        }
+                        ?> 
                   </tr>
                   <?php }?>
                   <?php } endif; ?>
