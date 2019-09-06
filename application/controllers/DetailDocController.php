@@ -33,14 +33,18 @@ class DetailDocController extends CI_Controller {
     public function download($url)
     {
         $this->load->helper('download');
-
         $this->db->where('url', $url);
         $data = $this->db->get('upload', 1);
-        
         $fileInfo = $data->result_array();
-
         foreach($fileInfo as $d)
         {
+
+        $object = array(
+            'download' => $d['download']+1
+        );
+        $this->db->where('id_upload', $d['id_upload']);
+        $this->db->update('upload', $object);
+
             echo $d['file'];
 
             //Path File
@@ -51,14 +55,17 @@ class DetailDocController extends CI_Controller {
     public function downloadqrcode($url)
     {
         $this->load->helper('download');
-
         $this->db->where('url', $url);
         $data = $this->db->get('upload', 1);
-        
         $fileInfo = $data->result_array();
-
         foreach($fileInfo as $d)
         {
+
+        $object = array(
+            'download' => $d['download']+1
+        );
+        $this->db->where('id_upload', $d['id_upload']);
+        $this->db->update('upload', $object);
             echo $d['qr_codename'];
 
             //Path File

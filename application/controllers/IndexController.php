@@ -22,9 +22,10 @@ class IndexController extends CI_Controller {
     }
     public function Test()
     {
+        $this->db->where('id_upload', '222');
         $c = $this->db->get('upload');
         $q = $c->row_array();
-        echo $q['id_upload'];
+        echo $q['download']+3;
     }
 
 }
