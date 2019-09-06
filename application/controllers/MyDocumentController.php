@@ -42,7 +42,7 @@ class MyDocumentController extends CI_Controller {
                     <h2 class="" style="font-size: 30px;">เอกสารที่อัพโหลด</h2>
                     <hr>
                     <div class="table-responsive">
-                    <a href="<?php echo site_url(); ?>UploadController/"  class="btn btn-success mb-3" style="">อัปโหลดเอกสาร</a>     
+                    <a href="<?php echo site_url(); ?>UploadController/Mydoc"  class="btn btn-success mb-3" style="">อัปโหลดเอกสาร</a>     
                                         <table class="table align-items-center table-flush" id="Filesearch">
                                             <thead class="thead-light">
                                             <tr>
@@ -50,6 +50,8 @@ class MyDocumentController extends CI_Controller {
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> สถานะ </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เพิ่มเติม</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -80,7 +82,16 @@ class MyDocumentController extends CI_Controller {
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
                                                 <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
-                                
+                                                </span>
+                                                </td>  
+                                                <td>
+                                                <span class="badge badge-dot mr-4">
+                                                <a href="<?php echo site_url(); ?>EditDocumentController/edit/<?php echo $data['id_upload'];?>"class="btn btn-primary mb-3">Edit</a>              
+                                                </span>
+                                                </td>  
+                                                <td>
+                                                <span class="badge badge-dot mr-4">
+                                                <a href="<?php echo site_url(); ?>/ViewController/deldoc/<?php echo $data['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>           
                                                 </span>
                                                 </td>  
                                             </tr>

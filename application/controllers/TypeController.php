@@ -59,7 +59,7 @@ class TypeController extends CI_Controller {
               {
                   $status = $this->session->userdata('employeeId');
                   $this->db->where('employeeId', $status);
-                  $query = $this->db->get('adminaot');
+                  $query = $this->db->get('users');
                   foreach($query->result_array() as $data)
                   { ?>
                           <?php 
