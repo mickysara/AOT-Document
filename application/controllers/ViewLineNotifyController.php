@@ -40,7 +40,7 @@ class ViewLineNotifyController extends CI_Controller {
                <?php 
                if($data['status']=='admin')
                {
-                 $this->load->view('Header');
+                 $this->load->view('HeaderAdminTest');
                   $this->data['view_data']= $this->LineNotify->view_data(); //Upfile คือชื่อของโมเดล
                   $this->load->view('ViewLineNotify', $this->data, FALSE);
                  $this->load->view('Footer');

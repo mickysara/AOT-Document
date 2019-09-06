@@ -35,7 +35,7 @@ class TypeViewController extends CI_Controller {
               <?php 
               if($data['status']=='admin')
               {
-                $this->load->view('Header');
+                $this->load->view('HeaderAdminTest');
                 $this->data['view_type']= $this->Type->view_type(); //Upfile คือชื่อของโมเดล
                 $this->load->view('TypeView', $this->data, FALSE);     
                 $this->load->view('Footer');

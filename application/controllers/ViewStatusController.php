@@ -39,7 +39,7 @@ class ViewStatusController extends CI_Controller {
               <?php 
               if($data['status']=='admin')
               {
-                $this->load->view('Header');
+                $this->load->view('HeaderAdminTest');
                 $this->data['status_view']= $this->Admin->status_view(); //Upfile คือชื่อของโมเดล
                 $this->load->view('ViewStatus', $this->data, FALSE);     
                 $this->load->view('Footer');

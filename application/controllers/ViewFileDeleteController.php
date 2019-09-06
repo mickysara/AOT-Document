@@ -35,7 +35,7 @@ class ViewFileDeleteController extends CI_Controller {
                <?php 
                if($data['status']=='admin')
                {
-                 $this->load->view('Header');
+                 $this->load->view('HeaderAdminTest');
                  $this->data['view_data']= $this->delfile->view_datadelete(); //Upfile คือชื่อของโมเดล
                  $this->load->view('ViewFileDelete', $this->data, FALSE);
                  $this->load->view('Footer');
