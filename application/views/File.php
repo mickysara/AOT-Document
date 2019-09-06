@@ -638,9 +638,9 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-
+                                       <?php $d=strtotime("+5 hours");?>
     <div class="sidebar-footer" >
-      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa");?></font></p>
+      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa",$d);?></font></p>
     </div>
   </nav>
  

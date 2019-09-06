@@ -4,7 +4,7 @@
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">ระบบให้สิทธิ์</h2>
+                    <h2 class="" style="font-size: 30px;">ระบบจัดการสิทธิ์</h2>
                     <hr>
                     <div class="table-responsive">   
                                         <table class="table align-items-center table-flush" id="Filesearch">
