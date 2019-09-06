@@ -8,14 +8,14 @@ class Admin_Model extends CI_Model
 
     public function status_view(){
         $query=$this->db->query("SELECT *
-                                 FROM adminaot  
-                                 ORDER BY adminaot.id_admin
+                                 FROM users  
+                                 ORDER BY users.id_admin
                                  ");
         return $query->result_array();
     }
 
     public function delete_data($id){
-        $this->db->query("DELETE FROM adminaot WHERE id_admin = $id");
+        $this->db->query("DELETE FROM users WHERE id_admin = $id");
         
       }
     
@@ -27,7 +27,7 @@ class Admin_Model extends CI_Model
         'status' => $inputdata['status']
       );
         $this->db->where('id_admin', $this->input->post('id_admin'));
-        $query=$this->db->update('adminaot',$data);
+        $query=$this->db->update('users',$data);
     
           
         }
@@ -36,8 +36,8 @@ class Admin_Model extends CI_Model
     
       public function edit_data($id){
         $query=$this->db->query("SELECT *
-                                 FROM adminaot
-                                 WHERE adminaot.id_admin = $id");
+                                 FROM users
+                                 WHERE users.id_admin = $id");
         return $query->result_array();
     }
 }
