@@ -104,13 +104,8 @@
                     <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
+                  <?php } endif; ?> 
                 </tbody>
-
-             
-
-               
-
-                <?php } endif; ?> 
               </table>
             </div>
           </div>

@@ -3,51 +3,79 @@
                 border-radius: .25rem;
                 background-color: #f7f8f9;">
 
-                <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">ระบบจัดการสิทธิ์</h2>
-                    <hr>
-                    <div class="table-responsive">   
-                                        <table class="table align-items-center table-flush" id="Filesearch">
-                                            <thead class="thead-light">
-                                            <tr>
-                                                <th scope="col"><h4>หมายเลขไอดี</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สถานะ</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> View </h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php
-                                            if(isset($status_view) && is_array($status_view) && count($status_view)): $i=0;
-                                            foreach ($status_view as $key => $data) { 
-                                            ?>
-                                            <tr>
-                                                <th scope="row">
-                                                <div class="media align-items-center">
-                                                    <div class="media-body">
-                                                    <span class="mb-0 text-sm"> <?php echo $data['employeeId'];?></span>
-                                                    </div>
-                                                </div>
-                                                </th>
-                                                <td>
-                                                <?php echo $data['status'];?>
-                                                </td>
-                                                <td>
-                                                    <div>
-                                                    <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['id_admin'];?>"class="btn btn-primary">Edit</a>                  
-                                                    </div>
-                                                </td>   
-                                                <td>
-                                                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
-                                                </td>  
-                                            </tr>
-                                            <?php } endif; ?> 
-                                            </tbody>
-                                        </table>
-                                        </div>
-    </div>
-</div>
-    <script type="text/javascript">
+  <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
+        <form name="login" id="login_form" method="post">
+                <h1 class="display-2" style="color:#2d3436;">ระบบจัดการสถานะของแอดมิน</h1>
+                <hr>
+                
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <h3 class="mb-0">ตารางรายชื่อแอดมินทั้งหมด</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush" id="Filetable">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col"><h4>หมายเลขไอดี</h4></th>
+                    <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สถานะ</h4></th>
+                    <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
+                    <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
+                        
+                    
+                  </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                    if(isset($status_view) && is_array($status_view) && count($status_view)): $i=0;
+                    foreach ($status_view as $key => $data) { 
+                    ?>
+
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        </a>
+                        <div class="media-body">
+                          <span class="mb-0 text-sm"> <?php echo $data['employeeId'];?></span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                    <?php echo $data['status'];?>
+                    </td>
+
+                    <td>
+                    <span class="badge badge-dot mr-4">
+                        <div>
+                        <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['id_admin'];?>"class="btn btn-primary">Edit</a>                  
+                        </div>
+                    </span>
+                    </td>
+                    <td>
+                    <span class="badge badge-dot mr-4">
+                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
+                    </span>
+                    </td>   
+                  </tr>
+                  <?php } endif; ?> 
+                </tbody>
+
+
+
+                
+              </table>
+            </div>
+          </div>
+        </div>
+            </form>
+            </div>
+  </div>
+
+
+
+
+               <script type="text/javascript">
                   function sweetalertclick(){
                        swal({
                         title: "คุณต้องการลบไฟล์ใช่หรือไม่",
