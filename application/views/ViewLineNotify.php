@@ -50,7 +50,13 @@
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg"> <?php echo $data['status'];?></i>
+                      <?php if($data['status'] == "ยังไม่ได้รับการแก้ไข")
+                      {?>
+                          <i class="bg-danger"></i> <?php echo $data['status'];?></i>
+                      <?php }else { ?>
+                        <i class="bg-success"></i> <?php echo $data['status'];?></i>
+                      <?php } ?>
+                      
                       </span>
                     </td>   
 
