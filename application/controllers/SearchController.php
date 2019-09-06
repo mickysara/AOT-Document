@@ -41,7 +41,7 @@ class SearchController extends CI_Controller {
                             <div class="card-body">
                                 <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['topic'];?> </h3>
                                 <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['file'];?></p>
-                                <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['date'];?></p>
+                                <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
                                 <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="margin-top: 30px; background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
                                 
                             </div>
@@ -85,7 +85,7 @@ class SearchController extends CI_Controller {
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['date'];?>
+                                                    <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($data['date']));?>
                                                 </span>
                                                 </td>   
                                                 <td>
