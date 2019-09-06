@@ -102,13 +102,8 @@
                     <a href="<?php echo site_url(); ?>/ViewFileDeleteController/del/<?php echo $data['id_delfile'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
+                  <?php } endif; ?> 
                 </tbody>
-
-             
-
-               
-
-                <?php } endif; ?> 
               </table>
             </div>
           </div>

@@ -57,11 +57,12 @@
                     </span>
                     </td>   
                   </tr>
+                  <?php } endif; ?> 
                 </tbody>
 
 
 
-                <?php } endif; ?> 
+                
               </table>
             </div>
           </div>

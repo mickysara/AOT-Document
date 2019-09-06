@@ -116,10 +116,8 @@
                     <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
+                  <?php }?>
                 </tbody>
-                      
-                    <?php }?>
-                    
                     </table>
                     <?php $url = current_url();
                     // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
@@ -260,9 +258,11 @@
                     <a href="<?php echo site_url(); ?>/MemberController/Deletemember/<?php echo  $mem['ID'];?>/<?php echo $repo['id'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
+                  <?php }?>
+                  <?php } endif; ?>
                 </tbody>
              
-                    <?php }?>
+                    
                     </table>
                 </div>
             </div>
@@ -270,7 +270,7 @@
     </div>
 </div>
   </div>
-  <?php } endif; ?>
+  
 </div>
 </div>
 

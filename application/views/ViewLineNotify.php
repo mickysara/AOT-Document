@@ -7,54 +7,47 @@
                 <h1 class="display-2" style="color:#2d3436;">ระบบแสดงการแจ้งปัญหา</h1>
                 <hr>
                 
-        <div class="col">
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <h3 class="mb-0">ตารางข้อมูลทั้งหมด</h3>
-            </div>
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush" id="Filetable">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col"><h4>หัวข้อแจ้งปัญหา</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>แจ้งโดย</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>สถานะ</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>View</h4></th>
-                    <th style="text-align:center;" scope="col"><h4 >Delete</h4></th>
-                        
-                    
-                  </tr>
-                </thead>
-                <tbody>
-
-                <?php
-                    if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
-                    foreach ($view_data as $key => $data) { 
-
-      
-                    ?>
-
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <a href="#" class="avatar rounded-circle mr-3">
-                        <img src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                        </a>
-                        <div class="media-body">
-                          <span class="mb-0 text-sm"> <?php echo $data['notify'];?></span>
+                <div class="col">
+                    <div class="card shadow">
+                        <div class="card-header border-0">
+                        <h3 class="mb-0">ตารางข้อมูลทั้งหมด</h3>
                         </div>
-                      </div>
-                    </th>
-                    <td>
-                    <?php echo $data['name']; ?>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg"> <?php echo $data['status'];?></i>
-                      </span>
-                    </td>   
-
-                    <td class="">
+                            <div class="table-responsive">
+                                        <table class="table align-items-center table-flush" id="Filesearch">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col"><h4>หัวข้อแจ้งปัญหา</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">แจ้งโดย</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สถานะ</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <?php
+                                                if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
+                                                foreach ($view_data as $key => $data) { 
+                                                ?>
+                                            <tr>
+                                            <th scope="row">
+                                              <div class="media align-items-center">
+                                                <a href="#" class="avatar rounded-circle mr-3">
+                                                <img src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
+                                                </a>
+                                                <div class="media-body">
+                                                  <span class="mb-0 text-sm"> <?php echo $data['notify'];?></span>
+                                                </div>
+                                              </div>
+                                            </th>
+                                            <td>
+                                            <?php echo $data['name']; ?>
+                                            </td>
+                                            <td>
+                                              <span class="badge badge-dot mr-4">
+                                                <i class="bg"> <?php echo $data['status'];?></i>
+                                              </span>
+                                          </td>   
+                                          <td class="">
                         <div>
                             <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['notify'];?>">View</button>                           
                             <div class="modal fade" id="<?php echo $data['notify'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['notify'];?>" aria-hidden="true">
@@ -89,15 +82,13 @@
                     <a href="<?php echo site_url(); ?>/ViewLineNotifyController/del/<?php echo $data['id_linenoti'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
+                  <?php } endif; ?> 
                 </tbody>
-
-
-
-                <?php } endif; ?> 
-              </table>
-            </div>
-          </div>
-        </div>
+                                            
+                                        </table>
+                                        </div>
+                                </div>
+                            </div>
             </form>
             </div>
   </div>
@@ -144,37 +135,6 @@
                               });
                               }
                               </script>
-
-
-                  <script type="text/javascript">
-                  function ifelse(){
-                         if()
-                      });
-                  }
-                  </script>
 </div>
    
 </div>
-<!-- 
-<div class="modal-footer">
-                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#<?php echo $data['id_upload'];?>">Edit</button>
-                                            <div class="modal fade" id="<?php echo $data['id_upload'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['id_upload'];?>" aria-hidden="true">
-                                              <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                                <div class="modal-content">
-                                                
-                                                  <div class="modal-header">
-                                                    <h5 class="modal-title" id="modal-title-default">Modal title</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                      <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                  </div>
-                                                  <div class="modal-body">
-                                                    ...
-                                                  </div>
-                                                  <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                  </div>
-                                                </div>
-                                                </div>
-                                              </div> -->
