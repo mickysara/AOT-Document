@@ -24,10 +24,10 @@ class MyDocumentController extends CI_Controller {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">Repository ของคุณ</h2>
+                    <h2 class="" style="font-size: 30px;">เอกสารที่อัพโหลด</h2>
                     <hr>
-                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้าง Repositoy</a>        
-                    <h2 style=" text-align: center; margin-left: auto; margin-right: auto;">ไม่มี Repository ของคุณ</h2>
+                    <a href="<?php echo site_url(); ?>UploadController/"  class="btn btn-success mb-3" style="">อัปโหลดเอกสาร</a>         
+                    <h2 style=" text-align: center; margin-left: auto; margin-right: auto;">ไม่มี เอกสารที่คุณอัพโหลด</h2>
                 </div>
             </div>
         <?php 
