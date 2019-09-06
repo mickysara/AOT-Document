@@ -14,21 +14,18 @@ class EditDocumentController extends CI_Controller {
     {
         $this->load->view('Header');
         $this->load->view('Footer');
-        // $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-        // $this->data['edit_data_image']= $this->Upload->edit_data_image($edit_id);
         $this->load->view('Edit');  
     }
-    public function edit($edit_id)
-    {
-        $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-        $this->load->view('Header');
-        $this->load->view('EditDocument', $this->data, FALSE);
-        $this->load->view('Footer');
-    }
+    // public function edit($edit_id)
+    // {
+    //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+    //     $this->load->view('Header');
+    //     $this->load->view('EditDocument', $this->data, FALSE);
+    //     $this->load->view('Footer');
+    // }
     public function editdata(){
         $files = $_FILES;
         $count = count($_FILES['userfile']['name']);
-
         for($i=0; $i<$count; $i++)
         {
         $_FILES['userfile']['name']= $files['userfile']['name'][$i];
@@ -51,10 +48,31 @@ class EditDocumentController extends CI_Controller {
         }
           $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
           $this->Upload->editdataupload($this->input->post(),$fileName);
-    //    $this->Upload->editdataupload();
         redirect('MyDocumentController','refresh');
-    }
 
+    }
+    public function checkaccount($edit_id)
+    {
+        $this->db->where('id_upload', $edit_id);
+        $query = $this->db->get('upload');
+        foreach($query->result_array() as $data)
+      { ?>
+              <?php 
+                  if($data['uploadby']==$this->session->userdata('accountName'))
+                  {
+                    $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                    $this->load->view('Header');
+                    $this->load->view('EditDocument', $this->data, FALSE);
+                    $this->load->view('Footer');
+                  }else{
+                    $this->load->view('HeaderAdmin');
+                    $this->load->view('notaccount_view');
+                    $this->load->view('Footer');
+                  }
+               ?>  
+  <?php } 
+    
+    }
 }
 
 /* End of file IndexController.php */
