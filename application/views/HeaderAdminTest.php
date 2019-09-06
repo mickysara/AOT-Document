@@ -674,7 +674,7 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('repositoryController/showdata/1');?>">
+            <a href="<?php echo site_url('ViewRepositoryController');?>">
               <i class="fa fa-file"></i>
               <span>Repository</span>
             </a>

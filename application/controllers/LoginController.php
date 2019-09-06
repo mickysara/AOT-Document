@@ -66,11 +66,16 @@ class LoginController extends CI_Controller {
               'status'      =>  'user'
             );
             $this->db->insert('users', $dbinsert);
-            
+            $data['status'] = $d['user'];
+          }else{
+            $d = $query->row_array();
+
+            $data['status'] = $d['status'];
           }
           
            echo json_encode(['status' => 1, 'msg' => 'Success']);
            
+
            $this->session->set_userdata($data);
          
 

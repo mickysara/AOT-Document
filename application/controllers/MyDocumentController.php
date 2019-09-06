@@ -171,7 +171,6 @@ class MyDocumentController extends CI_Controller {
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
                                                 <a href="<?php echo site_url(); ?>RepositoryController/showdata/<?php echo  $data['id'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
-                                
                                                 </span>
                                                 </td>  
                                             </tr>

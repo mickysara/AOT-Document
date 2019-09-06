@@ -126,6 +126,7 @@ $(document).on('submit', '#chatroom_form', function () {
     });
     </script>
  <script>
+ 
          $(document).on('submit', '#login_form', function () {
           
           $.post("<?=base_url('index.php/LoginController/Login')?>", $("#login_form").serialize(),
@@ -142,10 +143,7 @@ $(document).on('submit', '#chatroom_form', function () {
                           
                           
                       })
-                      var x = location.href = "<?=base_url('/MyDocumentController')?>";
-                     setTimeout(x,4000);
-                      
-                      
+                      setTimeout(function () {location.href = '<?=base_url('MyDocumentController')?>'}, 8000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }

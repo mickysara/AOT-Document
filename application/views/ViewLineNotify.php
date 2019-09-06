@@ -13,21 +13,6 @@
                         <h3 class="mb-0">ตารางข้อมูลทั้งหมด</h3>
                         </div>
                       </div>
-                    </th>
-                    <td>
-                    <?php echo $data['name']; ?>
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                      <?php if($data['status'] == "ยังไม่ได้รับการแก้ไข")
-                      {?>
-                          <i class="bg-danger"></i> <?php echo $data['status'];?></i>
-                      <?php }else { ?>
-                        <i class="bg-success"></i> <?php echo $data['status'];?></i>
-                      <?php } ?>
-                      
-                      </span>
-                    </td>   
 
                     <td class="">
                             <div class="table-responsive">
@@ -62,9 +47,15 @@
                                             </td>
                                             <td>
                                               <span class="badge badge-dot mr-4">
-                                                <i class="bg"> <?php echo $data['status'];?></i>
+                                              <?php if($data['status'] == "ยังไม่ได้รับการแก้ไข")
+                                              {?>
+                                                  <i class="bg-danger"></i> <?php echo $data['status'];?></i>
+                                              <?php }else { ?>
+                                                <i class="bg-success"></i> <?php echo $data['status'];?></i>
+                                              <?php } ?>
                                               </span>
                                           </td>   
+                                          
                                           <td class="">
                         <div>
                             <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['notify'];?>">View</button>                           

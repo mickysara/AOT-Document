@@ -68,7 +68,7 @@
                             <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['url'];?>">View</button>                           
                             <div class="modal fade" id="<?php echo $data['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['url'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                                <div class="modal-content" style="color: #2d3436; height: 608px;">
+                                <div class="modal-content" style="color: #2d3436;">
                                
                                     <div class="modal-header">
                                         <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['file'];?></h2>
@@ -90,6 +90,7 @@
                                         <p>หมดอายุ : <?php echo $publicdate?></p>
                                         <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
                                         <p>สถานะ :  <?php echo $data['status'];?></p>
+                                        <p>Q rcode :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/></p>
                                     </div>
                                     <div class="modal-footer">
                                         <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>
