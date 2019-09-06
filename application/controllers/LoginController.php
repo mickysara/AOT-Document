@@ -54,7 +54,21 @@ class LoginController extends CI_Controller {
          
          if($data['_success'] == 1)
          {
-
+           
+                $this->db->where('employeeId', $data['employeeId']);
+          $query = $this->db->get('users', 1);
+          $result = $query->num_rows();
+          
+          if($result == 0)
+          {
+            $dbinsert = array(
+              'employeeId'  =>  $data['employeeId'],
+              'status'      =>  'user'
+            );
+            $this->db->insert('users', $dbinsert);
+            
+          }
+          
            echo json_encode(['status' => 1, 'msg' => 'Success']);
            
            $this->session->set_userdata($data);

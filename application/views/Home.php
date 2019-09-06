@@ -215,7 +215,11 @@
                                                                                 font-size: 57px;
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
-                                                                                position: relative;"> 0 </p>
+                                                                                position: relative;">
+                                                                                <?php $countuser = $this->db->get('users');
+                                                                                  echo $countuser->num_rows();
+                                                                                ?>
+                                                                                </p>
                           <hr>
                           <p class="counter-i-ttl" style="font-weight: 700;
                                                           line-height: 140%;
@@ -256,7 +260,13 @@
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
                                                                                 position: relative;">
-                                                                                 0
+                                                                                 <?php $countload = $this->db->query('SELECT sum(download)
+                                                                                                  as sum
+                                                                                                    FROM upload');
+                                                                                        $c =  $countload->row_array();
+                                                                                        echo $c['sum'];
+                                                                                  ?>
+                                                                                      
                                                                                  </p>
                           <hr>
                           <p class="counter-i-ttl" style="font-weight: 700;
@@ -275,7 +285,13 @@
                                                                                 font-size: 57px;
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
-                                                                                position: relative;"> 0 </p>
+                                                                                position: relative;">
+                                                                                 <?php $countchat = $this->db->query('SELECT count(id)
+                                                                                                    as count
+                                                                                                    FROM chatroom');
+                                                                                        $c =  $countchat->row_array();
+                                                                                        echo $c['count'];
+                                                                                  ?> </p>
                           <hr>
                           <p class="counter-i-ttl" style="font-weight: 700;
                                                           line-height: 140%;
@@ -284,7 +300,7 @@
                                                           color: #686f8a;
                                                           margin: 0 0 20px;
                                                           padding: 0; 
-                                                          color: #2d3436;">จำนวนคนเข้าถึงเอกสารทั้งหมด</p>
+                                                          color: #2d3436;">จำนวนห้องแชทที่สร้างในการประชุม</p>
                       </div> 
                     </div>
              

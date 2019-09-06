@@ -22,7 +22,9 @@ class IndexController extends CI_Controller {
     }
     public function Test()
     {
-        echo 'alnum : '.random_string('alnum', 20).br();
+        $c = $this->db->get('upload');
+        $q = $c->row_array();
+        echo $q['id_upload'];
     }
 
 }
