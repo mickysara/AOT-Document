@@ -155,12 +155,6 @@
 </div>
    
 </div>
-
-
-
-
-
-
 <!-- 
 <div class="modal-footer">
                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#<?php echo $data['id_upload'];?>">Edit</button>
