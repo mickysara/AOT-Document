@@ -86,7 +86,7 @@ class MyDocumentController extends CI_Controller {
                                                 </td>  
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>EditDocumentController/edit/<?php echo $data['id_upload'];?>"class="btn btn-primary mb-3">Edit</a>              
+                                                <a href="<?php echo site_url(); ?>EditDocumentController/checkaccount/<?php echo $data['id_upload'];?>"class="btn btn-primary mb-3">Edit</a>              
                                                 </span>
                                                 </td>  
                                                 <td>
