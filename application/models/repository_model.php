@@ -60,19 +60,19 @@ class Repository_model extends CI_Model {
                   echo ($arraystate[1]);
     
              if($arraystate[1]=="pdf"){
-               $pdfshow = "PDF File";
+              $showtype = "PDF File";
              }else if($arraystate[1]=="docx"){
-              $wordshow = "Microsoftword";
+              $showtype = "Microsoftword";
              }else if($arraystate[1]=="pptx"){
-              $powerpointshow = "Microsoftpowerpoint";
+              $showtype = "Microsoftpowerpoint";
              }else if($arraystate[1]=="xlsx"){
-              $excelshow = "Microsoftexcel";
+              $showtype = "Microsoftexcel";
              }
-              $showtype = $pdfshow.$wordshow.$powerpointshow.$excelshow;
+            
     
             $fill_user = array(
               'id_repository'=> $idRepo,
-              'name' => $inputdata['name'],
+              'uploadby' => $inputdata['name'],
               'topic' => $inputdata['topic'],
               'detail' => $inputdata['detail'],
               'url'=> $addbaseurl,
