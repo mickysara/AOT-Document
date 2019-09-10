@@ -618,7 +618,7 @@
           <li>
             <a href="<?php echo site_url('ViewRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>Repository</span>
+              <span>ข้อมูลทีม</span>
             </a>
           </li>
           <li>
