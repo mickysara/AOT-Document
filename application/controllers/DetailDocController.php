@@ -25,33 +25,49 @@ class DetailDocController extends CI_Controller {
     
     public function edit($edit_id)
     {
+        // $query=$this->db->query("SELECT *
+        //  FROM upload,repository_member 
+        //  WHERE repository_member.id_repository = upload.id_repository 
+        //  AND repository_member.id_repository =".$edit_id);
+        //  $mem = $query->row_array();
+
+
         $this->db->where('id_upload', $edit_id);
         $query = $this->db->get('upload');
-        foreach($query->result_array() as $data)
-        { ?>
-            <?php 
+        $data = $query->row_array();
+
+        $this->db->where('id_repository', $data['id_repository']);
+        $query2 = $this->db->get('repository_member');
+        $data2 = $query2->row_array();
+      
+
             if($data['uploadby']==$this->session->userdata('accountName'))
             {
               $this->data['edit_data']= $this->Upload->edit_data($edit_id);
               $this->load->view('Header');
               $this->load->view('DetailDoc', $this->data, FALSE);
               $this->load->view('Footer');
+
+            }else if($data['id_repository'] == 0)
+            {
+                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                $this->load->view('Header');
+                $this->load->view('DetailDoc', $this->data, FALSE);
+                $this->load->view('Footer');
+ 
+            }else if($data2['accname'] == $this->session->userdata('accountName'))
+            {
+                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                $this->load->view('Header');
+                $this->load->view('DetailDoc', $this->data, FALSE);
+                $this->load->view('Footer');
+
             }else{
               $this->load->view('HeaderAdmin');
               $this->load->view('Useralert');
               $this->load->view('Footer');
             }
-      
-             ?>
-        
-        <?php } 
         }
-    //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-    //     $this->load->view('Header');
-    //     $this->load->view('DetailDoc', $this->data, FALSE);
-    //     $this->load->view('Footer');
-    // }
-
 
     public function download($url)
     {
