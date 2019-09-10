@@ -93,6 +93,32 @@ class Repository_model extends CI_Model {
           }
          
         }
+      public function edit_repo($id){
+        $query=$this->db->query("SELECT *
+                                 FROM repository 
+                                 WHERE id = $id");
+        return $query->result_array();
+    }
+
+
+    public function editdata_repo($inputdata){
+      $dateshow = date("Y/m/d");
+       $data = array(
+        'createby' => $inputdata['name'],
+        'topic' => $inputdata['topic'],
+        'date'=> $dateshow,
+        'detail' => $inputdata['detail'],
+        'privacy' => $inputdata['privacy']
+    );
+    $this->db->where('id', $this->input->post('id'));
+    $query=$this->db->update('repository',$data);
+    }
+
+    public function delete_repo($id){
+      $this->db->query("DELETE FROM repository WHERE id = $id");
+      
+    }
+    
 }
 
 /* End of file repository_model.php */
