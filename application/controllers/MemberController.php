@@ -52,16 +52,41 @@ class MemberController extends CI_Controller {
                         echo json_encode(['status' => 0, 'msg' => 'Fail']);
                         
                     }else{
-                        $insert = array(
-                            'id_emp' => $data['employeeId'],
-                            'accname' => $data['accountName'],
-                            'id_repository' => $repository_id,
-                            'level' => $Level,
-                            'addBy' => $this->session->userdata('accountName'),
-                            'Date' => date("Y-m-d")
-                            );
-                            $this->db->insert('repository_member', $insert);
-                            echo json_encode(['status' => 1, 'msg' => 'Success']);
+                        $this->db->where('id_emp', $data['employeeId']);
+                        $this->db->where('id_repository', $repository_id);
+                        $query = $this->db->get('repository_member', 1);
+                        $d = $query->num_rows();
+
+                        if($d == 0)
+                        {
+                            $this->db->where('id', $repository_id);
+                            $this->db->where('createby', $data['accountName']);
+                            $q = $this->db->get('repository', 1);
+
+                            if($q->num_rows() == 0)
+                            {
+                                $insert = array(
+                                    'id_emp' => $data['employeeId'],
+                                    'accname' => $data['accountName'],
+                                    'id_repository' => $repository_id,
+                                    'level' => $Level,
+                                    'addBy' => $this->session->userdata('accountName'),
+                                    'Date' => date("Y-m-d")
+                                    );
+                                    $this->db->insert('repository_member', $insert);
+                                    echo json_encode(['status' => 1, 'msg' => 'Success']);
+                            }else{
+                                echo json_encode(['status' => 2, 'msg' => 'Fail']);
+                            }
+                            
+                        }else
+                        {
+                            echo json_encode(['status' => 2, 'msg' => 'Fail']);
+                        }
+                        
+                        
+                        
+                        
                     }
             }
     }

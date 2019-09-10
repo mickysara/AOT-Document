@@ -60,7 +60,7 @@
                   {
                       swal({
                             icon: "success",
-                            text: "ระบบได้ทำการเพิ่มผู้ใช้ลงใน Repository นี้เรียบร้อยแล้ว",
+                            text: "ระบบได้ทำการเพิ่มผู้ใช้ลงในทีมนี้เรียบร้อยแล้ว",
                       });
                       setTimeout(myfunction,2000);
 
@@ -70,6 +70,13 @@
                       
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
+                  }else if(d.status == 2){
+
+                    swal({
+                            icon: "error",
+                             text: "มีพนักงานคนนี้อยู่ในทีมแล้วกรุณากรอกใหม่",
+                          
+                      });
                   }
                   else
                   {

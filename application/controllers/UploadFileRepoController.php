@@ -55,8 +55,16 @@ class UploadFileRepoController extends CI_Controller {
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
                   $this->RePo->upload_file($this->input->post(),$fileName);
-                  redirect('ViewController');
 
+
+                  $this->db->where('id_repository', $repo_id);
+                  $this->db->order_by('id_upload', 'desc');
+                  $query = $this->db->get('upload', 1);
+                  $d = $query->row_array();
+
+                  
+                  redirect('DetailDocController/edit/'.$d['id_upload']);
+                
                
 
               
