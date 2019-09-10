@@ -25,11 +25,34 @@ class DetailDocController extends CI_Controller {
     
     public function edit($edit_id)
     {
-        $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-        $this->load->view('Header');
-        $this->load->view('DetailDoc', $this->data, FALSE);
-        $this->load->view('Footer');
-    }
+        $this->db->where('id_upload', $edit_id);
+        $query = $this->db->get('upload');
+        foreach($query->result_array() as $data)
+        { ?>
+            <?php 
+            if($data['uploadby']==$this->session->userdata('accountName'))
+            {
+              $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+              $this->load->view('Header');
+              $this->load->view('DetailDoc', $this->data, FALSE);
+              $this->load->view('Footer');
+            }else{
+              $this->load->view('HeaderAdmin');
+              $this->load->view('Useralert');
+              $this->load->view('Footer');
+            }
+      
+             ?>
+        
+        <?php } 
+        }
+    //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+    //     $this->load->view('Header');
+    //     $this->load->view('DetailDoc', $this->data, FALSE);
+    //     $this->load->view('Footer');
+    // }
+
+
     public function download($url)
     {
         $this->load->helper('download');
