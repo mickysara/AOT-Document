@@ -203,7 +203,7 @@
                               <select name="Level" id="Level" >
                                 <option value="" disabled selected>กรุณาเลือกระดับ</option>
                                 <option value="Viewer">Viewer</option>
-                                <option value="Edittor">Edittor</option>
+                                <option value="Editor">Edittor</option>
                                 <option value="Manager">Manager</option>
                               </select>
                               <input type="hidden" id="repository_id" name="repository_id" value="<?php echo $repo['id']?>">
@@ -282,7 +282,7 @@
                                       
                                       <option value="" disabled selected>กรุณาเลือกระดับ</option>
                                       <option value="Viewer">Viewer</option>
-                                      <option value="Edittor">Edittor</option>
+                                      <option value="Editor">Edittor</option>
                                       <option value="Manager">Manager</option>
                                     </select>
                                     </div>

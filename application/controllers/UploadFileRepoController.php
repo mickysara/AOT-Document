@@ -63,7 +63,7 @@ class UploadFileRepoController extends CI_Controller {
                   $d = $query->row_array();
 
                   
-                  redirect('DetailDocController/edit/'.$d['id_upload']);
+                  redirect('DetailDocController/edit/'.$d['id_upload ']);
                 
                
 
