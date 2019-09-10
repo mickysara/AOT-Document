@@ -30,19 +30,33 @@ class RepositoryController extends CI_Controller {
         $query2 = $this->db->get('repository');
         $data = $query2->row_array();
         
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('employeeId', $status);
+        $query3 = $this->db->get('users');
+        $admin = $query3->row_array();
+
+
             if($mem['accname']==$this->session->userdata('accountName'))
             {
                 $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
+
             }else if($data['createby']==$this->session->userdata('accountName'))
             {
                 $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
-            
+
+            }else if($admin['status']== 'admin')
+            {
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
+
             }else{
               $this->load->view('Header');
               $this->load->view('Useralert');
