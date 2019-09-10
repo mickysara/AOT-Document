@@ -54,7 +54,7 @@
                     </td>
                     <td>
                     <span class="badge badge-dot mr-4">
-                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบรายชื่อนี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
                     </span>
                     </td>   
                   </tr>

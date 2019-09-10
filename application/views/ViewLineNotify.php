@@ -88,7 +88,7 @@
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/ViewLineNotifyController/del/<?php echo $data['id_linenoti'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewLineNotifyController/del/<?php echo $data['id_linenoti'];?>" onclick="return confirm('คุณต้องการลบการแจ้งเตือนนี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
                   <?php } endif; ?> 

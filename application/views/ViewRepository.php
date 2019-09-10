@@ -18,6 +18,7 @@
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Deleate</h4></th>
                                             </tr>
                                             </thead>
@@ -51,9 +52,15 @@
                                                     <a href="<?php echo site_url(); ?>RepositoryController/showdata/<?php echo  $data['id'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                                     </span>
                                                 </td>  
+                                                <td class="">
+                                                <div>
+                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/edit/<?php echo  $data['id'];?>"  class="btn btn-success mb-3" >Edit</a>                
+                                                    </div>
+                                                
+                                                </td>
                                                 <td>
                                                     <span class="badge badge-dot mr-4">
-                                                    <a href="<?php echo site_url(); ?>RepositoryController/showdata/<?php echo  $data['id'];?>"  class="btn btn-danger mb-3" style="color: #fff;">Deleate</a>              
+                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/del/<?php echo  $data['id'];?>" onclick="return confirm('คุณต้องการลบทีมนี้ใช่หรือไม่ ?')"  class="btn btn-danger mb-3" style="color: #fff;">Deleate</a>              
                                                     </span>
                                                 </td>   
                                             </tr>
