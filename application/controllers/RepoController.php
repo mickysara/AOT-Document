@@ -29,11 +29,20 @@ class RepoController extends CI_Controller {
         $this->load->view('view', $this->data, FALSE);
             }
 
-    public function insertrepo(){
+    public function insertrepo()
+    {
         // $this->Upload->insertRepo();
         $this->Upload->insertRepo($this->input->post());
-        redirect('FileController','refresh');
-            }
+        $this->db->select('*');
+        $this->db->order_by('id', 'desc');
+        $result = $this->db->get('repository',1);
+        $data = $result->row_array();
+
+        
+        redirect('RepositoryController/showdata/'.$data['id'],'refresh');
+        
+        
+    }
 
     public function checkstatus()
     {

@@ -36,10 +36,20 @@
             $this->db->where('accname', $this->session->userdata('accountName'));
             $querystatus = $this->db->get('repository_member', 1);
             $resultstatus = $querystatus->row_array();
+            if($resultstatus == "")
+            {
+              $this->db->where('id', $repo['id']);
+              $this->db->where('createby',$this->session->userdata('accountName'));
+              $querystatus = $this->db->get('repository', 1);
+              if($querystatus->num_rows() != "")
+              {
+                $resultstatus['level'] = "Creater";
+              }
+            }
           ?>
         
         <?php 
-              if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager")
+              if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'])
               {
                 $url = current_url();
                 // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
@@ -126,7 +136,7 @@
                        
                     </td>
                     <?php 
-                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager")
+                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'])
                         {?>
                         <td class="">
                           
@@ -155,7 +165,7 @@
                     <th style="text-align:center;" scope="col"><h4>เพิ่มโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
                     <?php 
-                        if($resultstatus['level'] == "Manager")
+                        if($resultstatus['level'] == "Manager" || $resultstatus['level'])
                         {?>
                         <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                         <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
@@ -166,7 +176,7 @@
                 </thead>
                 <tbody>
                 <?php 
-                        if($resultstatus['level'] == "Manager")
+                        if($resultstatus['level'] == "Manager" || $resultstatus['level'])
                         {?>
                     
                    <!-- Button trigger modal -->
@@ -246,7 +256,7 @@
  
                     </td>   
                     <?php 
-                        if($resultstatus['level'] == "Manager")
+                        if($resultstatus['level'] == "Manager" || $resultstatus['level'])
                         {?>
                       <?php 
                       $t = explode(".", $mem['accname']);

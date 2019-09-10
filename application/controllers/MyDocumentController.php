@@ -49,6 +49,7 @@ class MyDocumentController extends CI_Controller {
                                                 <th scope="col"><h4>ชื่อไฟล์</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> สถานะ </h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เพิ่มเติม</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
@@ -79,6 +80,11 @@ class MyDocumentController extends CI_Controller {
                                                     <i class="bg-success"></i> <?php echo $data['status'];?>
                                                 </span>
                                                 </td>   
+                                                <td>
+                                                <span class="badge badge-dot mr-4">
+                                                    <i class="bg-success"></i> <?php echo $data['privacy'];?>
+                                                </span>
+                                                </td> 
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
                                                 <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
