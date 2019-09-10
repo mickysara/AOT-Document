@@ -49,7 +49,7 @@
           ?>
         
         <?php 
-              if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'])
+              if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
               {
                 $url = current_url();
                 // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
@@ -93,7 +93,7 @@
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
                     <?php 
-                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager")
+                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
                         {?>
                           <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                           <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
@@ -136,7 +136,7 @@
                        
                     </td>
                     <?php 
-                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'])
+                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
                         {?>
                         <td class="">
                           
@@ -165,7 +165,7 @@
                     <th style="text-align:center;" scope="col"><h4>เพิ่มโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
                     <?php 
-                        if($resultstatus['level'] == "Manager" || $resultstatus['level'])
+                        if($resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
                         {?>
                         <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                         <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
@@ -176,7 +176,7 @@
                 </thead>
                 <tbody>
                 <?php 
-                        if($resultstatus['level'] == "Manager" || $resultstatus['level'])
+                        if($resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
                         {?>
                     
                    <!-- Button trigger modal -->
@@ -256,7 +256,7 @@
  
                     </td>   
                     <?php 
-                        if($resultstatus['level'] == "Manager" || $resultstatus['level'])
+                        if($resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
                         {?>
                       <?php 
                       $t = explode(".", $mem['accname']);
