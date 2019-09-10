@@ -29,7 +29,7 @@
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
         <h1>ชื่อ Repository : <?php echo $repo['topic'];?> </h1>  
         <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['createby'];?></p>
-        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $repo['date'];?></p>
+        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($repo['date']));?></p>
         <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['privacy'];?> </p>
           <?php 
             $this->db->where('id_repository', $repo['id']);
@@ -126,7 +126,7 @@
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i> <?php echo  $r['date'];?>
+                        <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($r['date']));?>
                       </span>
                     </td>   
                     <td class="">

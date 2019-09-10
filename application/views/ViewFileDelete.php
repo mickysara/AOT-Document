@@ -58,7 +58,7 @@
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i> <?php echo $data['datedel'];?>
+                        <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($data['datedel']));?>
                       </span>
                     </td>   
 
@@ -85,7 +85,7 @@
                                     <div class="modal-body" >
                                         <p>รายละเอียด : <?php echo $data['detaildel'];?> </p>
                                         <p>โดย : <?php echo $data['namedel'];?></p>
-                                        <p>เมื่อวันที่ : <?php echo $data['datedel'];?></p>
+                                        <p>เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['datedel']));?></p>
                                         <p>หมดอายุ : <?php echo $publicdate?></p>
                                         <p>ระดับการเข้าถึง : <?php echo $data['privacydel'];?></p>
                                         <p>สถานะ :  <?php echo $data['statusdel'];?></p>
