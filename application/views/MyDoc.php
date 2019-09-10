@@ -48,12 +48,12 @@
 }
 </style>
 
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; เพิ่มเติม</span>
 <div id="mySidenav" class="sidenav" style="margin-top: 100px; background-color: #2d3436;">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#" id="Mydoc">เอกสารที่อัพโหลดไป </a>
-  <a href="#" id="MyRepos"> Repository </a>
-  <a href="#" id="InRepos"> Repository ที่มีฉัน </a>
+  <a href="#" id="MyRepos"> ทีมของฉัน </a>
+  <a href="#" id="InRepos"> ทีมที่ฉันเข้าร่วม </a>
 </div>
 <div class="container" id="container" style="">
     

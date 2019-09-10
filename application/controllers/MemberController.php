@@ -74,6 +74,17 @@ class MemberController extends CI_Controller {
                                     'Date' => date("Y-m-d")
                                     );
                                     $this->db->insert('repository_member', $insert);
+
+                                $insertnoti = array(
+                                    'id_repository' =>  $repository_id,
+                                    'Action'        =>  'invite',
+                                    'accname'       =>  $data['accountName'],
+                                    'ActionBy'      =>  $this->session->userdata('accountName'),
+                                    'Notification'  =>  1
+                                );
+
+                                    $this->db->insert('noti', $insertnoti);
+                                    
                                     echo json_encode(['status' => 1, 'msg' => 'Success']);
                             }else{
                                 echo json_encode(['status' => 2, 'msg' => 'Fail']);

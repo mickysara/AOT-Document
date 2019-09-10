@@ -27,7 +27,7 @@
 
 
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อ Repository : <?php echo $repo['topic'];?> </h1>  
+        <h1>ชื่อทีม : <?php echo $repo['topic'];?> </h1>  
         <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['createby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $repo['date'];?></p>
         <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['privacy'];?> </p>
@@ -55,7 +55,7 @@
                 // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
                 $arraystate2 = (explode("/",$url));
                 $idRepo = ($arraystate2[6]);?>
-                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</a>
+                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงในทีมนี้</a>
               <?php } ?>
 
 
@@ -69,10 +69,10 @@
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ใน Repository นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ในทีมนี้</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>สมาชิกใน Repository นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>สมาชิกในทีมนี้</a>
         </li>
     </ul>
 </div>
@@ -199,7 +199,7 @@
                               <form name="login" id="addmember_form" method="post">
                               กรุณากรอกรหัสพนักงาน :
                               <input type="text" class="form-control mt-3 mb-3 ml-2" id="id_emp" name="id_emp" placeholder="682423">
-                              กรุณาเลือกระดับในการเกี่ยวข้องกับ Repository นี้ :
+                              กรุณาเลือกระดับในการเกี่ยวข้องกับทีมนี้ :
                               <select name="Level" id="Level" >
                                 <option value="" disabled selected>กรุณาเลือกระดับ</option>
                                 <option value="Viewer">Viewer</option>
