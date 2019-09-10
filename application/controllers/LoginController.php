@@ -105,7 +105,7 @@ class LoginController extends CI_Controller {
     {
       $accname = $this->session->userdata('accountName');
       $this->db->where('Notification', '1');
-      $this->db->where('accname', 'sontaya.w');
+      $this->db->where('accname', $accname);
       $user = $this->db->get('noti');
 
  
