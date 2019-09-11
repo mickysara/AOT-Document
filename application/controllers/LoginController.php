@@ -103,12 +103,9 @@ class LoginController extends CI_Controller {
 
     public function IncreaseNoti()
     {
-      $accname = $this->session->userdata('accountName');
       $this->db->where('Notification', '1');
-      $this->db->where('accname', $accname);
+      $this->db->where('accname', $this->session->userdata('accountName'));
       $user = $this->db->get('noti');
-
- 
       echo json_decode($user->num_rows());
     }
 
