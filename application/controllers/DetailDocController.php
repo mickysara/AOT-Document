@@ -67,7 +67,7 @@ class DetailDocController extends CI_Controller {
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
 
-            }else if($data['privacy']== 'public')
+            }else if($data['privacy']== 'Public')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
