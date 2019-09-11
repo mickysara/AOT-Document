@@ -39,8 +39,6 @@ class DetailDocController extends CI_Controller {
         $data2 = $query2->row_array();
 
 
-      
-
             if($data['uploadby']==$this->session->userdata('accountName'))
             {
               $this->data['edit_data']= $this->Upload->edit_data($edit_id);
@@ -69,6 +67,12 @@ class DetailDocController extends CI_Controller {
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
 
+            }else if($data['privacy']== 'public')
+            {
+                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                $this->load->view('Header');
+                $this->load->view('DetailDoc', $this->data, FALSE);
+                $this->load->view('Footer');
             }else{
               $this->load->view('Header');
               $this->load->view('Useralert');
