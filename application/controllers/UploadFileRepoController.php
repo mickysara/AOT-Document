@@ -43,8 +43,8 @@ class UploadFileRepoController extends CI_Controller {
                 $config['upload_path'] = './uploads/';
                 $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
                 $config['max_size'] = '10000000'; //หน่วยเป็น byte กำหนดใน config xammps php.ini search post และ up
-                $config['remove_spaces'] = true; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
-                $config['overwrite'] = false;
+                $config['remove_spaces'] = false; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
+                $config['overwrite'] = true;
                 $config['max_width'] = '';
                 $config['max_height'] = '';
                 $this->load->library('upload', $config);

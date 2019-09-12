@@ -136,7 +136,15 @@ class EmailController extends CI_Controller{
         } else {
             $response['wm_status'] = 'success';
         }
-        redirect('MyDocumentController');
+
+        $this->db->select('*');
+        $this->db->order_by('id_upload', 'desc');
+        $result = $this->db->get('upload',1);
+        $data = $result->row_array();
+
+        
+        redirect('DetailDocController/edit/'.$data['id_upload'],'refresh');
+        // redirect('MyDocumentController');
 
     }
 }

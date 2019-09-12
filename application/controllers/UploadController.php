@@ -37,7 +37,7 @@ class UploadController extends CI_Controller {
                 $config['upload_path'] = './uploads/';
                 $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
                 $config['max_size'] = '10000000'; //หน่วยเป็น byte กำหนดใน config xammps php.ini search post และ up
-                $config['remove_spaces'] = true; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
+                $config['remove_spaces'] = false; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
                 $config['overwrite'] = true; //falseไฟล์ซ้ำมีหลายไฟล์ true ลงทับไฟล์เดิม
                 $config['max_width'] = '';
                 $config['max_height'] = '';
@@ -76,6 +76,7 @@ class UploadController extends CI_Controller {
 
         public function Mydoc()
         {
+
         $this->load->view('Header');
         $this->load->view('Footer');
         $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
@@ -97,7 +98,7 @@ class UploadController extends CI_Controller {
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
             $config['max_size'] = '10000000'; //หน่วยเป็น byte กำหนดใน config xammps php.ini search post และ up
-            $config['remove_spaces'] = true; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
+            $config['remove_spaces'] = false; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
             $config['overwrite'] = true; //falseไฟล์ซ้ำมีหลายไฟล์ true ลงทับไฟล์เดิม
             $config['max_width'] = '';
             $config['max_height'] = '';
@@ -112,9 +113,4 @@ class UploadController extends CI_Controller {
               redirect('EmailController/senddoc');
               
         }
-
-
-
-
-        
     }
