@@ -87,7 +87,7 @@
                                         <p>รายละเอียด : <?php echo $data['detail'];?> </p>
                                         <p>โดย : <?php echo $data['uploadby'];?></p>
                                         <p>เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
-                                        <p>หมดอายุ : <?php echo $publicdate?></p>
+                                        <p>หมดอายุ : <?php echo date('d/m/Y', strtotime($publicdate));?></p>
                                         <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
                                         <p>สถานะ :  <?php echo $data['status'];?></p>
                                         <p>จำนวนครั้งที่ดาวโหลดไฟล์ :  <?php echo $data['download'];?></p>

@@ -74,7 +74,7 @@
                                         <p>โดย : <?php echo $data['name'];?></p>
                                         <p>อีเมล :  <?php echo $data['email'];?></p>
                                         <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
-                                        <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
+                                        <p>แจ้งเมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
                                         <h4>สถานะ : <?php echo $data['status'];?></h4>
                                     </div>
 

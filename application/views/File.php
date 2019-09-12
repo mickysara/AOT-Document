@@ -582,12 +582,6 @@
             </a>
           </li>
           <li class="sidebar">
-            <a href="<?php echo site_url('TypeController');?>">
-              <i class="fa fa-file"></i>
-              <span>อัปโหลดประเภทเอกสาร</span>
-           </a>
-          </li>
-          <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
               <span>เพิ่ม Repository</span>
@@ -601,12 +595,6 @@
             <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
               <span>ดูข้อมูลเอกสารทั้งหมด</span>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('TypeViewController');?>">
-              <i class="fa fa-calendar"></i>
-              <span>ดูข้อมูลประเภทไฟล์ทั้งหมด</span>
             </a>
           </li>
           <li>
@@ -681,11 +669,18 @@
                         <i class="fa fa-download fa-2x text-gray-300 ml-5"></i>
                     </div>
                 </div>
+
+                <?php $countchat = $this->db->query('SELECT count(id)
+                                    as count
+                                    FROM chatroom');
+                        $c =  $countchat->row_array();
+                  ?> </p>
+
                 <div class="col-sm mr-4" style="background-color: #fff;">
                     <div class="content mt-2 mb-2" style="display: -webkit-flex;">
                         <div>
-                        <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนคนเข้าถึงเอกสารทั้งหมด</div>
-                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
+                        <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนห้องแชทที่สร้างในการประชุม</div>
+                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;"><?php echo $c['count'];?></div>
                         </div>
                         <i class="fas fa-comments fa-2x text-gray-300 ml-5"></i>
                     </div>
@@ -727,7 +722,7 @@
                 <div class="card  mb-4" style= "margin-top: 0px;">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
-                    <h2 class="m-0 font-weight-bold text-white">จำนวนแต่ละประเภทไฟล์</h2>
+                    <h2 class="m-0 font-weight-bold text-white">จำนวนไฟล์แต่ละประเภท</h2>
                     <div class="dropdown no-arrow">
                     </div>
                     </div>
@@ -765,8 +760,8 @@
                             $wordcal3 = $wordcal2.'%';
 
                             //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
-                            $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
-                            $calanotherfile = $d->num_rows() - $anotherfile;
+                            // $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
+                            // $calanotherfile = $d->num_rows() - $anotherfile;
                         ?>
             <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
               <div class="progress mb-4" style="height: 10px">
@@ -783,10 +778,6 @@
               <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt=""></h4>
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Another <?php echo $calanotherfile?><span class="float-right">0.0%</span></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
                     </div>
                 </div>
