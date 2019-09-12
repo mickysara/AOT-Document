@@ -47,7 +47,7 @@
         <p style="font-weight: 500;">ประเภท : <?php echo $data['type'];?></p>
         <p style="font-weight: 500;">เพิ่มโดย : <?php echo $data['uploadby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
-        <p style="font-weight: 500;">หมดอายุวันที่ : <?php echo $publicdate?></p>
+        <p style="font-weight: 500;">หมดอายุวันที่ : <?php echo date('d/m/Y', strtotime($publicdate));?></p>
         <p style="font-weight: 500;">สถานะ : <span class="badge badge-dot">
                                                     <i class="bg-success"></i> <?php echo $data['status'];?>
                                                 </span> </p>

@@ -42,9 +42,9 @@
                     </div>
 
                     <div class="form-group">
-                    <div>ระดับการเข้าถึงไฟล์</div>
-                    <select name="privacy" id="privacy">
-                      <option value="Private">ส่วนตัว</option>
+                    <div>ระดับการเข้าถึงเอกสาร</div>
+                    <select name="privacy" id="privacy" required>
+                      <option value="" disabled selected>กรุณาเลือกระดับการเข้าถึงเอกสาร</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
                     </select>
@@ -52,7 +52,7 @@
 
                     <script>
             </script>
-                <button onclick="javascript:sweetalertclick()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
 
 
