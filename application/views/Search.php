@@ -22,7 +22,12 @@
                         </div>     
         <button type="submit" class="btn btn-success mt-5 mb-5" id="AdSearch" style="width: 192px; height: 52px;"> <i class="fa fa-search mr-2" aria-hidden="true"></i>เริ่มค้นหา</button>
         </form>
-        <button type="button" class="btn btn-primary btn-lg" style="width: 192px; height: 52px;" onclick="location.href='<?php echo base_url();?>AdvanceSearchController'">Advancesearch</button>
+        <?php
+        if($this->session->userdata('_success') != "")
+        {?>
+           <button type="button" class="btn btn-primary btn-lg" style="width: 192px; height: 52px;" onclick="location.href='<?php echo base_url();?>AdvanceSearchController'">Advancesearch</button>
+       <?php } ?>
+       
                 
     </div>
 
