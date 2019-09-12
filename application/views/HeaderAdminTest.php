@@ -640,12 +640,6 @@
             </a>
           </li>
           <li class="sidebar">
-            <a href="<?php echo site_url('TypeController');?>">
-              <i class="fa fa-file"></i>
-              <span>อัปโหลดประเภทเอกสาร</span>
-           </a>
-          </li>
-          <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
               <span>เพิ่ม Repository</span>
@@ -662,12 +656,6 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('TypeViewController');?>">
-              <i class="fa fa-calendar"></i>
-              <span>ดูข้อมูลประเภทไฟล์ทั้งหมด</span>
-            </a>
-          </li>
-          <li>
           <a href="<?php echo site_url('ViewFileDeleteController');?>">
               <i class="fa fa-undo"></i>
               <span>ดูข้อมูลไฟล์ที่ถูกลบไปแล้ว</span>
@@ -676,7 +664,7 @@
           <li>
             <a href="<?php echo site_url('ViewRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>Repository</span>
+              <span>ข้อมูลทีม</span>
             </a>
           </li>
           <li>
