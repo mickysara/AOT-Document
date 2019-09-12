@@ -5,11 +5,23 @@ class AdvanceSearchController extends CI_Controller {
 
     public function index()
     {
+        if($this->session->userdata('_success') == '')
+        {
+        $this->load->view('Header');
+        $this->load->view('Loginalert');
+        $this->load->view('Footer');
+        }else{
+        redirect('AdvanceSearchController/checkstatus');
+        }
+    }
+
+    public function checkstatus()
+    {
         $this->load->view('Header');
         $this->load->view('advanceSearch');
         $this->load->view('Footer');
-    }
 
+    }
     public function AdvanceSearch()
     {
         $c = 0;
@@ -205,7 +217,7 @@ class AdvanceSearchController extends CI_Controller {
                                 </div>
                             </div>
 
-                 <?}
+                 <?php }
             }
         }
 
