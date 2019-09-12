@@ -117,6 +117,7 @@ class AdvanceSearchController extends CI_Controller {
             }
         }
         $this->db->where('privacy !=','Private');
+        $this->db->where('privacy !=','Repository');
         
         $d = $this->db->get('upload');
         $count = $d->num_rows();

@@ -21,6 +21,16 @@ class SearchController extends CI_Controller {
         $view =  $this->input->post("custom-radio-1");
 
         $this->db->like('file',  $name);
+        if($this->session->userdata('_success') == "")
+        {
+            $this->db->where('privacy !=', 'Private');
+            $this->db->where('privacy !=', 'Repository');
+            $this->db->where('privacy !=', 'Authen');
+            
+        }else{
+            $this->db->where('privacy !=', 'Repository');
+            $this->db->where('privacy !=', 'Private');
+        }
         $d = $this->db->get('upload');
         $count = $d->num_rows();
         $d->result_array();
@@ -42,7 +52,8 @@ class SearchController extends CI_Controller {
                                 <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['topic'];?> </h3>
                                 <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['file'];?></p>
                                 <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
-                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="margin-top: 30px; background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
+                                <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['privacy']?></p>
+                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
                                 
                             </div>
                         </div>
