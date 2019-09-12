@@ -130,9 +130,15 @@ class LoginController extends CI_Controller {
       <?php 
         }else{ ?>
             <div>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="<?php echo base_url();?>RepositoryController/showdata/<?= $d['id_repository'] ?>">
                 <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
-                <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสารแก่คุณ</p> 
+                  <?php $this->db->where('id', $d['id_repository']);
+                      $query = $this->db->get('repository', 1);
+                      $a = $query->row_array();
+                  ?>
+                      
+                
+                <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสาร <p style="font-weight: bold;"> ชื่อ : <?php echo $a['topic']?></p></p> 
                 <p> <i class="fa fa-user-plus" aria-hidden="true" style="color: #172b4d;"></i> เมื่อ <?=trim($d['Timestamp'])?></p>
               </a>
             <div class="dropdown-divider"></div>

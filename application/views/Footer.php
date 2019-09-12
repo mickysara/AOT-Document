@@ -298,7 +298,7 @@ $(document).ready( function(){
 <script>
 $(document).ready(function(e) {
 	increaseNotify();
-    // setInterval(increaseNotify, 3000);
+     setInterval(increaseNotify, 3000);
 });
 function increaseNotify(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
           $.get("<?=base_url('index.php/LoginController/IncreaseNoti')?>", 

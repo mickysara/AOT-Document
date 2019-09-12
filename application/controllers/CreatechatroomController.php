@@ -11,7 +11,7 @@ class CreatechatroomController extends CI_Controller {
         
     }
 
-    public function createchatroom()
+    public function createchatroom($name_room)
     {
         $topic = $this->input->post("topicchat");
         $codechat = random_string('alnum',5);        
