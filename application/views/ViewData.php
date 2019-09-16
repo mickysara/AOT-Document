@@ -77,21 +77,21 @@
                                         </button>
                                     </div>
                                     
-                                    <?php if($data['dateend']=='1970-01-01'){
+                                    <?php if(date('d/m/Y', strtotime($data['dateend']))=='01/01/1970'){
                                       $publicdate = 'เอกสารไม่มีวันหมดอายุ';
                                       }else{
-                                      $publicdate = $data['dateend'];
+                                      $publicdate = date('d/m/Y', strtotime($data['dateend']));
                                       }
                                       ?>
                                     <div class="modal-body" >
                                         <p>รายละเอียด : <?php echo $data['detail'];?> </p>
                                         <p>โดย : <?php echo $data['uploadby'];?></p>
                                         <p>เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
-                                        <p>หมดอายุ : <?php echo date('d/m/Y', strtotime($publicdate));?></p>
+                                        <p>หมดอายุ : <?php echo $publicdate;?></p>
                                         <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
                                         <p>สถานะ :  <?php echo $data['status'];?></p>
                                         <p>จำนวนครั้งที่ดาวโหลดไฟล์ :  <?php echo $data['download'];?></p>
-                                        <p>Q rcode :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/></p>
+                                        <p>Qr code :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/></p>
                                     </div>
                                     <div class="modal-footer">
                                         <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>

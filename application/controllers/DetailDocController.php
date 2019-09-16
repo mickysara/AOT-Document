@@ -82,6 +82,21 @@ class DetailDocController extends CI_Controller {
 
     public function download($url)
     {
+        $this->db->where('url', $url);
+        $query = $this->db->get('upload');
+        $dataload = $query->row_array();
+        if($dataload['privacy']=='Private' && $this->session->userdata('_success') == '')
+        {
+            $this->load->view('Header');
+            $this->load->view('LoginAlert');     
+            $this->load->view('Footer');
+        }else if($dataload['privacy']=='Authen' && $this->session->userdata('_success') == '')
+        {
+            $this->load->view('Header');
+            $this->load->view('LoginAlert');     
+            $this->load->view('Footer');
+        }else
+        {
         $this->load->helper('download');
         $this->db->where('url', $url);
         $data = $this->db->get('upload', 1);
@@ -101,6 +116,7 @@ class DetailDocController extends CI_Controller {
             $file = 'uploads/'.$d['file'];
             force_download($file, NULL);
         }
+      }
     }
     public function downloadqrcode($url)
     {
