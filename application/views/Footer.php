@@ -43,8 +43,9 @@
 
     if(d.page == 'chat')
     {
-        IncreaseChatByAsc()
+        IncreaseChatByAsc();
         IncreaseChatRecent(); 
+        IncreaseChatPopular();
     }
     });
   </script>

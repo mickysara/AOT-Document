@@ -46,6 +46,21 @@ class InchatroomController extends CI_Controller {
         
     }
 
+    public function LikeMessage($id_message)
+    {
+        $likeby = $this->session->userdata('employeeId');
+        date_default_timezone_set('Asia/Bangkok');
+        $datetime = date("Y-m-d h:i:");
+
+        $data = array(
+            "id_message" => $id_message,
+            "likeby"     => $likeby,
+            "datetime"   => $datetime
+        );
+
+        $this->db->insert('like_message', $data);
+    }
+
 }
 
 /* End of file InchatroomController.php */

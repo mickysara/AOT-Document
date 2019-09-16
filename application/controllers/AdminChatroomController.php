@@ -21,7 +21,7 @@ class AdminChatroomController extends CI_Controller {
 
     public function IncreaseChatByAsc($codechat)
     {
-        $this->db->select('message.message, message.datetime, count(like_message.id) as number_of_like');
+        $this->db->select('message.message,message.id,message.datetime, count(like_message.id) as number_of_like');
         $this->db->from('message');
         $this->db->where('code_chatroom', $codechat);
         $this->db->join('like_message', '(message.id = like_message.id_message)', 'left');
@@ -49,12 +49,12 @@ class AdminChatroomController extends CI_Controller {
                                     <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['datetime']));?> </p></div>
                             </div>
                             <div class="question-item_like" style="align:right">
-                                    <button class="btn btn-icon btn-3 btn" type="button" style="background-color: #2181c2; color: #fff;">
+                                    <a class="btn btn-icon btn-3 btn"  href="<?php echo site_url(); ?>/InchatroomController/LikeMessage/<?php echo $data['id'];?>" style="background-color: #2181c2; color: #fff;">
                                         <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                         <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                         </span>
                                         <span class="btn-inner--text">Like</span>  
-                                    </button>
+                                    </a>
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">
