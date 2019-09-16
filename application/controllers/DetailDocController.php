@@ -85,11 +85,17 @@ class DetailDocController extends CI_Controller {
         $this->db->where('url', $url);
         $query = $this->db->get('upload');
         $dataload = $query->row_array();
-        if($dataload['privacy']=='Private' && $this->session->userdata('_success') == '')
+        if($dataload['privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['uploadby'])
+        {
+            $this->load->view('Header');
+            $this->load->view('Useralert');     
+            $this->load->view('Footer');
+        }else if($dataload['privacy']=='Private' && $this->session->userdata('_success') == '')
         {
             $this->load->view('Header');
             $this->load->view('LoginAlert');     
             $this->load->view('Footer');
+            
         }else if($dataload['privacy']=='Authen' && $this->session->userdata('_success') == '')
         {
             $this->load->view('Header');
