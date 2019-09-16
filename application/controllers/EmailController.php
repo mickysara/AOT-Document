@@ -64,13 +64,11 @@ class EmailController extends CI_Controller{
         $r = $data->row_array();
 
         $params['data'] = base_url().'/InchatroomController/showchat/'.$r['id'];
-        echo $params['data'];
         $params['level'] = 'H';
         $params['size'] = 50;
         $params['savename'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['code_chatroom'].'.png';
         $this->ciqrcode->generate($params);
-        
-        echo '<img src="'.base_url().'asd.png" style="width: 250px; height: 250px;" />';
+
 
         $config['source_image'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['code_chatroom'].'.png';
         $config['image_library'] = 'gd2';
@@ -92,6 +90,14 @@ class EmailController extends CI_Controller{
         } else {
             $response['wm_status'] = 'success';
         }
+
+
+        $this->db->select('*');
+        $this->db->order_by('id', 'desc');
+        $data = $this->db->get('chatroom',1);
+        $r = $data->row_array();
+        
+        redirect('AdminChatroomController/showchat/'.$r['id'],'refresh');
   
 
     }

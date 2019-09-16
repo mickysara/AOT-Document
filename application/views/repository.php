@@ -56,7 +56,13 @@
                 $arraystate2 = (explode("/",$url));
                 $idRepo = ($arraystate2[6]);?>
                 <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงในทีมนี้</a>
-                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $repo['topic']?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">สร้างห้องตอบคำถาม</a>
+                <form name="createchat" id="createchat" method="post">
+
+                  <input type="hidden" id="name_room" name="name_room" value="<?php echo $repo['topic'] ?>">
+                  <input type="hidden" id="id_repository" name="id_repository" value="<?php echo $repo['id'] ?>">
+
+                <button type="submit" class="btn btn-success mt-4">ยืนยัน</button>
+                </form>
               <?php } ?>
 
 

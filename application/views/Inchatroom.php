@@ -32,7 +32,10 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
-                <p class="description">Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                <div class="Container-Message" id="Message_Popular" style="height: 500px;  overflow-y: auto;" >
+
+                    <hr>
+                </div>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
             <p class="topic" style="text-align: center;">หัวข้อ : <?php echo $chat_data['topic'] ?> </p>
