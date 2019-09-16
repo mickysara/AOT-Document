@@ -16,7 +16,7 @@ class UploadController extends CI_Controller {
         if($this->session->userdata('_success') == '')
       {
           $this->load->view('Header');
-          $this->load->view('Loginalert');     
+          $this->load->view('LoginAlert');      
           $this->load->view('Footer');
       }else{
         redirect('UploadController/checkstatus');

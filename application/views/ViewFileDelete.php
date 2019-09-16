@@ -76,10 +76,10 @@
                                         </button>
                                     </div>
                                     
-                                    <?php if($data['dateenddel']=='1970-01-01'){
+                                    <?php if(date('d/m/Y', strtotime($data['dateenddel']))=='01/01/1970'){
                                       $publicdate = 'เอกสารไม่มีวันหมดอายุ';
                                       }else{
-                                      $publicdate = $data['dateenddel'];
+                                      $publicdate = date('d/m/Y', strtotime($data['dateenddel']));
                                       }
                                       ?>
                                     <div class="modal-body" >
