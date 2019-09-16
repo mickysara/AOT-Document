@@ -209,7 +209,7 @@ public function deletedelfile_data($id){
     { 
       if($this->session->userdata('_success') == '')
       {
-        $query = $this->db->query('SELECT * FROM upload WHERE privacy == "Public" ORDER BY id_upload DESC LIMIT '.$page.','.$per_page); 
+        $query = $this->db->query('SELECT * FROM upload WHERE privacy = "Public" ORDER BY id_upload DESC LIMIT '.$page.','.$per_page); 
         if($query->num_rows() > 0 ) {
           return $query->result_array();
         } else {
