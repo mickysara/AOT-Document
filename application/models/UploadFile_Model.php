@@ -47,6 +47,12 @@ class UploadFile_Model extends CI_Model
           $showtype = "Microsoftpowerpoint";
          }else if($arraystate[1]=="xlsx"){
           $showtype = "Microsoftexcel";
+         }else if($arraystate[1]=="jpeg"){
+          $showtype = "JPEG";
+         }else if($arraystate[1]=="png"){
+          $showtype = "PNG";
+         }else if($arraystate[1]=="jpg"){
+          $showtype = "JPG";
          }
           $showtypeall = $showtype;
 
@@ -144,6 +150,12 @@ public function deletedelfile_data($id){
            $showtype = "Microsoftpowerpoint";
           }else if($arraystate[1]=="xlsx"){
            $showtype = "Microsoftexcel";
+          }else if($arraystate[1]=="jpeg"){
+            $showtype = "JPEG";
+           }else if($arraystate[1]=="png"){
+            $showtype = "PNG";
+           }else if($arraystate[1]=="jpg"){
+            $showtype = "JPG";
           }
            $showtypeall = $showtype;
              

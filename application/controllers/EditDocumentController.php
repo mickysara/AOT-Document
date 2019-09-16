@@ -34,7 +34,7 @@ class EditDocumentController extends CI_Controller {
         $_FILES['userfile']['error']= $files['userfile']['error'][$i];
         $_FILES['userfile']['size']= $files['userfile']['size'][$i];
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'pdf|pptx|docx|xlsx';
+        $config['allowed_types'] = 'pdf|pptx|docx|xlsx|png|jpeg|jpg';
         $config['max_size'] = '10000000'; //หน่วยเป็น byte กำหนดใน config xammps php.ini search post และ up
         $config['remove_spaces'] = false; //ลบค่าว่างออกไป ชื่อไฟล์ค่าว่าง
         $config['overwrite'] = true;
