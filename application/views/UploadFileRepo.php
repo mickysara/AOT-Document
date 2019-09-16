@@ -11,7 +11,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
           <?php $repostrnono = base_url(uri_string());
              $arraystate2 = (explode("/",$repostrnono));
-             $idRepo = ($arraystate2[6]);?>
+             $idRepo = ($arraystate2[5]);?>
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('UploadFileRepoController/file_upload/').$idRepo;?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
@@ -86,7 +86,7 @@
                             var uploadField = document.getElementById("image_file");
 
                             uploadField.onchange = function() {
-                                if(this.files[0].size > 2000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
+                                if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
                                   swal({
                                       title: "Upload Fail",
                                       text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB",

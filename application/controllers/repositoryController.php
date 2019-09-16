@@ -6,13 +6,13 @@ class repositoryController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Repository_Model'); 
+        $this->load->model('repository_model'); 
     }  
 
     public function index()
     {
         $this->load->view('Header');
-        $this->data['repository_view']= $this->Repository_Model->repository_view(); //Upfile คือชื่อของโมเดล
+        $this->data['repository_view']= $this->repository_model->repository_view(); //Upfile คือชื่อของโมเดล
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
         
@@ -38,21 +38,21 @@ class repositoryController extends CI_Controller {
 
             if($mem['accname']==$this->session->userdata('accountName'))
             {
-                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
 
             }else if($data['createby']==$this->session->userdata('accountName'))
             {
-                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
 
             }else if($admin['status']== 'admin')
             {
-                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');

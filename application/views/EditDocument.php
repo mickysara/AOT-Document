@@ -37,12 +37,19 @@
                     </div>
 
                     <div class="form-group">
+                     <!-- <div class="form-group">
                     <td>ไฟล์</td>
                     <div class="custom-file mb-3">
                       <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx">
                       <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
+                    </div> -->
+                   
+                    <div class="form-group">
+                    <div>ไฟล์</div>
+                      <input type="Text" class="form-control form-control-alternative" name="imagefile" value="<?php echo $data['file'];?>" id="imagefile" readonly>
                     </div>
+              
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
@@ -61,19 +68,22 @@
 
 
                      <?php if($data['privacy']== 'Private'){
-                       $showPri ="ส่วนตัว";
+                           $showPri ="ส่วนตัว";
+                           $getpri = "Private";
                           }else if($data['privacy']== 'Authen'){
                             $showPri = "เฉพาะผู้ที่มีรหัส";
+                            $getpri = "Authen";
                           }else if($data['privacy']== 'Public'){
-                           $showPri = "สาธารณะ"; 
+                            $showPri = "สาธารณะ"; 
+                            $getpri = "Public";
                           }else{
                             $showPri = "กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์";
                           }?>
 
                     <div class="form-group">
                     <div>ระดับความเป็นส่วนตัว</div>
-                    <select name="privacy" id="privacy" required>
-                      <option value="" disabled selected >กรุณาเลือกระดับความเป็นส่วนตัว</option>
+                    <select name="privacy" id="privacy">
+                      <option value="<?php echo $getpri?>" ><?php echo $showPri;?></option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>

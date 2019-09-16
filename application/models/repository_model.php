@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Repository_model extends CI_Model {
+class repository_model extends CI_Model {
 
     public function __construct()
     {
@@ -40,7 +40,7 @@ class Repository_model extends CI_Model {
             $repostr = base_url(uri_string());
              //$repostr = site_url('/UploadFileRepoController/uploadfilerepo/'.$nono);
             $arraystate2 = (explode("/",$repostr));
-            $idRepo = ($arraystate2[6]);
+            $idRepo = ($arraystate2[5]);
 
             $dateshow = date("Y/m/d");
             $d=strtotime("+10 Days");

@@ -125,20 +125,18 @@ public function delete_data($id){
 }
 public function deletedelfile_data($id){
   $this->db->query("DELETE FROM deletefile WHERE id_delfile = $id");
-  
-  
+ 
 }
-
-
-
-    public function editdataupload($inputdata,$filename){
+    public function editdataupload($inputdata){
       $dateget = $inputdata['date_end'];
       $newDate = date("Y-m-d", strtotime($dateget));
-    
-      if($filename!='' ){
-        $filename1 = explode(',',$filename);
-        foreach($filename1 as $file){
 
+      $filename = $inputdata['imagefile'];
+       if($filename!='' ){
+         $filename1 = explode(',',$filename);
+         foreach($filename1 as $file){
+        
+          
           $str = $file;
           $arraystate = (explode(".",$str));
 
@@ -162,7 +160,7 @@ public function deletedelfile_data($id){
       $data = array(
         'uploadby' => $inputdata['name'],
         'topic' => $inputdata['topic'],
-        'file' => $file,
+        'file' => $inputdata['imagefile'],
         'date' => $inputdata['date'],
         'dateend' => $newDate,
         'detail' => $inputdata['detail'],
