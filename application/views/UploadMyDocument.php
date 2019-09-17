@@ -11,7 +11,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" enctype='multipart/form-data'>
+            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/UploadMydocument');?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 
@@ -123,7 +123,7 @@
 
 
                                                <!----------------- progress bar upload ------------------------->
-                                               <script>
+                                               <!-- <script>
             $(document).ready(function() {
 
             $('form').on('submit', function(event) {
@@ -167,7 +167,7 @@
 
             });
 
-            });
+            }); -->
             </script> 
       </body>
             </div>

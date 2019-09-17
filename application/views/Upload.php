@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+ <script src = "/assets/js/upload.js"></script>
   </head>
   <body>
   <!-- action="<?php echo site_url('UploadController/file_upload');?>" -->
+
+
     <div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
@@ -11,7 +14,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form"  enctype='multipart/form-data'>
+            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 
@@ -37,10 +40,12 @@
                       <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
                     </div>
+
                     <div id="progress" class="progress mb-4"style="height: 20px">
                     <div id="progress-bar-fill" class="progress-bar-fill bg-primary " role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              
                    </div>
+
+              
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
@@ -119,8 +124,9 @@
                         });
                         </script>
 
-                                                <!----------------- progress bar upload ------------------------->
-                                                <script>
+                                                <!-- --------------- progress bar upload ------------------------->
+                  <!-- <script>
+                                                
             $(document).ready(function() {
 
             $('form').on('submit', function(event) {
@@ -165,7 +171,44 @@
             });
 
             });
-            </script> 
+            </script>  -->
+
+
+           <!-- <script>
+                function testclick() 
+                {
+                  var bar = $('#bar');
+                  var percent = $('#percent');
+                  $('#upload_form').ajaxForm({
+                    beforeSubmit: function() {
+                      document.getElementById("progress_div").style.display="block";
+                      var percentVal = '0%';
+                      bar.width(percentVal)
+                      percent.html(percentVal);
+                    },
+
+                    uploadProgress: function(event, position, total, percentComplete) {
+                      var percentVal = percentComplete + '%';
+                      bar.width(percentVal)
+                      percent.html(percentVal);
+                    },
+                    
+                  success: function() {
+                      var percentVal = '100%';
+                      bar.width(percentVal)
+                      percent.html(percentVal);
+                    },
+
+                    complete: function(xhr) {
+                      if(xhr.responseText)
+                      {
+                        document.getElementById("output_image").innerHTML=xhr.responseText;
+                      }
+                    }
+                  }); 
+                }
+           </script> -->
+
       </body>
             </div>
 </div>
