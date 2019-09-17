@@ -3,7 +3,7 @@
  <head>
   </head>
   <body>
-  
+  <!-- action="<?php echo site_url('UploadController/file_upload');?>" -->
     <div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
@@ -11,7 +11,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
+            <form method="post" id="upload_form"  enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 
@@ -37,7 +37,10 @@
                       <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
                     </div>
-                    
+                    <div id="progress" class="progress mb-4"style="height: 20px">
+                    <div id="progress-bar-fill" class="progress-bar-fill bg-primary " role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              
+                   </div>
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
@@ -57,7 +60,6 @@
                     <div class="form-group">
                     <div>ระดับความเป็นส่วนตัว</div>
                     <select name="privacy" id="privacy" required>
-                      <option value="" disabled selected></option>
                       <option value="Public">สาธารณะ</option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
@@ -66,11 +68,11 @@
 
                     <script>
             </script>
-                <button onclick="checkinput()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
 
 
-              <script type="text/javascript">
+              <!-- <script type="text/javascript">
                   function sweetalertclick(){
                 var name = $("#name").val();
                 var topic = $("#topic").val();
@@ -91,7 +93,7 @@
                  }
                   }
 
-                  </script> 
+                  </script>  -->
             
                                 <script> 
                             var uploadField = document.getElementById("image_file");
@@ -117,7 +119,53 @@
                         });
                         </script>
 
-            
+                                                <!----------------- progress bar upload ------------------------->
+                                                <script>
+            $(document).ready(function() {
+
+            $('form').on('submit', function(event) {
+
+              event.preventDefault();
+
+              var formData = new FormData($('form')[0]);
+
+              $.ajax({
+                xhr : function() {
+                  var xhr = new window.XMLHttpRequest();
+
+                  xhr.upload.addEventListener('progress', function(e) {
+
+                    if (e.lengthComputable) {
+
+                      console.log('Bytes Loaded: ' + e.loaded);
+                      console.log('Total Size: ' + e.total);
+                      console.log('Percentage Uploaded: ' + (e.loaded / e.total))
+
+                      var percent = Math.round((e.loaded / e.total) * 100);
+
+                      $('#progress-bar-fill').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
+
+                    }
+
+                  });
+
+                  return xhr;
+                },
+                type : 'POST',
+                url : '/IndexController',
+                data : formData,
+                processData : false,
+                contentType : false,
+                success : function() {
+                  alert("Upload Success");
+                  location.href = '<?=base_url('/UploadController/file_upload')?>'
+                }
+              });
+
+            });
+
+            });
+            </script> 
       </body>
             </div>
 </div>
