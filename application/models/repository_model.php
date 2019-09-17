@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Repository_model extends CI_Model {
+class Repository_Model extends CI_Model {
 
     public function __construct()
     {
@@ -40,7 +40,7 @@ class Repository_model extends CI_Model {
             $repostr = base_url(uri_string());
              //$repostr = site_url('/UploadFileRepoController/uploadfilerepo/'.$nono);
             $arraystate2 = (explode("/",$repostr));
-            $idRepo = ($arraystate2[6]);
+            $idRepo = ($arraystate2[5]);
 
             $dateshow = date("Y/m/d");
             $d=strtotime("+10 Days");
@@ -59,21 +59,22 @@ class Repository_model extends CI_Model {
                   $arraystate = (explode(".",$str));
                   echo ($arraystate[1]);
     
-             if($arraystate[1]=="pdf"){
-              $showtype = "PDF File";
-             }else if($arraystate[1]=="docx"){
-              $showtype = "Microsoftword";
-             }else if($arraystate[1]=="pptx"){
-              $showtype = "Microsoftpowerpoint";
-             }else if($arraystate[1]=="xlsx"){
-              $showtype = "Microsoftexcel";
-             }else if($arraystate[1]=="jpeg"){
-              $showtype = "JPEG";
-             }else if($arraystate[1]=="png"){
-              $showtype = "PNG";
-             }else if($arraystate[1]=="jpg"){
-              $showtype = "JPG";
-             }
+              if($arraystate[1]=="pdf"){
+                $showtype = "PDF File";
+                }else if($arraystate[1]=="docx"){
+                $showtype = "Microsoftword";
+                }else if($arraystate[1]=="pptx"){
+                $showtype = "Microsoftpowerpoint";
+                }else if($arraystate[1]=="xlsx"){
+                $showtype = "Microsoftexcel";
+                }else if($arraystate[1]=="jpeg"){
+                $showtype = "JPEG";
+                }else if($arraystate[1]=="png"){
+                $showtype = "PNG";
+                }else if($arraystate[1]=="jpg"){
+                $showtype = "JPG";
+                }
+                $showtypeall = $showtype;
             
     
             $fill_user = array(
@@ -85,7 +86,7 @@ class Repository_model extends CI_Model {
               'file' => $file,
               'date'=> $dateshow,
               'dateend'=> $newDate,
-              'type'=> $showtype,
+              'type'=> $showtypeall,
               'qr_codename'=> $randomqrcode,
               'privacy' => $inputdata['privacy'],
               'status' => $status

@@ -12,9 +12,6 @@ class DetailDocController extends CI_Controller {
     public function index()
     {
         $this->load->view('Header');
-        // $this->data['edit_data']= $this->Upload->edit_data(); //Upfile คือชื่อของโมเดล
-        // $this->load->view('DetailDoc', $this->data, FALSE);
-        // $this->data['edit_data']= $this->Upload->edit_data($edit_id);
         $this->load->view('DetailDoc');
         $this->load->view('Footer');  
         
@@ -95,7 +92,7 @@ class DetailDocController extends CI_Controller {
             $this->load->view('Header');
             $this->load->view('LoginAlert');     
             $this->load->view('Footer');
-            
+
         }else if($dataload['privacy']=='Authen' && $this->session->userdata('_success') == '')
         {
             $this->load->view('Header');

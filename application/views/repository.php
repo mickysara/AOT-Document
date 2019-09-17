@@ -54,7 +54,7 @@
                 $url = current_url();
                 // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
                 $arraystate2 = (explode("/",$url));
-                $idRepo = ($arraystate2[6]);?>
+                $idRepo = ($arraystate2[5]);?>
                 <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงในทีมนี้</a>
                 <?php 
                   if($resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
