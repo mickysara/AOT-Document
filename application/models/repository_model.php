@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class repository_model extends CI_Model {
+class Repository_Model extends CI_Model {
 
     public function __construct()
     {
@@ -59,21 +59,22 @@ class repository_model extends CI_Model {
                   $arraystate = (explode(".",$str));
                   echo ($arraystate[1]);
     
-             if($arraystate[1]=="pdf"){
-              $showtype = "PDF File";
-             }else if($arraystate[1]=="docx"){
-              $showtype = "Microsoftword";
-             }else if($arraystate[1]=="pptx"){
-              $showtype = "Microsoftpowerpoint";
-             }else if($arraystate[1]=="xlsx"){
-              $showtype = "Microsoftexcel";
-             }else if($arraystate[1]=="jpeg"){
-              $showtype = "JPEG";
-             }else if($arraystate[1]=="png"){
-              $showtype = "PNG";
-             }else if($arraystate[1]=="jpg"){
-              $showtype = "JPG";
-             }
+              if($arraystate[1]=="pdf"){
+                $showtype = "PDF File";
+                }else if($arraystate[1]=="docx"){
+                $showtype = "Microsoftword";
+                }else if($arraystate[1]=="pptx"){
+                $showtype = "Microsoftpowerpoint";
+                }else if($arraystate[1]=="xlsx"){
+                $showtype = "Microsoftexcel";
+                }else if($arraystate[1]=="jpeg"){
+                $showtype = "JPEG";
+                }else if($arraystate[1]=="png"){
+                $showtype = "PNG";
+                }else if($arraystate[1]=="jpg"){
+                $showtype = "JPG";
+                }
+                $showtypeall = $showtype;
             
     
             $fill_user = array(
@@ -85,7 +86,7 @@ class repository_model extends CI_Model {
               'file' => $file,
               'date'=> $dateshow,
               'dateend'=> $newDate,
-              'type'=> $showtype,
+              'type'=> $showtypeall,
               'qr_codename'=> $randomqrcode,
               'privacy' => $inputdata['privacy'],
               'status' => $status

@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+ <!-- Adding jQuery --> 
+ <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		
+		<!-- adding jquery form plugin --> 
+		<script src="//oss.maxcdn.com/jquery.form/3.50/jquery.form.min.js"></script>
   </head>
+
   <body>
     
     <div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
@@ -35,8 +41,7 @@
                     <td>ไฟล์</td>
                       <input type="file" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx">
                     </div>
-                 
-
+                    
                     <div class="form-group">
                     <div>ใช้วันที่</div>
                     <input type="text" class="form-control form-control-alternative" id="date" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
@@ -56,11 +61,11 @@
 
                     <script>
             </script>
-                <button onclick="javascript:sweetalertclick()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
 
 
-              <script type="text/javascript">
+              <!-- <script type="text/javascript">
                   function sweetalertclick(){
                 var name = $("#name").val();
                 var topic = $("#topic").val();
@@ -80,24 +85,25 @@
                  }
                   }
 
-                  </script> 
+                  </script>  -->
             
-                                <script> 
-                            var uploadField = document.getElementById("image_file");
+                  <script> 
+              var uploadField = document.getElementById("image_file");
 
-                            uploadField.onchange = function() {
-                                if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
-                                  swal({
-                                      title: "Upload Fail",
-                                      text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB",
-                                      icon: "error", 
-                                    }); 
-                                  this.value = "";
-                                  
-                                };
-                               };
-                                </script> 
-           
+              uploadField.onchange = function() {
+                  if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
+                    swal({
+                        title: "Upload Fail",
+                        text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB",
+                        icon: "error", 
+                      }); 
+                    this.value = "";
+                    
+                  };
+                  };
+                  </script> 
+
+                
       </body>
             </div>
 </div>
