@@ -61,6 +61,16 @@ class InchatroomController extends CI_Controller {
         $this->db->insert('like_message', $data);
     }
 
+
+    public function DisLikeMessage($id_message)
+    {
+        $likeby = $this->session->userdata('employeeId');
+        $this->db->where('id_message', $id_message);
+        $this->db->where('likeby', $likeby);
+        $this->db->delete('like_message');
+        
+    }
+
 }
 
 /* End of file InchatroomController.php */

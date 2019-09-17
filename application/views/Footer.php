@@ -26,7 +26,6 @@
 
 
  <!-- My Script -->
-
  <script>
 
     // Enable pusher logging - don't include this in production
@@ -376,7 +375,6 @@ $(document).ready(function(e) {
     IncreaseChatPopular();
     // setInterval(IncreaseChatByAsc, 1000);
     // setInterval(IncreaseChatRecent, 1000);
-    setInterval(hi, 1000);
 });
 function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
     var val = document.getElementById('idchat').value
@@ -384,6 +382,33 @@ function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งห�
             function (data)
             {
                 $("#Message_Chatroom").html(data)
+
+                $("#like").click(function(event) {
+                  var id = jQuery(this).attr("value");
+                  $.post("<?=base_url('InchatroomController/LikeMessage/')?>"+id,
+                    function (data) {
+                      var val = "hello";
+                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
+                      function (data) {
+                        IncreaseChatByAsc();
+                    });
+                    }
+                  );
+              });
+
+              $("#dislike").click(function(event) {
+                  var id = jQuery(this).attr("value");
+                  $.post("<?=base_url('InchatroomController/DisLikeMessage/')?>"+id,
+                    function (data) {
+                      var val = "hello";
+                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
+                      function (data) {
+                        IncreaseChatByAsc();
+                    });
+                    }
+                  );
+              });
+                          
             }
           );
 }
@@ -484,7 +509,6 @@ $(document).ready(function(e) {
           );
         }
 </script>
-
 
 
 

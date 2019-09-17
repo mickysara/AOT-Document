@@ -2987,16 +2987,16 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-  color: #5e72e4;
+  color: #2181c2;
   background-color: transparent;
   background-image: none;
-  border-color: #5e72e4;
+  border-color: #2181c2;
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #5e72e4;
-  border-color: #5e72e4;
+  background-color: #2181c2;
+  border-color: #2181c2;
 }
 
 .btn-outline-primary:focus,
