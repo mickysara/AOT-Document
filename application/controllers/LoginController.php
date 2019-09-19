@@ -60,14 +60,14 @@ class LoginController extends CI_Controller {
          if($data['_success'] == 1)
          {
            
-                $this->db->where('Id_Emp', $data['Id_Emp']);
+                $this->db->where('Id_Emp', $data['employeeId']);
           $query = $this->db->get('Users', 1);
           $result = $query->num_rows();
           
           if($result == 0)
           {
             $dbinsert = array(
-              'Id_Emp'  =>  $data['Id_Emp'],
+              'Id_Emp'  =>  $data['employeeId'],
               'Status'      =>  'user'
             );
             $this->db->insert('Users', $dbinsert);
