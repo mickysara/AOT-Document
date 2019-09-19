@@ -88,17 +88,17 @@ class MyDocumentController extends CI_Controller {
                                                 </td> 
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['Id_Upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['Id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                                 </span>
                                                 </td>  
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>EditDocumentController/checkaccount/<?php echo $data['Id_Upload'];?>"class="btn btn-primary mb-3">Edit</a>              
+                                                <a href="<?php echo site_url(); ?>EditDocumentController/checkaccount/<?php echo $data['Id_upload'];?>"class="btn btn-primary mb-3">Edit</a>              
                                                 </span>
                                                 </td>  
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>/ViewController/delfile/<?php echo $data['Id_Upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>           
+                                                <a href="<?php echo site_url(); ?>/ViewController/delfile/<?php echo $data['Id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>           
                                                 </span>
                                                 </td>  
                                             </tr>

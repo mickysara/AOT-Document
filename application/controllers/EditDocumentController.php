@@ -14,7 +14,7 @@ class EditDocumentController extends CI_Controller {
     {
         $this->load->view('Header');
         $this->load->view('Footer');
-        $this->load->view('Edit');  
+        $this->load->view('edit');  
     }
     // public function edit($edit_id)
     // {

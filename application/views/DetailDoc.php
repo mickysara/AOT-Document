@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <?php if(date('d/m/Y', strtotime($data['dateend']))=='01/01/1970'){
+    <?php if(date('d/m/Y', strtotime($data['Dateend']))=='01/01/1970'){
         $publicdate = 'เอกสารไม่มีวันหมดอายุ';
         }else{
         $publicdate = date('d/m/Y', strtotime($data['Dateend']));
