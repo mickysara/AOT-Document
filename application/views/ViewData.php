@@ -94,7 +94,7 @@
                                         <p>Qr code :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['Qr_Codename'].'.png');?>"/></p>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['Id_upload'];?>"class="btn btn-success">Edit</a>
+                                        <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['Id_Upload'];?>"class="btn btn-success">Edit</a>
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['Id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['Id_Upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
                   <?php } endif; ?> 

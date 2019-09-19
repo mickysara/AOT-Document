@@ -90,7 +90,7 @@
                     </select>
                     </div>
 
-                    <input type="hidden" name="id_upload" value= <?php echo $data['Id_upload'];?>>
+                    <input type="hidden" name="id_upload" value= <?php echo $data['Id_Upload'];?>>
                   <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
 
                 <a href="<?php echo site_url("/MyDocumentController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>

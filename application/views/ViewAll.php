@@ -16,7 +16,7 @@
                                         <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['File'];?></p>
                                         <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['Date'];?></p>
                                         <p class="card-text" style="font-weight: 500;margin-bottom: 10px;">ความเป็นส่วนตัว : <?php echo $data['Privacy'];?></p>
-                                        <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['Id_upload'];?>" class="btn btn" style="background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
+                                        <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['Id_Upload'];?>" class="btn btn" style="background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
                                         
                                     </div>
                                 </div>

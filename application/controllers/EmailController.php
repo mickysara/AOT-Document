@@ -17,11 +17,11 @@ class EmailController extends CI_Controller{
         $this->load->library('image_lib');
         
         $this->db->select('*');
-        $this->db->order_by('Id_upload', 'desc');
+        $this->db->order_by('Id_Upload', 'desc');
         $data = $this->db->get('Upload',1);
         $r = $data->row_array();
 
-        $params['data'] = base_url().'/DetailDocController/download/'.$r['url'];
+        $params['data'] = base_url().'/DetailDocController/download/'.$r['Url'];
         $params['level'] = 'H';
         $params['size'] = 50;
         $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['Qr_Codename'].'.png';
@@ -51,12 +51,12 @@ class EmailController extends CI_Controller{
         }
         
         $this->db->select('*');
-        $this->db->order_by('Id_upload', 'desc');
+        $this->db->order_by('Id_Upload', 'desc');
         $result = $this->db->get('Upload',1);
         $data = $result->row_array();
 
         
-        redirect('DetailDocController/edit/'.$data['Id_upload'],'refresh');
+        redirect('DetailDocController/edit/'.$data['Id_Upload'],'refresh');
 
     }
     function genQrChat(){
@@ -117,11 +117,11 @@ class EmailController extends CI_Controller{
         $this->load->library('image_lib');
         
         $this->db->select('*');
-        $this->db->order_by('Id_upload', 'desc');
+        $this->db->order_by('Id_Upload', 'desc');
         $data = $this->db->get('Upload',1);
         $r = $data->row_array();
 
-        $params['data'] = base_url().'/DetailDocController/download/'.$r['url'];
+        $params['data'] = base_url().'/DetailDocController/download/'.$r['Url'];
         $params['level'] = 'H';
         $params['size'] = 50;
         $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['Qr_Codename'].'.png';
@@ -151,12 +151,12 @@ class EmailController extends CI_Controller{
         }
 
         $this->db->select('*');
-        $this->db->order_by('Id_upload', 'desc');
+        $this->db->order_by('Id_Upload', 'desc');
         $result = $this->db->get('Upload',1);
         $data = $result->row_array();
 
         
-        redirect('DetailDocController/edit/'.$data['Id_upload'],'refresh');
+        redirect('DetailDocController/edit/'.$data['Id_Upload'],'refresh');
         // redirect('MyDocumentController');
 
     }

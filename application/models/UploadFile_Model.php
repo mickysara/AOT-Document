@@ -82,14 +82,14 @@ class UploadFile_Model extends CI_Model
       $query=$this->db->query("SELECT *
                                FROM Upload  
                                WHERE Privacy = 'Public'
-                               ORDER BY Upload.Id_upload DESC
+                               ORDER BY Upload.Id_Upload DESC
                                limit 6");
       return $query->result_array();
   }
   public function view_dataBackend(){
     $query=$this->db->query("SELECT *
                              FROM Upload  
-                             ORDER BY Upload.Id_upload DESC
+                             ORDER BY Upload.Id_Upload DESC
                               ");
     return $query->result_array();
 }
@@ -98,7 +98,7 @@ class UploadFile_Model extends CI_Model
   public function edit_data($id){
     $query=$this->db->query("SELECT *
                              FROM Upload upid
-                             WHERE upid.Id_upload = $id");
+                             WHERE upid.Id_Upload = $id");
     return $query->result_array();
 }
 
@@ -112,7 +112,7 @@ class UploadFile_Model extends CI_Model
     
   }
 public function delete_data($id){
-  $this->db->query("DELETE FROM Upload WHERE Id_upload = $id");
+  $this->db->query("DELETE FROM Upload WHERE Id_Upload = $id");
   
   
 }
@@ -157,7 +157,7 @@ public function editdataupload($inputdata){
     'Type' => $showtypeall,
     'Privacy' => $inputdata['privacy']
     );
-      $this->db->where('Id_upload', $this->input->post('Id_upload'));
+      $this->db->where('Id_Upload', $this->input->post('Id_Upload'));
       $query=$this->db->update('Upload',$data);
     }
   }
@@ -197,14 +197,14 @@ public function editdataupload($inputdata){
     { 
       if($this->session->userdata('_success') == '')
       {
-        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy = "Public" ORDER BY id_upload DESC LIMIT '.$page.','.$per_page); 
+        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy = "Public" ORDER BY Id_Upload DESC LIMIT '.$page.','.$per_page); 
         if($query->num_rows() > 0 ) {
           return $query->result_array();
         } else {
           return array();
         }
       }else{
-        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy != "Private" AND privacy != "Repository" ORDER BY Id_upload DESC LIMIT '.$page.','.$per_page ); 
+        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy != "Private" AND privacy != "Repository" ORDER BY Id_Upload DESC LIMIT '.$page.','.$per_page ); 
         if($query->num_rows() > 0 ) {
           return $query->result_array();
         } else {

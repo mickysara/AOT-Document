@@ -48,7 +48,8 @@ class EditDocumentController extends CI_Controller {
         // }
         //   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
           $this->Upload->editdataupload($this->input->post());
-        redirect('MyDocumentController','refresh');
+          print_r($_POST);
+        // redirect('MyDocumentController','refresh');
 
     }
     public function checkaccount($edit_id)
