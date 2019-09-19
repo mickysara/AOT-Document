@@ -37,7 +37,7 @@
                       <div class="media align-items-center">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"> <?php echo $data['Id_Imp'];?></span>
+                          <span class="mb-0 text-sm"> <?php echo $data['Id_Emp'];?></span>
                         </div>
                       </div>
                     </th>

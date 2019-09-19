@@ -1,5 +1,5 @@
 <?php 
-        $result = $this->db->get('repository');
+        $result = $this->db->get('Repository');
         ?>
         <div class="container">
         <div class="ct-example tab-content tab-example-result" style="margin: auto; margin-top: 62px; padding: 1.25rem;
