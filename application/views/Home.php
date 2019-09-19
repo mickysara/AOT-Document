@@ -42,11 +42,11 @@
                       <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" alt="Card image cap">
                       <div class="card-body">
                       
-                          <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['topic'];?> </h3>
-                          <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['file'];?></p>
-                          <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด :<?php echo date('d/m/Y ', strtotime($data['date']));?></p>
-                          <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด :<?php echo $data['privacy'];?></p>
-                          <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn" style="background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
+                          <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['Topic'];?> </h3>
+                          <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['File'];?></p>
+                          <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด :<?php echo date('d/m/Y ', strtotime($data['Date']));?></p>
+                          <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด :<?php echo $data['Privacy'];?></p>
+                          <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['Id_Upload'];?>" class="btn btn" style="background-color:#2d3436; color: #fff;">ดูรายละเอียดเพิ่มเติม</a>
                          
                       </div>
                   </div>
@@ -217,7 +217,7 @@
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
                                                                                 position: relative;">
-                                                                                <?php $countuser = $this->db->get('users');
+                                                                                <?php $countuser = $this->db->get('Users');
                                                                                   echo $countuser->num_rows();
                                                                                 ?>
                                                                                 </p>
@@ -233,7 +233,7 @@
                       </div> 
                     </div>
                     <?php
-                     $d = $this->db->get('upload');
+                     $d = $this->db->get('Upload');
                       ?>
                     <div class="cf-sm-6 cf-lg-3 col-sm-6 col-md-3" style="text-align: center; margin-top: 60px; margin-bottom: 50px;">
                         <div class="counter-i">
@@ -261,9 +261,9 @@
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
                                                                                 position: relative;">
-                                                                                 <?php $countload = $this->db->query('SELECT sum(download)
+                                                                                 <?php $countload = $this->db->query('SELECT sum(Download)
                                                                                                   as sum
-                                                                                                    FROM upload');
+                                                                                                    FROM Upload');
                                                                                         $c =  $countload->row_array();
                                                                                         echo $c['sum'];
                                                                                   ?>
@@ -287,9 +287,9 @@
                                                                                 font-family: montserrat,sans-serif;
                                                                                 font-weight: 900;
                                                                                 position: relative;">
-                                                                                 <?php $countchat = $this->db->query('SELECT count(id)
+                                                                                 <?php $countchat = $this->db->query('SELECT count(Id_Chatroom)
                                                                                                     as count
-                                                                                                    FROM chatroom');
+                                                                                                    FROM Chatroom');
                                                                                         $c =  $countchat->row_array();
                                                                                         echo $c['count'];
                                                                                   ?> </p>

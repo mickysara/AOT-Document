@@ -26,14 +26,14 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>ชื่อ</div>
-                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?php echo $data['uploadby'];?>" required id="name" readonly>
+                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?php echo $data['Uploadby'];?>" required id="name" readonly>
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>หัวข้อ</div>
-                    <input type="text" class="form-control form-control-alternative" id="topic" value="<?php echo $data['topic'];?>" name="topic" placeholder="topic" required>
+                    <input type="text" class="form-control form-control-alternative" id="topic" value="<?php echo $data['Topic'];?>" name="topic" placeholder="topic" required>
                     </div>
 
                     <div class="form-group">
@@ -47,13 +47,13 @@
                    
                     <div class="form-group">
                     <div>ไฟล์</div>
-                      <input type="Text" class="form-control form-control-alternative" name="imagefile" value="<?php echo $data['file'];?>" id="imagefile" readonly>
+                      <input type="Text" class="form-control form-control-alternative" name="imagefile" value="<?php echo $data['File'];?>" id="imagefile" readonly>
                     </div>
               
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
-                    <input type="text" class="form-control form-control-alternative" id="date" value="<?php echo $data['date'];?>" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
+                    <input type="text" class="form-control form-control-alternative" id="date" value="<?php echo $data['Date'];?>" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
                     </div>
 
                     <div class="form-group">
@@ -63,17 +63,17 @@
 
                     <div class="form-group">
                     <div>รายละเอียด</div>
-                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" required><?php echo $data['detail'];?></textarea>
+                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail" required><?php echo $data['Detail'];?></textarea>
                     </div>
 
 
-                     <?php if($data['privacy']== 'Private'){
+                     <?php if($data['Privacy']== 'Private'){
                            $showPri ="ส่วนตัว";
                            $getpri = "Private";
-                          }else if($data['privacy']== 'Authen'){
+                          }else if($data['Privacy']== 'Authen'){
                             $showPri = "เฉพาะผู้ที่มีรหัส";
                             $getpri = "Authen";
-                          }else if($data['privacy']== 'Public'){
+                          }else if($data['Privacy']== 'Public'){
                             $showPri = "สาธารณะ"; 
                             $getpri = "Public";
                           }else{
@@ -90,7 +90,7 @@
                     </select>
                     </div>
 
-                    <input type="hidden" name="id_upload" value= <?php echo $data['id_upload'];?>>
+                    <input type="hidden" name="id_upload" value= <?php echo $data['Id_upload'];?>>
                   <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
 
                 <a href="<?php echo site_url("/MyDocumentController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>

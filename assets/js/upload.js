@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
-	$('#upload_form').on('submit', function(event) {
+	$('form').on('submit', function(event) {
 
 	  event.preventDefault();
 
-	  var formData = new FormData($('#upload_form')[0]);
+	  var formData = new FormData($('form')[0]);
 
 	  $.ajax({
 		xhr : function() {
@@ -34,7 +34,8 @@ $(document).ready(function() {
 		processData : false,
 		contentType : false,
 		success : function() {
-		  alert("Upload Success");
+		  alert("Upload Clear");
+		 location.href = site_url('UploadController/file_upload');
 		}
 	  });
 

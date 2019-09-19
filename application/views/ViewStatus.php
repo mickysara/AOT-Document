@@ -37,24 +37,24 @@
                       <div class="media align-items-center">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"> <?php echo $data['employeeId'];?></span>
+                          <span class="mb-0 text-sm"> <?php echo $data['Id_Imp'];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                    <?php echo $data['status'];?>
+                    <?php echo $data['Status'];?>
                     </td>
 
                     <td>
                     <span class="badge badge-dot mr-4">
                         <div>
-                        <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['id_admin'];?>"class="btn btn-primary">Edit</a>                  
+                        <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['Id_Users'];?>"class="btn btn-primary">Edit</a>                  
                         </div>
                     </span>
                     </td>
                     <td>
                     <span class="badge badge-dot mr-4">
-                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบรายชื่อนี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['Id_Users'];?>" onclick="return confirm('คุณต้องการลบรายชื่อนี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
                     </span>
                     </td>   
                   </tr>

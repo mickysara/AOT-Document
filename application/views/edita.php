@@ -25,20 +25,20 @@
                                                 <th scope="row">
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"> <?php echo $data['employeeId'];?></span>
+                                                    <span class="mb-0 text-sm"> <?php echo $data['Id_Emp'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
                                                 <td>
-                                                <?php echo $data['status'];?>
+                                                <?php echo $data['Status'];?>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                    <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['id_admin'];?>"class="btn btn-primary">Edit</a>                  
+                                                    <a href="<?php echo site_url(); ?>EditStatusController/edit/<?php echo $data['Id_Users'];?>"class="btn btn-primary">Edit</a>                  
                                                     </div>
                                                 </td>   
                                                 <td>
-                                                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['id_admin'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
+                                                    <a href="<?php echo site_url(); ?>/ViewStatusController/del/<?php echo $data['Id_Users'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3"style="">Delete</a>
                                                 </td>  
                                             </tr>
                                             <?php } endif; ?> 

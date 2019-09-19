@@ -22,80 +22,32 @@ class ViewController extends CI_Controller {
     
      public function del($id)
      {        
-    $this->db->where('id_upload', $id);
-    $query = $this->db->get('upload');
+    $this->db->where('Id_upload', $id);
+    $query = $this->db->get('Upload');
     foreach($query->result_array() as $data)
-      { ?>
-              <?php $insertdelete = array(
-                     'id_delrepository' => $data['id_repository'],
-                     'namedel' => $data['uploadby'],
-                     'topicdel' => $data['topic'],
-                     'detaildel' =>  $data['detail'],
-                     'urldel' => $data['url'],
-                     'filedel' =>  $data['file'],
-                     'datedel' => $data['date'],
-                     'dateenddel' => $data['dateend'],
-                     'typedel' => $data['type'],
-                     'qr_codenamedel' => $data['qr_codename'],
-                     'privacydel' => $data['privacy'],
-                     'statusdel' =>  $data['status']
-                );
-                     $file = $data['file'];
-                     $path = 'uploads/'.$file;
-                     copy("uploads/$file","deletefile/$file");
-                     unlink($path);
-                    $this->db->insert('deletefile', $insertdelete); 
-                    $this->data['delete_data']= $this->Upload->delete_data($id);
-                    redirect('ViewController','refresh'); 
-               ?>
-
-  <?php } 
+      { 
+             
+        $file = $data['file'];
+        $path = 'uploads/'.$file;
+        unlink($path);
+      $this->data['delete_data']= $this->Upload->delete_data($id);
+      redirect('ViewController','refresh'); 
+ 
+       } 
    
  
      }
 
-     public function deldoc($id)
-     {        
-    $this->db->where('id_upload', $id);
-    $query = $this->db->get('upload');
-    foreach($query->result_array() as $data)
-      { ?>
-              <?php $insertdelete = array(
-                     'id_delrepository' => $data['id_repository'],
-                     'namedel' => $data['uploadby'],
-                     'topicdel' => $data['topic'],
-                     'detaildel' =>  $data['detail'],
-                     'urldel' => $data['url'],
-                     'filedel' =>  $data['file'],
-                     'datedel' => $data['date'],
-                     'dateenddel' => $data['dateend'],
-                     'typedel' => $data['type'],
-                     'qr_codenamedel' => $data['qr_codename'],
-                     'privacydel' => $data['privacy'],
-                     'statusdel' =>  $data['status']
-                );
-                     $file = $data['file'];
-                     $path = 'uploads/'.$file;
-                     copy("uploads/$file","deletefile/$file");
-                     unlink($path);
-                    $this->db->insert('deletefile', $insertdelete); 
-                    $this->data['delete_data']= $this->Upload->delete_data($id);
-                    redirect('MyDocumentController','refresh'); 
-               ?>
-
-  <?php } 
-   
- 
-     }
+    
      public function checkstatus()
     {
         $status = $this->session->userdata('employeeId');
-        $this->db->where('employeeId', $status);
-        $query = $this->db->get('users');
+        $this->db->where('Id_Emp', $status);
+        $query = $this->db->get('Users');
         foreach($query->result_array() as $data)
       { ?>
               <?php 
-              if($data['status']=='admin')
+              if($data['Status']=='admin')
               {
                 $this->load->view('HeaderAdminTest');
                 $this->data['view_data']= $this->Upload->view_dataBackend(); //Upfile คือชื่อของโมเดล
@@ -110,5 +62,34 @@ class ViewController extends CI_Controller {
                ?>
           
   <?php } 
+    }
+
+
+    public function delfile($id)
+    {
+      $deletefile = "ลบ";
+      $data = array(
+      'Status' => $deletefile
+  );
+      $this->db->where('Id_upload',$id);
+      $this->db->update('Upload',$data);
+      // $this->Upload->delstatusfile($this->input->post($id));
+          redirect('MyDocumentController','refresh');
+    }
+
+
+    public function delfilerepository($id)
+    {
+      $deletefile = "ลบ";
+      $data = array(
+      'status' => $deletefile
+  );
+      $this->db->where('Id_upload',$id);
+      $this->db->update('Upload',$data);
+
+      $this->db->where('Id_upload', $id);
+      $query = $this->db->get('Upload');
+      $data = $query->row_array();
+      redirect('RepositoryController/showdata/'.$data['Id_Repository'],'refresh');
     }
 }

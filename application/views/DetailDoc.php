@@ -12,10 +12,10 @@
                     <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
                     </li>
                     <li>
-                    <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/>
+                    <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['Qr_Codename'].'.png');?>"/>
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['Type'].'.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
@@ -26,10 +26,10 @@
                     <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
                     </li>
                     <li>
-                    <img style="width:100px; height:100px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/>
+                    <img style="width:100px; height:100px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['Qr_Codename'].'.png');?>"/>
                     </li>
                     <li>
-                    <img src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" />
+                    <img src="<?php echo base_url('/assets/img/card/'.$data['Type'].'.png');?>" />
                     </li>
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
@@ -39,22 +39,22 @@
     <?php if(date('d/m/Y', strtotime($data['dateend']))=='01/01/1970'){
         $publicdate = 'เอกสารไม่มีวันหมดอายุ';
         }else{
-        $publicdate = date('d/m/Y', strtotime($data['dateend']));
+        $publicdate = date('d/m/Y', strtotime($data['Dateend']));
         }
     ?>
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อไฟล์ : <?php echo $data['file'];?> </h1>  
-        <p style="font-weight: 500;">ประเภท : <?php echo $data['type'];?></p>
-        <p style="font-weight: 500;">เพิ่มโดย : <?php echo $data['uploadby'];?></p>
-        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
+        <h1>ชื่อไฟล์ : <?php echo $data['File'];?> </h1>  
+        <p style="font-weight: 500;">ประเภท : <?php echo $data['Type'];?></p>
+        <p style="font-weight: 500;">เพิ่มโดย : <?php echo $data['Uploadby'];?></p>
+        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
         <p style="font-weight: 500;">หมดอายุวันที่ : <?php echo $publicdate;?></p>
         <p style="font-weight: 500;">สถานะ : <span class="badge badge-dot">
-                                                    <i class="bg-success"></i> <?php echo $data['status'];?>
+                                                    <i class="bg-success"></i> <?php echo $data['Status'];?>
                                                 </span> </p>
-        <p style="font-weight: 500;">จำนวนครั้งที่ดาวโหลดไฟล์ : <?php echo $data['download'];?></p>
+        <p style="font-weight: 500;">จำนวนครั้งที่ดาวโหลดไฟล์ : <?php echo $data['Download'];?></p>
          
-         <a href="<?php echo site_url(); ?>DetailDocController/download/<?php echo $data['url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
-         <a href="<?php echo site_url(); ?>DetailDocController/downloadqrcode/<?php echo $data['url'];?>" target="_blank" class="btn btn-default"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลด QR CODE</a>
+         <a href="<?php echo site_url(); ?>DetailDocController/download/<?php echo $data['Url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
+         <a href="<?php echo site_url(); ?>DetailDocController/downloadqrcode/<?php echo $data['Url'];?>" target="_blank" class="btn btn-default"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลด QR CODE</a>
     </div>
   
     <div class="w-100"></div>
@@ -72,7 +72,7 @@
     <div class="card-body">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" style="width: max;">
-                <p class="description"><?php echo $data['detail'];?></p>
+                <p class="description"><?php echo $data['Detail'];?></p>
                 <p class="description" style=></p>
             </div>
             <!-- <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">

@@ -15,8 +15,8 @@ class CreatechatroomController extends CI_Controller {
     {
         $id_repository = $this->input->post('id_repository');
         $name_room = $this->input->post('name_room');
-                 $this->db->where('id_repository', $id_repository);
-        $query = $this->db->get('chatroom', 1);
+                 $this->db->where('Id_Repository', $id_repository);
+        $query = $this->db->get('Chatroom', 1);
         $result = $query->num_rows();
         $id = $query->row_array();
         
@@ -24,31 +24,31 @@ class CreatechatroomController extends CI_Controller {
         {
             $codechat = random_string('alnum',5);        
             $data = array(
-               'code_chatroom' =>   $codechat,
-               'topic'         =>   $name_room,
-               'createby'      =>   $this->session->userdata('accountName'),
-               'id_repository' =>   $id_repository,
+               'Code_Chatroom' =>   $codechat,
+               'Topic'         =>   $name_room,
+               'Createby'      =>   $this->session->userdata('accountName'),
+               'Id_Repository' =>   $id_repository,
                'Date'          =>   date("Y-m-d")
             );
-            $this->db->insert('chatroom', $data);
+            $this->db->insert('Chatroom', $data);
             
             
             $this->load->library('ciqrcode');
             $this->load->library('image_lib');
             
             $this->db->select('*');
-            $this->db->order_by('id', 'desc');
-            $data = $this->db->get('chatroom',1);
+            $this->db->order_by('Id_Chatroom', 'desc');
+            $data = $this->db->get('Chatroom',1);
             $r = $data->row_array();
     
-            $params['data'] = base_url().'/InchatroomController/showchat/'.$r['id'];
+            $params['data'] = base_url().'/InchatroomController/showchat/'.$r['Id_Chatroom'];
             $params['level'] = 'H';
             $params['size'] = 50;
-            $params['savename'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['code_chatroom'].'.png';
+            $params['savename'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['Code_Chatroom'].'.png';
             $this->ciqrcode->generate($params);
     
     
-            $config['source_image'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['code_chatroom'].'.png';
+            $config['source_image'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['Code_Chatroom'].'.png';
             $config['image_library'] = 'gd2';
             $config['wm_type'] = 'overlay';
             $config['wm_overlay_path'] = './AOT.jpg';//the overlay image
@@ -71,15 +71,15 @@ class CreatechatroomController extends CI_Controller {
     
     
             $this->db->select('*');
-            $this->db->order_by('id', 'desc');
-            $data = $this->db->get('chatroom',1);
+            $this->db->order_by('Id_Chatroom', 'desc');
+            $data = $this->db->get('Chatroom',1);
             $r = $data->row_array();
 
-            echo json_encode(['status' => 1, 'msg' => 'Success', 'id' => $r['id']]);
+            echo json_encode(['status' => 1, 'msg' => 'Success', 'id' => $r['Id_Chatroom']]);
             
         }else{
 
-            echo json_encode(['status' => 0, 'msg' => 'Success', 'id' => $id['id']]);
+            echo json_encode(['status' => 0, 'msg' => 'Success', 'id' => $id['Id_Chatroom']]);
 
         }
         

@@ -33,7 +33,7 @@
                     if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
                     foreach ($view_data as $key => $data) { 
 
-                      $str = $data['file'];
+                      $str = $data['File'];
                       $arraystate = (explode(".",$str));
                        //echo ($arraystate[1]);
                         //$aa = "../assets/img/logofile/xlsx.png";
@@ -47,54 +47,54 @@
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                        <img src="<?php echo base_url().'assets/img/logofile/'. $data['type']?>.png" alt="">
+                        <img src="<?php echo base_url().'assets/img/logofile/'. $data['Type']?>.png" alt="">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo $data['file'];?></span>
+                          <span class="mb-0 text-sm"><?php echo $data['File'];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                    <?php echo $data['uploadby'];?>
+                    <?php echo $data['Uploadby'];?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($data['date']));?>
+                        <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($data['Date']));?>
                       </span>
                     </td>   
 
                     <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['url'];?>">View</button>                           
-                            <div class="modal fade" id="<?php echo $data['url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['url'];?>" aria-hidden="true">
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['Url'];?>">View</button>                           
+                            <div class="modal fade" id="<?php echo $data['Url'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['Url'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['file'];?></h2>
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อเอกสาร : <?php echo $data['File'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
                                     
-                                    <?php if(date('d/m/Y', strtotime($data['dateend']))=='01/01/1970'){
+                                    <?php if(date('d/m/Y', strtotime($data['Dateend']))=='01/01/1970'){
                                       $publicdate = 'เอกสารไม่มีวันหมดอายุ';
                                       }else{
-                                      $publicdate = date('d/m/Y', strtotime($data['dateend']));
+                                      $publicdate = date('d/m/Y', strtotime($data['Dateend']));
                                       }
                                       ?>
                                     <div class="modal-body" >
-                                        <p>รายละเอียด : <?php echo $data['detail'];?> </p>
-                                        <p>โดย : <?php echo $data['uploadby'];?></p>
-                                        <p>เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
+                                        <p>รายละเอียด : <?php echo $data['Detail'];?> </p>
+                                        <p>โดย : <?php echo $data['Uploadby'];?></p>
+                                        <p>เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
                                         <p>หมดอายุ : <?php echo $publicdate;?></p>
-                                        <p>ระดับการเข้าถึง : <?php echo $data['privacy'];?></p>
-                                        <p>สถานะ :  <?php echo $data['status'];?></p>
-                                        <p>จำนวนครั้งที่ดาวโหลดไฟล์ :  <?php echo $data['download'];?></p>
-                                        <p>Qr code :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['qr_codename'].'.png');?>"/></p>
+                                        <p>ระดับการเข้าถึง : <?php echo $data['Privacy'];?></p>
+                                        <p>สถานะ :  <?php echo $data['Status'];?></p>
+                                        <p>จำนวนครั้งที่ดาวโหลดไฟล์ :  <?php echo $data['Download'];?></p>
+                                        <p>Qr code :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['Qr_Codename'].'.png');?>"/></p>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['id_upload'];?>"class="btn btn-success">Edit</a>
+                                        <a href="<?php echo site_url(); ?>EditController/edit/<?php echo $data['Id_upload'];?>"class="btn btn-success">Edit</a>
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo $data['Id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
                   <?php } endif; ?> 

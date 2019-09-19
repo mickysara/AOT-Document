@@ -18,12 +18,12 @@ class ViewRepositoryController extends CI_Controller {
     public function checkstatus()
     {
         $status = $this->session->userdata('employeeId');
-        $this->db->where('employeeId', $status);
-        $query = $this->db->get('users');
+        $this->db->where('Id_Emp', $status);
+        $query = $this->db->get('Users');
         foreach($query->result_array() as $data)
       { ?>
               <?php 
-              if($data['status']=='admin')
+              if($data['Status']=='admin')
               {
                 $this->load->view('HeaderAdminTest');
                 $this->load->view('ViewRepository');

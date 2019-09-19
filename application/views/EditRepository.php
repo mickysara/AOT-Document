@@ -22,26 +22,26 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>ชื่อ</div>
-                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?php echo $data['createby']?>" required id="name" readonly>
+                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?php echo $data['Createby']?>" required id="name" readonly>
                     </div>
                   </div>
 
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>หัวข้อ</div>
-                    <input type="text" class="form-control form-control-alternative" id="topic" name="topic" value="<?php echo $data['topic']?>" required>
+                    <input type="text" class="form-control form-control-alternative" id="topic" name="topic" value="<?php echo $data['Topic']?>" required>
                     </div>
 
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
-                    <input type="text" class="form-control form-control-alternative" id="date" name="date" value="<?php echo $data['date']?>" required readonly>
+                    <input type="text" class="form-control form-control-alternative" id="date" name="date" value="<?php echo $data['Date']?>" required readonly>
                     </div>
 
  
                     <div class="form-group">
                     <div>รายละเอียด</div>
-                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  required><?php echo $data['createby']?></textarea>
+                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  required><?php echo $data['Createby']?></textarea>
                     </div>
 
                     <div class="form-group">
@@ -56,7 +56,7 @@
 
                     <script>
             </script>
-            <input type="hidden" name="id" value= <?php echo $data['id'];?>>
+            <input type="hidden" name="id" value= <?php echo $data['Id_Repository'];?>>
                 <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
                 <?php } endif; ?>
             </form>

@@ -598,7 +598,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <a class="dropdown-item" href="<?php echo site_url('MyDocumentController');?>">My Document</a>
                             <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
-                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">File</a>
+                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">ระบบหลังบ้าน</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo site_url('/LoginController/Logout');?>">ออกจากระบบ</a>
                         </div>
@@ -653,12 +653,6 @@
             <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
               <span>ดูข้อมูลเอกสารทั้งหมด</span>
-            </a>
-          </li>
-          <li>
-          <a href="<?php echo site_url('ViewFileDeleteController');?>">
-              <i class="fa fa-undo"></i>
-              <span>ดูข้อมูลไฟล์ที่ถูกลบไปแล้ว</span>
             </a>
           </li>
           <li>

@@ -32,11 +32,11 @@ class AdvanceSearchController extends CI_Controller {
         $years1 =  $this->input->post("years1");
         $years2 =  $this->input->post("years2");
 
-        $uploadby = $this->input->post("uploadby");
+        $uploadby = $this->input->post("Uploadby");
 
         $view =  $this->input->post("custom-radio-1");
 
-        $this->db->like('file',  $name);
+        $this->db->like('File',  $name);
 
         if($years1 != "" && $years2 != "" )
         {
@@ -44,20 +44,20 @@ class AdvanceSearchController extends CI_Controller {
             $max = "'".$years2."-12-31'";
     
 
-            $this->db->where_between('date', $min, $max); 
+            $this->db->where_between('Date', $min, $max); 
         }
         if($uploadby != "")
         {
-            $this->db->like('uploadby', $uploadby); 
+            $this->db->like('Uploadby', $uploadby); 
         }
         if($this->input->post("Public") == "on")
         {
-            $this->db->like('privacy', "Public");
+            $this->db->like('Privacy', "Public");
             
         }
         if($this->input->post("Authen") == "on")
         {
-            $this->db->like('privacy', "Authen");
+            $this->db->like('Privacy', "Authen");
             
 
         }

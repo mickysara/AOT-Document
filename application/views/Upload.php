@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
- <script src = "/assets/js/upload.js"></script>
+ <!-- <script src = "/assets/js/upload.js"></script> -->
   </head>
   <body>
   <!-- action="<?php echo site_url('UploadController/file_upload');?>" -->
@@ -14,7 +14,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
+            <form method="post" action="<?php echo site_url('UploadController/file_upload');?>" id="upload_form" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 
@@ -36,14 +36,12 @@
                     <div class="form-group">
                     <td>ไฟล์</td>
                     <div class="custom-file mb-3">
-                      <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx">
+                      <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".pdf,.pptx,.docx,.xlsx">
                       <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
                     </div>
 
-                    <div id="progress" class="progress mb-4"style="height: 20px">
-                    <div id="progress-bar-fill" class="progress-bar-fill bg-primary " role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                   </div>
+                   
 
               
 
@@ -71,9 +69,12 @@
                     </select>
                     </div>
 
-                    <script>
-            </script>
-                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                    <div id="progress" class="progress mb-4"style="height: 20px">
+                    <div id="progress-bar-fill" class="progress-bar-fill bg-primary " role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    
+                   </div>
+                   <p id="tt"></p>
+                <button onclick="testtest();" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
 
 
@@ -116,6 +117,7 @@
                                };
                                 </script> 
 
+
                         <script>
                         // Add the following code if you want the name of the file appear on select
                         $(".custom-file-input").on("change", function() {
@@ -125,18 +127,27 @@
                         </script>
 
                                                 <!-- --------------- progress bar upload ------------------------->
-                  <!-- <script>
+
+                  <script>
                                                 
-            $(document).ready(function() {
+            // $(document).ready(function() {
 
-            $('form').on('submit', function(event) {
+            // $('#upload_form').on('submit', function(event) {
 
-              event.preventDefault();
+            //   event.preventDefault();
+            
+            // uploadField.onchange = function() {
 
-              var formData = new FormData($('form')[0]);
+              $(document).ready(function(e) {
+                $("#progress").hide();
+            });
+
+              function testtest(){
+              var formData = new FormData($('#upload_form')[0]);
 
               $.ajax({
                 xhr : function() {
+                   $("#progress").show();
                   var xhr = new window.XMLHttpRequest();
 
                   xhr.upload.addEventListener('progress', function(e) {
@@ -149,8 +160,9 @@
 
                       var percent = Math.round((e.loaded / e.total) * 100);
 
-                      $('#progress-bar-fill').attr('aria-valuenow', percent).css('width', percent + '%').text(percent + '%');
+                      $('#progress-bar-fill').attr('aria-valuenow', percent).css('width', percent + '%');
 
+                      $('#tt').text('กำลังทำการอัปโหลด ' + percent + '%');
                     }
 
                   });
@@ -163,51 +175,22 @@
                 processData : false,
                 contentType : false,
                 success : function() {
-                  alert("Upload Success");
-                  location.href = '<?=base_url('/UploadController/file_upload')?>'
+                  //  alert("Upload Success");
+                  swal({
+                      title: "อัปโหลดเสร็จสมบูรณ์",
+                      text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
+                      icon: "success", 
+                    });
                 }
               });
-
-            });
-
-            });
-            </script>  -->
+            }
 
 
-           <!-- <script>
-                function testclick() 
-                {
-                  var bar = $('#bar');
-                  var percent = $('#percent');
-                  $('#upload_form').ajaxForm({
-                    beforeSubmit: function() {
-                      document.getElementById("progress_div").style.display="block";
-                      var percentVal = '0%';
-                      bar.width(percentVal)
-                      percent.html(percentVal);
-                    },
 
-                    uploadProgress: function(event, position, total, percentComplete) {
-                      var percentVal = percentComplete + '%';
-                      bar.width(percentVal)
-                      percent.html(percentVal);
-                    },
-                    
-                  success: function() {
-                      var percentVal = '100%';
-                      bar.width(percentVal)
-                      percent.html(percentVal);
-                    },
+            // });
 
-                    complete: function(xhr) {
-                      if(xhr.responseText)
-                      {
-                        document.getElementById("output_image").innerHTML=xhr.responseText;
-                      }
-                    }
-                  }); 
-                }
-           </script> -->
+            // });
+            </script> 
 
       </body>
             </div>

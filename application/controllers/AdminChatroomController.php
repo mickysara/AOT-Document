@@ -21,12 +21,12 @@ class AdminChatroomController extends CI_Controller {
 
     public function IncreaseChatByAsc($codechat)
     {
-        $this->db->select('message.message,message.id,message.datetime, count(like_message.id) as number_of_like');
-        $this->db->from('message');
-        $this->db->where('code_chatroom', $codechat);
-        $this->db->join('like_message', '(message.id = like_message.id_message)', 'left');
-        $this->db->group_by('message.id');
-        $this->db->order_by('datetime', 'asc');
+        $this->db->select('Message.Message,Message.Id_Message,Message.Datetime, count(like_message.id) as number_of_like');
+        $this->db->from('Message');
+        $this->db->where('Code_Chatroom', $codechat);
+        $this->db->join('Like_Message', '(Message.Id_Message = Like_Message.Id_Message)', 'left');
+        $this->db->group_by('Message.Id_Message');
+        $this->db->order_by('Datetime', 'asc');
         $query = $this->db->get();
 
         foreach($query->result_array() as $data)
@@ -46,24 +46,24 @@ class AdminChatroomController extends CI_Controller {
                                     <div class="question-item__author truncate">
                                         <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">Anonymous</p>
                                     </div>
-                                    <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['datetime']));?> </p></div>
+                                    <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['Datetime']));?> </p></div>
                             </div>
                             <div class="question-item_like" style="align:right">
 
                                 <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
-                                        $this->db->where('id_message', $data['id']);
-                                        $q  = $this->db->get('like_message', 1);
+                                        $this->db->where('Id_Message', $data['Id_Message']);
+                                        $q  = $this->db->get('Like_Message', 1);
                                         if($q->num_rows() == 0)
                                         {?>
                                         
-                                        <a id="like" class="btn btn-outline-primary" value="<?php echo $data['id'] ?>" href="#" style="">
+                                        <a id="like" class="btn btn-outline-primary" value="<?php echo $data['Id_Message'] ?>" href="#" style="">
                                                 <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                                 <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                                 </span>
                                                 <span class="btn-inner--text">ถูกใจ</span>  
                                             </a>
                                 <?php   }else{ ?>
-                                            <a id="dislike" class="btn btn-icon btn-3 btn" value="<?php echo $data['id'] ?>" href="#" style="background-color: #2181c2; color: #fff;">
+                                            <a id="dislike" class="btn btn-icon btn-3 btn" value="<?php echo $data['Id_Message'] ?>" href="#" style="background-color: #2181c2; color: #fff;">
                                             <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                             <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                             </span>

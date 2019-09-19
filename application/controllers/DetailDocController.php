@@ -14,8 +14,6 @@ class DetailDocController extends CI_Controller {
         $this->load->view('Header');
         $this->load->view('DetailDoc');
         $this->load->view('Footer');  
-        
-
 
     }
 
@@ -23,16 +21,16 @@ class DetailDocController extends CI_Controller {
     public function edit($edit_id)
     {
         $status = $this->session->userdata('employeeId');
-        $this->db->where('employeeId', $status);
-        $query3 = $this->db->get('users');
+        $this->db->where('Id_Emp', $status);
+        $query3 = $this->db->get('Users');
         $admin = $query3->row_array();
 
-        $this->db->where('id_upload', $edit_id);
-        $query = $this->db->get('upload');
+        $this->db->where('Id_Upload', $edit_id);
+        $query = $this->db->get('Upload');
         $data = $query->row_array();
 
-        $this->db->where('id_repository', $data['id_repository']);
-        $query2 = $this->db->get('repository_member');
+        $this->db->where('Id_Repository', $data['Id_Repository']);
+        $query2 = $this->db->get('Repository_Member');
         $data2 = $query2->row_array();
 
 
@@ -43,28 +41,28 @@ class DetailDocController extends CI_Controller {
               $this->load->view('DetailDoc', $this->data, FALSE);
               $this->load->view('Footer');
 
-            }else if($data['id_repository'] == 0)
+            }else if($data['Id_Repository'] == 0)
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
  
-            }else if($data2['accname'] == $this->session->userdata('accountName'))
+            }else if($data2['AccName'] == $this->session->userdata('accountName'))
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
 
-            }else if($admin['status']== 'admin')
+            }else if($admin['Status']== 'admin')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
 
-            }else if($data['privacy']== 'Public')
+            }else if($data['Privacy']== 'Public')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
@@ -79,21 +77,21 @@ class DetailDocController extends CI_Controller {
 
     public function download($url)
     {
-        $this->db->where('url', $url);
-        $query = $this->db->get('upload');
+        $this->db->where('Url', $url);
+        $query = $this->db->get('Upload');
         $dataload = $query->row_array();
-        if($dataload['privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['uploadby'])
+        if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'])
         {
             $this->load->view('Header');
             $this->load->view('Useralert');     
             $this->load->view('Footer');
-        }else if($dataload['privacy']=='Private' && $this->session->userdata('_success') == '')
+        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '')
         {
             $this->load->view('Header');
             $this->load->view('LoginAlert');     
             $this->load->view('Footer');
 
-        }else if($dataload['privacy']=='Authen' && $this->session->userdata('_success') == '')
+        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '')
         {
             $this->load->view('Header');
             $this->load->view('LoginAlert');     
@@ -101,17 +99,17 @@ class DetailDocController extends CI_Controller {
         }else
         {
         $this->load->helper('download');
-        $this->db->where('url', $url);
-        $data = $this->db->get('upload', 1);
+        $this->db->where('Url', $url);
+        $data = $this->db->get('Upload', 1);
         $fileInfo = $data->result_array();
         foreach($fileInfo as $d)
         {
 
         $object = array(
-            'download' => $d['download']+1
+            'Download' => $d['Download']+1
         );
-        $this->db->where('id_upload', $d['id_upload']);
-        $this->db->update('upload', $object);
+        $this->db->where('Id_upload', $d['Id_upload']);
+        $this->db->update('Upload', $object);
 
             echo $d['file'];
 
@@ -133,12 +131,12 @@ class DetailDocController extends CI_Controller {
         $object = array(
             'download' => $d['download']+1
         );
-        $this->db->where('id_upload', $d['id_upload']);
-        $this->db->update('upload', $object);
-            echo $d['qr_codename'];
+        $this->db->where('Id_upload', $d['Id_upload']);
+        $this->db->update('Upload', $object);
+            echo $d['Qr_Codename'];
 
             //Path File
-            $file = './assets/img/qrcode/'.$d['qr_codename'].'.png';
+            $file = './assets/img/qrcode/'.$d['Qr_Codename'].'.png';
             force_download($file, NULL);
         }
     }

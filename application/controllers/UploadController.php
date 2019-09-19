@@ -49,7 +49,9 @@ class UploadController extends CI_Controller {
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
                   $this->Upload->upload_image($this->input->post(),$fileName);
-                  // redirect('EmailController/send');
+                  redirect('EmailController/send');
+                  // echo('สวัสดี');
+                  // print_r($_POST);
                   
               
                 }

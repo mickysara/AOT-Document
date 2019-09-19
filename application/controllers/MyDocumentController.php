@@ -14,8 +14,9 @@ class MyDocumentController extends CI_Controller {
     public function myupload()
     {
 
-        $this->db->where('uploadby', $this->session->userdata('accountName'));
-        $result = $this->db->get('upload');
+        $this->db->where('Uploadby', $this->session->userdata('accountName'));
+        $this->db->where('Status','ใช้งาน');
+        $result = $this->db->get('Upload');
             
         if($result->num_rows() == 0)
         {?>
@@ -63,41 +64,41 @@ class MyDocumentController extends CI_Controller {
                                                 <th scope="row">
                                                 <div class="media align-items-center">
                                                     <a href="#" class="avatar rounded-circle mr-3">
-                                                    <img src="<?php echo base_url().'assets/img/logofile/'. $data['type']?>.png" alt="">
+                                                    <img src="<?php echo base_url().'assets/img/logofile/'. $data['Type']?>.png" alt="">
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['file'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['File'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                     <?php echo date('d/m/Y', strtotime($data['date']));?>
+                                                     <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['status'];?>
+                                                    <i class="bg-success"></i> <?php echo $data['Status'];?>
                                                 </span>
                                                 </td>   
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['privacy'];?>
+                                                    <i class="bg-success"></i> <?php echo $data['Privacy'];?>
                                                 </span>
                                                 </td> 
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['Id_Upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                                 </span>
                                                 </td>  
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>EditDocumentController/checkaccount/<?php echo $data['id_upload'];?>"class="btn btn-primary mb-3">Edit</a>              
+                                                <a href="<?php echo site_url(); ?>EditDocumentController/checkaccount/<?php echo $data['Id_Upload'];?>"class="btn btn-primary mb-3">Edit</a>              
                                                 </span>
                                                 </td>  
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>/ViewController/deldoc/<?php echo $data['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>           
+                                                <a href="<?php echo site_url(); ?>/ViewController/delfile/<?php echo $data['Id_Upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>           
                                                 </span>
                                                 </td>  
                                             </tr>
@@ -114,7 +115,7 @@ class MyDocumentController extends CI_Controller {
     public function MyRepository()
     {
         $this->db->where('createby', $this->session->userdata('accountName'));
-        $result = $this->db->get('repository');
+        $result = $this->db->get('Repository');
         if($result->num_rows() == 0)
         {?>
             <div class="ct-example tab-content tab-example-result" style="margin: auto; margin-top: 62px; padding: 1.25rem;
@@ -160,23 +161,23 @@ class MyDocumentController extends CI_Controller {
                                                     <i class="fa fa-users" aria-hidden="true"></i>
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['topic'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['Topic'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                     <?php echo date('d/m/Y', strtotime($data['date']));?>
+                                                     <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['privacy'];?>
+                                                    <i class="bg-success"></i> <?php echo $data['Privacy'];?>
                                                 </span>
                                                 </td>   
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['id'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                                <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                                 </span>
                                                 </td>  
                                             </tr>
@@ -191,10 +192,10 @@ class MyDocumentController extends CI_Controller {
     public function InRepository()
     {
         $accname = $this->session->userdata('accountName');
-        $query=$this->db->query("SELECT  repository.* ,repository_member.level , repository_member.addBy
-                                FROM  repository,repository_member
-                                WHERE repository.id = repository_member.id_repository 
-                                AND repository_member.accname = '$accname' ");
+        $query=$this->db->query("SELECT  Repository.* ,Repository_Member.Level , Repository_Member.AddBy
+                                FROM  Repository,Repository_Member
+                                WHERE Repository.Id_Repository = Repository_Member.Id_Repository 
+                                AND Repository_Member.AccName = '$accname' ");
         
         if($query->num_rows() == 0)
         {?>
@@ -243,29 +244,29 @@ class MyDocumentController extends CI_Controller {
                                                     <i class="fa fa-users" aria-hidden="true"></i>
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['topic'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['Topic'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                     <?php echo date('d/m/Y', strtotime($data['date']));?>
+                                                     <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['privacy'];?>
+                                                    <i class="bg-success"></i> <?php echo $data['Privacy'];?>
                                                 </span>
                                                 </td>   
                                                 <td>
-                                                 <?php echo $data['level'];?>
+                                                 <?php echo $data['Level'];?>
                                                 </td> 
                                                 <td>
-                                                 <?php echo $data['addBy'];?>
+                                                 <?php echo $data['AddBy'];?>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['id'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                                <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                 
                                                 </span>
                                                 </td>  

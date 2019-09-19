@@ -34,12 +34,12 @@ class RepoController extends CI_Controller {
         // $this->Upload->insertRepo();
         $this->Upload->insertRepo($this->input->post());
         $this->db->select('*');
-        $this->db->order_by('id', 'desc');
-        $result = $this->db->get('repository',1);
+        $this->db->order_by('Id_Repository', 'desc');
+        $result = $this->db->get('Repository',1);
         $data = $result->row_array();
 
         
-        redirect('RepositoryController/showdata/'.$data['id'],'refresh');
+        redirect('RepositoryController/showdata/'.$data['Id_Repository'],'refresh');
         
         
     }

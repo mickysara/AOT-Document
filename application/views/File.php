@@ -598,12 +598,6 @@
             </a>
           </li>
           <li>
-          <a href="<?php echo site_url('ViewFileDeleteController');?>">
-              <i class="fa fa-undo"></i>
-              <span>ดูข้อมูลไฟล์ที่ถูกลบไปแล้ว</span>
-            </a>
-          </li>
-          <li>
             <a href="<?php echo site_url('ViewRepositoryController');?>">
               <i class="fa fa-file"></i>
               <span>ข้อมูลทีม</span>
@@ -643,7 +637,7 @@
                 <div class="col-sm mr-4" style="background-color: #fff;">
                     <div class="content mt-2 mb-2" style="display: -webkit-flex;">
                     <?php
-                    $d = $this->db->get('upload');
+                    $d = $this->db->get('Upload');
                     ?>
                         <div>
                         <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
@@ -653,9 +647,9 @@
                     </div>
                 </div>
 
-                <?php $countload = $this->db->query('SELECT sum(download)
+                <?php $countload = $this->db->query('SELECT sum(Download)
                           as sum
-                            FROM upload');
+                            FROM Upload');
                 $c =  $countload->row_array();
                  ?>
 
@@ -670,9 +664,9 @@
                     </div>
                 </div>
 
-                <?php $countchat = $this->db->query('SELECT count(id)
+                <?php $countchat = $this->db->query('SELECT count(Id_Chatroom)
                                     as count
-                                    FROM chatroom');
+                                    FROM Chatroom');
                         $c =  $countchat->row_array();
                   ?> </p>
 
@@ -705,11 +699,11 @@
                     <div class="card-body">
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                        <p>โดย : <?php echo $data['name'];?></p>
-                        <p>อีเมล :  <?php echo $data['email'];?></p>
-                        <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
-                        <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
-                        <h3>สถานะ : <?php echo $data['status'];?></h3>
+                        <p>โดย : <?php echo $data['AccName'];?></p>
+                        <p>อีเมล :  <?php echo $data['Email'];?></p>
+                        <p>เบอร์ต่อติด : <?php echo $data['Tel'];?></p>
+                        <p>แจ้งเมื่อวันที่ : <?php echo $data['Date'];?></p>
+                        <h3>สถานะ : <?php echo $data['Status'];?></h3>
                     </div>
                     </div>
                 </div>
@@ -731,29 +725,29 @@
 
                         <?php
                             // pdf file
-                            $this->db->where('type', 'PDF File');
-                            $pdf = $this->db->get('upload');
+                            $this->db->where('Type', 'PDF File');
+                            $pdf = $this->db->get('Upload');
                             $pdfshow = $pdf->num_rows();
                             $pdfcal = $pdfshow * 100;
                             $pdfcal2 = $pdfcal / $d->num_rows();
                             $pdfcal3 = $pdfcal2.'%';
                             // powerpoint
-                            $this->db->where('type', 'Microsoftpowerpoint');
-                            $point = $this->db->get('upload');
+                            $this->db->where('Type', 'Microsoftpowerpoint');
+                            $point = $this->db->get('Upload');
                             $pointshow = $point->num_rows();
                             $pointcal = $pointshow * 100;
                             $pointcal2 = $pointcal / $d->num_rows();
                             $pointcal3 = $pointcal2.'%';
                             // excel
-                            $this->db->where('type', 'Microsoftexcel');
-                            $excel = $this->db->get('upload');
+                            $this->db->where('Type', 'Microsoftexcel');
+                            $excel = $this->db->get('Upload');
                             $excelshow = $excel->num_rows();
                             $excelcal = $excelshow * 100;
                             $excelcal2 = $excelcal / $d->num_rows();
                             $excelcal3 = $excelcal2.'%';
                             // word
-                            $this->db->where('type', 'Microsoftword');
-                            $word = $this->db->get('upload');
+                            $this->db->where('Type', 'Microsoftword');
+                            $word = $this->db->get('Upload');
                             $wordshow = $word->num_rows();
                             $wordcal = $wordshow * 100;
                             $wordcal2 = $wordcal / $d->num_rows();

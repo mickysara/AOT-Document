@@ -8,7 +8,7 @@ class UploadFileRepoController extends CI_Controller {
         parent::__construct();
         //$this->load->helper('url');
         $this->load->model('UploadFile_Model','Upload'); 
-        $this->load->model('repository_model','RePo'); 
+        $this->load->model('Repository_Model','RePo'); 
         
     }
 
@@ -57,14 +57,15 @@ class UploadFileRepoController extends CI_Controller {
                   $this->RePo->upload_file($this->input->post(),$fileName);
 
 
-                  $this->db->where('id_repository', $repo_id);
-                  $this->db->order_by('id_upload', 'desc');
-                  $query = $this->db->get('upload', 1);
+                  $this->db->where('Id_Repository', $repo_id);
+                  $this->db->order_by('Id_upload', 'desc');
+                  $query = $this->db->get('Upload', 1);
                   $d = $query->row_array();
 
                   redirect('EmailController/senddoc');
                 //   redirect('DetailDocController/edit/'.$d['id_upload']);
-                
+                // echo('สวัสดี');
+                //   print_r($_POST);
                
 
               

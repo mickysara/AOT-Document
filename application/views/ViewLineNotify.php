@@ -38,48 +38,48 @@
                                                 <img src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
                                                 </a>
                                                 <div class="media-body">
-                                                  <span class="mb-0 text-sm"> <?php echo $data['notify'];?></span>
+                                                  <span class="mb-0 text-sm"> <?php echo $data['Problem'];?></span>
                                                 </div>
                                               </div>
                                             </th>
                                             <td>
-                                            <?php echo $data['name']; ?>
+                                            <?php echo $data['AccName']; ?>
                                             </td>
                                             <td>
                                               <span class="badge badge-dot mr-4">
                                               <?php if($data['status'] == "ยังไม่ได้รับการแก้ไข")
                                               {?>
-                                                  <i class="bg-danger"></i> <?php echo $data['status'];?></i>
+                                                  <i class="bg-danger"></i> <?php echo $data['Status'];?></i>
                                               <?php }else { ?>
-                                                <i class="bg-success"></i> <?php echo $data['status'];?></i>
+                                                <i class="bg-success"></i> <?php echo $data['Status'];?></i>
                                               <?php } ?>
                                               </span>
                                           </td>   
                                           
                                           <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['notify'];?>">View</button>                           
-                            <div class="modal fade" id="<?php echo $data['notify'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['notify'];?>" aria-hidden="true">
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['Problem'];?>">View</button>                           
+                            <div class="modal fade" id="<?php echo $data['Problem'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['Problem'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อหัวข้อแจ้งปัญหา : <?php echo $data['notify'];?></h2>
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อหัวข้อแจ้งปัญหา : <?php echo $data['Problem'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
                                     
                                     <div class="modal-body">
-                                        <p>โดย : <?php echo $data['name'];?></p>
-                                        <p>อีเมล :  <?php echo $data['email'];?></p>
-                                        <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
-                                        <p>แจ้งเมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
-                                        <h4>สถานะ : <?php echo $data['status'];?></h4>
+                                        <p>โดย : <?php echo $data['AccName'];?></p>
+                                        <p>อีเมล :  <?php echo $data['Email'];?></p>
+                                        <p>เบอร์ต่อติด : <?php echo $data['Tel'];?></p>
+                                        <p>แจ้งเมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
+                                        <h4>สถานะ : <?php echo $data['Status'];?></h4>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <a href="<?php echo site_url(); ?>EditLineNotifyController/edit/<?php echo $data['id_linenoti'];?>"class="btn btn-success">เปลี่ยนสถานะการแก้ปัญหา</a>
+                                        <a href="<?php echo site_url(); ?>EditLineNotifyController/edit/<?php echo $data['Id_Problem'];?>"class="btn btn-success">เปลี่ยนสถานะการแก้ปัญหา</a>
                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/ViewLineNotifyController/del/<?php echo $data['id_linenoti'];?>" onclick="return confirm('คุณต้องการลบการแจ้งเตือนนี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    <a href="<?php echo site_url(); ?>/ViewLineNotifyController/del/<?php echo $data['Id_Problem'];?>" onclick="return confirm('คุณต้องการลบการแจ้งเตือนนี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                     </td>   
                   </tr>
                   <?php } endif; ?> 

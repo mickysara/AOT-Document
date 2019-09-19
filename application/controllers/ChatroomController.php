@@ -15,8 +15,8 @@ class ChatroomController extends CI_Controller {
         
         $Chatcode = $this->input->post("Chatroom");
 
-                $this->db->where('code_chatroom', $Chatcode);
-        $query = $this->db->get('chatroom',1);
+                $this->db->where('Code_Chatroom', $Chatcode);
+        $query = $this->db->get('Chatroom',1);
         $data  = $query->result_array();
         $code = "hi";
         if($data == null)

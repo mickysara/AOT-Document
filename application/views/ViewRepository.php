@@ -33,34 +33,34 @@
                                                     <i class="fa fa-users" aria-hidden="true"></i>
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['topic'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['Topic'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                     <?php echo date('d/m/Y', strtotime($data['date']));?>
+                                                     <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['privacy'];?>
+                                                    <i class="bg-success"></i> <?php echo $data['Privacy'];?>
                                                 </span>
                                                 </td>   
                                                 <td>
                                                     <span class="badge badge-dot mr-4">
-                                                    <a href="<?php echo site_url(); ?>RepositoryController/showdata/<?php echo  $data['id'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                                    <a href="<?php echo site_url(); ?>RepositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                                     </span>
                                                 </td>  
                                                 <td class="">
                                                 <div>
-                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/edit/<?php echo  $data['id'];?>"  class="btn btn-success mb-3" >Edit</a>                
+                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/edit/<?php echo  $data['Id_Repository'];?>"  class="btn btn-success mb-3" >Edit</a>                
                                                     </div>
                                                 
                                                 </td>
                                                 <td>
                                                     <span class="badge badge-dot mr-4">
-                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/del/<?php echo  $data['id'];?>" onclick="return confirm('คุณต้องการลบทีมนี้ใช่หรือไม่ ?')"  class="btn btn-danger mb-3" style="color: #fff;">Deleate</a>              
+                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/del/<?php echo  $data['Id_Repository'];?>" onclick="return confirm('คุณต้องการลบทีมนี้ใช่หรือไม่ ?')"  class="btn btn-danger mb-3" style="color: #fff;">Deleate</a>              
                                                     </span>
                                                 </td>   
                                             </tr>

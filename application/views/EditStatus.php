@@ -24,7 +24,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>ไอดี</div>
-                      <input type="Text" class="form-control form-control-alternative" name="id_status" value="<?php echo $data['employeeId']?>" required id="id_status">
+                      <input type="Text" class="form-control form-control-alternative" name="id_status" value="<?php echo $data['Id_Emp']?>" required id="id_status">
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -38,7 +38,7 @@
                     </div>
                     </div>
 
-                    <input type="hidden" name="id_admin" value= <?php echo $data['id_admin'];?>>
+                    <input type="hidden" name="id_admin" value= <?php echo $data['Id_Users'];?>>
                 <button  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
                 <a href="<?php echo site_url("/TypeViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
             </form>

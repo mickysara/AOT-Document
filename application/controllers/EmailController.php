@@ -17,19 +17,19 @@ class EmailController extends CI_Controller{
         $this->load->library('image_lib');
         
         $this->db->select('*');
-        $this->db->order_by('id_upload', 'desc');
-        $data = $this->db->get('upload',1);
+        $this->db->order_by('Id_upload', 'desc');
+        $data = $this->db->get('Upload',1);
         $r = $data->row_array();
 
         $params['data'] = base_url().'/DetailDocController/download/'.$r['url'];
         $params['level'] = 'H';
         $params['size'] = 50;
-        $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['qr_codename'].'.png';
+        $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['Qr_Codename'].'.png';
         $this->ciqrcode->generate($params);
         
        // echo '<img src="'.base_url().'asd.png" style="width: 250px; height: 250px;" />';
 
-        $config['source_image'] = FCPATH.'./assets/img/qrcode/'.$r['qr_codename'].'.png';
+        $config['source_image'] = FCPATH.'./assets/img/qrcode/'.$r['Qr_Codename'].'.png';
         $config['image_library'] = 'gd2';
         $config['wm_type'] = 'overlay';
         $config['wm_overlay_path'] = './AOT.jpg';//the overlay image
@@ -49,7 +49,14 @@ class EmailController extends CI_Controller{
         } else {
             $response['wm_status'] = 'success';
         }
-        redirect('ViewController');
+        
+        $this->db->select('*');
+        $this->db->order_by('Id_upload', 'desc');
+        $result = $this->db->get('Upload',1);
+        $data = $result->row_array();
+
+        
+        redirect('DetailDocController/edit/'.$data['Id_upload'],'refresh');
 
     }
     function genQrChat(){
@@ -59,18 +66,18 @@ class EmailController extends CI_Controller{
         $this->load->library('image_lib');
         
         $this->db->select('*');
-        $this->db->order_by('id', 'desc');
-        $data = $this->db->get('chatroom',1);
+        $this->db->order_by('Id_Chatroom', 'desc');
+        $data = $this->db->get('Chatroom',1);
         $r = $data->row_array();
 
-        $params['data'] = base_url().'/InchatroomController/showchat/'.$r['id'];
+        $params['data'] = base_url().'/InchatroomController/showchat/'.$r['Id_Chatroom'];
         $params['level'] = 'H';
         $params['size'] = 50;
-        $params['savename'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['code_chatroom'].'.png';
+        $params['savename'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['Code_Chatroom'].'.png';
         $this->ciqrcode->generate($params);
 
 
-        $config['source_image'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['code_chatroom'].'.png';
+        $config['source_image'] = FCPATH.'./assets/img/qrcode/chatroom/'. $r['Code_Chatroom'].'.png';
         $config['image_library'] = 'gd2';
         $config['wm_type'] = 'overlay';
         $config['wm_overlay_path'] = './AOT.jpg';//the overlay image
@@ -93,11 +100,11 @@ class EmailController extends CI_Controller{
 
 
         $this->db->select('*');
-        $this->db->order_by('id', 'desc');
-        $data = $this->db->get('chatroom',1);
+        $this->db->order_by('Id_Chatroom', 'desc');
+        $data = $this->db->get('Chatroom',1);
         $r = $data->row_array();
         
-        redirect('AdminChatroomController/showchat/'.$r['id'],'refresh');
+        redirect('AdminChatroomController/showchat/'.$r['Id_Chatroom'],'refresh');
   
 
     }
@@ -110,19 +117,19 @@ class EmailController extends CI_Controller{
         $this->load->library('image_lib');
         
         $this->db->select('*');
-        $this->db->order_by('id_upload', 'desc');
-        $data = $this->db->get('upload',1);
+        $this->db->order_by('Id_upload', 'desc');
+        $data = $this->db->get('Upload',1);
         $r = $data->row_array();
 
         $params['data'] = base_url().'/DetailDocController/download/'.$r['url'];
         $params['level'] = 'H';
         $params['size'] = 50;
-        $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['qr_codename'].'.png';
+        $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['Qr_Codename'].'.png';
         $this->ciqrcode->generate($params);
         
        // echo '<img src="'.base_url().'asd.png" style="width: 250px; height: 250px;" />';
 
-        $config['source_image'] = FCPATH.'./assets/img/qrcode/'.$r['qr_codename'].'.png';
+        $config['source_image'] = FCPATH.'./assets/img/qrcode/'.$r['Qr_Codename'].'.png';
         $config['image_library'] = 'gd2';
         $config['wm_type'] = 'overlay';
         $config['wm_overlay_path'] = './AOT.jpg';//the overlay image
@@ -144,12 +151,12 @@ class EmailController extends CI_Controller{
         }
 
         $this->db->select('*');
-        $this->db->order_by('id_upload', 'desc');
-        $result = $this->db->get('upload',1);
+        $this->db->order_by('Id_upload', 'desc');
+        $result = $this->db->get('Upload',1);
         $data = $result->row_array();
 
         
-        redirect('DetailDocController/edit/'.$data['id_upload'],'refresh');
+        redirect('DetailDocController/edit/'.$data['Id_upload'],'refresh');
         // redirect('MyDocumentController');
 
     }

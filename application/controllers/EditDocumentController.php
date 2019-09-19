@@ -53,12 +53,12 @@ class EditDocumentController extends CI_Controller {
     }
     public function checkaccount($edit_id)
     {
-        $this->db->where('id_upload', $edit_id);
-        $query = $this->db->get('upload');
+        $this->db->where('Id_upload', $edit_id);
+        $query = $this->db->get('Upload');
         foreach($query->result_array() as $data)
       { ?>
               <?php 
-                  if($data['uploadby']==$this->session->userdata('accountName'))
+                  if($data['Uploadby']==$this->session->userdata('accountName'))
                   {
                     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                     $this->load->view('Header');
