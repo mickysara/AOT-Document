@@ -5,9 +5,7 @@
     {
         define('LINE_API',"https://notify-api.line.me/api/notify");
 
-
-             $lineapi = ""; //ใส่Token ที่copy เอาไว้
-            // $lineapi = "pL7Zkh47MrbJJ9a615UkObW27movggJ4O2uXxC6pFc2"; //ใส่Token ที่copy เอาไว้
+            $lineapi = "pL7Zkh47MrbJJ9a615UkObW27movggJ4O2uXxC6pFc2"; //ใส่Token ที่copy เอาไว้
 
             $mms =  trim($data); // ข้อความที่ต้องการส่ง
             date_default_timezone_set("Asia/Bangkok");

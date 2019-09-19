@@ -187,9 +187,9 @@ public function editdataupload($inputdata){
     { 
       if($this->session->userdata('_success') == '')
       {
-        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy != "Private" AND privacy != "Authen" '); 
+        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy != "Private" AND privacy != "Authen" AND "Status" != "ลบ"'); 
       }else{
-        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy != "Private"'); 
+        $query = $this->db->query('SELECT * FROM Upload WHERE Privacy != "Private" AND "Status" != "ลบ"'); 
       }
       return $query->num_rows();
     }

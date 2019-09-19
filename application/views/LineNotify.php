@@ -51,6 +51,10 @@
                           text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
                           icon: "success", 
                         }); 
+                        setTimeout(function () {
+                        location.href = '<?=base_url('/Indexcontroller')?>'
+                        }, 
+                        2000);
                  }
                   }
                   </script> 
