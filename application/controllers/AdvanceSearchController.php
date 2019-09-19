@@ -201,7 +201,7 @@ class AdvanceSearchController extends CI_Controller {
                                                 </span>
                                                 </td>   
                                                 <td>
-                                                <?php echo $data['privacy'];?>
+                                                <?php echo $data['Privacy'];?>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">

@@ -21,7 +21,7 @@ class AdminChatroomController extends CI_Controller {
 
     public function IncreaseChatByAsc($codechat)
     {
-        $this->db->select('Message.Message,Message.Id_Message,Message.Datetime, count(like_message.id) as number_of_like');
+        $this->db->select('Message.Message,Message.Id_Message,Message.Datetime, count(Like_Message.id) as number_of_like');
         $this->db->from('Message');
         $this->db->where('Code_Chatroom', $codechat);
         $this->db->join('Like_Message', '(Message.Id_Message = Like_Message.Id_Message)', 'left');
@@ -74,7 +74,7 @@ class AdminChatroomController extends CI_Controller {
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">
-                                    <span><?php echo $data['message'] ?></span>
+                                    <span><?php echo $data['Message'] ?></span>
                             </div>
                     </div>
 
@@ -83,7 +83,7 @@ class AdminChatroomController extends CI_Controller {
     
     public function IncreaseChatRecent($codechat)
     {
-        $this->db->select('Message.Message,Message.Id_Message,Message.Datetime, count(like_message.id) as number_of_like');
+        $this->db->select('Message.Message,Message.Id_Message,Message.Datetime, count(Like_Message.id) as number_of_like');
         $this->db->from('Message');
         $this->db->where('Code_Chatroom', $codechat);
         $this->db->join('Like_Message', '(Message.Id_Message = Like_Message.Id_Message)', 'left');
@@ -136,7 +136,7 @@ class AdminChatroomController extends CI_Controller {
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">
-                                    <span><?php echo $data['message'] ?></span>
+                                    <span><?php echo $data['Message'] ?></span>
                             </div>
                     </div>
 
@@ -144,7 +144,7 @@ class AdminChatroomController extends CI_Controller {
     }
     public function IncreaseChatPopular($codechat)
     {
-        $this->db->select('Message.Message,Message.Id_Message,Message.Datetime, count(like_message.id) as number_of_like');
+        $this->db->select('Message.Message,Message.Id_Message,Message.Datetime, count(Like_Message.id) as number_of_like');
         $this->db->from('Message');
         $this->db->where('Code_Chatroom', $codechat);
         $this->db->join('Like_Message', '(Message.Id_Message = Like_Message.Id_Message)', 'left');
@@ -196,7 +196,7 @@ class AdminChatroomController extends CI_Controller {
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">
-                                    <span><?php echo $data['message'] ?></span>
+                                    <span><?php echo $data['Message'] ?></span>
                             </div>
                     </div>
 

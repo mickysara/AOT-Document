@@ -37,7 +37,7 @@ class InchatroomController extends CI_Controller {
 
         $data = array(
             "Code_Chatroom"  =>  $id_chat,
-            "Cessage"  =>  $message,
+            "Message"  =>  $message,
             "Sentby"  =>  $sentby,
             "Datetime"  =>  $datetime
         );
@@ -58,7 +58,7 @@ class InchatroomController extends CI_Controller {
             "datetime"   => $datetime
         );
 
-        $this->db->insert('like_message', $data);
+        $this->db->insert('Like_Message', $data);
     }
 
 
