@@ -27,12 +27,12 @@
 
 
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อทีม : <?php echo $repo['topic'];?> </h1>  
+        <h1>ชื่อทีม : <?php echo $repo['Topic'];?> </h1>  
         <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['Createby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($repo['Date']));?></p>
         <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['Privacy'];?> </p>
           <?php 
-            $this->db->where('id_repository', $repo['Id_Repository']);
+            $this->db->where('Id_Repository', $repo['Id_Repository']);
             $this->db->where('AccName', $this->session->userdata('accountName'));
             $querystatus = $this->db->get('Repository_Member', 1);
             $resultstatus = $querystatus->row_array();
@@ -103,7 +103,7 @@
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
                     <?php 
-                        if($resultstatus['level'] == "Editor" || $resultstatus['level'] == "Manager" || $resultstatus['level'] == "Creater")
+                        if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
                         {?>
                           <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                           <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
