@@ -26,7 +26,7 @@ class Admin_Model extends CI_Model
         $data = array(
         'Status' => $inputdata['status']
       );
-        $this->db->where('Id_Emp', $inputdata['id_status']);
+        $this->db->where('Id_Emp', $inputdata['Id_Users']);
         $query=$this->db->update('Users',$data);
 
         return $query;

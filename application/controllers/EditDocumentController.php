@@ -54,7 +54,7 @@ class EditDocumentController extends CI_Controller {
     }
     public function checkaccount($edit_id)
     {
-        $this->db->where('Id_upload', $edit_id);
+        $this->db->where('Id_Upload', $edit_id);
         $query = $this->db->get('Upload');
         foreach($query->result_array() as $data)
       { ?>
