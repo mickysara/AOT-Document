@@ -52,16 +52,16 @@ class MemberController extends CI_Controller {
                         echo json_encode(['status' => 0, 'msg' => 'Fail']);
                         
                     }else{
-                        $this->db->where('id_emp', $data['employeeId']);
-                        $this->db->where('id_repository', $repository_id);
-                        $query = $this->db->get('repository_member', 1);
+                        $this->db->where('Id_emp', $data['employeeId']);
+                        $this->db->where('Id_Repository', $repository_id);
+                        $query = $this->db->get('Repository_Member', 1);
                         $d = $query->num_rows();
 
                         if($d == 0)
                         {
-                            $this->db->where('id', $repository_id);
-                            $this->db->where('createby', $data['accountName']);
-                            $q = $this->db->get('repository', 1);
+                            $this->db->where('Id_Repository', $repository_id);
+                            $this->db->where('Createby', $data['accountName']);
+                            $q = $this->db->get('Repository', 1);
 
                             if($q->num_rows() == 0)
                             {
@@ -71,20 +71,10 @@ class MemberController extends CI_Controller {
                                     'id_repository' => $repository_id,
                                     'level' => $Level,
                                     'addBy' => $this->session->userdata('accountName'),
+                                    'Notify'  =>  1,
                                     'Date' => date("Y-m-d")
                                     );
-                                    $this->db->insert('repository_member', $insert);
-
-                                $insertnoti = array(
-                                    'id_repository' =>  $repository_id,
-                                    'Action'        =>  'invite',
-                                    'accname'       =>  $data['accountName'],
-                                    'ActionBy'      =>  $this->session->userdata('accountName'),
-                                    'Notification'  =>  1
-                                );
-
-                                    $this->db->insert('noti', $insertnoti);
-                                    
+                                    $this->db->insert('Repository_Member', $insert);                                    
                                     echo json_encode(['status' => 1, 'msg' => 'Success']);
                             }else{
                                 echo json_encode(['status' => 2, 'msg' => 'Fail']);
@@ -109,8 +99,8 @@ class MemberController extends CI_Controller {
              'level' => $level
             
          );
-         $this->db->where('ID', $id);
-         $this->db->update('repository_member', $data);
+         $this->db->where('Id_RepositoryMember', $id);
+         $this->db->update('Repository_Member', $data);
 
          redirect('repositorycontroller/showdata/'.$repository_id,'refresh');
         
@@ -118,8 +108,8 @@ class MemberController extends CI_Controller {
     
     public function Deletemember($id,$repository_id)
     {
-        $this->db->where('ID', $id);
-        $this->db->delete('repository_member');
+        $this->db->where('Id_RepositoryMember', $id);
+        $this->db->delete('Repository_Member');
         
         redirect('repositorycontroller/showdata/'.$repository_id,'refresh');
         

@@ -34,18 +34,17 @@
 
                         
 
-                <p class="topic" style="text-align: center;">หัวข้อ : <?php echo $chat_data['topic'] ?> </p>
-                <p class="idchat" style="text-align: center;">รหัสห้องแชท : <?php echo $chat_data['code_chatroom'] ?> </p>
-                <p class="createby" style="text-align: center;">สร้างโดยคุณ : <?php echo $chat_data['createby'] ?> </p>
-                <input type="hidden" id="idchat" name="idchat" value="<?php echo $chat_data['code_chatroom'] ?>">
+                <p class="topic" style="text-align: center;">หัวข้อ : <?php echo $chat_data['Topic'] ?> </p>
+                <p class="idchat" style="text-align: center;">รหัสห้องแชท : <?php echo $chat_data['Code_Chatroom'] ?> </p>
+                <p class="createby" style="text-align: center;">สร้างโดยคุณ : <?php echo $chat_data['Createby'] ?> </p>
+                <input type="hidden" id="idchat" name="idchat" value="<?php echo $chat_data['Code_Chatroom'] ?>">
                 <p class="idchat" style="text-align: center;">Qr Code</p>
-                <img id="imgqr" style="width:250px; height:250px; margin-left: auto; margin-right: auto;   display: block;"  src="<?php echo base_url('/assets/img/qrcode/chatroom/'.$chat_data['code_chatroom'].".png");?>"/>
+                <img id="imgqr" style="width:250px; height:250px; margin-left: auto; margin-right: auto;   display: block;"  src="<?php echo base_url('/assets/img/qrcode/chatroom/'.$chat_data['Code_Chatroom'].".png");?>"/>
                 <div style="text-align:center;">
                     <button class="btn btn-success btn-lg mt-5" onclick="openFullscreen();"> Open Fullscreen</button>
                     <br>
                     <button class="btn btn-success btn-lg mt-3" onclick="closeFullscreen();">Close Fullscreen</button>
                     <br>
-                    <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;"> คำถามที่ตอบแล้ว </button>
                 </div>
                 
             </div>
