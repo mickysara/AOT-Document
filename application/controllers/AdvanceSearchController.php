@@ -67,7 +67,7 @@ class AdvanceSearchController extends CI_Controller {
 
         if($this->input->post("MicrosoftWord") == "on")
         {
-            $this->db->like('type', "MicrosoftWord");
+            $this->db->like('Type', "MicrosoftWord");
             
             $c = 1;
 
@@ -75,44 +75,44 @@ class AdvanceSearchController extends CI_Controller {
         {
             if($c == 1)
             {
-                $this->db->OR_like('type', "MicrosoftPowerPoint");
+                $this->db->OR_like('Type', "MicrosoftPowerPoint");
 
             }else{
 
-                $this->db->like('type', "MicrosoftPowerPoint");
+                $this->db->like('Type', "MicrosoftPowerPoint");
                 $c ==1;
             }
         }if($this->input->post("MicrosoftExcel") == "on")
         {
             if($c == 1)
             {
-                $this->db->OR_like('type', "MicrosoftExcel");
+                $this->db->OR_like('Type', "MicrosoftExcel");
 
             }else{
 
-                $this->db->like('type', "MicrosoftExcel");
+                $this->db->like('Type', "MicrosoftExcel");
                 $c ==1;
             }
         }if($this->input->post("Access") == "on")
         {
             if($c == 1)
             {
-                $this->db->OR_like('type', "Access");
+                $this->db->OR_like('Type', "Access");
 
             }else{
 
-                $this->db->like('type', "Access");
+                $this->db->like('Type', "Access");
                 $c ==1;
             }
         }if($this->input->post("Visio") == "on")
         {
             if($c == 1)
             {
-                $this->db->OR_like('type', "Visio");
+                $this->db->OR_like('Type', "Visio");
 
             }else{
 
-                $this->db->like('type', "Visio");
+                $this->db->like('Type', "Visio");
                 $c ==1;
             }
         }
@@ -120,18 +120,18 @@ class AdvanceSearchController extends CI_Controller {
         {
             if($c == 1)
             {
-                $this->db->OR_like('type', "Pdf");
+                $this->db->OR_like('Type', "Pdf");
 
             }else{
 
-                $this->db->like('type', "Pdf");
+                $this->db->like('Type', "Pdf");
                 $c ==1;
             }
         }
-        $this->db->where('privacy !=','Private');
-        $this->db->where('privacy !=','Repository');
+        $this->db->where('Privacy !=','Private');
+        $this->db->where('Privacy !=','Repository');
         
-        $d = $this->db->get('upload');
+        $d = $this->db->get('Upload');
         $count = $d->num_rows();
         $d->result_array();
 
@@ -147,13 +147,13 @@ class AdvanceSearchController extends CI_Controller {
 
                     <div class="col-sm" style="margin-right: auto; margin-left: auto;">
                     <div class="card" style="width: 18rem; height: 385.828px; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
-                            <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['type'].'.png');?>" alt="Card image cap">
+                            <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['Type'].'.png');?>" alt="Card image cap">
                             <div class="card-body">
-                                <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['topic'];?> </h3>
-                                <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['file'];?></p>
-                                <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo date('d/m/Y', strtotime($data['date']));?></p>
-                                <p class="card-text" style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $data['privacy'];?></p>
-                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['id_upload'];?>" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
+                                <h3 class="card-title" style="color: #2d3436;">หัวข้อ : <?php echo $data['Topic'];?> </h3>
+                                <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['File'];?></p>
+                                <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
+                                <p class="card-text" style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $data['Privacy'];?></p>
+                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['Id_Upload'];?>" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
                                 
                             </div>
                         </div>
@@ -185,19 +185,19 @@ class AdvanceSearchController extends CI_Controller {
                                                 <th scope="row">
                                                 <div class="media align-items-center">
                                                     <a href="#" class="avatar rounded-circle mr-3">
-                                                    <img src="<?php echo base_url().'assets/img/logofile/'. $data['type']?>.png" alt="">
+                                                    <img src="<?php echo base_url().'assets/img/logofile/'. $data['Type']?>.png" alt="">
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['file'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['File'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
                                                 <td>
-                                                <?php echo $data['uploadby'];?>
+                                                <?php echo $data['Uploadby'];?>
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($data['date']));?>
+                                                    <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
                                                 </td>   
                                                 <td>
@@ -205,7 +205,7 @@ class AdvanceSearchController extends CI_Controller {
                                                 </td>
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['Id_Upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                 
                                                 </span>
                                                 </td>  
