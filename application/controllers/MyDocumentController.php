@@ -114,7 +114,7 @@ class MyDocumentController extends CI_Controller {
 
     public function MyRepository()
     {
-        $this->db->where('createby', $this->session->userdata('accountName'));
+        $this->db->where('Createby', $this->session->userdata('accountName'));
         $result = $this->db->get('Repository');
         if($result->num_rows() == 0)
         {?>
