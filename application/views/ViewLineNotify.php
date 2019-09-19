@@ -38,7 +38,7 @@
                                                 <img src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
                                                 </a>
                                                 <div class="media-body">
-                                                  <span class="mb-0 text-sm"> <?php echo $data['Problem'];?></span>
+                                                  <span class="mb-0 text-sm"> <?php echo $data['Detail'];?></span>
                                                 </div>
                                               </div>
                                             </th>
@@ -47,7 +47,7 @@
                                             </td>
                                             <td>
                                               <span class="badge badge-dot mr-4">
-                                              <?php if($data['status'] == "ยังไม่ได้รับการแก้ไข")
+                                              <?php if($data['Status'] == "ยังไม่ได้รับการแก้ไข")
                                               {?>
                                                   <i class="bg-danger"></i> <?php echo $data['Status'];?></i>
                                               <?php }else { ?>
@@ -58,13 +58,13 @@
                                           
                                           <td class="">
                         <div>
-                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['Problem'];?>">View</button>                           
-                            <div class="modal fade" id="<?php echo $data['Problem'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['Problem'];?>" aria-hidden="true">
+                            <button type="button" class="btn btn-block btn-primary mb-3" data-toggle="modal"  data-target="#<?php echo $data['Detail'];?>">View</button>                           
+                            <div class="modal fade" id="<?php echo $data['Detail'];?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $data['Detail'];?>" aria-hidden="true">
                             <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                                 <div class="modal-content" style="color: #2d3436; height: 608px;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">ชื่อหัวข้อแจ้งปัญหา : <?php echo $data['Problem'];?></h2>
+                                        <h2 class="modal-title" id="modal-title-default">ชื่อหัวข้อแจ้งปัญหา : <?php echo $data['Detail'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>

@@ -22,12 +22,12 @@ class ViewController extends CI_Controller {
     
      public function del($id)
      {        
-    $this->db->where('Id_upload', $id);
+    $this->db->where('Id_Upload', $id);
     $query = $this->db->get('Upload');
     foreach($query->result_array() as $data)
       { 
              
-        $file = $data['file'];
+        $file = $data['File'];
         $path = 'uploads/'.$file;
         unlink($path);
       $this->data['delete_data']= $this->Upload->delete_data($id);
@@ -71,7 +71,7 @@ class ViewController extends CI_Controller {
       $data = array(
       'Status' => $deletefile
   );
-      $this->db->where('Id_upload',$id);
+      $this->db->where('Id_Upload',$id);
       $this->db->update('Upload',$data);
       // $this->Upload->delstatusfile($this->input->post($id));
           redirect('MyDocumentController','refresh');
@@ -84,10 +84,10 @@ class ViewController extends CI_Controller {
       $data = array(
       'status' => $deletefile
   );
-      $this->db->where('Id_upload',$id);
+      $this->db->where('Id_Upload',$id);
       $this->db->update('Upload',$data);
 
-      $this->db->where('Id_upload', $id);
+      $this->db->where('Id_Upload', $id);
       $query = $this->db->get('Upload');
       $data = $query->row_array();
       redirect('RepositoryController/showdata/'.$data['Id_Repository'],'refresh');

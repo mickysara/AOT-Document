@@ -25,7 +25,7 @@ class DetailDocController extends CI_Controller {
         $query3 = $this->db->get('Users');
         $admin = $query3->row_array();
 
-        $this->db->where('Id_upload', $edit_id);
+        $this->db->where('Id_Upload', $edit_id);
         $query = $this->db->get('Upload');
         $data = $query->row_array();
 
