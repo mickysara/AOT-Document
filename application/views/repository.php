@@ -142,7 +142,7 @@
                     </td>   
                     <td class="">
                         <div>
-                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['Id_upload'];?>"  class="btn btn-primary mb-3">View</a>                 
+                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['Id_Upload'];?>"  class="btn btn-primary mb-3">View</a>                 
                         </div>
                        
                     </td>
@@ -152,12 +152,12 @@
                         <td class="">
                           
                           <div>
-                            <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['Id_upload'];?>"  class="btn btn-success mb-3" >Edit</a>                
+                            <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['Id_Upload'];?>"  class="btn btn-success mb-3" >Edit</a>                
                             </div>
                           
                         </td>
                         <td>
-                        <a href="<?php echo site_url(); ?>/ViewController/delfilerepository/<?php echo  $r['Id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                        <a href="<?php echo site_url(); ?>/ViewController/delfilerepository/<?php echo  $r['Id_Upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                         </td>   
                     <?php } ?>
                   </tr>
