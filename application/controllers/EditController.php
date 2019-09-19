@@ -16,7 +16,7 @@ class EditController extends CI_Controller {
         $this->load->view('Footer');
         // $this->data['edit_data']= $this->Upload->edit_data($edit_id);
         // $this->data['edit_data_image']= $this->Upload->edit_data_image($edit_id);
-        $this->load->view('Edit');  
+        $this->load->view('edit');  
     }
     public function edit($edit_id)
     {

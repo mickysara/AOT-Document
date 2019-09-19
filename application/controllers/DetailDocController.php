@@ -25,7 +25,7 @@ class DetailDocController extends CI_Controller {
         $query3 = $this->db->get('Users');
         $admin = $query3->row_array();
 
-        $this->db->where('Id_Upload', $edit_id);
+        $this->db->where('Id_upload', $edit_id);
         $query = $this->db->get('Upload');
         $data = $query->row_array();
 
@@ -34,7 +34,7 @@ class DetailDocController extends CI_Controller {
         $data2 = $query2->row_array();
 
 
-            if($data['uploadby']==$this->session->userdata('accountName'))
+            if($data['Uploadby']==$this->session->userdata('accountName'))
             {
               $this->data['edit_data']= $this->Upload->edit_data($edit_id);
               $this->load->view('Header');
@@ -108,13 +108,13 @@ class DetailDocController extends CI_Controller {
         $object = array(
             'Download' => $d['Download']+1
         );
-        $this->db->where('Id_upload', $d['Id_upload']);
+        $this->db->where('Id_Upload', $d['Id_Upload']);
         $this->db->update('Upload', $object);
 
-            echo $d['file'];
+            echo $d['File'];
 
             //Path File
-            $file = 'uploads/'.$d['file'];
+            $file = 'uploads/'.$d['File'];
             force_download($file, NULL);
         }
       }
@@ -122,16 +122,16 @@ class DetailDocController extends CI_Controller {
     public function downloadqrcode($url)
     {
         $this->load->helper('download');
-        $this->db->where('url', $url);
-        $data = $this->db->get('upload', 1);
+        $this->db->where('Url', $url);
+        $data = $this->db->get('Upload', 1);
         $fileInfo = $data->result_array();
         foreach($fileInfo as $d)
         {
 
         $object = array(
-            'download' => $d['download']+1
+            'Download' => $d['Download']+1
         );
-        $this->db->where('Id_upload', $d['Id_upload']);
+        $this->db->where('Id_Upload', $d['Id_Upload']);
         $this->db->update('Upload', $object);
             echo $d['Qr_Codename'];
 
