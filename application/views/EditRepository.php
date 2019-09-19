@@ -56,7 +56,7 @@
 
                     <script>
             </script>
-            <input type="hidden" name="id" value= <?php echo $data['Id_Repository'];?>>
+            <input type="hidden" name="Id_Repository" value= <?php echo $data['Id_Repository'];?>>
                 <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
                 <?php } endif; ?>
             </form>

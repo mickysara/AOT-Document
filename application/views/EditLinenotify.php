@@ -45,7 +45,7 @@
                     </select>
                     </div>
 
-                    <input type="hidden" name="id_linenoti" value= <?php echo $data['Id_Problem'];?>>
+                    <input type="hidden" name="Id_Problem" value= <?php echo $data['Id_Problem'];?>>
                     <button  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">แก้ไขสถานะ</button>
                     <a href="<?php echo site_url("/ViewLineNotifyController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
             </form>

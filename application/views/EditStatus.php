@@ -38,7 +38,7 @@
                     </div>
                     </div>
 
-                    <input type="hidden" name="id_admin" value= <?php echo $data['Id_Users'];?>>
+                    <input type="hidden" name="Id_Users" value= <?php echo $data['Id_Users'];?>>
                 <button  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
                 <a href="<?php echo site_url("/TypeViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
             </form>
