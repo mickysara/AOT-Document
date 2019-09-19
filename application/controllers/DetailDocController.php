@@ -29,7 +29,7 @@ class DetailDocController extends CI_Controller {
         $query = $this->db->get('Upload');
         $data = $query->row_array();
 
-        $this->db->where('Id_Repository', $data['Id_repository']);
+        $this->db->where('Id_Repository', $data['Id_Repository']);
         $query2 = $this->db->get('Repository_Member');
         $data2 = $query2->row_array();
 
@@ -41,7 +41,7 @@ class DetailDocController extends CI_Controller {
               $this->load->view('DetailDoc', $this->data, FALSE);
               $this->load->view('Footer');
 
-            }else if($data['Id_repository'] == 0)
+            }else if($data['Id_Repository'] == 0)
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
@@ -108,7 +108,7 @@ class DetailDocController extends CI_Controller {
         $object = array(
             'Download' => $d['Download']+1
         );
-        $this->db->where('Id_upload', $d['Id_upload']);
+        $this->db->where('Id_Upload', $d['Id_Upload']);
         $this->db->update('Upload', $object);
 
             echo $d['File'];
@@ -131,7 +131,7 @@ class DetailDocController extends CI_Controller {
         $object = array(
             'Download' => $d['Download']+1
         );
-        $this->db->where('Id_upload', $d['Id_upload']);
+        $this->db->where('Id_Upload', $d['Id_Upload']);
         $this->db->update('Upload', $object);
             echo $d['Qr_Codename'];
 
