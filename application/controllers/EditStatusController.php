@@ -32,7 +32,6 @@ class EditStatusController extends CI_Controller {
     }
 
     public function editdata(){
-        print_r($_POST);
           $this->Admin->edit_status($this->input->post());
           redirect('ViewStatusController','refresh');
     }
