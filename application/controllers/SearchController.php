@@ -53,7 +53,7 @@ class SearchController extends CI_Controller {
                                 <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; font-weight: 500;">ชื่อไฟล์ : <?php echo $data['File'];?></p>
                                 <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
                                 <p class="card-text" style="font-weight: 500;">วันที่อัพโหลด : <?php echo $data['Privacy']?></p>
-                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['Id_upload'];?>" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
+                                <a href="<?php echo site_url(); ?>/DetailDocController/edit/<?php echo $data['Id_Upload'];?>" class="btn btn-primary" style="background-color:#2d3436;">ดูรายละเอียดเพิ่มเติม</a>
                                 
                             </div>
                         </div>
@@ -101,7 +101,7 @@ class SearchController extends CI_Controller {
                                                 </td>   
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['Id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['Id_Upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                 
                                                 </span>
                                                 </td>  
