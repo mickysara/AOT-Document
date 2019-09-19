@@ -49,18 +49,18 @@ class UploadController extends CI_Controller {
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
 
-                  $this->db->where('File', $_FILES['userfile']['name']);
-                  $query = $this->db->get('Upload');
-                  $data = $query->row_array();
-                  if($data['File'] ==  $_FILES['userfile']['name'])
-                  {
-                    $this->load->view('Header');
-                    $this->load->view('UploadAlert');
-                    $this->load->view('Footer');
-                  }else{
+                  // $this->db->where('File', $_FILES['userfile']['name']);
+                  // $query = $this->db->get('Upload');
+                  // $data = $query->row_array();
+                  // if($data['File'] ==  $_FILES['userfile']['name'])
+                  // {
+                  //   $this->load->view('Header');
+                  //   $this->load->view('UploadAlert');
+                  //   $this->load->view('Footer');
+                  // }else{
                     $this->Upload->upload_image($this->input->post(),$fileName);
                     redirect('EmailController/send');
-                  }
+                  // }
                   // $this->Upload->upload_image($this->input->post(),$fileName);
                   // redirect('EmailController/send');
                   // echo('สวัสดี');
@@ -125,19 +125,19 @@ class UploadController extends CI_Controller {
             }
               $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
 
-                   $this->db->where('File', $_FILES['userfile']['name']);
-                  $query = $this->db->get('Upload');
-                  $data = $query->row_array();
+                  //  $this->db->where('File', $_FILES['userfile']['name']);
+                  // $query = $this->db->get('Upload');
+                  // $data = $query->row_array();
 
-                  if($data['File'] ==  $_FILES['userfile']['name'])
-                  {
-                    $this->load->view('Header');
-                    $this->load->view('UploadAlert');
-                    $this->load->view('Footer');
-                  }else{
+                  // if($data['File'] ==  $_FILES['userfile']['name'])
+                  // {
+                  //   $this->load->view('Header');
+                  //   $this->load->view('UploadMydocAlert');
+                  //   $this->load->view('Footer');
+                  // }else{
                     $this->Upload->upload_image($this->input->post(),$fileName);
               redirect('EmailController/senddoc');
-                  }
+                  // }
               
         }
     }

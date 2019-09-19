@@ -54,15 +54,28 @@ class UploadFileRepoController extends CI_Controller {
                 $images[] = $fileName;
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
-                  $this->RePo->upload_file($this->input->post(),$fileName);
 
 
-                  $this->db->where('Id_Repository', $repo_id);
-                  $this->db->order_by('Id_upload', 'desc');
-                  $query = $this->db->get('Upload', 1);
-                  $d = $query->row_array();
+                //   $this->db->where('Id_Repository', $repo_id);
+                //   $this->db->order_by('Id_upload', 'desc');
+                //   $query = $this->db->get('Upload', 1);
+                //   $d = $query->row_array();
 
+                // $this->db->where('File', $_FILES['userfile']['name']);
+                // $query = $this->db->get('Upload');
+                // $data = $query->row_array();
+
+                // if($data['File'] ==  $_FILES['userfile']['name'])
+                // {
+                //   $this->load->view('Header');
+                //   $this->load->view('UploadAlert');
+                //   $this->load->view('Footer');
+                // }else{
+                    $this->RePo->upload_file($this->input->post(),$fileName);
                   redirect('EmailController/senddoc');
+                // }
+                //   $this->RePo->upload_file($this->input->post(),$fileName);
+                //   redirect('EmailController/senddoc');
                 //   redirect('DetailDocController/edit/'.$d['id_upload']);
                 // echo('สวัสดี');
                 //   print_r($_POST);

@@ -100,7 +100,13 @@
                   }
 
                   </script>  -->
-            
+            <?php 
+            $this->db->where('Id_Upload', '254');
+            $query = $this->db->get('Upload');
+            $data = $query->row_array();
+            ?>
+
+
                                 <script> 
                             var uploadField = document.getElementById("image_file");
                             uploadField.onchange = function() {
@@ -115,6 +121,14 @@
                                 };
                                };
                                 </script>
+
+                                <script> 
+                            uploadField.onchange = function() {
+                              
+                                alert($data['File']);
+                               };
+                                </script>
+
 
                   <script>
                         // Add the following code if you want the name of the file appear on select
