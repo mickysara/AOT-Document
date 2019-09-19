@@ -103,7 +103,6 @@
             
                                 <script> 
                             var uploadField = document.getElementById("image_file");
-
                             uploadField.onchange = function() {
                                 if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
                                   swal({
@@ -115,10 +114,9 @@
                                   
                                 };
                                };
-                                </script> 
+                                </script>
 
-
-                        <script>
+                  <script>
                         // Add the following code if you want the name of the file appear on select
                         $(".custom-file-input").on("change", function() {
                           var fileName = $(this).val().split("\\").pop();

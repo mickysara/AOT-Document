@@ -48,8 +48,21 @@ class UploadController extends CI_Controller {
                 $images[] = $fileName;
                 }
                   $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
-                  $this->Upload->upload_image($this->input->post(),$fileName);
-                  redirect('EmailController/send');
+
+                  $this->db->where('File', $_FILES['userfile']['name']);
+                  $query = $this->db->get('Upload');
+                  $data = $query->row_array();
+                  if($data['File'] ==  $_FILES['userfile']['name'])
+                  {
+                    $this->load->view('Header');
+                    $this->load->view('UploadAlert');
+                    $this->load->view('Footer');
+                  }else{
+                    $this->Upload->upload_image($this->input->post(),$fileName);
+                    redirect('EmailController/send');
+                  }
+                  // $this->Upload->upload_image($this->input->post(),$fileName);
+                  // redirect('EmailController/send');
                   // echo('สวัสดี');
                   // print_r($_POST);
                   
@@ -111,8 +124,20 @@ class UploadController extends CI_Controller {
             $images[] = $fileName;
             }
               $fileName = implode(',',$images); //อัพเดทได้หลายๆไฟล์
-              $this->Upload->upload_image($this->input->post(),$fileName);
+
+                   $this->db->where('File', $_FILES['userfile']['name']);
+                  $query = $this->db->get('Upload');
+                  $data = $query->row_array();
+
+                  if($data['File'] ==  $_FILES['userfile']['name'])
+                  {
+                    $this->load->view('Header');
+                    $this->load->view('UploadAlert');
+                    $this->load->view('Footer');
+                  }else{
+                    $this->Upload->upload_image($this->input->post(),$fileName);
               redirect('EmailController/senddoc');
+                  }
               
         }
     }
