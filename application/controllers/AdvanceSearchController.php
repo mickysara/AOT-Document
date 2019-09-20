@@ -139,11 +139,11 @@ class AdvanceSearchController extends CI_Controller {
              <h2 style="text-align: text-align: center; margin-left: auto; margin-right: auto;">ไม่พบเอกสารที่คุณต้องการค้นหา</h2>
 
         <?php }else{
-                if($view == "Card View"){
-                foreach($d->result_array() as $data)
-                    {?>
+                // if($view == "Card View"){
+                // foreach($d->result_array() as $data)
+                //     {?>
 
-                    <div class="col-sm" style="margin-right: auto; margin-left: auto;">
+                    <!-- <div class="col-sm" style="margin-right: auto; margin-left: auto;">
                     <div class="card" style="width: 18rem; height: 385.828px; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
                             <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['Type'].'.png');?>" alt="Card image cap">
                             <div class="card-body">
@@ -155,10 +155,10 @@ class AdvanceSearchController extends CI_Controller {
                                 
                             </div>
                         </div>
-                    </div>
-                <?php }
+                    </div> -->
+                <!-- php }
                 }
-                 else{ ?>
+                 else{ ?> -->
                   <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
@@ -186,7 +186,7 @@ class AdvanceSearchController extends CI_Controller {
                                                     <img src="<?php echo base_url().'assets/img/logofile/'. $data['Type']?>.png" alt="">
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['File'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['Topic'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
@@ -216,7 +216,7 @@ class AdvanceSearchController extends CI_Controller {
                             </div>
 
                  <?php }
-            }
+            // }
         }
 
     }

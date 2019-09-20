@@ -12,14 +12,14 @@
                             <input class="form-control" id="searchtxt" name="name_txt" placeholder="กรุณากรอกชื่อเอกสาร" type="text">                  
 
         </div>
-                        <div class="custom-control custom-radio mb-3">
+                        <!-- <div class="custom-control custom-radio mb-3">
                         <input name="custom-radio-1" class="custom-control-input" id="customRadio1" value="Card View" type="radio">
                         <label class="custom-control-label" for="customRadio1">Card View</label>
                         </div>
                         <div class="custom-control custom-radio mb-3">
                         <input name="custom-radio-1" class="custom-control-input" id="customRadio2"  value="List View" type="radio">
                         <label class="custom-control-label" for="customRadio2">List View</label>
-                        </div>     
+                        </div>      -->
     </div>
     </div>
     <div style="margin: auto;  padding: 10px">
