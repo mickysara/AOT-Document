@@ -15,9 +15,7 @@ class FileController extends CI_Controller {
     {
         if($this->session->userdata('_success') == '')
         {
-         $this->load->view('Header');
-         $this->load->view('LoginAlert');     
-         $this->load->view('Footer');
+          redirect('AlertController/loginalert');
         }else{
             redirect('FileController/checkstatus');
         }
@@ -44,9 +42,7 @@ class FileController extends CI_Controller {
                 $this->data['view_data']= $this->LineNotify->view_datadashboard(); //Upfile คือชื่อของโมเดล
                 $this->load->view('File', $this->data, FALSE);
               }else{
-                $this->load->view('HeaderAdmin');
-                $this->load->view('Adminalert');
-                $this->load->view('Footer');
+                redirect('AlertController/adminalert');
               }
         
                ?>

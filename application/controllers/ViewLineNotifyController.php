@@ -12,9 +12,7 @@ class ViewLineNotifyController extends CI_Controller {
     {
       if($this->session->userdata('_success') == '')
       {
-          $this->load->view('Header');
-          $this->load->view('LoginAlert');     
-          $this->load->view('Footer');
+        redirect('AlertController/loginalert');
       }else{
         redirect('ViewLineNotifyController/checkstatus');
       }
@@ -45,9 +43,7 @@ class ViewLineNotifyController extends CI_Controller {
                   $this->load->view('ViewLineNotify', $this->data, FALSE);
                  $this->load->view('Footer');
                }else{
-                 $this->load->view('HeaderAdmin');
-                 $this->load->view('Adminalert');
-                 $this->load->view('Footer');
+                redirect('AlertController/adminalert');
                }
          
                 ?>

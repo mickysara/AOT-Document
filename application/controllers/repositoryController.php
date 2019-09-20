@@ -65,14 +65,10 @@ class RepositoryController extends CI_Controller {
 
             }else if($this->session->userdata('_success') == '')
             {
-                $this->load->view('Header');
-                $this->load->view('LoginAlert');
-                $this->load->view('Footer');
+                redirect('AlertController/loginalert');
 
             }else{
-              $this->load->view('Header');
-              $this->load->view('Useralert');
-              $this->load->view('Footer');
+                redirect('AlertController/useralert');
             }
       
         }

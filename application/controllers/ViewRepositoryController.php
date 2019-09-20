@@ -7,9 +7,7 @@ class ViewRepositoryController extends CI_Controller {
     {
         if($this->session->userdata('_success') == '')
       {
-          $this->load->view('HeaderAdminTest');
-          $this->load->view('ViewRepository');
-          $this->load->view('Footer');
+        redirect('AlertController/loginalert');
       }else{
         redirect('ViewRepositoryController/checkstatus');
       }
@@ -29,9 +27,7 @@ class ViewRepositoryController extends CI_Controller {
                 $this->load->view('ViewRepository');
                 $this->load->view('Footer');
               }else{
-                $this->load->view('HeaderAdmin');
-                $this->load->view('Adminalert');
-                $this->load->view('Footer');
+                redirect('AlertController/adminalert');
               }
         
                ?>

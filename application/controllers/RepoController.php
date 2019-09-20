@@ -15,9 +15,7 @@ class RepoController extends CI_Controller {
     {
         if($this->session->userdata('_success') == '')
         {
-            $this->load->view('Header');
-            $this->load->view('Loginalert');     
-            $this->load->view('Footer');
+            redirect('AlertController/loginalert');
         }else{
           redirect('RepoController/checkstatus');
         }

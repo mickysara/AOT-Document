@@ -81,7 +81,7 @@ class UploadFile_Model extends CI_Model
     public function view_data(){
       $query=$this->db->query("SELECT *
                                FROM Upload  
-                               WHERE Privacy = 'Public'
+                               WHERE Privacy = 'Public' And Status = 'ใช้งาน'
                                ORDER BY Upload.Id_Upload DESC
                                limit 6");
       return $query->result_array();

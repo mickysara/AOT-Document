@@ -14,9 +14,7 @@ class ViewStatusController extends CI_Controller {
     {
       if($this->session->userdata('_success') == '')
       {
-          $this->load->view('Header');
-          $this->load->view('LoginAlert');      
-          $this->load->view('Footer');
+        redirect('AlertController/loginalert');
       }else{
         redirect('ViewStatusController/checkstatus');
       }
@@ -43,9 +41,7 @@ class ViewStatusController extends CI_Controller {
                 $this->load->view('ViewStatus', $this->data, FALSE);     
                 $this->load->view('Footer');
               }else{
-                $this->load->view('HeaderAdmin');
-                $this->load->view('Adminalert');
-                $this->load->view('Footer');
+                redirect('AlertController/adminalert');
               }
         
                ?>

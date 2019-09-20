@@ -70,13 +70,9 @@ class DetailDocController extends CI_Controller {
                 $this->load->view('Footer');
             }else if($data['Status'] == 'ลบ')
             {
-                $this->load->view('Header');
-                $this->load->view('DownloadAlert');     
-                $this->load->view('Footer');
+                redirect('AlertController/downloadalert');
             }else{
-              $this->load->view('Header');
-              $this->load->view('Useralert');
-              $this->load->view('Footer');
+                redirect('AlertController/useralert');
             }
         }
 
@@ -147,24 +143,24 @@ class DetailDocController extends CI_Controller {
         $this->db->where('Url', $url);
         $query = $this->db->get('Upload');
         $dataload = $query->row_array();
-        if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'])
+        if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'] && $dataload['Status'] == 'ใช้งาน')
         {
             $this->load->view('Header');
             $this->load->view('Useralert');     
             $this->load->view('Footer');
-        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '')
+        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
         {
             $this->load->view('Header');
             $this->load->view('LoginAlert');     
             $this->load->view('Footer');
 
-        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '')
+        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
         {
             $this->load->view('Header');
             $this->load->view('LoginAlert');     
             $this->load->view('Footer');
 
-        }else if($data['Status'] == 'ลบ')
+        }else if($dataload['Status'] == 'ลบ')
         {
             $this->load->view('Header');
             $this->load->view('DownloadAlert');     
