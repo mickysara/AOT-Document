@@ -12,7 +12,9 @@ class LoginController extends CI_Controller {
     {
       if($this->session->userdata('_success') == "")
       {
-        redirect('AlertController/loginalert');
+        $this->load->view('Header');
+        $this->load->view('Login');      
+        $this->load->view('Footer');
       }else{
         redirect('IndexController');
       }
