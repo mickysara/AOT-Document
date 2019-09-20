@@ -211,6 +211,78 @@ class DetailDocController extends CI_Controller {
     }
     
 
+
+    public function downloadrepo($url)
+    {
+        $this->db->where('Url', $url);
+        $query = $this->db->get('UploadInRepository');
+        $dataload = $query->row_array();
+        if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'] && $dataload['Status'] == 'ใช้งาน')
+        {
+            $this->load->view('Header');
+            $this->load->view('Useralert');     
+            $this->load->view('Footer');
+        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
+        {
+            $this->load->view('Header');
+            $this->load->view('LoginAlert');     
+            $this->load->view('Footer');
+
+        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
+        {
+            $this->load->view('Header');
+            $this->load->view('LoginAlert');     
+            $this->load->view('Footer');
+
+        }else if($dataload['Status'] == 'ลบ')
+        {
+            $this->load->view('Header');
+            $this->load->view('DownloadAlert');     
+            $this->load->view('Footer');
+        }else
+        {
+        $this->load->helper('download');
+        $this->db->where('Url', $url);
+        $data = $this->db->get('UploadInRepository', 1);
+        $fileInfo = $data->result_array();
+        foreach($fileInfo as $d)
+        {
+
+        $object = array(
+            'Download' => $d['Download']+1
+        );
+        $this->db->where('Id_UploadInRepository', $d['Id_UploadInRepository']);
+        $this->db->update('UploadInRepository', $object);
+
+            echo $d['File'];
+
+            //Path File
+            $file = 'uploads/'.$d['File'];
+            force_download($file, NULL);
+        }
+      }
+    }
+    public function downloadqrcoderepo($url)
+    {
+        $this->load->helper('download');
+        $this->db->where('Url', $url);
+        $data = $this->db->get('UploadInRepository', 1);
+        $fileInfo = $data->result_array();
+        foreach($fileInfo as $d)
+        {
+
+        $object = array(
+            'Download' => $d['Download']+1
+        );
+        $this->db->where('Id_UploadInRepository', $d['Id_UploadInRepository']);
+        $this->db->update('UploadInRepository', $object);
+            echo $d['Qr_Codename'];
+
+            //Path File
+            $file = './assets/img/qrcode/'.$d['Qr_Codename'].'.png';
+            force_download($file, NULL);
+        }
+    }
 }
 
 /* End of file DetailDocController.php */

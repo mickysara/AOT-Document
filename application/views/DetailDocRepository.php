@@ -53,15 +53,15 @@
                                                 </span> </p>
         <p style="font-weight: 500;">จำนวนครั้งที่ดาวโหลดไฟล์ : <?php echo $data['Download'];?></p>
          
-         <a href="<?php echo site_url(); ?>DetailDocController/download/<?php echo $data['Url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
-         <a href="<?php echo site_url(); ?>DetailDocController/downloadqrcode/<?php echo $data['Url'];?>" target="_blank" class="btn btn-default"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลด QR CODE</a>
+         <a href="<?php echo site_url(); ?>DetailDocController/downloadrepo/<?php echo $data['Url'];?>" target="_blank" class="btn btn-success"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลดไฟล์</a>
+         <a href="<?php echo site_url(); ?>DetailDocController/downloadqrcoderepo/<?php echo $data['Url'];?>" target="_blank" class="btn btn-default"style="margin-top: 10px; margin-bottom: 15px;"><i class="fa fa-download"></i>    ดาวน์โหลด QR CODE</a>
     </div>
   
     <div class="w-100"></div>
     <div class="nav-wrapper">
     <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a>
+            <!-- <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a> -->
         </li>
 <!--         <li class="nav-item">
             <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ความคิดเห็น</a>
