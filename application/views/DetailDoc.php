@@ -43,7 +43,7 @@
         }
     ?>
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อเรื่อง : <?php echo $data['Topic'];?> </h1>
+        <h1>ชื่อหัวข้อ : <?php echo $data['Topic'];?> </h1>
         <p></p>  
         <p style="font-weight: 500;">ชื่อไฟล์ : <?php echo $data['File'];?> </p>  
         <p style="font-weight: 500;">ประเภท : <?php echo $data['Type'];?></p>

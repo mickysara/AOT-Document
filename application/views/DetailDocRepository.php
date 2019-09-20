@@ -8,20 +8,20 @@
     <div class="col mt-5 mr-5" style="width: 500px; height: 500px; background-color: #fff;"><span></span>
         <div id="slider" class="flexslider">
                 <ul class="slides" style="margin-top: 50px;">
-                    <li>
+                    <!-- <li>
                     <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
-                    </li>
+                    </li> -->
                     <li>
-                    <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['Qr_Codename'].'.png');?>"/>
+                    <img style="width:400px; height:400px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['Qr_Codename'].'.png');?>"/>
                     </li>
-                    <li>
+                    <!-- <li>
                     <img src="<?php echo base_url('/assets/img/card/'.$data['Type'].'.png');?>" />
-                    </li>
+                    </li> -->
                     <!-- items mirrored twice, total of 12 -->
                 </ul>
                 </div>
-                <div id="carousel" class="flexslider">
-                <ul class="slides">
+                <!-- <div id="carousel" class="flexslider"> -->
+                <!-- <ul class="slides">
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/beforeqrcode.png');?>" />
                     </li>
@@ -30,10 +30,10 @@
                     </li>
                     <li>
                     <img src="<?php echo base_url('/assets/img/card/'.$data['Type'].'.png');?>" />
-                    </li>
+                    </li> -->
                     <!-- items mirrored twice, total of 12 -->
-                </ul>
-        </div>
+                <!-- </ul> -->
+        <!-- </div> -->
     </div>
 
     <?php if(date('d/m/Y', strtotime($data['Dateend']))=='01/01/1970'){
