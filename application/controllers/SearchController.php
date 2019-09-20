@@ -26,10 +26,14 @@ class SearchController extends CI_Controller {
             $this->db->where('Privacy !=', 'Private');
             $this->db->where('Privacy !=', 'Repository');
             $this->db->where('Privacy !=', 'Authen');
+            $this->db->where('Status !=', 'ลบ');
+            $this->db->where('Status !=', 'หมดอายุ');
             
         }else{
             $this->db->where('Privacy !=', 'Repository');
             $this->db->where('Privacy !=', 'Private');
+            $this->db->where('Status !=', 'ลบ');
+            $this->db->where('Status !=', 'หมดอายุ');
         }
         $d = $this->db->get('Upload');
         $count = $d->num_rows();
@@ -41,11 +45,11 @@ class SearchController extends CI_Controller {
              <h2 style="text-align: text-align: center; margin-left: auto; margin-right: auto;">ไม่พบเอกสารที่คุณต้องการค้นหา</h2>
 
         <?php }else{
-                if($view == "Card View"){
-                foreach($d->result_array() as $data)
-                    {?>
+                // if($view == "Card View"){
+                // foreach($d->result_array() as $data)
+                //     {?>
 
-                    <div class="col-sm" style="margin-right: auto; margin-left: auto;">
+                    <!-- <div class="col-sm" style="margin-right: auto; margin-left: auto;">
                     <div class="card" style="width: 18rem; height: 385.828px; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
                             <img class="card-img-top" src="<?php echo base_url('/assets/img/card/'.$data['Type'].'.png');?>" alt="Card image cap">
                             <div class="card-body">
@@ -57,10 +61,10 @@ class SearchController extends CI_Controller {
                                 
                             </div>
                         </div>
-                    </div>
-                <?php }
+                    </div> -->
+                <!-- php }
                 }
-                 else{ ?>
+                 else{ ?> -->
                   <div class="col">
                     <div class="card shadow">
                         <div class="card-header border-0">
@@ -73,6 +77,7 @@ class SearchController extends CI_Controller {
                                                 <th scope="col"><h4>ชื่อไฟล์</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สร้างโดย</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ความเป็นส่วนตัว</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เพิ่มเติม</h4></th>
                                             </tr>
                                             </thead>
@@ -87,7 +92,7 @@ class SearchController extends CI_Controller {
                                                     <img src="<?php echo base_url().'assets/img/logofile/'. $data['Type']?>.png" alt="">
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['File'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['Topic'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
@@ -98,7 +103,10 @@ class SearchController extends CI_Controller {
                                                 <span class="badge badge-dot mr-4">
                                                     <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
-                                                </td>   
+                                                </td>  
+                                                <td>
+                                                <?php echo $data['Privacy'];?>
+                                                </td> 
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
                                                 <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $data['Id_Upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
@@ -114,7 +122,7 @@ class SearchController extends CI_Controller {
                             </div>
 
                  <?php 
-                }
+                /* } */
             }
         
     }
