@@ -128,6 +128,8 @@ class AdvanceSearchController extends CI_Controller {
         }
         $this->db->where('Privacy !=','Private');
         $this->db->where('Privacy !=','Repository');
+        $this->db->where('Status !=', 'ลบ');
+        $this->db->where('Status !=', 'หมดอายุ');
         
         $d = $this->db->get('Upload');
         $count = $d->num_rows();
