@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
-                    <input type="text" class="form-control form-control-alternative" id="date" value="<?php echo $data['date'];?>" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
+                    <input type="text" class="form-control form-control-alternative" id="date" value="<?php echo $data['Date'];?>" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
                     </div>
 
                     <div class="form-group">
@@ -90,7 +90,7 @@
                     </select>
                     </div>
 
-                    <input type="hidden" name="Id_upload" value= <?php echo $data['Id_upload'];?>>
+                    <input type="hidden" name="Id_UploadInRepository" value= <?php echo $data['Id_UploadInRepository'];?>>
                   <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
 
                 <a href="<?php echo site_url("/ViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>

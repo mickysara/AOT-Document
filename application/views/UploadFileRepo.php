@@ -56,7 +56,15 @@
                     <div>รายละเอียด</div>
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  placeholder="Write a large text here ..." required></textarea>
                     </div>
-                    <input name="privacy" id="privacy"  value="Repository" type="hidden">
+                    
+                    <div class="form-group">
+                    <div>ระดับความเป็นส่วนตัว</div>
+                    <select name="privacy" id="privacy" required>
+                      <option value="Public">สาธารณะ</option>
+                      <option value="Private">ส่วนตัว</option>
+                      <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
+                    </select>
+                    </div>
 
 
                     <div id="progress" class="progress mb-4"style="height: 20px">

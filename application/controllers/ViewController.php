@@ -84,11 +84,11 @@ class ViewController extends CI_Controller {
       $data = array(
       'status' => $deletefile
   );
-      $this->db->where('Id_Upload',$id);
-      $this->db->update('Upload',$data);
+      $this->db->where('Id_UploadInRepository',$id);
+      $this->db->update('UploadInRepository',$data);
 
-      $this->db->where('Id_Upload', $id);
-      $query = $this->db->get('Upload');
+      $this->db->where('Id_UploadInRepository', $id);
+      $query = $this->db->get('UploadInRepository');
       $data = $query->row_array();
       redirect('RepositoryController/showdata/'.$data['Id_Repository'],'refresh');
     }

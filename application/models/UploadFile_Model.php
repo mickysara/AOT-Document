@@ -101,6 +101,12 @@ class UploadFile_Model extends CI_Model
                              WHERE upid.Id_Upload = $id");
     return $query->result_array();
 }
+public function edit_datarepo($id){
+  $query=$this->db->query("SELECT *
+                           FROM UploadInRepository upid
+                           WHERE upid.Id_UploadInRepository = $id");
+  return $query->result_array();
+}
 
   public function searchFile($file_name)
   {
@@ -161,9 +167,54 @@ public function editdataupload($inputdata){
       $query=$this->db->update('Upload',$data);
     }
   }
-
-
   }
+  
+  public function editdatauploadrepo($inputdata){
+    $dateget = $inputdata['date_end'];
+      $newDate = date("Y-m-d", strtotime($dateget));
+  
+    $filename = $inputdata['imagefile'];
+      if($filename!='' ){
+        $filename1 = explode(',',$filename);
+        foreach($filename1 as $file){
+      
+        
+        $str = $file;
+        $arraystate = (explode(".",$str));
+  
+        if($arraystate[1]=="pdf"){
+          $showtype = "PDF File";
+        }else if($arraystate[1]=="docx"){
+          $showtype = "Microsoftword";
+        }else if($arraystate[1]=="pptx"){
+          $showtype = "Microsoftpowerpoint";
+        }else if($arraystate[1]=="xlsx"){
+          $showtype = "Microsoftexcel";
+        }else if($arraystate[1]=="jpeg"){
+          $showtype = "JPEG";
+          }else if($arraystate[1]=="png"){
+          $showtype = "PNG";
+          }else if($arraystate[1]=="jpg"){
+          $showtype = "JPG";
+        }
+          $showtypeall = $showtype;
+            
+    $data = array(
+      'Uploadby' => $inputdata['name'],
+      'Topic' => $inputdata['topic'],
+      'File' => $inputdata['imagefile'],
+      'Date' => $inputdata['date'],
+      'Dateend' => $newDate,
+      'Detail' => $inputdata['detail'],
+      'Type' => $showtypeall,
+      'Privacy' => $inputdata['privacy']
+      );
+        $this->db->where('Id_UploadInRepository', $this->input->post('Id_UploadInRepository'));
+        $query=$this->db->update('UploadInRepository',$data);
+      }
+    }
+    }
+
   public function insertRepo($inputdata){
     $dateshow = date("Y/m/d");
 

@@ -114,9 +114,12 @@
                 <tbody>
           
                 <?php 
-                    $this->db->where('Id_repository',  $repo['Id_Repository']);
+                    // $this->db->where('Id_Repository',  $repo['Id_Repository']);
+                    // $this->db->where('Status', 'ใช้งาน');
+                    // $data = $this->db->get('Upload');
+                    $this->db->where('Id_Repository',  $repo['Id_Repository']);
                     $this->db->where('Status', 'ใช้งาน');
-                    $data = $this->db->get('Upload');
+                    $data = $this->db->get('UploadInRepository');
                     foreach($data->result_array() as $r)
                     {?>
 
@@ -142,7 +145,7 @@
                     </td>   
                     <td class="">
                         <div>
-                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['Id_Upload'];?>"  class="btn btn-primary mb-3">View</a>                 
+                        <a href="<?php echo site_url(); ?>DetailDocController/editrepo/<?php echo  $r['Id_UploadInRepository'];?>"  class="btn btn-primary mb-3">View</a>                 
                         </div>
                        
                     </td>
@@ -152,12 +155,12 @@
                         <td class="">
                           
                           <div>
-                            <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['Id_Upload'];?>"  class="btn btn-success mb-3" >Edit</a>                
+                            <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['Id_UploadInRepository'];?>"  class="btn btn-success mb-3" >Edit</a>                
                             </div>
                           
                         </td>
                         <td>
-                        <a href="<?php echo site_url(); ?>/ViewController/delfilerepository/<?php echo  $r['Id_Upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                        <a href="<?php echo site_url(); ?>/ViewController/delfilerepository/<?php echo  $r['Id_UploadInRepository'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                         </td>   
                     <?php } ?>
                   </tr>

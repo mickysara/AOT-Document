@@ -72,7 +72,7 @@ class UploadFileRepoController extends CI_Controller {
                 //   $this->load->view('Footer');
                 // }else{
                     $this->RePo->upload_file($this->input->post(),$fileName);
-                  redirect('EmailController/senddoc');
+                  redirect('EmailController/sendrepo');
                 // }
                 //   $this->RePo->upload_file($this->input->post(),$fileName);
                 //   redirect('EmailController/senddoc');

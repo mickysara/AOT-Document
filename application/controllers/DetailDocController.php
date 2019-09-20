@@ -29,44 +29,49 @@ class DetailDocController extends CI_Controller {
         $query = $this->db->get('Upload');
         $data = $query->row_array();
 
-        $this->db->where('Id_Repository', $data['Id_Repository']);
-        $query2 = $this->db->get('Repository_Member');
-        $data2 = $query2->row_array();
+        // $this->db->where('Id_Repository', $data['Id_Repository']);
+        // $query2 = $this->db->get('Repository_Member');
+        // $data2 = $query2->row_array();
 
 
-            if($data['Uploadby']==$this->session->userdata('accountName'))
+            if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ')
             {
               $this->data['edit_data']= $this->Upload->edit_data($edit_id);
               $this->load->view('Header');
               $this->load->view('DetailDoc', $this->data, FALSE);
               $this->load->view('Footer');
 
-            }else if($data['Id_Repository'] == 0)
-            {
-                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-                $this->load->view('Header');
-                $this->load->view('DetailDoc', $this->data, FALSE);
-                $this->load->view('Footer');
+            // }else if($data['Id_Repository'] == 0 && $data['Status'] != 'ลบ')
+            // {
+            //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+            //     $this->load->view('Header');
+            //     $this->load->view('DetailDoc', $this->data, FALSE);
+            //     $this->load->view('Footer');
  
-            }else if($data2['AccName'] == $this->session->userdata('accountName'))
+            // }else if($data2['AccName'] == $this->session->userdata('accountName')&& $data['Status'] != 'ลบ')
+            // {
+            //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+            //     $this->load->view('Header');
+            //     $this->load->view('DetailDoc', $this->data, FALSE);
+            //     $this->load->view('Footer');
+
+            }else if($admin['Status']== 'admin' && $data['Status'] != 'ลบ')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
 
-            }else if($admin['Status']== 'admin')
+            }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
-
-            }else if($data['Privacy']== 'Public')
+            }else if($data['Status'] == 'ลบ')
             {
-                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
-                $this->load->view('DetailDoc', $this->data, FALSE);
+                $this->load->view('DownloadAlert');     
                 $this->load->view('Footer');
             }else{
               $this->load->view('Header');
@@ -74,6 +79,68 @@ class DetailDocController extends CI_Controller {
               $this->load->view('Footer');
             }
         }
+
+        public function editrepo($edit_id)
+        {
+            $status = $this->session->userdata('employeeId');
+            $this->db->where('Id_Emp', $status);
+            $query3 = $this->db->get('Users');
+            $admin = $query3->row_array();
+    
+            $this->db->where('Id_UploadInRepository', $edit_id);
+            $query = $this->db->get('UploadInRepository');
+            $data = $query->row_array();
+    
+            // $this->db->where('Id_Repository', $data['Id_Repository']);
+            // $query2 = $this->db->get('Repository_Member');
+            // $data2 = $query2->row_array();
+    
+    
+                if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ')
+                {
+                  $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
+                  $this->load->view('Header');
+                  $this->load->view('DetailDocRepository', $this->data, FALSE);
+                  $this->load->view('Footer');
+    
+                // }else if($data['Id_Repository'] == 0 && $data['Status'] != 'ลบ')
+                // {
+                //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                //     $this->load->view('Header');
+                //     $this->load->view('DetailDoc', $this->data, FALSE);
+                //     $this->load->view('Footer');
+     
+                // }else if($data2['AccName'] == $this->session->userdata('accountName')&& $data['Status'] != 'ลบ')
+                // {
+                //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                //     $this->load->view('Header');
+                //     $this->load->view('DetailDoc', $this->data, FALSE);
+                //     $this->load->view('Footer');
+    
+                }else if($admin['Status']== 'admin' && $data['Status'] != 'ลบ')
+                {
+                    $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                    $this->load->view('Header');
+                    $this->load->view('DetailDoc', $this->data, FALSE);
+                    $this->load->view('Footer');
+    
+                }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ')
+                {
+                    $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                    $this->load->view('Header');
+                    $this->load->view('DetailDoc', $this->data, FALSE);
+                    $this->load->view('Footer');
+                }else if($data['Status'] == 'ลบ')
+                {
+                    $this->load->view('Header');
+                    $this->load->view('DownloadAlert');     
+                    $this->load->view('Footer');
+                }else{
+                  $this->load->view('Header');
+                  $this->load->view('Useralert');
+                  $this->load->view('Footer');
+                }
+            }
 
     public function download($url)
     {
@@ -95,6 +162,12 @@ class DetailDocController extends CI_Controller {
         {
             $this->load->view('Header');
             $this->load->view('LoginAlert');     
+            $this->load->view('Footer');
+
+        }else if($data['Status'] == 'ลบ')
+        {
+            $this->load->view('Header');
+            $this->load->view('DownloadAlert');     
             $this->load->view('Footer');
         }else
         {

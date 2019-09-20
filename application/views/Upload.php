@@ -143,7 +143,6 @@
                   <script>
                                                 
             // $(document).ready(function() {
-
             // $('#upload_form').on('submit', function(event) {
 
             //   event.preventDefault();

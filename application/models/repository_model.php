@@ -78,7 +78,7 @@ class Repository_Model extends CI_Model {
             
     
             $fill_user = array(
-              'Id_repository'=> $idRepo,
+              'Id_Repository'=> $idRepo,
               'Uploadby' => $inputdata['name'],
               'Topic' => $inputdata['topic'],
               'Detail' => $inputdata['detail'],
@@ -92,7 +92,7 @@ class Repository_Model extends CI_Model {
               'Status' => $status
             );
             
-          $this->db->insert('Upload', $fill_user); 
+          $this->db->insert('UploadInRepository', $fill_user); 
           
           
     
@@ -102,7 +102,7 @@ class Repository_Model extends CI_Model {
         }
       public function edit_repo($id){
         $query=$this->db->query("SELECT *
-                                 FROM Repository 
+                                 FROM UploadInRepository 
                                  WHERE Id_Repository = $id");
         return $query->result_array();
     }
