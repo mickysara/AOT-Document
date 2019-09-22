@@ -12,14 +12,14 @@
                             <input class="form-control" id="searchtxt" name="name_txt" placeholder="กรุณากรอกชื่อเอกสาร" type="text">                  
 
         </div>
-                        <div class="custom-control custom-radio mb-3">
+                        <!-- <div class="custom-control custom-radio mb-3">
                         <input name="custom-radio-1" class="custom-control-input" id="customRadio1" value="Card View" type="radio">
                         <label class="custom-control-label" for="customRadio1">Card View</label>
                         </div>
                         <div class="custom-control custom-radio mb-3">
                         <input name="custom-radio-1" class="custom-control-input" id="customRadio2"  value="List View" type="radio">
                         <label class="custom-control-label" for="customRadio2">List View</label>
-                        </div>     
+                        </div>      -->
     </div>
     </div>
     <div style="margin: auto;  padding: 10px">
@@ -57,7 +57,23 @@
                 <input type="number" class="form-control form-control-alternative" id="years" name="years1" placeholder="2018">
                 <p class="mt-3">ถึงปี</p>
                 <input type="number" class="form-control form-control-alternative" id="years" name="years2" placeholder="2019">
-                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            <h2>ประเภทไฟล์</h2>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="Public" name="Public" type="checkbox">
+                    <label class="custom-control-label" for="Public">Public</label>
+                </div>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="Authen" name="Authen" type="checkbox">
+                    <label class="custom-control-label" for="Authen">Authen</label>
+                </div>
+            </div>
+            <div class="col">
+                <h2>ชื่อผู้อัพโหลด</h2>
+                <input type="text" class="form-control form-control-alternative" id="uploadby" name="uploadby" placeholder="Example.Ex">
             </div>
         </div>
     </div>

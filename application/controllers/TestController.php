@@ -14,17 +14,44 @@ class TestController extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('HeaderAdmin');
-        $this->load->view('Test');
+        $this->load->view('Header');
+        $this->load->view('TestPage');
         $this->load->view('Footer');
-        
+    }
+    
+    public function checklogin()
+    {
+        if($this->session->userdata('_success') == '')
+        {
+            $this->load->view('Header');
+            $this->load->view('Loginalert');     
+            $this->load->view('Footer');
+        }else{
+          redirect('TestController/checkstatus');
+        }
     }
 
-
-
-/* End of file TestController.php */
-
-public function Test(){
-      
+    public function checkstatus()
+    {
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('employeeId', $status);
+        $query = $this->db->get('admin');
+        foreach($query->result_array() as $data)
+      { ?>
+              <?php 
+              if($data['status']=='admin')
+              {
+                $this->load->view('Header');
+                $this->load->view('Adminalert');     
+                $this->load->view('Footer');
+              }else{
+                $this->load->view('HeaderAdmin');
+                $this->load->view('notfound_view');
+                $this->load->view('Footer');
+              }
+        
+               ?>
+          
+  <?php } 
     }
     }

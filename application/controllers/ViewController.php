@@ -1,7 +1,5 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class ViewController extends CI_Controller {
     
     public function __construct()
@@ -12,50 +10,82 @@ class ViewController extends CI_Controller {
     }
     public function index()
     {
-        $this->load->view('Header');
-        $this->data['view_data']= $this->Upload->view_dataBackend(); //Upfile คือชื่อของโมเดล
-        $this->load->view('ViewData', $this->data, FALSE);
-        $this->load->view('Footer');
-        
-        
-        
+      if($this->session->userdata('_success') == '')
+      {
+        redirect('AlertController/loginalert');
+      }else{
+        redirect('ViewController/checkstatus');
+      }
     }
     
      public function del($id)
      {        
-    $this->db->where('id_upload', $id);
-    $query = $this->db->get('upload');
-
+    $this->db->where('Id_Upload', $id);
+    $query = $this->db->get('Upload');
     foreach($query->result_array() as $data)
-      { ?>
-              <?php $insertdelete = array(
-                     'id_delrepository' => $data['id_repository'],
-                     'namedel' => $data['name'],
-                     'topicdel' => $data['topic'],
-                     'detaildel' =>  $data['detail'],
-                     'urldel' => $data['url'],
-                     'filedel' =>  $data['file'],
-                     'datedel' => $data['date'],
-                     'dateenddel' => $data['dateend'],
-                     'typedel' => $data['type'],
-                     'qr_codenamedel' => $data['qr_codename'],
-                     'privacydel' => $data['privacy'],
-                     'statusdel' =>  $data['status']
-                );
-                     $file = $data['file'];
-                     $path = 'uploads/'.$file;
-                     copy("uploads/$file","deletefile/$file");
-                     unlink($path);
-
-                    $this->db->insert('deletefile', $insertdelete); 
-                    $this->data['delete_data']= $this->Upload->delete_data($id);
-                    redirect('ViewController','refresh'); 
-               ?>
-
-  <?php } 
-
+      { 
+             
+        $file = $data['File'];
+        $path = 'uploads/'.$file;
+        unlink($path);
+      $this->data['delete_data']= $this->Upload->delete_data($id);
+      redirect('ViewController','refresh'); 
+ 
+       } 
    
  
      }
+
+    
+     public function checkstatus()
+    {
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('Id_Emp', $status);
+        $query = $this->db->get('Users');
+        foreach($query->result_array() as $data)
+      { ?>
+              <?php 
+              if($data['Status']=='admin')
+              {
+                $this->load->view('HeaderAdminTest');
+                $this->data['view_data']= $this->Upload->view_dataBackend(); //Upfile คือชื่อของโมเดล
+                $this->load->view('ViewData', $this->data, FALSE);
+                $this->load->view('Footer');
+              }else{
+                redirect('AlertController/adminalert');
+              }
+        
+               ?>
+          
+  <?php } 
+    }
+
+
+    public function delfile($id)
+    {
+      $deletefile = "ลบ";
+      $data = array(
+      'Status' => $deletefile
+  );
+      $this->db->where('Id_Upload',$id);
+      $this->db->update('Upload',$data);
+      // $this->Upload->delstatusfile($this->input->post($id));
+          redirect('MyDocumentController','refresh');
+    }
+
+
+    public function delfilerepository($id)
+    {
+      $deletefile = "ลบ";
+      $data = array(
+      'status' => $deletefile
+  );
+      $this->db->where('Id_UploadInRepository',$id);
+      $this->db->update('UploadInRepository',$data);
+
+      $this->db->where('Id_UploadInRepository', $id);
+      $query = $this->db->get('UploadInRepository');
+      $data = $query->row_array();
+      redirect('RepositoryController/showdata/'.$data['Id_Repository'],'refresh');
+    }
 }
-         

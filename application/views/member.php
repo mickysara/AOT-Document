@@ -27,10 +27,10 @@
                  foreach ($repositoty_memberdata as $key => $data) {   
             ?>
             <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-                <h1>ชื่อ Repository : <?php echo $data['topic'];?> </h1>  
-                <p style="font-weight: 500;">สร้างโดย : <?php echo $data['createby'];?></p>
-                <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $data['date'];?></p>
-                <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $data['privacy'];?> </p>
+                <h1>ชื่อ Repository : <?php echo $data['Topic'];?> </h1>  
+                <p style="font-weight: 500;">สร้างโดย : <?php echo $data['Createby'];?></p>
+                <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $data['Date'];?></p>
+                <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $data['Privacy'];?> </p>
                 
             </div>
           
@@ -50,7 +50,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" style="width: max;">
                         <p class="description" style=><p style="font-weight: 500;">บุคคลที่เกี่ยวข้อง : </p></p>
-                        <p class="description"><?php echo $data['detail'];?></p>
+                        <p class="description"><?php echo $data['Detail'];?></p>
                     </div>
                     <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
                     <div class="table-responsive">
@@ -69,8 +69,8 @@
                         <tbody>
                   
                         <?php 
-                            $this->db->where('id_repository',  $data['id']);
-                            $data = $this->db->get('upload');
+                            $this->db->where('Id_repository',  $data['Id_Repository']);
+                            $data = $this->db->get('Upload');
                             foreach($data->result_array() as $r)
                             {?>
         
@@ -79,31 +79,31 @@
                             <th scope="row">
                               <div class="media align-items-center">
                                 <a href="#" class="avatar rounded-circle mr-3">
-                                <img src="<?php echo base_url().'assets/img/logofile/'. $r['type']?>.png" alt="">
+                                <img src="<?php echo base_url().'assets/img/logofile/'. $r['Type']?>.png" alt="">
                                 </a>
                                 <div class="media-body">
-                                  <span class="mb-0 text-sm"><?php echo  $r['file'];?></span>
+                                  <span class="mb-0 text-sm"><?php echo  $r['File'];?></span>
                                 </div>
                               </div>
                             </th>
                             <td>
-                            <?php echo  $r['name'];?>
+                            <?php echo  $r['Name'];?>
                             </td>
                             <td>
                               <span class="badge badge-dot mr-4">
-                                <i class="bg-success"></i> <?php echo  $r['date'];?>
+                                <i class="bg-success"></i> <?php echo  $r['Date'];?>
                               </span>
                             </td>   
         
                             <td class="">
                                 <div>
-                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['Id_upload'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                         
                                 </div>
                                
                             </td>
                             <td>
-                            <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                            <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['Id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
                             </td>   
                           </tr>
                         </tbody>

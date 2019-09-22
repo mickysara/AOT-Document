@@ -6,13 +6,13 @@ class RepositoryController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('Repository_Model'); 
+        $this->load->model('repository_model'); 
     }  
 
     public function index()
     {
         $this->load->view('Header');
-        $this->data['repository_view']= $this->Repository_Model->repository_view(); //Upfile คือชื่อของโมเดล
+        $this->data['repository_view']= $this->repository_model->repository_view(); //Upfile คือชื่อของโมเดล
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
         
@@ -20,11 +20,63 @@ class RepositoryController extends CI_Controller {
 
     public function showdata($repository_id)
     {
-        $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
-        $this->load->view('Header');
-        $this->load->view('repository', $this->data, FALSE);
-        $this->load->view('Footer');
-    }
+        $query=$this->db->query("SELECT Repository_Member.*,Repository.Topic,Repository.Createby 
+        FROM Repository_Member,Repository 
+        WHERE Repository_Member.Id_Repository = $repository_id 
+        AND Repository_Member.Id_Repository =".$repository_id);
+        $mem = $query->row_array();
+
+        $this->db->where('Id_Repository', $repository_id);
+        $query2 = $this->db->get('Repository');
+        $data = $query2->row_array();
+        
+        $this->db->where('Id_Emp', $this->session->userdata('employeeId'));
+        $query3 = $this->db->get('Users');
+        $admin = $query3->row_array();
+
+
+            if($this->session->userdata('accountName')==$mem['AccName'] && $this->session->userdata('_success') == 1)
+            {
+                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
+
+            }else if($this->session->userdata('accountName')== $data['Createby'])
+            {
+                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
+
+            }else if($admin['Status']== 'admin')
+            {
+                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
+
+            }else if($data['Privacy'] == 'Public')
+            {
+                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
+
+            }else if($this->session->userdata('_success') == '')
+            {
+                redirect('AlertController/loginalert');
+
+            }else{
+                redirect('AlertController/useralert');
+            }
+      
+        }
+    //     $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+    //     $this->load->view('Header');
+    //     $this->load->view('repository', $this->data, FALSE);
+    //      $this->load->view('Footer');
+    //  }
 }
 
 /* End of file repositoryController.php */

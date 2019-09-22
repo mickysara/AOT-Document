@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Repository_model extends CI_Model {
+class Repository_Model extends CI_Model {
 
     public function __construct()
     {
@@ -10,16 +10,16 @@ class Repository_model extends CI_Model {
 
     public function repository_data($id){
         $query=$this->db->query("SELECT *
-                                 FROM repository
-                                 WHERE repository.id = $id");
+                                 FROM Repository
+                                 WHERE Repository.Id_Repository = $id");
         return $query->result_array();
     }
 
     
     public function repository_view($id){
-        $query=$this->db->query("SELECT repoid.*
-                                 FROM repository repoid
-                                 WHERE repoid.id = $id");
+        $query=$this->db->query("SELECT *
+                                 FROM Repository repoid
+                                 WHERE repoid.Id_Repository = $id");
         return $query->result_array();
     }
 
@@ -40,7 +40,7 @@ class Repository_model extends CI_Model {
             $repostr = base_url(uri_string());
              //$repostr = site_url('/UploadFileRepoController/uploadfilerepo/'.$nono);
             $arraystate2 = (explode("/",$repostr));
-            $idRepo = ($arraystate2[6]);
+            $idRepo = ($arraystate2[5]);
 
             $dateshow = date("Y/m/d");
             $d=strtotime("+10 Days");
@@ -59,33 +59,40 @@ class Repository_model extends CI_Model {
                   $arraystate = (explode(".",$str));
                   echo ($arraystate[1]);
     
-             if($arraystate[1]=="pdf"){
-               $pdfshow = "PDF File";
-             }else if($arraystate[1]=="docx"){
-              $wordshow = "Microsoftword";
-             }else if($arraystate[1]=="pptx"){
-              $powerpointshow = "Microsoftpowerpoint";
-             }else if($arraystate[1]=="xlsx"){
-              $excelshow = "Microsoftexcel";
-             }
-              $showtype = $pdfshow.$wordshow.$powerpointshow.$excelshow;
+              if($arraystate[1]=="pdf"){
+                $showtype = "PDF File";
+                }else if($arraystate[1]=="docx"){
+                $showtype = "Microsoftword";
+                }else if($arraystate[1]=="pptx"){
+                $showtype = "Microsoftpowerpoint";
+                }else if($arraystate[1]=="xlsx"){
+                $showtype = "Microsoftexcel";
+                }else if($arraystate[1]=="jpeg"){
+                $showtype = "JPEG";
+                }else if($arraystate[1]=="png"){
+                $showtype = "PNG";
+                }else if($arraystate[1]=="jpg"){
+                $showtype = "JPG";
+                }
+                $showtypeall = $showtype;
+            
     
             $fill_user = array(
-              'id_repository'=> $idRepo,
-              'name' => $inputdata['name'],
-              'topic' => $inputdata['topic'],
-              'detail' => $inputdata['detail'],
-              'url'=> $addbaseurl,
-              'file' => $file,
-              'date'=> $dateshow,
-              'dateend'=> $newDate,
-              'type'=> $showtype,
-              'qr_codename'=> $randomqrcode,
-              'privacy' => $inputdata['privacy'],
-              'status' => $status
+              'Id_Repository'=> $idRepo,
+              'Uploadby' => $inputdata['name'],
+              'Topic' => $inputdata['topic'],
+              'Detail' => $inputdata['detail'],
+              'Url'=> $addbaseurl,
+              'File' => $file,
+              'Date'=> $dateshow,
+              'Dateend'=> $newDate,
+              'Type'=> $showtypeall,
+              'Qr_Codename'=> $randomqrcode,
+              'Privacy' => $inputdata['privacy'],
+              'Status' => $status
             );
             
-          $this->db->insert('upload', $fill_user); 
+          $this->db->insert('UploadInRepository', $fill_user); 
           
           
     
@@ -93,6 +100,32 @@ class Repository_model extends CI_Model {
           }
          
         }
+      public function edit_repo($id){
+        $query=$this->db->query("SELECT *
+                                 FROM UploadInRepository 
+                                 WHERE Id_Repository = $id");
+        return $query->result_array();
+    }
+
+
+    public function editdata_repo($inputdata){
+      $dateshow = date("Y/m/d");
+       $data = array(
+        'Createby' => $inputdata['name'],
+        'Topic' => $inputdata['topic'],
+        'Date'=> $dateshow,
+        'Detail' => $inputdata['detail'],
+        'Privacy' => $inputdata['privacy']
+    );
+    $this->db->where('Id_Repository', $this->input->post('Id_Repository'));
+    $query=$this->db->update('Repository',$data);
+    }
+
+    public function delete_repo($id){
+      $this->db->query("DELETE FROM Repository WHERE Id_Repository = $id");
+      
+    }
+    
 }
 
 /* End of file repository_model.php */

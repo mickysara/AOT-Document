@@ -12,14 +12,14 @@
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('RepoController/insertrepo');?>" enctype='multipart/form-data'>
-                <h1 class="display-2" style="color:#2d3436;">Add Repository</h1>
+                <h1 class="display-2" style="color:#2d3436;">สร้างทีม</h1>
                 <hr>
 
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>ชื่อ</div>
-                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?=$this->session->userdata('firstName')?> <?=$this->session->userdata('lastName')?>" required id="name" readonly>
+                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?=$this->session->userdata('accountName')?>" required id="name" readonly>
                     </div>
                   </div>
 
@@ -42,9 +42,9 @@
                     </div>
 
                     <div class="form-group">
-                    <div>ระดับการเข้าถึงไฟล์</div>
-                    <select name="privacy" id="privacy">
-                      <option value="Private">ส่วนตัว</option>
+                    <div>ระดับการเข้าถึงเอกสาร</div>
+                    <select name="privacy" id="privacy" required>
+                      <option value="" disabled selected>กรุณาเลือกระดับการเข้าถึงเอกสาร</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
                     </select>
@@ -52,7 +52,7 @@
 
                     <script>
             </script>
-                <button onclick="javascript:sweetalertclick()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
 
 

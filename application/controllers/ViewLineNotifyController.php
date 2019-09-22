@@ -1,7 +1,5 @@
 ﻿<?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class ViewLineNotifyController extends CI_Controller {
     
     public function __construct()
@@ -12,13 +10,12 @@ class ViewLineNotifyController extends CI_Controller {
     }
     public function index()
     {
-        $this->load->view('Header');
-        $this->data['view_data']= $this->LineNotify->view_data(); //Upfile คือชื่อของโมเดล
-        $this->load->view('ViewLineNotify', $this->data, FALSE);
-        $this->load->view('Footer');
-        
-        
-        
+      if($this->session->userdata('_success') == '')
+      {
+        redirect('AlertController/loginalert');
+      }else{
+        redirect('ViewLineNotifyController/checkstatus');
+      }
     }
     
      public function del($id){
@@ -28,13 +25,31 @@ class ViewLineNotifyController extends CI_Controller {
      }
      
      public function editlinenotify(){
-
         $this->LineNotify->edit_linenotify($this->input->post());
             redirect('ViewLineNotifyController','refresh');
      }
-
+     public function checkstatus()
+     {
+         $status = $this->session->userdata('employeeId');
+         $this->db->where('Id_Emp', $status);
+         $query = $this->db->get('Users');
+         foreach($query->result_array() as $data)
+       { ?>
+               <?php 
+               if($data['Status']=='admin')
+               {
+                 $this->load->view('HeaderAdminTest');
+                  $this->data['view_data']= $this->LineNotify->view_data(); //Upfile คือชื่อของโมเดล
+                  $this->load->view('ViewLineNotify', $this->data, FALSE);
+                 $this->load->view('Footer');
+               }else{
+                redirect('AlertController/adminalert');
+               }
+         
+                ?>
+           
+   <?php } 
+     }
 }
-
 /* End of file IndexController.php */
-
 ?>

@@ -26,7 +26,6 @@
 
 
  <!-- My Script -->
-
  <script>
 
     // Enable pusher logging - don't include this in production
@@ -43,7 +42,9 @@
 
     if(d.page == 'chat')
     {
-        IncreaseChatByAsc()
+        IncreaseChatByAsc();
+        IncreaseChatRecent(); 
+        IncreaseChatPopular();
     }
     });
   </script>
@@ -51,7 +52,7 @@
  <script>
    var val = document.getElementById('repository_id').value
     $(document).on('submit', '#addmember_form', function () {
-          $.post("<?=base_url('index.php/MemberController/checkmember/')?>"+val, $("#addmember_form").serialize(),
+          $.post("<?=base_url('MemberController/checkmember/')?>"+val, $("#addmember_form").serialize(),
               function (data) {
                   
                   d = JSON.parse(data)
@@ -60,7 +61,7 @@
                   {
                       swal({
                             icon: "success",
-                            text: "ระบบได้ทำการเพิ่มผู้ใช้ลงใน Repository นี้เรียบร้อยแล้ว",
+                            text: "ระบบได้ทำการเพิ่มผู้ใช้ลงในทีมนี้เรียบร้อยแล้ว",
                       });
                       setTimeout(myfunction,2000);
 
@@ -70,6 +71,13 @@
                       
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
+                  }else if(d.status == 2){
+
+                    swal({
+                            icon: "error",
+                             text: "มีพนักงานคนนี้อยู่ในทีมแล้วกรุณากรอกใหม่",
+                          
+                      });
                   }
                   else
                   {
@@ -79,8 +87,8 @@
                              text: "ไม่พบรหัสพนักงานนี้กรุณากรอกใหม่อีกครั้ง",
                           
                       });
-                      //base_url('index.php/RegisterController/insert_user');
-                      //setTimeout("location.href = 'http://localhost/SystemOfUniver/index.php/RegisterController/insert_user';",5000);
+                      //base_url('RegisterController/insert_user');
+                      //setTimeout("location.href = 'http://localhost/SystemOfUniver/RegisterController/insert_user';",5000);
                   }
               }
           );
@@ -90,7 +98,7 @@
 <script>    
 $(document).on('submit', '#chatroom_form', function () {
           
-          $.post("<?=base_url('index.php/ChatroomController/joinroom')?>", $("#chatroom_form").serialize(),
+          $.post("<?=base_url('ChatroomController/joinroom')?>", $("#chatroom_form").serialize(),
               function (data) {
                   console.log(data)
                   d = JSON.parse(data);
@@ -104,7 +112,8 @@ $(document).on('submit', '#chatroom_form', function () {
                           
                           
                       })
-                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/IndexController';",5000);
+                      var x = location.href = "<?=base_url('/InchatroomController/showchat/')?>" + d.data;
+                      setTimeout(x,4);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -125,9 +134,10 @@ $(document).on('submit', '#chatroom_form', function () {
     });
     </script>
  <script>
+ 
          $(document).on('submit', '#login_form', function () {
           
-          $.post("<?=base_url('index.php/LoginController/Login')?>", $("#login_form").serialize(),
+          $.post("<?=base_url('LoginController/Login')?>", $("#login_form").serialize(),
               function (data) {
                   
                   d = JSON.parse(data)
@@ -141,7 +151,7 @@ $(document).on('submit', '#chatroom_form', function () {
                           
                           
                       })
-                      setTimeout("location.href = 'http://localhost/AOT-Document/index.php/IndexController';",5000);
+                      setTimeout(function () {location.href = '<?=base_url('MyDocumentController')?>'}, 3000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -163,7 +173,7 @@ $(document).on('submit', '#chatroom_form', function () {
 
     $(document).on('submit', '#notify_form', function () {
           
-          $.post("<?=base_url('index.php/LinenotifyController/notify')?>", $("#notify_form").serialize(),
+          $.post("<?=base_url('LinenotifyController/notify')?>", $("#notify_form").serialize(),
               function (data) {
                   
                   d = JSON.parse(data)
@@ -174,8 +184,7 @@ $(document).on('submit', '#chatroom_form', function () {
                             icon: "success",
                             text: d.msg,
                       });
-                    
-                     setTimeout("location.href = 'http://localhost/AOT-Document/index.php/LoginController';",1000);
+                      setTimeout(function () {location.href = '<?=base_url('IndexController')?>'}, 3000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -210,15 +219,12 @@ $(document).on('submit', '#chatroom_form', function () {
                   {
                       swal({
                             icon: "success",
-                            text: d.id,
+                            text: "สร้างห้องแชทสำเร็จระบบจะนำท่านไปยังช่องแชท",
                       });
-                      $.post("<?=base_url('EmailController/genQrChat/')?>"+val,
-                        function (data) {
-
-                    });
-                    
-                    var x = location.href = "<?=base_url('/AdminChatroomController/showchat/')?>" + d.id;
-                     setTimeout(x,1000);
+                    setTimeout(function () {
+                        location.href = '<?=base_url('/AdminChatroomController/showchat/')?>'+ d.id
+                        }, 
+                        3000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
                   }
@@ -227,16 +233,18 @@ $(document).on('submit', '#chatroom_form', function () {
                       
                       swal({
                             icon: "error",
-                             text: d.msg,
+                             text: "ห้องแชทนี่ได้ถูกสร้างขึ้นแล้วระบบจะนำท่านไปยังช่องแชท",
                           
                       });
+                      setTimeout(function () {
+                        location.href = '<?=base_url('/AdminChatroomController/showchat/')?>'+ d.id
+                        }, 
+                        2000);
                       //base_url('index.php/RegisterController/insert_user');
                       //setTimeout("location.href = 'http://localhost/SystemOfUniver/index.php/RegisterController/insert_user';",5000);
                   }
-
               }
           );
-
         event.preventDefault();
     });
 </script>
@@ -288,10 +296,10 @@ $(document).ready( function(){
           });
 </script>
 <script>
-$(document).ready(function(e) {
-	increaseNotify();
-    // setInterval(increaseNotify, 3000);
-});
+// $(document).ready(function(e) {
+// 	increaseNotify();
+//      setInterval(increaseNotify, 3000);
+// });
 function increaseNotify(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
           $.get("<?=base_url('index.php/LoginController/IncreaseNoti')?>", 
               function (data) {
@@ -303,7 +311,7 @@ function increaseNotify(){ // โหลดตัวเลขทั้งหม�
 
               }
           );
-          $.get("<?=base_url('index.php/LoginController/IncreaseDetailNoti')?>",
+          $.get("<?=base_url('LoginController/IncreaseDetailNoti')?>",
             function (data)
             {
                 $("#DetailNoti").html(data)
@@ -317,7 +325,7 @@ function increaseNotify(){ // โหลดตัวเลขทั้งหม�
 var myEl = document.getElementById('Hi');
 
         myEl.addEventListener('click', function() {
-          $.get("<?=base_url('index.php/LoginController/DecreaseNoti')?>",
+          $.get("<?=base_url('LoginController/DecreaseNoti')?>",
                     function(data){
 
                       $("#Noti").html(data)
@@ -331,7 +339,7 @@ var myEl = document.getElementById('Hi');
 <script>
       $(document).on('submit', '#AdSearch', function () {
           
-          $.post("<?=base_url('index.php/AdvanceSearchController/AdvanceSearch')?>", $("#AdSearch").serialize(),
+          $.post("<?=base_url('AdvanceSearchController/AdvanceSearch')?>", $("#AdSearch").serialize(),
               function (data) {
                   
                  $("#Showsearch").html(data);
@@ -347,7 +355,7 @@ var myEl = document.getElementById('Hi');
 <script>
       $(document).on('submit', '#Search', function () {
           
-          $.post("<?=base_url('index.php/SearchController/serach')?>", $("#Search").serialize(),
+          $.post("<?=base_url('SearchController/serach')?>", $("#Search").serialize(),
               function (data) {
                   
                  $("#Showsearch").html(data);
@@ -362,11 +370,11 @@ var myEl = document.getElementById('Hi');
 
 <script>
 $(document).ready(function(e) {
-	IncreaseChatByAsc();
+	  IncreaseChatByAsc();
     IncreaseChatRecent();
+    IncreaseChatPopular();
     // setInterval(IncreaseChatByAsc, 1000);
     // setInterval(IncreaseChatRecent, 1000);
-    setInterval(hi, 1000);
 });
 function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
     var val = document.getElementById('idchat').value
@@ -374,6 +382,33 @@ function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งห�
             function (data)
             {
                 $("#Message_Chatroom").html(data)
+
+                $("#like").click(function(event) {
+                  var id = jQuery(this).attr("value");
+                  $.post("<?=base_url('InchatroomController/LikeMessage/')?>"+id,
+                    function (data) {
+                      var val = "hello";
+                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
+                      function (data) {
+                        IncreaseChatByAsc();
+                    });
+                    }
+                  );
+              });
+
+              $("#dislike").click(function(event) {
+                  var id = jQuery(this).attr("value");
+                  $.post("<?=base_url('InchatroomController/DisLikeMessage/')?>"+id,
+                    function (data) {
+                      var val = "hello";
+                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
+                      function (data) {
+                        IncreaseChatByAsc();
+                    });
+                    }
+                  );
+              });
+                          
             }
           );
 }
@@ -383,6 +418,15 @@ function IncreaseChatRecent(){ // โหลดตัวเลขทั้งห�
             function (data)
             {
                 $("#recent_message").html(data)
+            }
+          );
+}
+function IncreaseChatPopular(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
+    var val = document.getElementById('idchat').value
+          $.get("<?=base_url('AdminChatroomController/IncreaseChatPopular/')?>"+val,
+            function (data)
+            {
+                $("#Message_Popular").html(data)
             }
           );
 }
@@ -407,7 +451,64 @@ function IncreaseChatRecent(){ // โหลดตัวเลขทั้งห�
         event.preventDefault();
     });
 </script>
+<script>
+$(document).ready(function(e) {
+	ShowMydoc();
+});
+        $("#Mydoc").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/myupload')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
 
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        $("#MyRepos").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/MyRepository')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        $("#InRepos").on('click', function () {
+          
+          $.post("<?=base_url('MyDocumentController/InRepository')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+
+        event.preventDefault();
+        });
+
+        function ShowMydoc()   
+        {
+            $.post("<?=base_url('MyDocumentController/myupload')?>",
+              function (data) {
+                  
+                 $("#container").html(data);
+                 $('#Filesearch').DataTable();
+
+              }
+          );
+        }
+</script>
 
 
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
         
 <div class="container">
 <?php          
@@ -27,11 +27,49 @@
 
 
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อ Repository : <?php echo $repo['topic'];?> </h1>  
-        <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['createby'];?></p>
-        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo $repo['date'];?></p>
-        <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['privacy'];?> </p>
-        <button>เพิ่มเอกสารลงใน Repository นี้</button>
+        <h1>ชื่อทีม : <?php echo $repo['Topic'];?> </h1>  
+        <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['Createby'];?></p>
+        <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($repo['Date']));?></p>
+        <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['Privacy'];?> </p>
+          <?php 
+            $this->db->where('Id_Repository', $repo['Id_Repository']);
+            $this->db->where('AccName', $this->session->userdata('accountName'));
+            $querystatus = $this->db->get('Repository_Member', 1);
+            $resultstatus = $querystatus->row_array();
+            if($resultstatus == "")
+            {
+              $this->db->where('Id_Repository', $repo['Id_Repository']);
+              $this->db->where('Createby',$this->session->userdata('accountName'));
+              $querystatus = $this->db->get('Repository', 1);
+              if($querystatus->num_rows() != "")
+              {
+                $resultstatus['Level'] = "Creater";
+              }
+            }
+          ?>
+        
+        <?php 
+              if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+              {
+                $url = current_url();
+                // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
+                $arraystate2 = (explode("/",$url));
+                $idRepo = ($arraystate2[5]);?>
+                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงในทีมนี้</a>
+                <?php 
+                  if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                  { ?>
+                    <form name="createchat" id="createchat" method="post">
+                      <input type="hidden" id="name_room" name="name_room" value="<?php echo $repo['Topic'] ?>">
+                      <input type="hidden" id="id_repository" name="id_repository" value="<?php echo $repo['Id_Repository'] ?>">
+                      <button type="submit" class="btn btn-success mt-4">สร้างห้องโพสคำถาม</button>
+                    </form>
+                  
+              <?php }
+             } ?>
+
+
+                
     </div>
   
     <div class="w-100"></div>
@@ -41,10 +79,10 @@
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ใน Repository นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ที่อยู่ในทีมนี้</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>จัดการสมาชิกใน Repository นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>สมาชิกในทีมนี้</a>
         </li>
     </ul>
 </div>
@@ -52,7 +90,7 @@
     <div class="card-body">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" style="width: max;">
-                <p class="description"><?php echo $repo['detail'];?></p>
+                <p class="description"><?php echo $repo['Detail'];?></p>
                 <p class="description" style=></p>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
@@ -63,18 +101,25 @@
                     <th scope="col"><h4>ชื่อไฟล์</h4></th>
                     <th style="text-align:center;" scope="col"><h4>สร้างโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
-                        
+                    <?php 
+                        if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        {?>
+                          <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
+                          <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
+                  <?php } ?>
                     
                   </tr>
                 </thead>
                 <tbody>
           
                 <?php 
-                    $this->db->where('id_repository',  $repo['id']);
-                    $data = $this->db->get('upload');
+                    // $this->db->where('Id_Repository',  $repo['Id_Repository']);
+                    // $this->db->where('Status', 'ใช้งาน');
+                    // $data = $this->db->get('Upload');
+                    $this->db->where('Id_Repository',  $repo['Id_Repository']);
+                    $this->db->where('Status', 'ใช้งาน');
+                    $data = $this->db->get('UploadInRepository');
                     foreach($data->result_array() as $r)
                     {?>
 
@@ -83,50 +128,45 @@
                     <th scope="row">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                        <img src="<?php echo base_url().'assets/img/logofile/'. $r['type']?>.png" alt="">
+                        <img src="<?php echo base_url().'assets/img/logofile/'. $r['Type']?>.png" alt="">
                         </a>
                         <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo  $r['file'];?></span>
+                          <span class="mb-0 text-sm"><?php echo  $r['File'];?></span>
                         </div>
                       </div>
                     </th>
                     <td>
-                    <?php echo  $r['name'];?>
+                    <?php echo  $r['Uploadby'];?>
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i> <?php echo  $r['date'];?>
+                        <i class="bg-success"></i> <?php echo date('d/m/Y', strtotime($r['Date']));?>
                       </span>
                     </td>   
                     <td class="">
                         <div>
-                        <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['id_upload'];?>"  class="btn btn-success mb-3" >Edit</a>              
-                                
+                        <a href="<?php echo site_url(); ?>DetailDocController/editrepo/<?php echo  $r['Id_UploadInRepository'];?>"  class="btn btn-primary mb-3">View</a>                 
                         </div>
                        
                     </td>
-                    <td class="">
-                        <div>
-                        <a href="<?php echo site_url(); ?>DetailDocController/edit/<?php echo  $r['id_upload'];?>"  class="btn btn-primary mb-3">View</a>              
-                                
-                        </div>
-                       
-                    </td>
-                    <td>
-                    <a href="<?php echo site_url(); ?>/ViewController/del/<?php echo  $r['id_upload'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
-                    </td>   
+                    <?php 
+                        if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        {?>
+                        <td class="">
+                          
+                          <div>
+                            <a href="<?php echo site_url(); ?>EditController/editrepo/<?php echo  $r['Id_UploadInRepository'];?>"  class="btn btn-success mb-3" >Edit</a>                
+                            </div>
+                          
+                        </td>
+                        <td>
+                        <a href="<?php echo site_url(); ?>/ViewController/delfilerepository/<?php echo  $r['Id_UploadInRepository'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                        </td>   
+                    <?php } ?>
                   </tr>
+                  <?php }?>
                 </tbody>
-                      
-                    <?php }?>
-                    
-                    </table>
-                    <?php $url = current_url();
-                    // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
-                    $arraystate2 = (explode("/",$url));
-                    $idRepo = ($arraystate2[6]);?>
-
-                <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>" type="button" class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงใน Repository นี้</a>
+                </table>
                 </div>
             </div>
             <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
@@ -138,13 +178,21 @@
                     <th style="text-align:center;" scope="col"><h4>ระดับ</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เพิ่มโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>View</h4></th>
-                    <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
-                        
+                    <?php 
+                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        {?>
+                        <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
+                        <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
+                    <?php
+                    } ?>
                     
                   </tr>
                 </thead>
                 <tbody>
+                <?php 
+                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        {?>
+                    
                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#Addmember">
                       เพิ่มบุคคลที่เกี่ยวข้อง
@@ -165,14 +213,14 @@
                               <form name="login" id="addmember_form" method="post">
                               กรุณากรอกรหัสพนักงาน :
                               <input type="text" class="form-control mt-3 mb-3 ml-2" id="id_emp" name="id_emp" placeholder="682423">
-                              กรุณาเลือกระดับในการเกี่ยวข้องกับ Repository นี้ :
-                              <select name="Level" id="Level">
+                              กรุณาเลือกระดับในการเกี่ยวข้องกับทีมนี้ :
+                              <select name="Level" id="Level" >
                                 <option value="" disabled selected>กรุณาเลือกระดับ</option>
                                 <option value="Viewer">Viewer</option>
-                                <option value="Edittor">Edittor</option>
+                                <option value="Editor">Edittor</option>
                                 <option value="Manager">Manager</option>
                               </select>
-                              <input type="hidden" id="repository_id" name="repository_id" value="<?php echo $repo['id']?>">
+                              <input type="hidden" id="repository_id" name="repository_id" value="<?php echo $repo['Id_Repository']?>">
                               
                           </div>
                           <div class="modal-footer">
@@ -184,11 +232,13 @@
                         </div>
                       </div>
                     </div>
+                    <?php 
+                        } ?>
                 <?php 
-                    $query=$this->db->query("SELECT repository_member.*,repository.topic,repository.createby 
-                    FROM repository_member,repository 
-                    WHERE repository_member.id_repository = repository.id 
-                    AND repository_member.id_repository =".$repo['id']);
+                    $query=$this->db->query("SELECT Repository_Member.*,Repository.Topic,Repository.Createby 
+                    FROM Repository_Member,Repository 
+                    WHERE Repository_Member.Id_Repository = Repository.Id_Repository 
+                    AND Repository_Member.Id_Repository =".$repo['Id_Repository']);
                     foreach($query->result_array() as $mem)
                     {?>
 
@@ -201,15 +251,15 @@
                         </a>
                       <div class="media align-items-center">
                         <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo  $mem['accname'];?></span>
+                          <span class="mb-0 text-sm"><?php echo  $mem['AccName'];?></span>
                         </div>
                       </div>
                     </th>
                     <td >
-                    <?php echo  $mem['level'];?>
+                    <?php echo  $mem['Level'];?>
                     </td>
                     <td>
-                    <?php echo  $mem['addBy'];?>
+                    <?php echo  $mem['AddBy'];?>
                     </td>
                     <td>
                       <div class="ml-4">
@@ -219,8 +269,11 @@
                       </div>
  
                     </td>   
+                    <?php 
+                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        {?>
                       <?php 
-                      $t = explode(".", $mem['accname']);
+                      $t = explode(".", $mem['AccName']);
                        ?>
                     <td class="">
                         <div class="ml-4">
@@ -230,7 +283,7 @@
                                 <div class="modal-content" style="color: #2d3436;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">แก้ไขสิทธิ์ : <?php echo $mem['accname'];?></h2>
+                                        <h2 class="modal-title" id="modal-title-default">แก้ไขสิทธิ์ : <?php echo $mem['AccName'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
@@ -238,18 +291,18 @@
                                     
                                     <div class="modal-body">
                                     <p style="font-size: 15px;"> กรุณาเลือกระดับในการเกี่ยวข้อง : </p>
-                                    <form name="login" id="editmember_form" method="post" action="<?php echo site_url("Membercontroller/editmember/".$mem['ID']."/".$repo['id'])?>">
-                                    <select name="Level" id="Level" style="width: 100%; font-size: 15px;">
+                                    <form name="login" id="editmember_form" method="post" action="<?php echo site_url("Membercontroller/editmember/".$mem['Id_RepositoryMember']."/".$repo['Id_Repository'])?>">
+                                    <select name="Level" id="Level" style="width: 100%; font-size: 15px;" required>
                                       
                                       <option value="" disabled selected>กรุณาเลือกระดับ</option>
                                       <option value="Viewer">Viewer</option>
-                                      <option value="Edittor">Edittor</option>
+                                      <option value="Editor">Edittor</option>
                                       <option value="Manager">Manager</option>
                                     </select>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-                                        <button type="submit" class="btn btn-success" value="<?php echo $mem['ID']; ?>">ยืนยัน</button>
+                                        <button type="submit" class="btn btn-success" value="<?php echo $mem['Id_RepositoryMember']; ?>">ยืนยัน</button>
                                     </div>
                                 </div>
                               </form>
@@ -257,12 +310,17 @@
                        
                     </td>
                     <td>
-                    <a href="<?php echo site_url(); ?>/MemberController/Deletemember/<?php echo  $mem['ID'];?>/<?php echo $repo['id'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
-                    </td>   
+                    <a href="<?php echo site_url(); ?>/MemberController/Deletemember/<?php echo  $mem['Id_RepositoryMember'];?>/<?php echo $repo['Id_Repository'];?>" onclick="return confirm('คุณต้องการลบไฟล์นี้ใช่หรือไม่ ?')" class="btn btn-danger mb-3">Delete</a>
+                    </td>  
+                    <?php 
+                        }
+                        ?> 
                   </tr>
+                  <?php }?>
+                  <?php } endif; ?>
                 </tbody>
              
-                    <?php }?>
+                    
                     </table>
                 </div>
             </div>
@@ -270,7 +328,7 @@
     </div>
 </div>
   </div>
-  <?php } endif; ?>
+  
 </div>
 </div>
 

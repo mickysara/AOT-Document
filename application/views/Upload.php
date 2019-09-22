@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+ <!-- <script src = "/assets/js/upload.js"></script> -->
   </head>
   <body>
-    
+  <!-- action="<?php echo site_url('UploadController/file_upload');?>" -->
+
+
     <div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
@@ -11,7 +14,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" action="<?php echo site_url('UploadController/file_upload');?>" enctype='multipart/form-data'>
+            <form method="post" action="<?php echo site_url('UploadController/file_upload');?>" id="upload_form" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 
@@ -33,11 +36,14 @@
                     <div class="form-group">
                     <td>ไฟล์</td>
                     <div class="custom-file mb-3">
-                      <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".png,.jpg,.jpeg,.gif,.pdf,.pptx,.docx,.xlsx">
+                      <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".pdf,.pptx,.docx,.xlsx">
                       <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
                     </div>
-                    
+
+                   
+
+              
 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
@@ -63,13 +69,16 @@
                     </select>
                     </div>
 
-                    <script>
-            </script>
-                <button onclick="javascript:sweetalertclick()" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                    <div id="progress" class="progress mb-4"style="height: 20px">
+                    <div id="progress-bar-fill" class="progress-bar-fill bg-primary " role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    
+                   </div>
+                   <p id="tt"></p>
+                <button onclick="testtest();" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
 
 
-              <script type="text/javascript">
+              <!-- <script type="text/javascript">
                   function sweetalertclick(){
                 var name = $("#name").val();
                 var topic = $("#topic").val();
@@ -90,11 +99,16 @@
                  }
                   }
 
-                  </script> 
-            
+                  </script>  -->
+            <?php 
+            $this->db->where('Id_Upload', '254');
+            $query = $this->db->get('Upload');
+            $data = $query->row_array();
+            ?>
+
+
                                 <script> 
                             var uploadField = document.getElementById("image_file");
-
                             uploadField.onchange = function() {
                                 if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
                                   swal({
@@ -106,16 +120,89 @@
                                   
                                 };
                                };
-                                </script> 
+                                </script>
 
-                        <script>
+                                <script> 
+                            uploadField.onchange = function() {
+                              
+                                alert($data['File']);
+                               };
+                                </script>
+
+
+                  <script>
                         // Add the following code if you want the name of the file appear on select
                         $(".custom-file-input").on("change", function() {
                           var fileName = $(this).val().split("\\").pop();
                           $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
                         });
                         </script>
-           
+
+                                                <!-- --------------- progress bar upload ------------------------->
+
+                  <script>
+                                                
+            // $(document).ready(function() {
+            // $('#upload_form').on('submit', function(event) {
+
+            //   event.preventDefault();
+            
+            // uploadField.onchange = function() {
+
+              $(document).ready(function(e) {
+                $("#progress").hide();
+            });
+
+              function testtest(){
+              var formData = new FormData($('#upload_form')[0]);
+
+              $.ajax({
+                xhr : function() {
+                   $("#progress").show();
+                  var xhr = new window.XMLHttpRequest();
+
+                  xhr.upload.addEventListener('progress', function(e) {
+
+                    if (e.lengthComputable) {
+
+                      console.log('Bytes Loaded: ' + e.loaded);
+                      console.log('Total Size: ' + e.total);
+                      console.log('Percentage Uploaded: ' + (e.loaded / e.total))
+
+                      var percent = Math.round((e.loaded / e.total) * 100);
+
+                      $('#progress-bar-fill').attr('aria-valuenow', percent).css('width', percent + '%');
+
+                      $('#tt').text('กำลังทำการอัปโหลด ' + percent + '%');
+                    }
+
+                  });
+
+                  return xhr;
+                },
+                type : 'POST',
+                url : '/IndexController',
+                data : formData,
+                processData : false,
+                contentType : false,
+                success : function() {
+                  //  alert("Upload Success");
+                  swal({
+                      title: "อัปโหลดเสร็จสมบูรณ์",
+                      text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
+                      icon: "success", 
+                    });
+                }
+              });
+            }
+
+
+
+            // });
+
+            // });
+            </script> 
+
       </body>
             </div>
 </div>

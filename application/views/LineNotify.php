@@ -18,7 +18,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>ชื่อ - นามสกุล</div>
-                    <input type="text" class="form-control form-control-alternative" id="Name" name="Name" placeholder="ชื่อ - นามสกุล" required>
+                    <input type="text" class="form-control form-control-alternative" id="Name" name="Name"  value="<?=$this->session->userdata('accountName')?>" required id="name" readonly>
                     </div>
                     <div class="form-group">
                     <div>E-mail</div>
@@ -51,6 +51,10 @@
                           text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
                           icon: "success", 
                         }); 
+                        setTimeout(function () {
+                        location.href = '<?=base_url('/Indexcontroller')?>'
+                        }, 
+                        2000);
                  }
                   }
                   </script> 

@@ -33,7 +33,7 @@ class Example extends \Restserver\Libraries\REST_Controller {
 
     public function index_get()
     {
-        $query = $this->db->get('upload');
+        $query = $this->db->get('users');
         $data = $query->result();
         $this->response($data);
         
@@ -57,7 +57,7 @@ class Example extends \Restserver\Libraries\REST_Controller {
         
         $this->db->update('repository_member', $data);
 
-        			$this->response(array(
+        		$this->response(array(
 				'message' => 'success', 
 				'status' => 'true'));
         

@@ -111,7 +111,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
+                            <a class="dropdown-item" href="<?php echo site_url('MyDocumentController');?>">My Document</a>
                             <a class="dropdown-item" href="<?php echo site_url('FileController');?>">File</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo site_url('/LoginController/Logout');?>">ออกจากระบบ</a>
@@ -125,40 +125,4 @@
           </div>
           </div>
         </nav>
-        <script>
-    jQuery(function ($) {
-
-          $(".sidebar-dropdown > a").click(function() {
-          $(".sidebar-submenu").slideUp(200);
-          if (
-          $(this)
-            .parent()
-            .hasClass("active")
-          ) {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .parent()
-            .removeClass("active");
-          } else {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .next(".sidebar-submenu")
-            .slideDown(200);
-          $(this)
-            .parent()
-            .addClass("active");
-          }
-          });
-
-          $("#close-sidebar").click(function() {
-          $(".page-wrapper").removeClass("toggled");
-          });
-          $("#show-sidebar").click(function() {
-          $(".page-wrapper").addClass("toggled");
-          });
-
-
-
-
-          });
-  </script>
+       

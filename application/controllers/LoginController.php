@@ -10,9 +10,14 @@ class LoginController extends CI_Controller {
   }
     public function index()
     {
+      if($this->session->userdata('_success') == "")
+      {
         $this->load->view('Header');
-        $this->load->view('Login');
+        $this->load->view('Login');      
         $this->load->view('Footer');
+      }else{
+        redirect('IndexController');
+      }
         //echo $this->session->userdata('_success');
       
     }
@@ -54,9 +59,28 @@ class LoginController extends CI_Controller {
          
          if($data['_success'] == 1)
          {
+           
+                $this->db->where('Id_Emp', $data['employeeId']);
+          $query = $this->db->get('Users', 1);
+          $result = $query->num_rows();
+          
+          if($result == 0)
+          {
+            $dbinsert = array(
+              'Id_Emp'  =>  $data['employeeId'],
+              'Status'      =>  'user'
+            );
+            $this->db->insert('Users', $dbinsert);
+            $data['Status'] = $d['Users'];
+          }else{
+            $d = $query->row_array();
 
+            $data['Status'] = $d['Status'];
+          }
+          
            echo json_encode(['status' => 1, 'msg' => 'Success']);
            
+
            $this->session->set_userdata($data);
          
 
@@ -79,12 +103,9 @@ class LoginController extends CI_Controller {
 
     public function IncreaseNoti()
     {
-      $accname = $this->session->userdata('accountName');
       $this->db->where('Notification', '1');
-      $this->db->where('accname', 'sontaya.w');
+      $this->db->where('Accname', $this->session->userdata('accountName'));
       $user = $this->db->get('noti');
-
- 
       echo json_decode($user->num_rows());
     }
 
@@ -109,9 +130,15 @@ class LoginController extends CI_Controller {
       <?php 
         }else{ ?>
             <div>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="<?php echo base_url();?>RepositoryController/showdata/<?= $d['id_repository'] ?>">
                 <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
-                <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสารแก่คุณ</p> 
+                  <?php $this->db->where('id', $d['id_repository']);
+                      $query = $this->db->get('repository', 1);
+                      $a = $query->row_array();
+                  ?>
+                      
+                
+                <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสาร <p style="font-weight: bold;"> ชื่อ : <?php echo $a['topic']?></p></p> 
                 <p> <i class="fa fa-user-plus" aria-hidden="true" style="color: #172b4d;"></i> เมื่อ <?=trim($d['Timestamp'])?></p>
               </a>
             <div class="dropdown-divider"></div>

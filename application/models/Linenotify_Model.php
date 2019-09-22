@@ -5,9 +5,7 @@
     {
         define('LINE_API',"https://notify-api.line.me/api/notify");
 
-
-             $lineapi = ""; //ใส่Token ที่copy เอาไว้
-            // $lineapi = "pL7Zkh47MrbJJ9a615UkObW27movggJ4O2uXxC6pFc2"; //ใส่Token ที่copy เอาไว้
+            $lineapi = "pL7Zkh47MrbJJ9a615UkObW27movggJ4O2uXxC6pFc2"; //ใส่Token ที่copy เอาไว้
 
             $mms =  trim($data); // ข้อความที่ต้องการส่ง
             date_default_timezone_set("Asia/Bangkok");
@@ -45,54 +43,54 @@
         $insert = $data;
         $arraystate = (explode("/",$data));
         $fill_user = array(
-          'notify' => $arraystate[0],
-          'name' => $arraystate[1],
-          'email' => $arraystate[2],
-          'tel' => $arraystate[3],
-          'date' => $dateshow,
-          'status' => $status
+          'Detail' => $arraystate[0],
+          'AccName' => $arraystate[1],
+          'Email' => $arraystate[2],
+          'Tel' => $arraystate[3],
+          'Date' => $dateshow,
+          'Status' => $status
         );
 
-      $this->db->insert('linenotify', $fill_user); 
+      $this->db->insert('Problem', $fill_user); 
         } 
       
         public function view_data(){
           $query=$this->db->query("SELECT *
-                                   FROM linenotify  
-                                   ORDER BY linenotify.id_linenoti DESC
+                                   FROM Problem  
+                                   ORDER BY Problem.Id_Problem DESC
                                    limit 6");
           return $query->result_array();
       }
 
       public function view_datadashboard(){
         $query=$this->db->query("SELECT *
-                                 FROM linenotify  
-                                 ORDER BY linenotify.id_linenoti DESC
+                                 FROM Problem  
+                                 ORDER BY Problem.Id_Problem DESC
                                  limit 1");
         return $query->result_array();
     }
 
       public function delete_data($id){
-        $this->db->query("DELETE FROM linenotify WHERE id_linenoti = $id");
+        $this->db->query("DELETE FROM Problem WHERE Id_Problem = $id");
         
       }
 
       public function edit_linenotify($inputdata){
         $data = array(
-          'notify' => $inputdata["probem"],
-          'name' => $inputdata["Name"],
-          'email' => $inputdata["email"],
-          'tel' => $inputdata["tel"],
-          'status' => $inputdata['status']
+          'Detail' => $inputdata["probem"],
+          'AccName' => $inputdata["Name"],
+          'Email' => $inputdata["email"],
+          'Tel' => $inputdata["tel"],
+          'Status' => $inputdata['status']
       );
-        $this->db->where('id_linenoti', $this->input->post('id_linenoti'));
-        $query=$this->db->update('linenotify',$data);
+        $this->db->where('Id_Problem', $this->input->post('Id_Problem'));
+        $query=$this->db->update('Problem',$data);
       }
     
       public function edit_data($id){
         $query=$this->db->query("SELECT *
-                                 FROM linenotify
-                                 WHERE linenotify.id_linenoti = $id");
+                                 FROM Problem
+                                 WHERE Problem.Id_Problem = $id");
         return $query->result_array();
     }
   

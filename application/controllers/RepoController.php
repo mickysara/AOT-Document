@@ -13,10 +13,12 @@ class RepoController extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('Header');
-        $this->load->view('Footer');
-        // $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
-        $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
+        if($this->session->userdata('_success') == '')
+        {
+            redirect('AlertController/loginalert');
+        }else{
+          redirect('RepoController/checkstatus');
+        }
       
         
     }
@@ -25,12 +27,28 @@ class RepoController extends CI_Controller {
         $this->load->view('view', $this->data, FALSE);
             }
 
-    public function insertrepo(){
+    public function insertrepo()
+    {
         // $this->Upload->insertRepo();
         $this->Upload->insertRepo($this->input->post());
-        redirect('FileController','refresh');
-            }
+        $this->db->select('*');
+        $this->db->order_by('Id_Repository', 'desc');
+        $result = $this->db->get('Repository',1);
+        $data = $result->row_array();
 
+        
+        redirect('RepositoryController/showdata/'.$data['Id_Repository'],'refresh');
+        
+        
+    }
 
+    public function checkstatus()
+    {
+        $this->load->view('Header');
+        $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
+        $this->load->view('Footer');
+
+    }
+    
         
     }

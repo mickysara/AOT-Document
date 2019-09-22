@@ -24,7 +24,6 @@ class LinenotifyController extends CI_Controller
         $tel = $this->input->post('tel');
 
         $data = $probem.("/").$Name.("/").$email.("/").$tel;
-        echo $data;
         $this->load->model('Linenotify_Model');
         $this->Linenotify_Model->insert_Linenotify($data);
         $this->Linenotify_Model->LineNotify($data);

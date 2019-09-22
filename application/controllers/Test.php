@@ -32,4 +32,10 @@ class Test extends CI_Controller {
         $pusher->trigger('my-channel', 'my-event', $data);
     }
 
+    public function tt()
+    {
+        $this->load->view('tt');
+        
+    }
+
 }
