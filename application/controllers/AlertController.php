@@ -37,7 +37,12 @@ class AlertController extends CI_Controller {
         $this->load->view('notfound_view');      
         $this->load->view('Footer');
     }
-   
+    public function chatroomalert()
+    {
+        $this->load->view('Header');
+        $this->load->view('ChatroomAlert');      
+        $this->load->view('Footer');
+    }
 
     }
 

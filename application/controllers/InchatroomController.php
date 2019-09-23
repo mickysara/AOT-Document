@@ -21,9 +21,24 @@ class InchatroomController extends CI_Controller {
 
     public function showchat($id)
     {   
+        $this->db->where('Id_Chatroom', $id);
+        $query = $this->db->get('Chatroom');
+        $data = $query->row_array();
+
         if($this->session->userdata('_success') == '')
         {
           redirect('AlertController/loginalert');
+
+        }else if($data['Dateend'] <= $data['Date'])
+        {
+            $changestatus = "หมดอายุ";
+            $data = array(
+            'Status' => $changestatus
+        );
+            $this->db->where('Id_Chatroom',$id);
+            $this->db->update('Chatroom',$data);
+            redirect('AlertController/chatroomalert','refresh');
+
         }else{
             $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
             $this->load->view('Header');

@@ -61,8 +61,8 @@
                   { ?>
                     <form name="createchat" id="createchat" method="post">
 
-                        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#Chatroom">
-                        Launch demo modal
+                        <button type="button" class="btn btn-success mt-4" data-toggle="modal" data-target="#Chatroom">
+                        สร้างหน้าคำถาม
                         </button>
 
                         <div class="modal fade" id="Chatroom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
