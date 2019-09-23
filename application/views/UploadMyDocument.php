@@ -36,6 +36,7 @@
                       <input type="file" class="custom-file-input" required id="image_file" name="userfile[]" accept=".pdf,.pptx,.docx,.xlsx">
                       <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
+                    <input type="hidden" id="namefile" name="namefile">
                     </div>
                     
 
@@ -70,30 +71,6 @@
                    <p id="tt"></p>
                 <button  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
-
-
-              <!-- <script type="text/javascript">
-                  function sweetalertclick(){
-                var name = $("#name").val();
-                var topic = $("#topic").val();
-                var file = $("#image_file").val();
-                var date = $("#date").val();
-                var dateend = $("#date_end").val();
-                var detail = $("#detail").val();
-                var privacy = $("#privacy").val();
-                  
-                  if(topic ==""|| file ==""|| detail ==""||privacy ==""){
-                      alert("กรุณากรอกข้อมูลให้ครบ");
-                  }else{
-                    swal({
-                          title: "Upload Success",
-                          text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
-                          icon: "success", 
-                        }); 
-                 }
-                  }
-
-                  </script>  -->
             
                         <script> 
                             var uploadField = document.getElementById("image_file");
@@ -108,6 +85,7 @@
                                   this.value = "";
                                   
                                   };
+                                  document.getElementById("namefile").value = this.files[0].name;
                                };
                                 </script> 
 
@@ -119,46 +97,37 @@
                         });
                         </script>
 
-                        <!-- <script>
-                              $(document).on('submit', '#upload_form', function () {
-                                  $.post("<?=base_url('UploadController/Checkname/')?>", $("#sendchat_form").serialize(),
+                        <script>    
+                        $(document).on('submit', '#upload_form', function () {
+                                  
+                                  $.post("<?=base_url('UploadController/Checkname')?>", $("#upload_form").serialize(),
                                       function (data) {
-                                        d = JSON.parse(data)
-                                        var test = JSON.parse(data)
-                                        if(d.status == 1)
-                                        {
-                                            swal({
-                                                  icon: "success",
-                                                  text: "ไม่ซ้ำ" + d.hi,
-                                            });
-                                        }
-                                        else
-                                        {
-                                            swal({
+                                          console.log(data)
+                                          d = JSON.parse(data);
+
+                                          if(d.status == 0)
+                                          {
+                                              swal({
                                                   icon: "error",
-                                                  text: "ซ้ำ",
-                                                
-                                            });
-                                        }
+                                                  text: "ชื่อไฟล์นี้มีผู้อื่นอัปโหลดแล้วกรุณาเปลี่ยนชื่อไฟล์ แล้วเลือกใหม่ครับ" ,
+                                                  
+                                                  
+                                                  
+                                              })
+                                          }else{
+                                                testtest();
+                                          }
+
                                       }
                                   );
 
                                 event.preventDefault();
                             });
-                        </script> -->
+                            </script>
 
 
                                                <!----------------- progress bar upload ------------------------->
                     <script>
-                  
-                  // $(document).ready(function() {
-      
-                  // $('#upload_form').on('submit', function(event) {
-      
-                  //   event.preventDefault();
-                  
-                  // uploadField.onchange = function() {
-      
                     $(document).ready(function(e) {
                       $("#progress").hide();
                   });
@@ -191,7 +160,7 @@
                         return xhr;
                       },
                       type : 'POST',
-                      url : '/IndexController',
+                      url : "<?=base_url('UploadController/file_upload')?>",
                       data : formData,
                       processData : false,
                       contentType : false,
@@ -202,6 +171,7 @@
                             text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
                             icon: "success", 
                           });
+                          location.href = '<?=base_url('EmailController/senddoc')?>'
                       }
                     });
                   }

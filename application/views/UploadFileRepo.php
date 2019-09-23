@@ -17,9 +17,9 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
           <?php $repostrnono = base_url(uri_string());
              $arraystate2 = (explode("/",$repostrnono));
-             $idRepo = ($arraystate2[5]);?>
+             $idRepo = ($arraystate2[6]);?>
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" action="<?php echo site_url('UploadFileRepoController/file_upload/').$idRepo;?>" enctype='multipart/form-data'>
+            <form method="post" id="upload_form" action="<?php echo site_url('UploadFileRepoController/Checkname');?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
                 <hr>
 
@@ -40,6 +40,7 @@
                     <div class="form-group">
                     <td>ไฟล์</td>
                       <input type="file" required id="image_file" name="userfile[]" accept=".pdf,.pptx,.docx,.xlsx">
+                      <input type="hidden" id="namefile" name="namefile">
                     </div>
 
                     <div class="form-group">
@@ -72,38 +73,66 @@
                     
                    </div>
                    <p id="tt"></p>
-                <button onclick="testtest();" type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                   <button  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
        
-                  <script> 
-              var uploadField = document.getElementById("image_file");
+            <script> 
+                            var uploadField = document.getElementById("image_file");
+                            uploadField.onchange = function() {
+                              var val = document.getElementById('image_file').value
+                                if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
+                                  swal({
+                                      title: "Upload Fail",
+                                      text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB" + this.files[0].name ,
+                                      icon: "error", 
+                                    }); 
+                                  this.value = "";
+                                  
+                                  };
+                                  document.getElementById("namefile").value = this.files[0].name;
+                               };
+                                </script> 
 
-              uploadField.onchange = function() {
-                  if(this.files[0].size > 10000000){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
-                    swal({
-                        title: "Upload Fail",
-                        text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB",
-                        icon: "error", 
-                      }); 
-                    this.value = "";
-                    
-                  };
-                  };
-                  </script> 
+                        <script>
+                        // Add the following code if you want the name of the file appear on select
+                        $(".custom-file-input").on("change", function() {
+                          var fileName = $(this).val().split("\\").pop();
+                          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                        });
+                        </script>
+
+                        <script>    
+                        $(document).on('submit', '#upload_form', function () {
+                                  
+                                  $.post("<?=base_url('UploadFileRepoController/Checkname')?>", $("#upload_form").serialize(),
+                                      function (data) {
+                                          console.log(data)
+                                          d = JSON.parse(data);
+
+                                          if(d.status == 0)
+                                          {
+                                              swal({
+                                                  icon: "error",
+                                                  text: "ชื่อไฟล์นี้มีผู้อื่นอัปโหลดแล้วกรุณาเปลี่ยนชื่อไฟล์ แล้วเลือกใหม่ครับ" ,
+                                                  
+                                                  
+                                                  
+                                              })
+                                          }else{
+                                                testtest();
+                                          }
+
+                                      }
+                                  );
+
+                                event.preventDefault();
+                            });
+                            </script>
 
 
 
                     <!----------------- progress bar upload ------------------------->
                     <script>
-                  
-                  // $(document).ready(function() {
-      
-                  // $('#upload_form').on('submit', function(event) {
-      
-                  //   event.preventDefault();
-                  
-                  // uploadField.onchange = function() {
-      
                     $(document).ready(function(e) {
                       $("#progress").hide();
                   });
@@ -132,11 +161,11 @@
                           }
       
                         });
-      
+                       
                         return xhr;
                       },
                       type : 'POST',
-                      url : '/IndexController',
+                      url : "<?=base_url('UploadFileRepoController/file_upload/').$idRepo?>",
                       data : formData,
                       processData : false,
                       contentType : false,
@@ -147,6 +176,7 @@
                             text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
                             icon: "success", 
                           });
+                          location.href = '<?=base_url('EmailController/sendrepo')?>'
                       }
                     });
                   }
