@@ -12,10 +12,24 @@ class AdminChatroomController extends CI_Controller {
     
     public function showchat($id)
     {   
-        $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
-        $this->load->view('HeaderAdminChatroom');
-        $this->load->view('AdminChatroom', $this->data, FALSE);
-        $this->load->view('Footer');
+        $this->db->where('Id_Chatroom', $id);
+        $query = $this->db->get('Chatroom');
+        $data = $query->row_array();
+       
+        if($this->session->userdata('_success') == '')
+        {
+            redirect('AlertController/loginalert');
+
+        }else if( $data['Createby'] != $this->session->userdata('accountName'))
+        {
+            redirect('AlertController/adminalert');
+        }else{
+            $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
+            $this->load->view('HeaderAdminChatroom');
+            $this->load->view('AdminChatroom', $this->data, FALSE);
+             $this->load->view('Footer');
+        }
+     
 
     }
 

@@ -21,10 +21,15 @@ class InchatroomController extends CI_Controller {
 
     public function showchat($id)
     {   
-        $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
-        $this->load->view('Header');
-        $this->load->view('Inchatroom', $this->data, FALSE);
-        $this->load->view('Footer');
+        if($this->session->userdata('_success') == '')
+        {
+          redirect('AlertController/loginalert');
+        }else{
+            $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
+            $this->load->view('Header');
+            $this->load->view('Inchatroom', $this->data, FALSE);
+            $this->load->view('Footer');
+        }
 
     }
 

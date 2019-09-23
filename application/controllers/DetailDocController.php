@@ -34,7 +34,7 @@ class DetailDocController extends CI_Controller {
         // $data2 = $query2->row_array();
 
 
-            if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ')
+            if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
             {
               $this->data['edit_data']= $this->Upload->edit_data($edit_id);
               $this->load->view('Header');
@@ -55,20 +55,20 @@ class DetailDocController extends CI_Controller {
             //     $this->load->view('DetailDoc', $this->data, FALSE);
             //     $this->load->view('Footer');
 
-            }else if($admin['Status']== 'admin' && $data['Status'] != 'ลบ')
+            }else if($admin['Status']== 'admin' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
 
-            }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ')
+            }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDoc', $this->data, FALSE);
                 $this->load->view('Footer');
-            }else if($data['Status'] == 'ลบ')
+            }else if($data['Status'] == 'ลบ'|| $data['Status'] == 'หมดอายุ')
             {
                 redirect('AlertController/downloadalert');
             }else{
