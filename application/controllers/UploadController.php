@@ -134,8 +134,31 @@ class UploadController extends CI_Controller {
                   //   $this->load->view('Footer');
                   // }else{
                     $this->Upload->upload_image($this->input->post(),$fileName);
-              redirect('EmailController/senddoc');
+                    redirect('EmailController/senddoc');
                   // }
               
+        }
+
+        public function Checkname()
+        {
+            $filename = $this->input->post("namefile");
+            $this->db->where('File', $filename);
+            $query = $this->db->get('Upload', 1);
+            if($query->num_rows() == 0)
+            {
+              $this->db->where('File', $filename);
+              $query = $this->db->get('UploadInRepository', 1);
+
+              if($query->num_rows() == 0)
+              {
+                echo json_encode(['status' => 1, 'msg' => 'Success']);
+              }else{
+                echo json_encode(['status' => 0, 'msg' => 'fail']);
+              }
+            }else{
+                echo json_encode(['status' => 0, 'msg' => 'fail']);
+            }
+            
+            
         }
     }
