@@ -71,30 +71,6 @@
                    <p id="tt"></p>
                 <button  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
-
-
-              <!-- <script type="text/javascript">
-                  function sweetalertclick(){
-                var name = $("#name").val();
-                var topic = $("#topic").val();
-                var file = $("#image_file").val();
-                var date = $("#date").val();
-                var dateend = $("#date_end").val();
-                var detail = $("#detail").val();
-                var privacy = $("#privacy").val();
-                  
-                  if(topic ==""|| file ==""|| detail ==""||privacy ==""){
-                      alert("กรุณากรอกข้อมูลให้ครบ");
-                  }else{
-                    swal({
-                          title: "Upload Success",
-                          text: "กรุณาคลิกปุ่ม OK เพื่อไปยังหน้าถัดไป",
-                          icon: "success", 
-                        }); 
-                 }
-                  }
-
-                  </script>  -->
             
                         <script> 
                             var uploadField = document.getElementById("image_file");
@@ -152,15 +128,6 @@
 
                                                <!----------------- progress bar upload ------------------------->
                     <script>
-                  
-                  // $(document).ready(function() {
-      
-                  // $('#upload_form').on('submit', function(event) {
-      
-                  //   event.preventDefault();
-                  
-                  // uploadField.onchange = function() {
-      
                     $(document).ready(function(e) {
                       $("#progress").hide();
                   });
@@ -204,6 +171,7 @@
                             text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
                             icon: "success", 
                           });
+                          location.href = '<?=base_url('EmailController/senddoc')?>'
                       }
                     });
                   }

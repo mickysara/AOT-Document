@@ -71,8 +71,16 @@ class UploadFileRepoController extends CI_Controller {
                 //   $this->load->view('UploadAlert');
                 //   $this->load->view('Footer');
                 // }else{
+
+
+
                     $this->RePo->upload_file($this->input->post(),$fileName);
                   redirect('EmailController/sendrepo');
+
+                  
+
+
+
                 // }
                 //   $this->RePo->upload_file($this->input->post(),$fileName);
                 //   redirect('EmailController/senddoc');
@@ -84,9 +92,28 @@ class UploadFileRepoController extends CI_Controller {
               
                 }
 
-       
-
-
-
+                public function Checkname()
+                {
+                    $filename = $this->input->post("namefile");
+                    $this->db->where('File', $filename);
+                    $query = $this->db->get('Upload', 1);
+                    if($query->num_rows() == 0)
+                    {
+                      $this->db->where('File', $filename);
+                      $query = $this->db->get('UploadInRepository', 1);
         
+                      if($query->num_rows() == 0)
+                      {
+                        echo json_encode(['status' => 1, 'msg' => 'Success']);
+                         
+                      }else{
+                        echo json_encode(['status' => 0, 'msg' => 'fail']);
+                      }
+                    }else{
+                        echo json_encode(['status' => 0, 'msg' => 'fail']);
+                    }
+                    
+                    
+                }
+   
     }

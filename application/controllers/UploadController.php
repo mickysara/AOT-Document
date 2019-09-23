@@ -152,6 +152,7 @@ class UploadController extends CI_Controller {
               if($query->num_rows() == 0)
               {
                 echo json_encode(['status' => 1, 'msg' => 'Success']);
+                 
               }else{
                 echo json_encode(['status' => 0, 'msg' => 'fail']);
               }
