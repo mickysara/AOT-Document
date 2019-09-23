@@ -39,6 +39,12 @@ class InchatroomController extends CI_Controller {
             $this->db->update('Chatroom',$data);
             redirect('AlertController/chatroomalert','refresh');
 
+        }else if($data['Status'] == 'หมดอายุ')
+        {
+
+        redirect('AlertController/chatroomalert','refresh');
+        
+          
         }else{
             $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
             $this->load->view('Header');

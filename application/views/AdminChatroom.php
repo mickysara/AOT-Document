@@ -91,3 +91,9 @@ function closeFullscreen() {
 }
 </script>
 
+            <script>
+              $(document).ready(function(e) {
+                $("#tabs-icons-text-1-tab").hide();
+            });
+
+            </script> 

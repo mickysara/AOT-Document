@@ -126,6 +126,20 @@
                                 </script>
 
 
+                                <script> 
+                            uploadField.onchange = function() {
+                                if(file_exists($data['File'])){  //ขนาดไฟล์ไม่เกิน 10 mb คิดตามจำนวน byte 10ล้าน เท่ากับ 10 mb
+                                  swal({
+                                      title: "Upload Fail",
+                                      text: "ชื่อไฟล์ซ้ำ",
+                                      icon: "error", 
+                                    }); 
+                                  this.value = '';
+                                  
+                                };
+                               };
+                                </script>
+
 
                   <script>
                         // Add the following code if you want the name of the file appear on select
