@@ -296,10 +296,10 @@ $(document).ready( function(){
           });
 </script>
 <script>
-// $(document).ready(function(e) {
-// 	increaseNotify();
-//      setInterval(increaseNotify, 3000);
-// });
+$(document).ready(function(e) {
+	increaseNotify();
+     setInterval(increaseNotify, 3000);
+});
 function increaseNotify(){ // โหลดตัวเลขทั้งหมดที่ถูกส่งมาแสดง
           $.get("<?=base_url('index.php/LoginController/IncreaseNoti')?>", 
               function (data) {
@@ -334,7 +334,11 @@ var myEl = document.getElementById('Hi');
                   )
         }, true);
 </script>
-
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
 <script>
       $(document).on('submit', '#AdSearch', function () {

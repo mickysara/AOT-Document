@@ -43,6 +43,11 @@ class AdminChatroomController extends CI_Controller {
         $this->db->order_by('Datetime', 'asc');
         $query = $this->db->get();
 
+        $this->db->where('Code_Chatroom', $codechat);
+        $qq = $this->db->get('Chatroom', 1);
+        $re = $qq->row_array(); 
+        
+
         foreach($query->result_array() as $data)
           { ?>
                     <div class="message" style="padding: 30px; border-bottom: 1px solid #adb5bd;">
@@ -67,15 +72,25 @@ class AdminChatroomController extends CI_Controller {
                                 <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
                                         $q  = $this->db->get('Like_Message', 1);
+                                        if($re['Status'] == 'หมดอายุ')
+                                        { ?>
+                                        <button  class="btn btn-outline-primary"  href="#" style="background-color: #2181c2; color: #fff;" disabled>
+                                                <span class="Count-like"><?php echo $data['number_of_like']?></span>
+                                                <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
+                                                </span>
+                                                <span class="btn-inner--text">ถูกใจ</span>  
+                                        </button>
+                                <?php   }else{
+
+                                        
                                         if($q->num_rows() == 0)
                                         {?>
-                                        
                                         <a id="like" class="btn btn-outline-primary" value="<?php echo $data['Id_Message'] ?>" href="#" style="">
                                                 <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                                 <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                                 </span>
                                                 <span class="btn-inner--text">ถูกใจ</span>  
-                                            </a>
+                                        </a>
                                 <?php   }else{ ?>
                                             <a id="dislike" class="btn btn-icon btn-3 btn" value="<?php echo $data['Id_Message'] ?>" href="#" style="background-color: #2181c2; color: #fff;">
                                             <span class="Count-like"><?php echo $data['number_of_like']?></span>
@@ -83,7 +98,8 @@ class AdminChatroomController extends CI_Controller {
                                             </span>
                                             <span class="btn-inner--text">เลิกถูกใจ</span>  
                                             </a>
-                                <?php   } ?>
+                                <?php   } 
+                                }?>
                                 
                             </div>
                             </div>
@@ -105,6 +121,10 @@ class AdminChatroomController extends CI_Controller {
         $this->db->order_by('Datetime', 'Desc');
         $query = $this->db->get("",1);
 
+        $this->db->where('Code_Chatroom', $codechat);
+        $qq = $this->db->get('Chatroom', 1);
+        $re = $qq->row_array();
+
         foreach($query->result_array() as $data)
           { ?>
                     <div class="message" style="padding: 30px; border-bottom: 1px solid #adb5bd;">
@@ -126,18 +146,29 @@ class AdminChatroomController extends CI_Controller {
                             </div>
                             <div class="question-item_like" style="align:right">
 
-                                <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
+                               
+                            <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
                                         $q  = $this->db->get('Like_Message', 1);
+                                        if($re['Status'] == 'หมดอายุ')
+                                        { ?>
+                                        <button  class="btn btn-outline-primary"  href="#" style="background-color: #2181c2; color: #fff;" disabled>
+                                                <span class="Count-like"><?php echo $data['number_of_like']?></span>
+                                                <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
+                                                </span>
+                                                <span class="btn-inner--text">ถูกใจ</span>  
+                                        </button>
+                                <?php   }else{
+
+                                        
                                         if($q->num_rows() == 0)
                                         {?>
-                                        
                                         <a id="like" class="btn btn-outline-primary" value="<?php echo $data['Id_Message'] ?>" href="#" style="">
                                                 <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                                 <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                                 </span>
                                                 <span class="btn-inner--text">ถูกใจ</span>  
-                                            </a>
+                                        </a>
                                 <?php   }else{ ?>
                                             <a id="dislike" class="btn btn-icon btn-3 btn" value="<?php echo $data['Id_Message'] ?>" href="#" style="background-color: #2181c2; color: #fff;">
                                             <span class="Count-like"><?php echo $data['number_of_like']?></span>
@@ -145,7 +176,8 @@ class AdminChatroomController extends CI_Controller {
                                             </span>
                                             <span class="btn-inner--text">เลิกถูกใจ</span>  
                                             </a>
-                                <?php   } ?>
+                                <?php   } 
+                                }?>
                                 
                             </div>
                             </div>
@@ -165,6 +197,11 @@ class AdminChatroomController extends CI_Controller {
         $this->db->group_by('Message.Id_Message');
         $this->db->order_by('number_of_like', 'DESC');
         $query = $this->db->get();
+
+        $this->db->where('Code_Chatroom', $codechat);
+        $qq = $this->db->get('Chatroom', 1);
+        $re = $qq->row_array();
+        
         foreach($query->result_array() as $data)
           { ?>
                     <div class="message" style="padding: 30px; border-bottom: 1px solid #adb5bd;">
@@ -186,18 +223,29 @@ class AdminChatroomController extends CI_Controller {
                             </div>
                             <div class="question-item_like" style="align:right">
 
-                                <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
+                                
+                            <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
                                         $q  = $this->db->get('Like_Message', 1);
+                                        if($re['Status'] == 'หมดอายุ')
+                                        { ?>
+                                        <button  class="btn btn-outline-primary"  href="#" style="background-color: #2181c2; color: #fff;" disabled>
+                                                <span class="Count-like"><?php echo $data['number_of_like']?></span>
+                                                <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
+                                                </span>
+                                                <span class="btn-inner--text">ถูกใจ</span>  
+                                        </button>
+                                <?php   }else{
+
+                                        
                                         if($q->num_rows() == 0)
                                         {?>
-                                        
                                         <a id="like" class="btn btn-outline-primary" value="<?php echo $data['Id_Message'] ?>" href="#" style="">
                                                 <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                                 <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                                 </span>
                                                 <span class="btn-inner--text">ถูกใจ</span>  
-                                            </a>
+                                        </a>
                                 <?php   }else{ ?>
                                             <a id="dislike" class="btn btn-icon btn-3 btn" value="<?php echo $data['Id_Message'] ?>" href="#" style="background-color: #2181c2; color: #fff;">
                                             <span class="Count-like"><?php echo $data['number_of_like']?></span>
@@ -205,8 +253,8 @@ class AdminChatroomController extends CI_Controller {
                                             </span>
                                             <span class="btn-inner--text">เลิกถูกใจ</span>  
                                             </a>
-                                <?php   } ?>
-                                
+                                <?php   } 
+                                }?>
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">

@@ -58,18 +58,26 @@
                 <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงในทีมนี้</a>
                 <?php 
                   if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
-                  { ?>
+                  { 
+                    $this->db->where('Id_Repository', $repo['Id_Repository']);
+                    $qq = $this->db->get('Chatroom', 1);
+                    $a =  $qq->row_array();
+                    
+                    
+                    if($qq->num_rows() == 0){
+                      ?>
+                  
                     <form name="createchat" id="createchat" method="post">
 
                         <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#Chatroom">
-                        Launch demo modal
+                        สร้างห้องโพสต์คำถาม
                         </button>
 
                         <div class="modal fade" id="Chatroom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h2 class="modal-title" id="exampleModalLabel">กำหนดวันที่หมดอายุของห้องโพสคำถาม</h2>
+                                <h2 class="modal-title" id="exampleModalLabel">กำหนดวันที่หมดอายุของห้องโพสต์คำถาม</h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -83,14 +91,18 @@
                                 
                               </div>
                               <div class="modal-footer">
-                                <button type="submit" class="btn btn-success mt-4">สร้างห้องโพสคำถาม</button>
+                                <button type="submit" class="btn btn-success mt-4">สร้างห้องโพสต์คำถาม</button>
                               </div>
                             </div>
                           </div>
                         </div>
                     </form>
                   
+              <?php }else{ ?>
+                <br>
+                      <a href="<?php echo site_url(); ?>AdminChatroomController/showchat/<?php echo $a['Id_Chatroom'];?>"class="btn btn-primary mt-4">เข้าสู่ห้องแชท</a> 
               <?php }
+                  }
              } ?>
 
 

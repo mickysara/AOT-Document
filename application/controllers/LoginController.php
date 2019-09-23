@@ -70,12 +70,16 @@ class LoginController extends CI_Controller {
               'Id_Emp'  =>  $data['employeeId'],
               'Status'      =>  'user'
             );
+
             $this->db->insert('Users', $dbinsert);
             $data['Status'] = $d['Users'];
+
           }else{
+
             $d = $query->row_array();
 
             $data['Status'] = $d['Status'];
+
           }
           
            echo json_encode(['status' => 1, 'msg' => 'Success']);
@@ -103,43 +107,45 @@ class LoginController extends CI_Controller {
 
     public function IncreaseNoti()
     {
-      $this->db->where('Notification', '1');
+
+      $this->db->where('Notify', '1');
       $this->db->where('Accname', $this->session->userdata('accountName'));
-      $user = $this->db->get('noti');
+      $user = $this->db->get('Repository_Member');
       echo json_decode($user->num_rows());
+
     }
 
     public function IncreaseDetailNoti()
     {
-      $this->db->where('accname', $this->session->userdata('accountName'));
-      $this->db->order_by('Timestamp', 'desc');
-      $query = $this->db->get('noti');
-      foreach($query->result_array() as $d)
-      {
-        if($d['Action'] == "comment") 
+
+      $this->db->where('Accname', $this->session->userdata('accountName'));
+      $this->db->order_by('Date', 'desc');
+      $query = $this->db->get('Repository_Member');
+
+        if($query->num_rows() == 0) 
         {?>
         <div>
             <a class="dropdown-item" href="#">
-              <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
-              <p> ได้แสดงความคิดเห็นในเอกสารของคุณ </p> 
-              <p> <i class="fa fa-comment" aria-hidden="true" style="color: #46bf2e;">  </i> เมื่อ <?=trim($d['Timestamp'])?></p>
+              <p> ไม่มีการแจ้งเตือนของคุณ </p> 
             </a>
               <div class="dropdown-divider"></div>
-           
         </div>
       <?php 
-        }else{ ?>
+        }else{ 
+          foreach($query->result_array() as $d)
+          {?>
+        
             <div>
-              <a class="dropdown-item" href="<?php echo base_url();?>RepositoryController/showdata/<?= $d['id_repository'] ?>">
-                <p style="font-weight: bold;"> <?=trim($d['ActionBy'])?> </p> 
-                  <?php $this->db->where('id', $d['id_repository']);
-                      $query = $this->db->get('repository', 1);
-                      $a = $query->row_array();
-                  ?>
-                      
+              <a class="dropdown-item" href="<?php echo base_url();?>RepositoryController/showdata/<?= $d['Id_Repository'] ?>">
+                <p style="font-weight: bold;"> <?=trim($d['AddBy'])?> </p> 
+                <?php 
+                           $this->db->where('Id_Repository', $d['Id_Repository']);
+                  $topic = $this->db->get('Repository', 1);
+                  $tt = $topic->row_array();
+                ?>
                 
-                <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสาร <p style="font-weight: bold;"> ชื่อ : <?php echo $a['topic']?></p></p> 
-                <p> <i class="fa fa-user-plus" aria-hidden="true" style="color: #172b4d;"></i> เมื่อ <?=trim($d['Timestamp'])?></p>
+                <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสาร <p style="font-weight: bold;"> ชื่อ : <?php echo $tt['Topic']?></p></p> 
+                <p> <i class="fa fa-user-plus" aria-hidden="true" style="color: #172b4d;"></i> เมื่อ <?php echo date('d/m/Y ', strtotime($tt['Date']));?></p>
               </a>
             <div class="dropdown-divider"></div>
            
@@ -152,11 +158,12 @@ class LoginController extends CI_Controller {
 
     public function DecreaseNoti()
     {
+
       $accname = $this->session->userdata('accountName');
 
-      $this->db->set('Notification', '0');
-      $this->db->where('accname', $accname);
-      $this->db->update('noti');
+      $this->db->set('Notify', '0');
+      $this->db->where('Accname', $accname);
+      $this->db->update('Repository_Member');
       
 
  
