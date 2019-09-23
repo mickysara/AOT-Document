@@ -22,13 +22,18 @@ class CreatechatroomController extends CI_Controller {
         
         if($result == 0)
         {
+            $DateEnd = $this->input->post('DateEnd');
+            $newDate = date("Y-m-d", strtotime($DateEnd));
             $codechat = random_string('alnum',5);        
             $data = array(
                'Code_Chatroom' =>   $codechat,
                'Topic'         =>   $name_room,
                'Createby'      =>   $this->session->userdata('accountName'),
                'Id_Repository' =>   $id_repository,
-               'Date'          =>   date("Y-m-d")
+               'Date'          =>   date("Y-m-d"),
+               'DateEnd'       =>   $newDate,
+               'Status'       =>   'ใช้งาน'
+
             );
             $this->db->insert('Chatroom', $data);
             

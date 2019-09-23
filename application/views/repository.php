@@ -60,9 +60,34 @@
                   if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
                   { ?>
                     <form name="createchat" id="createchat" method="post">
-                      <input type="hidden" id="name_room" name="name_room" value="<?php echo $repo['Topic'] ?>">
-                      <input type="hidden" id="id_repository" name="id_repository" value="<?php echo $repo['Id_Repository'] ?>">
-                      <button type="submit" class="btn btn-success mt-4">สร้างห้องโพสคำถาม</button>
+
+                        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#Chatroom">
+                        Launch demo modal
+                        </button>
+
+                        <div class="modal fade" id="Chatroom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLabel">กำหนดวันที่หมดอายุของห้องโพสคำถาม</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                <input type="hidden" id="name_room" name="name_room" value="<?php echo $repo['Topic'] ?>">
+                                <input type="hidden" id="id_repository" name="id_repository" value="<?php echo $repo['Id_Repository'] ?>">
+                                <input class="form-control datepicker" name="DateEnd" placeholder="คลิกเพื่อเลือกวันที่หมดอายุ" type="text"  required>
+                                
+                                
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-success mt-4">สร้างห้องโพสคำถาม</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </form>
                   
               <?php }
