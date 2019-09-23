@@ -40,7 +40,10 @@
                       <label class="custom-file-label">กรุณาเลือกไฟล์</label>
                     </div>
                     </div>
-
+                    <!-- <div class="form-group">
+                    <td>ไฟล์</td>
+                      <input type="file" required id="image_file" name="userfile[]" accept=".pdf,.pptx,.docx,.xlsx">
+                    </div> -->
                    
 
               
@@ -100,11 +103,11 @@
                   }
 
                   </script>  -->
-            <?php 
-            $this->db->where('Id_Upload', '254');
-            $query = $this->db->get('Upload');
-            $data = $query->row_array();
-            ?>
+
+                                <?php 
+                                $query = $this->db->get('Upload');
+                                $data = $query->row_array();
+                                ?>
 
 
                                 <script> 
@@ -116,18 +119,12 @@
                                       text: "ไฟล์ของคุณมีขนาดใหญ่กว่า 10 MB",
                                       icon: "error", 
                                     }); 
-                                  this.value = "";
+                                  this.value = '';
                                   
                                 };
                                };
                                 </script>
 
-                                <script> 
-                            uploadField.onchange = function() {
-                              
-                                alert($data['File']);
-                               };
-                                </script>
 
 
                   <script>
