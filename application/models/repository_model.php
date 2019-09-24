@@ -121,8 +121,14 @@ class Repository_Model extends CI_Model {
     $query=$this->db->update('Repository',$data);
     }
 
+
+    
     public function delete_repo($id){
       $this->db->query("DELETE FROM Repository WHERE Id_Repository = $id");
+      
+    }
+    public function delete_chatrepo($id){
+      $this->db->query("DELETE FROM Chatroom WHERE Id_Repository = $id");
       
     }
     
