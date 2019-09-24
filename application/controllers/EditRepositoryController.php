@@ -8,7 +8,7 @@ class EditRepositoryController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('repository_model','repository'); 
+        $this->load->model('Repository_Model','repository'); 
     }
     public function index()
     {

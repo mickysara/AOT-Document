@@ -102,7 +102,7 @@ class Repository_Model extends CI_Model {
         }
       public function edit_repo($id){
         $query=$this->db->query("SELECT *
-                                 FROM UploadInRepository 
+                                 FROM Repository 
                                  WHERE Id_Repository = $id");
         return $query->result_array();
     }
