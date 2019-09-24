@@ -206,8 +206,8 @@ public function editdataupload($inputdata){
       'Date' => $inputdata['date'],
       'Dateend' => $newDate,
       'Detail' => $inputdata['detail'],
-      'Type' => $showtypeall,
-      'Privacy' => $inputdata['privacy']
+      'Type' => $showtypeall
+
       );
         $this->db->where('Id_UploadInRepository', $this->input->post('Id_UploadInRepository'));
         $query=$this->db->update('UploadInRepository',$data);

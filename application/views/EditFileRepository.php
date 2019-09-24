@@ -67,29 +67,6 @@
                     </div>
 
 
-                    <?php if($data['Privacy']== 'Private'){
-                           $showPri ="ส่วนตัว";
-                           $getpri = "Private";
-                          }else if($data['Privacy']== 'Authen'){
-                            $showPri = "เฉพาะผู้ที่มีรหัส";
-                            $getpri = "Authen";
-                          }else if($data['Privacy']== 'Public'){
-                            $showPri = "สาธารณะ"; 
-                            $getpri = "Public";
-                          }else{
-                            $showPri = "กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์";
-                          }?>
-
-                    <div class="form-group">
-                    <div>ระดับความเป็นส่วนตัว</div>
-                    <select name="privacy" id="privacy">
-                      <option value="<?php echo $getpri?>" ><?php echo $showPri;?></option>
-                      <option value="Private">ส่วนตัว</option>
-                      <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
-                      <option value="Public">สาธารณะ</option>
-                    </select>
-                    </div>
-
                     <input type="hidden" name="Id_UploadInRepository" value= <?php echo $data['Id_UploadInRepository'];?>>
                   <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
 

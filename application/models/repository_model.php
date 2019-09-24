@@ -88,7 +88,6 @@ class Repository_Model extends CI_Model {
               'Dateend'=> $newDate,
               'Type'=> $showtypeall,
               'Qr_Codename'=> $randomqrcode,
-              'Privacy' => $inputdata['privacy'],
               'Status' => $status
             );
             
