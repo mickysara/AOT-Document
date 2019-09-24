@@ -35,22 +35,12 @@ class RepositoryController extends CI_Controller {
         $admin = $query3->row_array();
 
 
-            if($this->session->userdata('accountName')==$mem['AccName'] && $this->session->userdata('_success') == 1)
+            if($this->session->userdata('_success') == '' && $data['Privacy'] == 'Authen')
             {
-                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
-                $this->load->view('Header');
-                $this->load->view('repository', $this->data, FALSE);
-                $this->load->view('Footer');
+                redirect('AlertController/loginalert');
 
-            }else if($this->session->userdata('accountName')== $data['Createby'])
-            {
-                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
-                $this->load->view('Header');
-                $this->load->view('repository', $this->data, FALSE);
-                $this->load->view('Footer');
-
-            }else if($admin['Status']== 'admin')
-            {
+            }else if($admin['Status']== 'superadmin')
+            {              
                 $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
@@ -63,9 +53,19 @@ class RepositoryController extends CI_Controller {
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
 
-            }else if($this->session->userdata('_success') == '')
+            }else if($this->session->userdata('accountName')==$mem['AccName'] && $this->session->userdata('_success') == 1)
             {
-                redirect('AlertController/loginalert');
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
+
+            }else if($this->session->userdata('accountName')== $data['Createby'])
+            {
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
 
             }else{
                 redirect('AlertController/useralert');

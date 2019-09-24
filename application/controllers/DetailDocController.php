@@ -29,8 +29,11 @@ class DetailDocController extends CI_Controller {
         $query = $this->db->get('Upload');
         $data = $query->row_array();
 
+            if($data['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
+            {
+            redirect('AlertController/loginalert');
 
-            if($admin['Status']== 'superadmin')
+            }else if($admin['Status']== 'superadmin')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
                 $this->load->view('Header');
@@ -54,9 +57,6 @@ class DetailDocController extends CI_Controller {
                 $this->db->update('Upload',$data);
                 redirect('AlertController/downloadalert','refresh');
 
-            }else if($this->session->userdata('_success') == '' && $data['Privacy'] == 'Authen')
-            {
-                redirect('AlertController/loginalert');
 
             }else if($this->session->userdata('_success') == 1 && $data['Privacy'] == 'Authen')
             {
@@ -96,15 +96,20 @@ class DetailDocController extends CI_Controller {
             $this->db->where('Id_UploadInRepository', $edit_id);
             $query = $this->db->get('UploadInRepository');
             $data = $query->row_array();
-    
-                if($admin['Status']== 'superadmin')
-                {
-                $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
-                $this->load->view('Header');
-                $this->load->view('DetailDocRepository', $this->data, FALSE);
-                $this->load->view('Footer');
 
-                }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
+            $this->db->where('Id_Repository', $data['Id_Repository']);
+            $query2 = $this->db->get('Repository');
+            $datarepo = $query2->row_array();
+
+            $this->db->where('Id_Repository', $datarepo['Id_Repository']);
+            $query3 = $this->db->get('Repository_Member');
+            $datamem = $query3->row_array();
+    
+                if($datarepo['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
+                {
+                    redirect('AlertController/loginalert');
+                                
+                }else if($admin['Status']== 'superadmin')
                 {
                 $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                 $this->load->view('Header');
@@ -121,15 +126,25 @@ class DetailDocController extends CI_Controller {
                     $this->db->update('UploadInRepository',$data);
                     redirect('AlertController/downloadalert','refresh');
 
-                }else if($this->session->userdata('_success') == '' && $data['Privacy'] == 'Authen')
+                }else if($datarepo['Privacy']== 'Public' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
                 {
-                    redirect('AlertController/loginalert');
-    
-                }else if($this->session->userdata('_success') == 1 && $data['Privacy'] == 'Authen')
+                $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
+                $this->load->view('Header');
+                $this->load->view('DetailDocRepository', $this->data, FALSE);
+                $this->load->view('Footer');
+
+                }else if($this->session->userdata('accountName') == $datamem['AccName'] && $datarepo['Privacy'] == 'Authen')
                 {
-                    $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                    $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
+                    $this->load->view('Header');
+                    $this->load->view('DetailDocRepository', $this->data, FALSE);
+                    $this->load->view('Footer');
+
+                }else if($this->session->userdata('_success') == 1 && $datarepo['Privacy'] == 'Authen')
+                {
+                    $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                   $this->load->view('Header');
-                  $this->load->view('DetailDoc', $this->data, FALSE);
+                  $this->load->view('DetailDocRepository', $this->data, FALSE);
                   $this->load->view('Footer');
 
                 }else if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
@@ -236,7 +251,19 @@ class DetailDocController extends CI_Controller {
         $query = $this->db->get('UploadInRepository');
         $dataload = $query->row_array();
         
-        if($dataload['Dateend'] <= $dataload['Date'] && $dataload['Dateend'] != '1970-01-01')
+        $this->db->where('Id_Repository', $dataload['Id_Repository']);
+        $query2 = $this->db->get('Repository');
+        $datarepo = $query2->row_array();
+
+        $this->db->where('Id_Repository', $datarepo['Id_Repository']);
+        $query3 = $this->db->get('Repository_Member');
+        $datamem = $query3->row_array();
+
+        if($datarepo['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
+        {
+            redirect('AlertController/loginalert');
+                    
+        }else if($dataload['Dateend'] <= $dataload['Date'] && $dataload['Dateend'] != '1970-01-01')
         {
             $changestatus = "หมดอายุ";
             $data = array(
@@ -249,18 +276,32 @@ class DetailDocController extends CI_Controller {
         }else if($dataload['Status'] == 'ลบ' || $dataload['Status'] == 'หมดอายุ')
         {
             redirect('AlertController/downloadalert');
-
-        }if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'])
+        
+        }else if($datarepo['Privacy'] == 'Authen' && $datamem['AddBy'] == $this->session->userdata('accountName'))
+        {
+            $this->load->helper('download');
+            $this->db->where('Url', $url);
+            $data = $this->db->get('UploadInRepository', 1);
+            $fileInfo = $data->result_array();
+            foreach($fileInfo as $d)
+            {
+    
+            $object = array(
+                'Download' => $d['Download']+1
+            );
+            $this->db->where('Id_UploadInRepository', $d['Id_UploadInRepository']);
+            $this->db->update('UploadInRepository', $object);
+    
+                echo $d['File'];
+    
+                //Path File
+                $file = 'uploads/'.$d['File'];
+                force_download($file, NULL);
+            }
+            
+        }else if($datarepo['Privacy'] == 'Authen' && $datamem['AccName'] != $this->session->userdata('accountName'))
         {
             redirect('AlertController/useralert');
-
-        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '')
-        {
-            redirect('AlertController/loginalert');
-
-        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '')
-        {
-            redirect('AlertController/loginalert');
 
         }else
         {
