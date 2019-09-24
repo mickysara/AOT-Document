@@ -47,7 +47,7 @@ class MyDocumentController extends CI_Controller {
                                         <table class="table align-items-center table-flush" id="Filesearch">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th scope="col"><h4>ชื่อไฟล์</h4></th>
+                                                <th scope="col"><h4>ชื่อหัวข้อ</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> สถานะ </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
@@ -67,7 +67,7 @@ class MyDocumentController extends CI_Controller {
                                                     <img src="<?php echo base_url().'assets/img/logofile/'. $data['Type']?>.png" alt="">
                                                     </a>
                                                     <div class="media-body">
-                                                    <span class="mb-0 text-sm"><?php echo $data['File'];?></span>
+                                                    <span class="mb-0 text-sm"><?php echo $data['Topic'];?></span>
                                                     </div>
                                                 </div>
                                                 </th>
