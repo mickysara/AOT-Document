@@ -18,11 +18,19 @@ class EditStatusController extends CI_Controller {
     }
     public function edit($edit_id)
     {
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('Id_Emp', $status);
+        $query3 = $this->db->get('Users');
+        $admin = $query3->row_array();
+
         if($this->session->userdata('_success') == '')
         {
-         $this->load->view('Header');
-         $this->load->view('Loginalert');     
-         $this->load->view('Footer');
+            redirect('AlertController/loginalert');
+
+        }else if($admin['Status'] != 'superadmin')
+        {
+            redirect('AlertController/adminalert');
+
         }else{
             $this->data['edit_data']= $this->Admin->edit_data($edit_id);
         $this->load->view('Header');

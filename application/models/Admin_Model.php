@@ -9,7 +9,8 @@ class Admin_Model extends CI_Model
     public function status_view(){
         $query=$this->db->query("SELECT *
                                  FROM Users  
-                                 ORDER BY Users.Id_Users
+                                 WHERE Users.Status != 'superadmin'
+                                 ORDER BY Users.Id_Users                                
                                  ");
         return $query->result_array();
     }

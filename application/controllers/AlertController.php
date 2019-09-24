@@ -43,6 +43,12 @@ class AlertController extends CI_Controller {
         $this->load->view('ChatroomAlert');      
         $this->load->view('Footer');
     }
+    public function superadminalert()
+    {
+        $this->load->view('Header');
+        $this->load->view('SuperAdminAlert');      
+        $this->load->view('Footer');
+    }
 
     }
 

@@ -35,7 +35,7 @@ class FileController extends CI_Controller {
         foreach($query->result_array() as $data)
       { ?>
               <?php 
-              if($data['Status']=='admin')
+              if($data['Status']=='admin' || $data['Status']=='superadmin')
               {
                 $this->load->view('Header');
                 $this->load->view('Footer');

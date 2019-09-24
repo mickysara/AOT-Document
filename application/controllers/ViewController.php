@@ -19,21 +19,36 @@ class ViewController extends CI_Controller {
     }
     
      public function del($id)
-     {        
-    $this->db->where('Id_Upload', $id);
-    $query = $this->db->get('Upload');
-    foreach($query->result_array() as $data)
-      { 
-             
-        $file = $data['File'];
-        $path = 'uploads/'.$file;
-        unlink($path);
-      $this->data['delete_data']= $this->Upload->delete_data($id);
-      redirect('ViewController','refresh'); 
- 
-       } 
-   
- 
+     {      
+         
+      $status = $this->session->userdata('employeeId');
+      $this->db->where('Id_Emp', $status);
+      $query = $this->db->get('Users');
+      foreach($query->result_array() as $data)
+    { ?>
+            <?php 
+            if($data['Status']!='superadmin')
+            {
+              redirect('AlertController/superadminalert');
+
+            }else{
+              $this->db->where('Id_Upload', $id);
+              $query = $this->db->get('Upload');
+             foreach($query->result_array() as $data)
+              {                    
+                $file = $data['File'];
+                $path = 'uploads/'.$file;
+                unlink($path);
+              $this->data['delete_data']= $this->Upload->delete_data($id);
+              redirect('ViewController','refresh'); 
+        
+              } 
+            }
+      
+             ?>
+        
+<?php } 
+      
      }
 
     
@@ -45,7 +60,7 @@ class ViewController extends CI_Controller {
         foreach($query->result_array() as $data)
       { ?>
               <?php 
-              if($data['Status']=='admin')
+              if($data['Status']=='admin'|| $data['Status']=='superadmin')
               {
                 $this->load->view('HeaderAdminTest');
                 $this->data['view_data']= $this->Upload->view_dataBackend(); //Upfile คือชื่อของโมเดล
@@ -71,7 +86,8 @@ class ViewController extends CI_Controller {
       $this->db->update('Upload',$data);
       // $this->Upload->delstatusfile($this->input->post($id));
           redirect('MyDocumentController','refresh');
-    }
+    
+  }
 
 
     public function delfilerepository($id)

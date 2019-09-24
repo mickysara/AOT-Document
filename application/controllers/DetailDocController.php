@@ -30,10 +30,20 @@ class DetailDocController extends CI_Controller {
         $data = $query->row_array();
 
 
-            if($this->session->userdata('_success') == '')
+            if($admin['Status']== 'superadmin')
             {
-                redirect('AlertController/loginalert');
+                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                $this->load->view('Header');
+                $this->load->view('DetailDoc', $this->data, FALSE);
+                $this->load->view('Footer');
             
+            }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
+            {
+                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                $this->load->view('Header');
+                $this->load->view('DetailDoc', $this->data, FALSE);
+                $this->load->view('Footer');
+
             }else if($data['Dateend'] <= $data['Date'] && $data['Dateend'] != '1970-01-01')
             {
                 $changestatus = "หมดอายุ";
@@ -44,6 +54,10 @@ class DetailDocController extends CI_Controller {
                 $this->db->update('Upload',$data);
                 redirect('AlertController/downloadalert','refresh');
 
+            }else if($this->session->userdata('_success') == '' && $data['Privacy'] == 'Authen')
+            {
+                redirect('AlertController/loginalert');
+
             }else if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
             {
               $this->data['edit_data']= $this->Upload->edit_data($edit_id);
@@ -52,28 +66,18 @@ class DetailDocController extends CI_Controller {
               $this->load->view('Footer');
 
 
-            }else if($admin['Status']== 'admin' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
-            {
-                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-                $this->load->view('Header');
-                $this->load->view('DetailDoc', $this->data, FALSE);
-                $this->load->view('Footer');
-
-            }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
-            {
-                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-                $this->load->view('Header');
-                $this->load->view('DetailDoc', $this->data, FALSE);
-                $this->load->view('Footer');
-
-
             }else if($data['Status'] == 'ลบ'|| $data['Status'] == 'หมดอายุ')
             {
                 redirect('AlertController/downloadalert');
+
             }else{
                 redirect('AlertController/useralert');
             }
         }
+
+
+
+
 
         public function editrepo($edit_id)
         {
@@ -86,67 +90,70 @@ class DetailDocController extends CI_Controller {
             $query = $this->db->get('UploadInRepository');
             $data = $query->row_array();
     
-    
-                if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ')
+                if($admin['Status']== 'superadmin')
+                {
+                $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                $this->load->view('Header');
+                $this->load->view('DetailDoc', $this->data, FALSE);
+                $this->load->view('Footer');
+
+                }else if($data['Dateend'] <= $data['Date'] && $data['Dateend'] != '1970-01-01')
+                {
+                    $changestatus = "หมดอายุ";
+                    $data = array(
+                    'Status' => $changestatus
+                );
+                    $this->db->where('Id_UploadInRepository',$edit_id);
+                    $this->db->update('UploadInRepository',$data);
+                    redirect('AlertController/downloadalert','refresh');
+
+
+                }else if($data['Uploadby']==$this->session->userdata('accountName') && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
                 {
                   $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                   $this->load->view('Header');
                   $this->load->view('DetailDocRepository', $this->data, FALSE);
                   $this->load->view('Footer');
+    
+                }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
+                {
+                    $this->data['edit_data']= $this->Upload->edit_data($edit_id);
+                    $this->load->view('Header');
+                    $this->load->view('DetailDoc', $this->data, FALSE);
+                    $this->load->view('Footer');
 
-    
-                }else if($admin['Status']== 'admin' && $data['Status'] != 'ลบ')
+                }else if($data['Status'] == 'ลบ' && $data['Status'] == 'หมดอายุ')
                 {
-                    $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-                    $this->load->view('Header');
-                    $this->load->view('DetailDoc', $this->data, FALSE);
-                    $this->load->view('Footer');
-    
-                }else if($data['Privacy']== 'Public' && $data['Status'] != 'ลบ')
-                {
-                    $this->data['edit_data']= $this->Upload->edit_data($edit_id);
-                    $this->load->view('Header');
-                    $this->load->view('DetailDoc', $this->data, FALSE);
-                    $this->load->view('Footer');
-                }else if($data['Status'] == 'ลบ')
-                {
-                    $this->load->view('Header');
-                    $this->load->view('DownloadAlert');     
-                    $this->load->view('Footer');
+                    redirect('AlertController/downloadalert');
+
                 }else{
-                  $this->load->view('Header');
-                  $this->load->view('Useralert');
-                  $this->load->view('Footer');
+                    redirect('AlertController/useralert');
                 }
             }
+
 
     public function download($url)
     {
         $this->db->where('Url', $url);
         $query = $this->db->get('Upload');
         $dataload = $query->row_array();
-        if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'] && $dataload['Status'] == 'ใช้งาน')
-        {
-            $this->load->view('Header');
-            $this->load->view('Useralert');     
-            $this->load->view('Footer');
-        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
-        {
-            $this->load->view('Header');
-            $this->load->view('LoginAlert');     
-            $this->load->view('Footer');
 
-        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
+        if($dataload['Status'] == 'ลบ' || $dataload['Status'] == 'หมดอายุ')
         {
-            $this->load->view('Header');
-            $this->load->view('LoginAlert');     
-            $this->load->view('Footer');
+            redirect('AlertController/downloadalert');
 
-        }else if($dataload['Status'] == 'ลบ')
+        }if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'])
         {
-            $this->load->view('Header');
-            $this->load->view('DownloadAlert');     
-            $this->load->view('Footer');
+            redirect('AlertController/useralert');
+
+        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '')
+        {
+            redirect('AlertController/loginalert');
+
+        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '')
+        {
+            redirect('AlertController/loginalert');
+
         }else
         {
         $this->load->helper('download');
@@ -199,30 +206,25 @@ class DetailDocController extends CI_Controller {
         $this->db->where('Url', $url);
         $query = $this->db->get('UploadInRepository');
         $dataload = $query->row_array();
-        if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'] && $dataload['Status'] == 'ใช้งาน')
+        if($dataload['Status'] == 'ลบ' || $dataload['Status'] == 'หมดอายุ')
         {
-            $this->load->view('Header');
-            $this->load->view('Useralert');     
-            $this->load->view('Footer');
-        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
-        {
-            $this->load->view('Header');
-            $this->load->view('LoginAlert');     
-            $this->load->view('Footer');
+            redirect('AlertController/downloadalert');
 
-        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '' && $dataload['Status'] == 'ใช้งาน')
+        }if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'])
         {
-            $this->load->view('Header');
-            $this->load->view('LoginAlert');     
-            $this->load->view('Footer');
+            redirect('AlertController/useralert');
 
-        }else if($dataload['Status'] == 'ลบ')
+        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '')
         {
-            $this->load->view('Header');
-            $this->load->view('DownloadAlert');     
-            $this->load->view('Footer');
+            redirect('AlertController/loginalert');
+
+        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '')
+        {
+            redirect('AlertController/loginalert');
+
         }else
         {
+
         $this->load->helper('download');
         $this->db->where('Url', $url);
         $data = $this->db->get('UploadInRepository', 1);
