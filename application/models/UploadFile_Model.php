@@ -225,11 +225,6 @@ public function editdataupload($inputdata){
       'Detail' => $inputdata['detail'],
       'Privacy' => $inputdata['privacy']
 
-      // 'topic' => $inputdata['topic'],
-      // 'detail' => $inputdata['detail'],
-      // 'date' => $inputdata['date'],
-      // 'privacy' => $inputdata['privacy'],
-      // 'name' => $inputdata['name']
   );
      $this->db->insert('Repository', $data); 
   }

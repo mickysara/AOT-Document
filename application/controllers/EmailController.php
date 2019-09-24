@@ -172,7 +172,7 @@ class EmailController extends CI_Controller{
         $data = $this->db->get('UploadInRepository',1);
         $r = $data->row_array();
 
-        $params['data'] = base_url().'/DetailDocController/download/'.$r['Url'];
+        $params['data'] = base_url().'/DetailDocController/downloadrepo/'.$r['Url'];
         $params['level'] = 'H';
         $params['size'] = 50;
         $params['savename'] = FCPATH.'./assets/img/qrcode/'. $r['Qr_Codename'].'.png';
