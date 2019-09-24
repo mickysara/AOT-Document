@@ -6,13 +6,13 @@ class RepositoryController extends CI_Controller {
     {
         parent::__construct();
         //$this->load->helper('url');
-        $this->load->model('repository_model'); 
+        $this->load->model('Repository_Model'); 
     }  
 
     public function index()
     {
         $this->load->view('Header');
-        $this->data['repository_view']= $this->repository_model->repository_view(); //Upfile คือชื่อของโมเดล
+        $this->data['repository_view']= $this->Repository_Model->repository_view(); //Upfile คือชื่อของโมเดล
         $this->load->view('repository', $this->data, FALSE);
         $this->load->view('Footer');
         
@@ -37,28 +37,28 @@ class RepositoryController extends CI_Controller {
 
             if($this->session->userdata('accountName')==$mem['AccName'] && $this->session->userdata('_success') == 1)
             {
-                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
 
             }else if($this->session->userdata('accountName')== $data['Createby'])
             {
-                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
 
             }else if($admin['Status']== 'admin')
             {
-                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
 
             }else if($data['Privacy'] == 'Public')
             {
-                $this->data['repository_data']= $this->repository_model->repository_data($repository_id);
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
