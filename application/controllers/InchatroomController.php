@@ -57,7 +57,7 @@ class InchatroomController extends CI_Controller {
     public function sendchat($id_chat)
     {
         $message = $this->input->post('text');
-        $sentby  = "354268";//$this->session->userdata('employeeId');
+        $sentby  = $this->session->userdata('employeeId');
         date_default_timezone_set('Asia/Bangkok');
         $datetime = date("Y-m-d h:i:");
 
@@ -67,6 +67,35 @@ class InchatroomController extends CI_Controller {
             "Sentby"  =>  $sentby,
             "Datetime"  =>  $datetime
         );
+
+        $this->db->where('Code_Chatroom', $id_chat);
+        $qq1 = $this->db->get('Chatroom', 1);
+        $rr1 = $qq1->row_array();
+
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        $ip = explode(',',$ipaddress);
+        
+        $object = array(
+          'Id_Emp' =>  $this->session->userdata('employeeId'),
+          'Ip'     =>  $ip[0],
+          'Action' =>  'โพสข้อความ : ' . $message . ' , ในห้องแชท : ' . $rr1['Topic'] 
+        );
+        $this->db->insert('Logs', $object);
 
         $this->db->insert('Message', $data);
         
@@ -84,6 +113,43 @@ class InchatroomController extends CI_Controller {
             "datetime"   => $datetime
         );
 
+        $this->db->where('Id_Message', $id_message);
+        $qq = $this->db->get('Message', 1);
+        $rr = $qq->row_array();
+
+        $this->db->where('Code_Chatroom', $rr['Code_Chatroom']);
+        $qq1 = $this->db->get('Chatroom', 1);
+        $rr1 = $qq1->row_array();
+        
+        
+        
+        
+
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        $ip = explode(',',$ipaddress);
+        
+        $object = array(
+          'Id_Emp' =>  $this->session->userdata('employeeId'),
+          'Ip'     =>  $ip[0],
+          'Action' =>  'กดถูกใจโพสต์ : ' . $rr['Message'] . ' , ในห้องแชท : ' . $rr1['Topic'] 
+        );
+
+        $this->db->insert('Logs', $object);
         $this->db->insert('Like_Message', $data);
     }
 
@@ -95,6 +161,39 @@ class InchatroomController extends CI_Controller {
         $this->db->where('Likeby', $likeby);
         $this->db->delete('Like_Message');
         
+        $this->db->where('Id_Message', $id_message);
+        $qq = $this->db->get('Message', 1);
+        $rr = $qq->row_array();
+
+        $this->db->where('Code_Chatroom', $rr['Code_Chatroom']);
+        $qq1 = $this->db->get('Chatroom', 1);
+        $rr1 = $qq1->row_array();
+        
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        $ip = explode(',',$ipaddress);
+        
+        $object = array(
+          'Id_Emp' =>  $this->session->userdata('employeeId'),
+          'Ip'     =>  $ip[0],
+          'Action' =>  'เลิกถูกใจโพสต์ : ' . $rr['Message'] . ' , ในห้องแชท : ' . $rr1['Topic'] 
+        );
+
+        $this->db->insert('Logs', $object);
     }
 
 }
