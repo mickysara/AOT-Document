@@ -166,7 +166,7 @@
                             text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
                             icon: "success", 
                           });
-                          location.href = '<?=base_url('EmailController/sendrepo')?>'
+                          location.href = '<?=base_url('EmailController/insertlogrepo')?>'
                       }
                     });
                   }

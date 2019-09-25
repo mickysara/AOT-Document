@@ -171,7 +171,7 @@
                             text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
                             icon: "success", 
                           });
-                          location.href = '<?=base_url('EmailController/senddoc')?>'
+                          location.href = '<?=base_url('EmailController/insertlog')?>'
                       }
                     });
                   }

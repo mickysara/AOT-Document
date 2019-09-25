@@ -182,12 +182,13 @@
                             text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
                             icon: "success", 
                           });
-                          location.href = '<?=base_url('EmailController/send')?>'
+                           location.href = '<?=base_url('EmailController/insertlog')?>'
+
                       }
                     });
                   }
                   // });
-      
+      // redirect('EmailController/insertlog/');
                   // });
                   </script>
 
