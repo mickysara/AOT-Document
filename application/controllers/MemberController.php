@@ -73,7 +73,33 @@ class MemberController extends CI_Controller {
                                     'addBy' => $this->session->userdata('accountName'),
                                     'Notify'  =>  1
                                     );
-                                    $this->db->insert('Repository_Member', $insert);                                    
+                                    $this->db->insert('Repository_Member', $insert);       
+                                    
+                                    $ipaddress = '';
+                                    if (getenv('HTTP_CLIENT_IP'))
+                                        $ipaddress = getenv('HTTP_CLIENT_IP');
+                                    else if(getenv('HTTP_X_FORWARDED_FOR'))
+                                        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+                                    else if(getenv('HTTP_X_FORWARDED'))
+                                        $ipaddress = getenv('HTTP_X_FORWARDED');
+                                    else if(getenv('HTTP_FORWARDED_FOR'))
+                                        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+                                    else if(getenv('HTTP_FORWARDED'))
+                                        $ipaddress = getenv('HTTP_FORWARDED');
+                                    else if(getenv('REMOTE_ADDR'))
+                                        $ipaddress = getenv('REMOTE_ADDR');
+                                    else
+                                        $ipaddress = 'UNKNOWN';
+                                 
+                                    $ip = explode(',',$ipaddress);
+                                    
+                                    $object = array(
+                                      'Id_Emp' =>  $this->session->userdata('employeeId'),
+                                      'Ip'     =>  $ip[0],
+                                      'Action' =>  'ได้เชิญ : ' . $data['accountName'] . ' , เข้าร่วมทีม : ' . $repository_id . ' , ระดับในทีม : ' . $Level
+                                    );
+                                    $this->db->insert('Logs', $object);
+
                                     echo json_encode(['status' => 1, 'msg' => 'Success']);
                             }else{
                                 echo json_encode(['status' => 2, 'msg' => 'Fail']);
@@ -101,16 +127,77 @@ class MemberController extends CI_Controller {
          $this->db->where('Id_RepositoryMember', $id);
          $this->db->update('Repository_Member', $data);
 
-         redirect('repositorycontroller/showdata/'.$repository_id,'refresh');
+         $this->db->where('Id_RepositoryMember', $id);
+         $qq = $this->db->get('Repository_Member', 1);
+         $rr = $qq->row_array();
+         
+         
+
+         $ipaddress = '';
+         if (getenv('HTTP_CLIENT_IP'))
+             $ipaddress = getenv('HTTP_CLIENT_IP');
+         else if(getenv('HTTP_X_FORWARDED_FOR'))
+             $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+         else if(getenv('HTTP_X_FORWARDED'))
+             $ipaddress = getenv('HTTP_X_FORWARDED');
+         else if(getenv('HTTP_FORWARDED_FOR'))
+             $ipaddress = getenv('HTTP_FORWARDED_FOR');
+         else if(getenv('HTTP_FORWARDED'))
+             $ipaddress = getenv('HTTP_FORWARDED');
+         else if(getenv('REMOTE_ADDR'))
+             $ipaddress = getenv('REMOTE_ADDR');
+         else
+             $ipaddress = 'UNKNOWN';
+      
+         $ip = explode(',',$ipaddress);
+         
+         $object = array(
+           'Id_Emp' =>  $this->session->userdata('employeeId'),
+           'Ip'     =>  $ip[0],
+           'Action' =>  'เปลี่ยนระดับของ : ' . $rr['AccName'] . ' , ในทีม : ' . $repository_id . ' , เป็น : ' . $level
+         );
+         $this->db->insert('Logs', $object);
+
+         redirect('repositoryController/showdata/'.$repository_id,'refresh');
         
     }
     
     public function Deletemember($id,$repository_id)
     {
         $this->db->where('Id_RepositoryMember', $id);
-        $this->db->delete('Repository_Member');
+        $qq = $this->db->get('Repository_Member', 1);
+        $rr = $qq->row_array();
         
-        redirect('repositorycontroller/showdata/'.$repository_id,'refresh');
+        $this->db->where('Id_RepositoryMember', $id);
+        $this->db->delete('Repository_Member');
+
+
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        $ip = explode(',',$ipaddress);
+        
+        $object = array(
+          'Id_Emp' =>  $this->session->userdata('employeeId'),
+          'Ip'     =>  $ip[0],
+          'Action' =>  'ลบ : ' . $rr['AccName'] . ' , ออกจากทีม ID : ' . $repository_id 
+        );
+        $this->db->insert('Logs', $object);
+        
+        //redirect('repositoryController/showdata/'.$repository_id,'refresh');
         
     }
 }

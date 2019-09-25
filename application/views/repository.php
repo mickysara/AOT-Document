@@ -328,7 +328,7 @@
                                     
                                     <div class="modal-body">
                                     <p style="font-size: 15px;"> กรุณาเลือกระดับในการเกี่ยวข้อง : </p>
-                                    <form name="login" id="editmember_form" method="post" action="<?php echo site_url("Membercontroller/editmember/".$mem['Id_RepositoryMember']."/".$repo['Id_Repository'])?>">
+                                    <form name="login" id="editmember_form" method="post" action="<?php echo site_url("MemberController/editmember/".$mem['Id_RepositoryMember']."/".$repo['Id_Repository'])?>">
                                     <select name="Level" id="Level" style="width: 100%; font-size: 15px;" required>
                                       
                                       <option value="" disabled selected>กรุณาเลือกระดับ</option>
