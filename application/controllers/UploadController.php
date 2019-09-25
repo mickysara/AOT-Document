@@ -63,6 +63,7 @@ class UploadController extends CI_Controller {
                   // redirect('EmailController/send');
                   // echo('สวัสดี');
                   // print_r($_POST);
+                
                   
               
                 }
