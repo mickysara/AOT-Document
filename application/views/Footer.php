@@ -256,7 +256,10 @@ $(document).ready( function () {
     $('#member').DataTable();
 } );
 $(document).ready( function () {
-    $('#Filesearch').DataTable();
+    $('#Filesearch').DataTable({
+      "pageLength": 30
+    });
+    
 } );
 $(document).ready( function(){
     $('#imgqr').EZView();
