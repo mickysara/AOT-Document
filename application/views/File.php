@@ -615,6 +615,12 @@
               <span>ปรับเปลี่ยนสถานะแอดมิน</span>
             </a>
           </li>
+          <li>
+            <a href="<?php echo site_url('LogController');?>">
+              <i class="fa fa-file"></i>
+              <span>ดู Log</span>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- sidebar-menu  -->
