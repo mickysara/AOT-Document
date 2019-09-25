@@ -20,7 +20,36 @@ class ViewController extends CI_Controller {
     
      public function del($id)
      {      
-         
+         $this->db->select('*');
+        $this->db->where('Id_Upload', $id);
+        $result = $this->db->get('Upload');
+        $data = $result->row_array();
+
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+    
+        $ip = explode(',',$ipaddress);
+        
+        $object = array(
+          'Id_Emp' =>  $this->session->userdata('employeeId'),
+          'Ip'     =>  $ip[0],
+          'Action' =>  'ลบหัวข้อชื่อ : '.$data['Topic'] . ',ไฟล์ชื่อ : ' . $data['File']
+        );
+        $this->db->insert('Logs', $object);
+
       $status = $this->session->userdata('employeeId');
       $this->db->where('Id_Emp', $status);
       $query = $this->db->get('Users');
@@ -78,6 +107,35 @@ class ViewController extends CI_Controller {
 
     public function delfile($id)
     {
+      $this->db->select('*');
+      $this->db->where('Id_Upload', $id);
+      $result = $this->db->get('Upload');
+      $data = $result->row_array();
+
+      $ipaddress = '';
+      if (getenv('HTTP_CLIENT_IP'))
+          $ipaddress = getenv('HTTP_CLIENT_IP');
+      else if(getenv('HTTP_X_FORWARDED_FOR'))
+          $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+      else if(getenv('HTTP_X_FORWARDED'))
+          $ipaddress = getenv('HTTP_X_FORWARDED');
+      else if(getenv('HTTP_FORWARDED_FOR'))
+          $ipaddress = getenv('HTTP_FORWARDED_FOR');
+      else if(getenv('HTTP_FORWARDED'))
+          $ipaddress = getenv('HTTP_FORWARDED');
+      else if(getenv('REMOTE_ADDR'))
+          $ipaddress = getenv('REMOTE_ADDR');
+      else
+          $ipaddress = 'UNKNOWN';
+  
+      $ip = explode(',',$ipaddress);
+      
+      $object = array(
+        'Id_Emp' =>  $this->session->userdata('employeeId'),
+        'Ip'     =>  $ip[0],
+        'Action' =>  'ลบหัวข้อชื่อ : '.$data['Topic'] . ',ไฟล์ชื่อ : ' . $data['File']
+      );
+      $this->db->insert('Logs', $object);
       $deletefile = "ลบ";
       $data = array(
       'Status' => $deletefile
@@ -92,6 +150,36 @@ class ViewController extends CI_Controller {
 
     public function delfilerepository($id)
     {
+      $this->db->select('*');
+      $this->db->where('Id_UploadInRepository', $id);
+      $result = $this->db->get('UploadInRepository');
+      $data = $result->row_array();
+
+      $ipaddress = '';
+      if (getenv('HTTP_CLIENT_IP'))
+          $ipaddress = getenv('HTTP_CLIENT_IP');
+      else if(getenv('HTTP_X_FORWARDED_FOR'))
+          $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+      else if(getenv('HTTP_X_FORWARDED'))
+          $ipaddress = getenv('HTTP_X_FORWARDED');
+      else if(getenv('HTTP_FORWARDED_FOR'))
+          $ipaddress = getenv('HTTP_FORWARDED_FOR');
+      else if(getenv('HTTP_FORWARDED'))
+          $ipaddress = getenv('HTTP_FORWARDED');
+      else if(getenv('REMOTE_ADDR'))
+          $ipaddress = getenv('REMOTE_ADDR');
+      else
+          $ipaddress = 'UNKNOWN';
+  
+      $ip = explode(',',$ipaddress);
+      
+      $object = array(
+        'Id_Emp' =>  $this->session->userdata('employeeId'),
+        'Ip'     =>  $ip[0],
+        'Action' =>  'ลบหัวข้อชื่อ : '.$data['Topic'] . ',ไฟล์ชื่อ : ' . $data['File']
+      );
+      $this->db->insert('Logs', $object);
+
       $deletefile = "ลบ";
       $data = array(
       'status' => $deletefile

@@ -119,8 +119,6 @@ public function edit_datarepo($id){
   }
 public function delete_data($id){
   $this->db->query("DELETE FROM Upload WHERE Id_Upload = $id");
-  
-  
 }
 
 public function editdataupload($inputdata){
@@ -165,6 +163,33 @@ public function editdataupload($inputdata){
     );
       $this->db->where('Id_Upload', $this->input->post('Id_Upload'));
       $query=$this->db->update('Upload',$data);
+
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        $ip = explode(',',$ipaddress);
+        
+        $object = array(
+          'Id_Emp' =>  $this->session->userdata('employeeId'),
+          'Ip'     =>  $ip[0],
+          'Action' =>  'แก้ไขหัวข้อชื่อ : '.$inputdata['topic'] . ',ไฟล์ชื่อ : ' . $inputdata['imagefile']
+        );
+        $this->db->insert('Logs', $object);
+        
+
     }
   }
   }
@@ -211,6 +236,31 @@ public function editdataupload($inputdata){
       );
         $this->db->where('Id_UploadInRepository', $this->input->post('Id_UploadInRepository'));
         $query=$this->db->update('UploadInRepository',$data);
+
+        $ipaddress = '';
+        if (getenv('HTTP_CLIENT_IP'))
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ipaddress = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ipaddress = getenv('REMOTE_ADDR');
+        else
+            $ipaddress = 'UNKNOWN';
+     
+        $ip = explode(',',$ipaddress);
+        
+        $object = array(
+          'Id_Emp' =>  $this->session->userdata('employeeId'),
+          'Ip'     =>  $ip[0],
+          'Action' =>  'แก้ไขหัวข้อชื่อ : '.$inputdata['topic'] . ',ไฟล์ชื่อ : ' . $inputdata['imagefile']
+        );
+        $this->db->insert('Logs', $object);
       }
     }
     }

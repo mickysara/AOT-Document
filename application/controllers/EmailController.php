@@ -55,31 +55,6 @@ class EmailController extends CI_Controller{
         $result = $this->db->get('Upload',1);
         $data = $result->row_array();
 
-        $ipaddress = '';
-        if (getenv('HTTP_CLIENT_IP'))
-            $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
-            $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
-            $ipaddress = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
-            $ipaddress = getenv('REMOTE_ADDR');
-        else
-            $ipaddress = 'UNKNOWN';
-     
-        $ip = explode(',',$ipaddress);
-        
-        $object = array(
-          'Id_Emp' =>  $this->session->userdata('employeeId'),
-          'Ip'     =>  $ip[0],
-          'Action' =>  'สร้างหัวข้อชื่อ : '.$data['Topic'] . ',ไฟล์ชื่อ : ' . $data['File']
-        );
-        $this->db->insert('Logs', $object);
-        
         redirect('DetailDocController/edit/'.$data['Id_Upload'],'refresh');
 
     }
@@ -206,31 +181,6 @@ class EmailController extends CI_Controller{
         $result = $this->db->get('Upload',1);
         $data = $result->row_array();
 
-        $ipaddress = '';
-        if (getenv('HTTP_CLIENT_IP'))
-            $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
-            $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
-            $ipaddress = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
-            $ipaddress = getenv('REMOTE_ADDR');
-        else
-            $ipaddress = 'UNKNOWN';
-     
-        $ip = explode(',',$ipaddress);
-        
-        $object = array(
-          'Id_Emp' =>  $this->session->userdata('employeeId'),
-          'Ip'     =>  $ip[0],
-          'Action' =>  'สร้างหัวข้อชื่อ : '.$data['Topic'] . ',ไฟล์ชื่อ : ' . $data['File']
-        );
-        $this->db->insert('Logs', $object);
-
         
         redirect('DetailDocController/edit/'.$data['Id_Upload'],'refresh');
         // redirect('MyDocumentController');
@@ -286,6 +236,18 @@ class EmailController extends CI_Controller{
         $qq = $this->db->get('Repository', 1);
         $rr = $qq->row_array();
         
+        redirect('repositoryController/showdata/'.$data['Id_Repository'],'refresh');
+        // redirect('MyDocumentController');
+}
+
+
+        function insertlog()
+        {
+            $this->db->select('*');
+        $this->db->order_by('Id_Upload', 'desc');
+        $result = $this->db->get('Upload',1);
+        $data = $result->row_array();
+
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))
             $ipaddress = getenv('HTTP_CLIENT_IP');
@@ -307,11 +269,51 @@ class EmailController extends CI_Controller{
         $object = array(
           'Id_Emp' =>  $this->session->userdata('employeeId'),
           'Ip'     =>  $ip[0],
-          'Action' =>  'อัพโหลดไฟล์หัวข้อ : '.$data['Topic'] . ', ไฟล์ชื่อ : ' . $data['File'] . ', ในทีม : ' . $rr['Topic']
+          'Action' =>  'สร้างหัวข้อชื่อ : '.$data['Topic'] . ',ไฟล์ชื่อ : ' . $data['File']
         );
         $this->db->insert('Logs', $object);
-        
-        redirect('repositoryController/showdata/'.$data['Id_Repository'],'refresh');
-        // redirect('MyDocumentController');
-}
+        redirect('DetailDocController/edit/'.$data['Id_Upload'],'refresh');
+        }
+
+
+
+        function insertlogrepo()
+        {
+            $this->db->select('*');
+            $this->db->order_by('Id_UploadInRepository', 'desc');
+            $resultlog = $this->db->get('UploadInRepository',1);
+            $datalog = $resultlog->row_array();
+    
+            $this->db->where('Id_Repository', $datalog['Id_Repository']);
+            $qq = $this->db->get('Repository', 1);
+            $rr = $qq->row_array();
+            
+            $ipaddress = '';
+            if (getenv('HTTP_CLIENT_IP'))
+                $ipaddress = getenv('HTTP_CLIENT_IP');
+            else if(getenv('HTTP_X_FORWARDED_FOR'))
+                $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+            else if(getenv('HTTP_X_FORWARDED'))
+                $ipaddress = getenv('HTTP_X_FORWARDED');
+            else if(getenv('HTTP_FORWARDED_FOR'))
+                $ipaddress = getenv('HTTP_FORWARDED_FOR');
+            else if(getenv('HTTP_FORWARDED'))
+                $ipaddress = getenv('HTTP_FORWARDED');
+            else if(getenv('REMOTE_ADDR'))
+                $ipaddress = getenv('REMOTE_ADDR');
+            else
+                $ipaddress = 'UNKNOWN';
+         
+            $ip = explode(',',$ipaddress);
+            
+            $object = array(
+              'Id_Emp' =>  $this->session->userdata('employeeId'),
+              'Ip'     =>  $ip[0],
+              'Action' =>  'อัพโหลดไฟล์หัวข้อ : '.$datalog['Topic'] . ', ไฟล์ชื่อ : ' . $datalog['File'] . ', ในทีม : '
+            );
+            $this->db->insert('Logs', $object);
+            
+            redirect('repositoryController/showdata/'.$datalog['Id_Repository'],'refresh');
+            // redirect('MyDocumentController');
+        }
 }

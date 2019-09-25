@@ -40,8 +40,9 @@ class EditController extends CI_Controller {
             $this->load->view('Footer');
         }
     }
-    public function editdata(){
-          $this->Upload->editdataupload($this->input->post());
+    public function editdata(){        
+        $this->Upload->editdataupload($this->input->post());
+        
         redirect('ViewController','refresh');
     }
     public function editdatarepo(){
