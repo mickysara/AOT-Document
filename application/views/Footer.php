@@ -257,6 +257,11 @@ $(document).ready( function () {
 } );
 $(document).ready( function () {
     $('#Filesearch').DataTable({
+    });
+    
+} );
+$(document).ready( function () {
+    $('#Log').DataTable({
       "pageLength": 30
     });
     

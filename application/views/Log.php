@@ -26,7 +26,7 @@
                     <h2 class="" style="font-size: 30px;">Logs</h2>
                     <hr>
                     <div class="table-responsive">  
-                                        <table class="table align-items-center table-flush" id="Filesearch">
+                                        <table class="table align-items-center table-flush" id="Log">
                                             <thead class="thead-light">
                                             <tr>
                                                 <th scope="col"><h4>วันที่และเวลา</h4></th>
