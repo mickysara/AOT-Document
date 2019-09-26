@@ -39,7 +39,7 @@ class RepositoryController extends CI_Controller {
             {
                 redirect('AlertController/loginalert');
 
-            }else if($admin['Status']== 'superadmin')
+            }else if($admin['Status']== 'superadmin'|| $admin['Status']== 'admin')
             {              
                 $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');

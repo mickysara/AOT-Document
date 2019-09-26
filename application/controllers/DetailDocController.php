@@ -58,7 +58,7 @@ class DetailDocController extends CI_Controller {
                 redirect('AlertController/downloadalert','refresh');
 
 
-            }else if($this->session->userdata('_success') == 1 && $data['Privacy'] == 'Authen')
+            }else if($this->session->userdata('_success') == 1 && $data['Privacy'] == 'Authen' && $data['Status'] == 'ใช้งาน')
             {
                 $this->data['edit_data']= $this->Upload->edit_data($edit_id);
               $this->load->view('Header');
@@ -140,7 +140,7 @@ class DetailDocController extends CI_Controller {
                     $this->load->view('DetailDocRepository', $this->data, FALSE);
                     $this->load->view('Footer');
 
-                }else if($this->session->userdata('_success') == 1 && $datarepo['Privacy'] == 'Authen')
+                }else if($this->session->userdata('_success') == 1 && $datarepo['Privacy'] == 'Authen' && $data['Status'] == 'ใช้งาน')
                 {
                     $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                   $this->load->view('Header');
@@ -170,7 +170,10 @@ class DetailDocController extends CI_Controller {
         $query = $this->db->get('Upload');
         $dataload = $query->row_array();
 
-        
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('Id_Emp', $status);
+        $query3 = $this->db->get('Users');
+        $admin = $query3->row_array();
 
         if($dataload['Dateend'] <= $dataload['Date'] && $dataload['Dateend'] != '1970-01-01')
         {
@@ -186,7 +189,7 @@ class DetailDocController extends CI_Controller {
         {
             redirect('AlertController/downloadalert');
 
-        }else if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'])
+        }else if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'] && $admin['Status'] != 'superadmin')
         {
             redirect('AlertController/useralert');
 
