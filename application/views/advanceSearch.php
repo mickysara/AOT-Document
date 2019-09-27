@@ -73,7 +73,7 @@
             </div>
             <div class="col">
                 <h2>ชื่อผู้อัพโหลด</h2>
-                <input type="text" class="form-control form-control-alternative" id="uploadby" name="uploadby" placeholder="Example.Ex">
+                <input type="text" class="form-control form-control-alternative" id="uploadby" name="Uploadby" placeholder="Example.Ex">
             </div>
         </div>
     </div>

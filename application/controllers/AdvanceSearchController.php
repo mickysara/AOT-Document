@@ -36,6 +36,10 @@ class AdvanceSearchController extends CI_Controller {
 
         $this->db->like('File',  $name);
 
+        $this->db->where('Privacy !=','Private');
+        $this->db->where('Status !=', 'ลบ');
+        $this->db->where('Status !=', 'หมดอายุ');
+
         if($years1 != "" && $years2 != "" )
         {
             $min = "'".$years1."-01-01'";
@@ -43,25 +47,34 @@ class AdvanceSearchController extends CI_Controller {
     
 
             $this->db->where_between('Date', $min, $max); 
+
         }
         if($uploadby != "")
         {
             $this->db->like('Uploadby', $uploadby); 
         }
-        if($this->input->post("Public") == "on")
-        {
-            $this->db->like('Privacy', "Public");
-            
-        }
-        if($this->input->post("Authen") == "on")
-        {
-            $this->db->like('Privacy', "Authen");
-            
 
+        if($this->input->post("Public") == "on" && $this->input->post("Authen") == "on")
+        {
+
+        }else{
+            if($this->input->post("Public") == "on")
+            {
+                $this->db->where('Privacy', "Public");
+            }
+            if($this->input->post("Authen") == "on")
+            {
+                $this->db->where('Privacy', "Authen");
+            }
         }
 
-            
-        
+
+        if($this->input->post("MicrosoftWord") == "on" && $this->input->post("MicrosoftPowerPoint") == "on" && $this->input->post("MicrosoftExcel") == "on"
+            && $this->input->post("Access") == "on" && $this->input->post("Visio") == "on" && $this->input->post("Pdf") == "on" )
+        {
+            $Type = array('MicrosoftWord', 'MicrosoftPowerPoint', 'MicrosoftExcel', 'Access', 'Visio', 'PDF File');
+            $this->db->where_in('Type', $Type);
+        }else {
 
         if($this->input->post("MicrosoftWord") == "on")
         {
@@ -69,7 +82,8 @@ class AdvanceSearchController extends CI_Controller {
             
             $c = 1;
 
-        }if($this->input->post("MicrosoftPowerPoint") == "on")
+        }
+        if($this->input->post("MicrosoftPowerPoint") == "on")
         {
             if($c == 1)
             {
@@ -80,7 +94,7 @@ class AdvanceSearchController extends CI_Controller {
                 $this->db->like('Type', "MicrosoftPowerPoint");
                 $c ==1;
             }
-        }if($this->input->post("MicrosoftExcel") == "on")
+        }else if($this->input->post("MicrosoftExcel") == "on")
         {
             if($c == 1)
             {
@@ -91,7 +105,7 @@ class AdvanceSearchController extends CI_Controller {
                 $this->db->like('Type', "MicrosoftExcel");
                 $c ==1;
             }
-        }if($this->input->post("Access") == "on")
+        }else if($this->input->post("Access") == "on")
         {
             if($c == 1)
             {
@@ -102,7 +116,7 @@ class AdvanceSearchController extends CI_Controller {
                 $this->db->like('Type', "Access");
                 $c ==1;
             }
-        }if($this->input->post("Visio") == "on")
+        }else if($this->input->post("Visio") == "on")
         {
             if($c == 1)
             {
@@ -113,28 +127,24 @@ class AdvanceSearchController extends CI_Controller {
                 $this->db->like('Type', "Visio");
                 $c ==1;
             }
-        }
-        if($this->input->post("Pdf") == "on")
+        }else if($this->input->post("Pdf") == "on")
         {
             if($c == 1)
             {
-                $this->db->OR_like('Type', "Pdf");
+                $this->db->OR_like('Type', "PDF File");
 
             }else{
 
-                $this->db->like('Type', "Pdf");
-                $c ==1;
+                $this->db->like('Type', "PDF File");
             }
         }
-        $this->db->where('Privacy !=','Private');
-        $this->db->where('Privacy !=','Repository');
-        $this->db->where('Status !=', 'ลบ');
-        $this->db->where('Status !=', 'หมดอายุ');
+    }
+        
         
         $d = $this->db->get('Upload');
         $count = $d->num_rows();
         $d->result_array();
-
+        print_r($this->db->last_query()); 
         if($count == 0)
         {?>
 
