@@ -108,6 +108,13 @@ public function edit_datarepo($id){
   return $query->result_array();
 }
 
+public function edit_viewrepo(){
+  $query=$this->db->query("SELECT *
+                           FROM UploadInRepository upid
+                           WHERE upid.Id_UploadInRepository");
+  return $query->result_array();
+}
+
   public function searchFile($file_name)
   {
     $this->db->like('File', $file_name);
@@ -119,6 +126,9 @@ public function edit_datarepo($id){
   }
 public function delete_data($id){
   $this->db->query("DELETE FROM Upload WHERE Id_Upload = $id");
+}
+public function delete_datarepo($id){
+  $this->db->query("DELETE FROM UploadInRepository WHERE Id_UploadInRepository = $id");
 }
 
 public function editdataupload($inputdata){

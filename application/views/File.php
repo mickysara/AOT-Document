@@ -620,6 +620,11 @@
               <i class="fa fa-file"></i>
               <span>ดู Log</span>
             </a>
+            <li>
+            <a href="<?php echo site_url('ViewFileRepositoryController');?>">
+              <i class="fa fa-file"></i>
+              <span>ดูข้อมูลเอกสารในทีม</span>
+            </a>
           </li>
         </ul>
       </div>

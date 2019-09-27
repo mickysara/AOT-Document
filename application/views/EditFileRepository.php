@@ -69,8 +69,9 @@
 
                     <input type="hidden" name="Id_UploadInRepository" value= <?php echo $data['Id_UploadInRepository'];?>>
                   <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">บันทึกการแก้ไข</button>
+                  
 
-                <a href="<?php echo site_url("/ViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
+              
                 <?php } endif; ?>
             </form>
 

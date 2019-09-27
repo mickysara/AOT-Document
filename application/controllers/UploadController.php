@@ -91,10 +91,15 @@ class UploadController extends CI_Controller {
         public function Mydoc()
         {
 
-        $this->load->view('Header');
-        $this->load->view('Footer');
-        $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
-        $this->load->view('UploadMyDocument', $this->data, FALSE);       //เรียกใช้หน้าฟอร์ม
+          if($this->session->userdata('_success') == '')
+          {
+            redirect('AlertController/loginalert');
+          }else{
+            $this->load->view('Header');
+            $this->load->view('Footer');
+            $this->data['view_data']= $this->Upload->view_data(); //Upfile คือชื่อของโมเดล
+            $this->load->view('UploadMyDocument', $this->data, FALSE);       //เรียกใช้หน้าฟอร์ม
+          }
 
         }
     

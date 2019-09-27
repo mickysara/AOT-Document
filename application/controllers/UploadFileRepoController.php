@@ -23,10 +23,16 @@ class UploadFileRepoController extends CI_Controller {
 
     public function uploadfilerepo($repo_id)
     {
+
+      if($this->session->userdata('_success') == ''){    
+         redirect('AlertController/loginalert','refresh');
+         
+      }else{
         $this->data['repository_view']= $this->RePo->repository_view($repo_id);
         $this->load->view('Header');
         $this->load->view('UploadFileRepo', $this->data, FALSE);
         $this->load->view('Footer');
+      }
     }
 
     public function file_upload($repo_id){

@@ -51,11 +51,10 @@ class EditController extends CI_Controller {
           $this->db->select('*');
           $this->db->order_by('Id_UploadInRepository', 'desc');
           $result = $this->db->get('UploadInRepository',1);
-          $data = $result->row_array();
-  
-          
+          $data = $result->row_array(); 
           redirect('repositoryController/showdata/'.$data['Id_Repository'],'refresh');
     }
+
     
     public function editDoc(){
         $files = $_FILES;
