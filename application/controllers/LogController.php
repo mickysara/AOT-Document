@@ -43,6 +43,17 @@ class LogController extends CI_Controller {
         <?php } 
           }
            }
+           
+            public function del()
+            {                            
+              $d=strtotime("-90 Days");
+              $cc =  date("Y-m-d h:i:s", $d);              
+              $this->db->where('TimeStamp <', $cc);
+              $this->db->delete('Logs');   
+              
+              redirect('LogController','refresh');
+                   
+            }
 }
 
 /* End of file LogController.php */

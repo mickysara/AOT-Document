@@ -15,7 +15,7 @@
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" action="<?php echo site_url('UploadController/Checkname');?>" id="upload_form" enctype='multipart/form-data'>
-                <h1 class="display-2" style="color:#2d3436;">อัพโหลดไฟล์</h1>
+                <h1 class="display-2" style="color:#2d3436;">อัปโหลดไฟล์</h1>
                 <hr>
 
                 <div class="row">
