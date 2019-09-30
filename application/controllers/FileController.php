@@ -29,6 +29,10 @@ class FileController extends CI_Controller {
     }
     public function checkstatus()
     {
+        if($this->session->userdata('_success') == '')
+        {
+          redirect('AlertController/loginalert');
+        }else{
         $status = $this->session->userdata('employeeId');
         $this->db->where('Id_Emp', $status);
         $query = $this->db->get('Users');
@@ -48,6 +52,7 @@ class FileController extends CI_Controller {
                ?>
           
   <?php } 
+        }
     }
 }
 

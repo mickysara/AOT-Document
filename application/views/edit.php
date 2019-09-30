@@ -78,10 +78,10 @@
                             $showPri = "กรุณาเลือกระดับความเป็นส่วนตัวของไฟล์";
                           }?>
 
-                    <div class="form-group">
+                   <div class="form-group">
                     <div>ระดับความเป็นส่วนตัว</div>
-                    <select name="privacy" id="privacy">
-                      <option value="<?php echo $getpri?>" ><?php echo $showPri;?></option>
+                    <select name="privacy" id="privacy" required>
+                      <option value="" disabled selected >กรุณาเลือกระดับความเป็นส่วนตัว</option>
                       <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
