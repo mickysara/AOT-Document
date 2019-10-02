@@ -301,7 +301,7 @@
                     <td>
                       <div class="ml-4">
                         <span class="badge badge-dot mr-4">
-                          <i class="bg-success"></i> <?php echo  $mem['Date'];?>
+                          <i class="bg-success"></i> <?php echo  date('d/m/Y h:i:s', strtotime($mem['Date']));?>
                         </span>
                       </div>
  
