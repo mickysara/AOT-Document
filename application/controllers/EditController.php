@@ -10,16 +10,12 @@ class EditController extends CI_Controller {
         //$this->load->helper('url');
         $this->load->model('UploadFile_Model','Upload'); 
     }
-    public function index()
-    {
-        $this->load->view('Header');
-        $this->load->view('Footer');
-        $this->load->view('edit');  
-    }
     public function edit($edit_id)
     {
         if($this->session->userdata('_success') == '')
         {
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
         }else{
             $this->data['edit_data']= $this->Upload->edit_data($edit_id);
@@ -32,6 +28,8 @@ class EditController extends CI_Controller {
     {
         if($this->session->userdata('_success') == '')
         {
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
         }else{
             $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);

@@ -31,7 +31,9 @@ class DetailDocController extends CI_Controller {
 
             if($data['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
             {
-            redirect('AlertController/loginalert');
+                $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+                $this->session->set_userdata('login_referrer', $referrer_value);
+                redirect('AlertController/loginalert');
 
             }else if($admin['Status']== 'superadmin')
             {
@@ -107,6 +109,8 @@ class DetailDocController extends CI_Controller {
     
                 if($datarepo['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
                 {
+                    $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+                    $this->session->set_userdata('login_referrer', $referrer_value);
                     redirect('AlertController/loginalert');
                                 
                 }else if($admin['Status']== 'superadmin')
@@ -195,10 +199,14 @@ class DetailDocController extends CI_Controller {
 
         }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '')
         {
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
 
         }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '')
         {
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
 
         }else
@@ -264,6 +272,8 @@ class DetailDocController extends CI_Controller {
 
         if($datarepo['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
         {
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
                     
         }else if($dataload['Dateend'] <= $dataload['Date'] && $dataload['Dateend'] != '1970-01-01')

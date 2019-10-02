@@ -10,12 +10,6 @@ class EditDocumentController extends CI_Controller {
         //$this->load->helper('url');
         $this->load->model('UploadFile_Model','Upload'); 
     }
-    public function index()
-    {
-        $this->load->view('Header');
-        $this->load->view('Footer');
-        $this->load->view('edit');  
-    }
     // public function edit($edit_id)
     // {
     //     $this->data['edit_data']= $this->Upload->edit_data($edit_id);

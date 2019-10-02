@@ -18,6 +18,8 @@ class AdminChatroomController extends CI_Controller {
        
         if($this->session->userdata('_success') == '')
         {
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
 
         }else if( $data['Createby'] != $this->session->userdata('accountName'))
@@ -72,7 +74,7 @@ class AdminChatroomController extends CI_Controller {
                                 <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
                                         $q  = $this->db->get('Like_Message', 1);
-                                        if($re['Status'] == 'หมดอายุ')
+                                        if($re['Status'] == 'หมดอายุ' && $this->session->userdata("_success") == "")
                                         { ?>
                                         <button  class="btn btn-outline-primary"  href="#" style="background-color: #2181c2; color: #fff;" disabled>
                                                 <span class="Count-like"><?php echo $data['number_of_like']?></span>

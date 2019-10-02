@@ -85,10 +85,19 @@ class LoginController extends CI_Controller {
 
           }
           
-           echo json_encode(['status' => 1, 'msg' => 'Success']);
-           
 
+           
            $this->session->set_userdata($data);
+
+           if($this->session->userdata('login_referrer')!=""){
+            $tmp_referrer = $this->session->userdata('login_referrer');
+            $this->session->unset_userdata('login_referrer');
+
+            echo json_encode(['status' => 2, 'msg' => 'Success', 'data' => $tmp_referrer]);
+            }else
+            {
+              echo json_encode(['status' => 1, 'msg' => 'Success']);
+            }
 
            $ipaddress = '';
            if (getenv('HTTP_CLIENT_IP'))

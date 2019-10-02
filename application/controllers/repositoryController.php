@@ -37,6 +37,8 @@ class RepositoryController extends CI_Controller {
 
             if($this->session->userdata('_success') == '' && $data['Privacy'] == 'Authen')
             {
+                $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+                $this->session->set_userdata('login_referrer', $referrer_value);
                 redirect('AlertController/loginalert');
 
             }else if($admin['Status']== 'superadmin'|| $admin['Status']== 'admin')

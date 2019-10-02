@@ -7,6 +7,8 @@ class LogController extends CI_Controller {
     {
         if($this->session->userdata('_success') == '')
         {
+          $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+          $this->session->set_userdata('login_referrer', $referrer_value);
           redirect('AlertController/loginalert');
         }else{
             redirect('LogController/checkstatus');
@@ -17,6 +19,8 @@ class LogController extends CI_Controller {
         {
           if($this->session->userdata('_success') == '')
           {
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
           }else{
              $status = $this->session->userdata('employeeId');
@@ -27,6 +31,8 @@ class LogController extends CI_Controller {
               <?php 
               if($this->session->userdata('_success') == '')
               {
+                $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+                $this->session->set_userdata('login_referrer', $referrer_value);
                 redirect('AlertController/loginalert');
 
               }else if($data['Status']=='admin' || $data['Status']=='superadmin')
