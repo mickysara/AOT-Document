@@ -23,8 +23,8 @@ class LoginController extends CI_Controller {
     }
     public function Login()
     {
-      $username =  $this->input->post("username");
-      $password =  $this->input->post("password");
+      $username =  "484074";//$this->input->post("username");
+      $password =  "Aot02276$";//$this->input->post("password");
 
       $curl = curl_init();
 
@@ -87,8 +87,13 @@ class LoginController extends CI_Controller {
           
            echo json_encode(['status' => 1, 'msg' => 'Success']);
            
-
            $this->session->set_userdata($data);
+
+           if($this->session->userdata('login_referrer')!=""){
+            $tmp_referrer = $this->session->userdata('login_referrer');
+            $this->session->unset_userdata('login_referrer');
+            redirect($tmp_referrer);
+            }
 
            $ipaddress = '';
            if (getenv('HTTP_CLIENT_IP'))

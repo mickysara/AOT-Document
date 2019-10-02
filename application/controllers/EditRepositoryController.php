@@ -10,12 +10,6 @@ class EditRepositoryController extends CI_Controller {
         //$this->load->helper('url');
         $this->load->model('Repository_Model','repository'); 
     }
-    public function index()
-    {
-        $this->load->view('Header');
-        $this->load->view('Footer');
-        $this->load->view('EditRepository');  
-    }
 
     public function edit($edit_id)
     {
@@ -27,6 +21,8 @@ class EditRepositoryController extends CI_Controller {
               <?php 
               if($this->session->userdata('_success') == '')
               {
+                $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+                $this->session->set_userdata('login_referrer', $referrer_value);
                 redirect('AlertController/loginalert');
 
               }else if($data['Status']!='superadmin'){

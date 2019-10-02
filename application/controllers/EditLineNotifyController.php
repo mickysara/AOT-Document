@@ -20,9 +20,9 @@ class EditLineNotifyController extends CI_Controller {
     {
         if($this->session->userdata('_success') == '')
         {
-         $this->load->view('Header');
-         $this->load->view('Loginalert');     
-         $this->load->view('Footer');
+            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            $this->session->set_userdata('login_referrer', $referrer_value);
+            redirect('AlertController/loginalert');
         }else{
             $this->data['edit_data']= $this->Linenotify->edit_data($edit_id);
             $this->load->view('Header');
