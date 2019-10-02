@@ -26,7 +26,7 @@
                     <h2 class="" style="font-size: 30px;">Logs</h2>
                     <hr>
                     <div class="table-responsive">  
-                    <a href="<?php echo site_url(); ?>LogController/del/" onclick="return confirm('คุณต้องการลบ Log ใช่หรือไม่ ?')" class="btn btn-success mb-3" style="text-align: right;">ลบข้อมูล Log</a>
+                    <a href="<?php echo site_url(); ?>LogController/del/" onclick="return confirm('คุณต้องการลบ Log ใช่หรือไม่ ?')" class="btn btn-danger mb-3" style="text-align: right;">ลบข้อมูล Log</a>
                                         <table class="table align-items-center table-flush" id="Log">
                                             <thead class="thead-light">
                                             <tr>
@@ -60,4 +60,5 @@
                                         </table>
                                         </div>
     </div>
+
 </div>

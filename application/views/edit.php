@@ -51,12 +51,16 @@
                 
                     <div class="form-group">
                     <div>ใช้วันที่</div>
-                    <input type="text" class="form-control form-control-alternative" id="date" value="<?php echo $data['Date'];?>" name="date" value="<?php echo"".date("d/m/Y") ?>" required readonly>
+                    <input type="text" class="form-control form-control-alternative" id="date" value="<?php echo $data['Date'];?>" name="date" required readonly>
                     </div>
-
+                    <?php if(date('d/m/Y', strtotime($data['Dateend'])) ==  '01/01/1970'){
+                      $dateshow = '';
+                      }else{
+                        $dateshow = date('d/m/Y', strtotime($data['Dateend']));
+                      }?>
                     <div class="form-group">
                     <div>ถึงวันที่</div>
-                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" type="text" value="<?php echo"".date("d/m/Y") ?>"  required>
+                    <input class="form-control datepicker" id="date_end" name="date_end" placeholder="Select date" type="text" value="<?php echo $dateshow; ?>"  autocomplete="off">
                     </div>
 
                     <div class="form-group">
