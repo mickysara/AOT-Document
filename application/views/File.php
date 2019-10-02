@@ -735,6 +735,28 @@
                     <div class="card-body">
 
                         <?php
+                        $allshow = $this->db->get('Upload');
+                        if($allshow->num_rows() == 0){ ?>
+                           
+                          <h4 class="small font-weight-bold">PDF File <span class="float-right"></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
+                          <div class="progress mb-4" style="height: 10px">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width:" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <h4 class="small font-weight-bold">Microsolfpowerpoint <span class="float-right"></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt=""></h4>
+                          <div class="progress mb-4"style="height: 10px">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: " aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <h4 class="small font-weight-bold">Microsolfexcel <span class="float-right"></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt=""></h4>
+                          <div class="progress mb-4"style="height: 10px">
+                            <div class="progress-bar bg-success" role="progressbar" style="width:" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <h4 class="small font-weight-bold">Microsolfword <span class="float-right"></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt=""></h4>
+                          <div class="progress mb-4"style="height: 10px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: " aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+
+                       <?php }else{
+                    
                             // pdf file
                             $this->db->where('Type', 'PDF File');
                             $pdf = $this->db->get('Upload');
@@ -763,12 +785,11 @@
                             $wordcal = $wordshow * 100;
                             $wordcal2 = $wordcal / $d->num_rows();
                             $wordcal3 = $wordcal2.'%';
-
                             //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
                             // $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
                             // $calanotherfile = $d->num_rows() - $anotherfile;
                         ?>
-            <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
+                        <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
               <div class="progress mb-4" style="height: 10px">
                 <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -784,10 +805,29 @@
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
+                            
+                          <?php } ?>
+                          
+            <!-- <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
+              <div class="progress mb-4" style="height: 10px">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <h4 class="small font-weight-bold">Microsolfpowerpoint <?php echo $pointshow?> <span class="float-right"><?php echo number_format($pointcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt=""></h4>
+              <div class="progress mb-4"style="height: 10px">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $pointcal3?>" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <h4 class="small font-weight-bold">Microsolfexcel <?php echo $excelshow?><span class="float-right"><?php echo number_format($excelcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt=""></h4>
+              <div class="progress mb-4"style="height: 10px">
+                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $excelcal3?>" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt=""></h4>
+              <div class="progress mb-4"style="height: 10px">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div> -->
                     </div>
                 </div>
                 </div>
-                 <!-- hi            -->
+                 
                 </div>
             </div>
         </div>

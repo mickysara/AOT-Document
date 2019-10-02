@@ -110,7 +110,6 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <a class="dropdown-item" href="<?php echo site_url('MyDocumentController');?>">My Document</a>
-                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">ระบบหลังบ้าน</a>
                             <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
                             <?php 
                             if($this->session->userdata('Status') == "admin" || $this->session->userdata('Status') == "superadmin" )
