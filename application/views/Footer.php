@@ -154,6 +154,16 @@ $(document).on('submit', '#chatroom_form', function () {
                       setTimeout(function () {location.href = '<?=base_url('MyDocumentController')?>'}, 3000);
                       //document.getElementById("demo").innerHTML = d[0].msg;
                       //alert("asd")
+                  }else if(d.status == 2)
+                  {
+                    swal({
+                          icon: "success",
+                          text: "เข้าสู่ระบบสำเร็จ ยินดีต้อนรับ",
+                          
+                          
+                          
+                      })
+                      setTimeout(function () {location.href = d.data}, 2000);
                   }
                   else
                   {

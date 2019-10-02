@@ -74,7 +74,7 @@ class AdminChatroomController extends CI_Controller {
                                 <?php   $this->db->where('likeby', $this->session->userdata('employeeId'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
                                         $q  = $this->db->get('Like_Message', 1);
-                                        if($re['Status'] == 'หมดอายุ')
+                                        if($re['Status'] == 'หมดอายุ' && $this->session->userdata("_success") == "")
                                         { ?>
                                         <button  class="btn btn-outline-primary"  href="#" style="background-color: #2181c2; color: #fff;" disabled>
                                                 <span class="Count-like"><?php echo $data['number_of_like']?></span>

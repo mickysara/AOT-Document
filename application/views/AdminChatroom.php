@@ -16,7 +16,7 @@
     <div class="card-body" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                
+            <img id="imgqr" style="width:250px; height:250px; margin-left: auto; margin-right: auto;   display: block;"  src="<?php echo base_url('/assets/img/qrcode/chatroom/'.$chat_data['Code_Chatroom'].".png");?>"/>
                 <div class="Container-Message" id="Message_Chatroom" style="height: 500px;  overflow-y: auto;" >
                 
 
