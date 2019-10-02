@@ -74,6 +74,14 @@ class EditRepositoryController extends CI_Controller {
           
   <?php } 
      }
+
+     public function delrepo($id){
+
+              $this->data['delete_repo']= $this->repository->delete_repo($id);
+              $this->data['delete_chatrepo']= $this->repository->delete_chatrepo($id);
+              redirect('MyDocumentController','refresh');
+            }
+
 }
 
 /* End of file IndexController.php */

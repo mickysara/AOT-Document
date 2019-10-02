@@ -147,7 +147,9 @@ class MyDocumentController extends CI_Controller {
                                                 <th scope="col"><h4>ชื่อทีม</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เพิ่มเติม</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ดู</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> แก้ไข </h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ลบ</h4></th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -180,6 +182,16 @@ class MyDocumentController extends CI_Controller {
                                                 <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
                                                 </span>
                                                 </td>  
+                                                <td>
+                                                <span class="badge badge-dot mr-4">
+                                                <a href="<?php echo site_url(); ?>EditRepositoryController/edit/<?php echo  $data['Id_Repository'];?>"  class="btn btn-primary mb-3" >Edit</a>              
+                                                </span>
+                                                </td>
+                                                <td>
+                                                <span class="badge badge-dot mr-4">
+                                                <a href="<?php echo site_url(); ?>EditRepositoryController/delrepo/<?php echo  $data['Id_Repository'];?>" onclick="return confirm('คุณต้องการลบทีมนี้ใช่หรือไม่ ?')"  class="btn btn-danger mb-3">Delete</a>              
+                                                </span>
+                                                </td>
                                             </tr>
                                             <?php } ?> 
                                             </tbody>
@@ -230,10 +242,18 @@ class MyDocumentController extends CI_Controller {
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ระดับใน Repository </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> เพิ่มโดย </h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เพิ่มเติม</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>
+                                                <!-- <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th> -->
                                             </tr>
                                             </thead>
                                             <tbody>
+
+
+
+
+                                            
+
                                             <?php                 
                                                 foreach($query->result_array() as $data)
                                                 {?>
@@ -264,12 +284,49 @@ class MyDocumentController extends CI_Controller {
                                                 <td>
                                                  <?php echo $data['AddBy'];?>
                                                 </td>
-                                                <td>
-                                                <span class="badge badge-dot mr-4">
-                                                <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
-                                
-                                                </span>
-                                                </td>  
+                                                             
+                                        <td>
+                                        <span class="badge badge-dot mr-4">
+                                        <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
+                                        </span>
+                                        </td>  
+                                        
+
+
+
+
+                                        <?php if($data['Level'] == 'Viewer' || $data['Level'] == 'Editor')
+                                        {?>
+                                        <td>
+                                        <span class="badge badge-dot mr-4">        
+                                        </span>
+                                        </td>
+                                       
+                                        <?php }else if($data['Level'] == 'Manager'){ ?>
+
+                                        <td>
+                                        <span class="badge badge-dot mr-4">
+                                        <a href="<?php echo site_url(); ?>EditRepositoryController/edit/<?php echo  $data['Id_Repository'];?>"  class="btn btn-primary mb-3" >Edit</a>              
+                                        </span>
+                                        </td>
+                                        <!-- <td>
+                                        <span class="badge badge-dot mr-4">
+                                        <a href="<?php echo site_url(); ?>EditRepositoryController/delrepo/<?php echo  $data['Id_Repository'];?>"  class="btn btn-danger mb-3" >Delete</a>              
+                                        </span>
+                                        </td> -->
+
+                                        <?php }else{ ?> 
+
+
+                                            <?php } ?> 
+
+
+
+
+
+
+
+
                                             </tr>
                                             <?php } ?> 
                                             </tbody>

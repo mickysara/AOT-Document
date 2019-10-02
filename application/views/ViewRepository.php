@@ -54,13 +54,13 @@
                                                 </td>  
                                                 <td class="">
                                                 <div>
-                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/edit/<?php echo  $data['Id_Repository'];?>"  class="btn btn-success mb-3" >Edit</a>                
+                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/edit/<?php echo  $data['Id_Repository'];?>"  class="btn btn-primary mb-3" >Edit</a>                
                                                     </div>
                                                 
                                                 </td>
                                                 <td>
                                                     <span class="badge badge-dot mr-4">
-                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/del/<?php echo  $data['Id_Repository'];?>" onclick="return confirm('คุณต้องการลบทีมนี้ใช่หรือไม่ ?')"  class="btn btn-danger mb-3" style="color: #fff;">Deleate</a>              
+                                                    <a href="<?php echo site_url(); ?>EditRepositoryController/del/<?php echo  $data['Id_Repository'];?>" onclick="return confirm('คุณต้องการลบทีมนี้ใช่หรือไม่ ?')"  class="btn btn-danger mb-3" style="color: #fff;">Delete</a>              
                                                     </span>
                                                 </td>   
                                             </tr>
