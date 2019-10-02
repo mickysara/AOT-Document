@@ -68,6 +68,9 @@ class LoginController extends CI_Controller {
           {
             $dbinsert = array(
               'Id_Emp'  =>  $data['employeeId'],
+              'Fname'  =>  $data['firstName'],
+              'Lname'  =>  $data['lastName'],
+              'AccName'  =>  $data['accountName'],
               'Status'      =>  'user'
             );
 
