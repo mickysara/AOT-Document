@@ -25,11 +25,7 @@ class InchatroomController extends CI_Controller {
         $query = $this->db->get('Chatroom');
         $data = $query->row_array();
 
-        if($this->session->userdata('_success') == '')
-        {
-          redirect('AlertController/loginalert');
-
-        }else if($data['Dateend'] <= $data['Date'])
+       if($data['Dateend'] <= $data['Date'])
         {
             $changestatus = "หมดอายุ";
             $data = array(
@@ -57,7 +53,13 @@ class InchatroomController extends CI_Controller {
     public function sendchat($id_chat)
     {
         $message = $this->input->post('text');
-        $sentby  = $this->session->userdata('employeeId');
+        if($this->session->userdata('_success') == ''){
+            $sentby  = '0';
+
+        }else{
+            $sentby  = $this->session->userdata('employeeId');
+        }
+    
         date_default_timezone_set('Asia/Bangkok');
         $datetime = date("Y-m-d h:i:");
 
