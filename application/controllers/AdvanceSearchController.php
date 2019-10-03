@@ -146,7 +146,6 @@ class AdvanceSearchController extends CI_Controller {
         $d = $this->db->get('Upload');
         $count = $d->num_rows();
         $d->result_array();
-        print_r($this->db->last_query()); 
         if($count == 0)
         {?>
 
