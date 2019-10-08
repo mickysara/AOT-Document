@@ -57,7 +57,7 @@
                 $idRepo = ($arraystate2[5]);?>
                 <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงในทีมนี้</a>
                 <?php 
-                  if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                  if($resultstatus['Level'] == "Creater")
                   { 
                     $this->db->where('Id_Repository', $repo['Id_Repository']);
                     $qq = $this->db->get('Chatroom', 1);
