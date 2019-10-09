@@ -61,7 +61,7 @@
         </div>
         <div class="row">
             <div class="col">
-            <h2>ประเภทไฟล์</h2>
+            <h2>ระดับการเข้าถึง</h2>
                 <div class="custom-control custom-checkbox mb-3">
                     <input class="custom-control-input" id="Public" name="Public" type="checkbox">
                     <label class="custom-control-label" for="Public">Public</label>

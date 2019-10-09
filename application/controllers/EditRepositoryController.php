@@ -27,6 +27,7 @@ class EditRepositoryController extends CI_Controller {
 
         foreach($query->result_array() as $data)
       { ?>
+      
               <?php 
 
 
