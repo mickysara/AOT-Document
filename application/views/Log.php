@@ -31,7 +31,7 @@
                                             <thead class="thead-light">
                                             <tr>
                                                 <th scope="col"><h4>วันที่และเวลา</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">รหัสพนักงาน</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ชื่อพนักงาน</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">IP</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> Action </h4></th>
                                             </tr>
@@ -40,12 +40,17 @@
                                             <?php                 
                                                 foreach($result->result_array() as $data)
                                                 {?>
+
+                                                <?php
+                                                $this->db->where('Id_Emp', $data['Id_Emp']);
+                                                $query3 = $this->db->get('Users');
+                                                $admin = $query3->row_array();?>
                                             <tr>
                                                 <th scope="row">
                                                     <?php echo date('d/m/Y H:i:s ', strtotime($data['TimeStamp'])); ?>
                                                 </th>
                                                 <td>
-                                                    <?php echo $data['Id_Emp'];?>
+                                                    <?php echo $admin['AccName'];?>
                                                 </td>
                                                 <td>
                                                     <?php echo $data['Ip'];?>

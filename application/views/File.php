@@ -584,7 +584,7 @@
           <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
-              <span>เพิ่ม Repository</span>
+              <span>เพิ่ม Event</span>
             </a>
           
           </li>
@@ -623,7 +623,7 @@
             <li>
             <a href="<?php echo site_url('ViewFileRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>ดูข้อมูลเอกสารในทีม</span>
+              <span>ดูข้อมูลเอกสารใน Event</span>
             </a>
           </li>
         </ul>
