@@ -42,10 +42,17 @@ class InchatroomController extends CI_Controller {
         
           
         }else{
-            $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
-            $this->load->view('Header');
-            $this->load->view('Inchatroom', $this->data, FALSE);
-            $this->load->view('Footer');
+                if($this->session->userdata("RanDomsess") == "")
+                {
+                    $random = random_string('alpha',10);
+
+                    $this->session->set_userdata("RanDomsess", $random);
+                }else{
+                    $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
+                    $this->load->view('Header');
+                    $this->load->view('Inchatroom', $this->data, FALSE);
+                    $this->load->view('Footer');
+                }
         }
 
     }
@@ -53,21 +60,15 @@ class InchatroomController extends CI_Controller {
     public function sendchat($id_chat)
     {
         $message = $this->input->post('text');
-        if($this->session->userdata('_success') == ''){
-            $sentby  = '0';
-
-        }else{
-            $sentby  = $this->session->userdata('employeeId');
-        }
+        $sentby = $this->session->userdata("RanDomsess");
     
         date_default_timezone_set('Asia/Bangkok');
-        $datetime = date("Y-m-d h:i:");
+
 
         $data = array(
             "Code_Chatroom"  =>  $id_chat,
             "Message"  =>  $message,
-            "Sentby"  =>  $sentby,
-            "Datetime"  =>  $datetime
+            "Sentby"  =>  $sentby
         );
 
         $this->db->where('Code_Chatroom', $id_chat);
@@ -105,14 +106,13 @@ class InchatroomController extends CI_Controller {
 
     public function LikeMessage($id_message)
     {
-        $likeby = $this->session->userdata('employeeId');
+        $likeby = $this->session->userdata('RanDomsess');
         date_default_timezone_set('Asia/Bangkok');
-        $datetime = date("Y-m-d h:i:");
+
 
         $data = array(
             "id_message" => $id_message,
-            "likeby"     => $likeby,
-            "datetime"   => $datetime
+            "likeby"     => $likeby
         );
 
         $this->db->where('Id_Message', $id_message);
@@ -158,7 +158,7 @@ class InchatroomController extends CI_Controller {
 
     public function DisLikeMessage($id_message)
     {
-        $likeby = $this->session->userdata('employeeId');
+        $likeby = $this->session->userdata('RanDomsess');
         $this->db->where('Id_Message', $id_message);
         $this->db->where('Likeby', $likeby);
         $this->db->delete('Like_Message');
