@@ -404,32 +404,6 @@ function IncreaseChatByAsc(){ // โหลดตัวเลขทั้งห�
             function (data)
             {
                 $("#Message_Chatroom").html(data)
-
-                $("#like").click(function(event) {
-                  var id = jQuery(this).attr("value");
-                  $.post("<?=base_url('InchatroomController/LikeMessage/')?>"+id,
-                    function (data) {
-                      var val = "hello";
-                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
-                      function (data) {
-                        IncreaseChatByAsc();
-                    });
-                    }
-                  );
-              });
-
-              $("#dislike").click(function(event) {
-                  var id = jQuery(this).attr("value");
-                  $.post("<?=base_url('InchatroomController/DisLikeMessage/')?>"+id,
-                    function (data) {
-                      var val = "hello";
-                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
-                      function (data) {
-                        IncreaseChatByAsc();
-                    });
-                    }
-                  );
-              });
                           
             }
           );
@@ -530,6 +504,35 @@ $(document).ready(function(e) {
               }
           );
         }
+</script>
+<script>
+     function Like(id)
+      {
+                  console.log(id);
+                  $.post("<?=base_url('InchatroomController/LikeMessage/')?>"+id,
+                    function (data) {
+                      var val = "hello";
+                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
+                      function (data) {
+                        IncreaseChatByAsc();
+                    });
+                    }
+                  );
+      }
+      function DisLike(id)
+      {
+                  console.log(id);
+                  $.post("<?=base_url('InchatroomController/DisLikeMessage/')?>"+id,
+                    function (data) {
+                      var val = "hello";
+                      $.post("<?=base_url('Test/sendmessage/')?>"+val,
+                      function (data) {
+                        IncreaseChatByAsc();
+                    });
+                    }
+                  );
+      }
+
 </script>
 
 
