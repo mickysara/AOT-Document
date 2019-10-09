@@ -634,7 +634,7 @@
                 <i class="fas fa-bars"></i>
              </a>
         <ul>
-          <li class="header-menu">
+        <li class="header-menu">
             <span style="font-size: 20px;">ระบบคลังเอกสาร</span>
           </li>
           <li class="sidebar" style= "margin-top: 20px;">
@@ -646,7 +646,7 @@
           <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
-              <span>เพิ่ม Repository</span>
+              <span>สร้าง Event</span>
             </a>
           
           </li>
@@ -656,37 +656,36 @@
           <li style= "margin-top: 20px;">
             <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
-              <span>ดูข้อมูลเอกสารทั้งหมด</span>
+              <span>ข้อมูลเอกสารทั้งหมด</span>
             </a>
           </li>
           <li>
             <a href="<?php echo site_url('ViewRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>ข้อมูลทีม</span>
+              <span>ข้อมูล Event</span>
             </a>
           </li>
           <li>
             <a href="<?php echo site_url('ViewLineNotifyController');?>">
               <i class="fa fa-bullhorn"></i>
-              <span>ดูข้อมูลการแจ้งปัญหา</span>
+              <span>ข้อมูลการแจ้งปัญหา</span>
             </a>
           </li>
           <li>
             <a href="<?php echo site_url('ViewStatusController');?>">
               <i class="fa fa-file"></i>
-              <span>ปรับเปลี่ยนสถานะแอดมิน</span>
+              <span>ข้อมูลผู้ดูแลระบบ</span>
             </a>
           </li>
           <li>
             <a href="<?php echo site_url('LogController');?>">
               <i class="fa fa-file"></i>
-              <span>ดู Log</span>
+              <span>ข้อมูล Log</span>
             </a>
-          </li>
-          <li>
+            <li>
             <a href="<?php echo site_url('ViewFileRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>ดูข้อมูลเอกสารในทีม</span>
+              <span>ข้อมูลเอกสารใน Event</span>
             </a>
           </li>
         </ul>

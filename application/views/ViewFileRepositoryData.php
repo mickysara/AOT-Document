@@ -89,7 +89,7 @@
                                         <p>เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
                                         <p>หมดอายุ : <?php echo $publicdate;?></p>
                                         <p>สถานะ :  <?php echo $data['Status'];?></p>
-                                        <p>จำนวนครั้งที่ดาวโหลดไฟล์ :  <?php echo $data['Download'];?></p>
+                                        <p>จำนวนครั้งที่ดาวน์โหลดไฟล์ :  <?php echo $data['Download'];?></p>
                                         <p>Qr code :  <img style="width:250px; height:250px; margin-left: auto; margin-right: auto;" src="<?php echo base_url('/assets/img/qrcode/'.$data['Qr_Codename'].'.png');?>"/></p>
                                     </div>
                                     <div class="modal-footer">

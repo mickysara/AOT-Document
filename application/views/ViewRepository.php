@@ -7,19 +7,19 @@
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">Repository</h2>
+                    <h2 class="" style="font-size: 30px;">Event</h2>
                     <hr>
                     <div class="table-responsive">
-                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้าง Repositoy</a>               
+                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้าง Event</a>               
                                         <table class="table align-items-center table-flush" id="Filesearch">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th scope="col"><h4>ชื่อ Repository</h4></th>
+                                                <th scope="col"><h4>ชื่อ Event</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Deleate</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
                                             </tr>
                                             </thead>
                                             <tbody>
