@@ -633,11 +633,11 @@
     <!-- sidebar-content  -->
                                        <?php $d=strtotime("+5 hours");?>
     <div class="sidebar-footer" >
-      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa",$d);?></font></p>
+      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("d-m-Y h:i:sa",$d);?></font></p>
     </div>
   </nav>
  
-
+  
      <!-- --------------------------------------------ส่วนที่1------------------------------------------------------------------------- -->
   
         <!-- End of Topbar -->
@@ -713,7 +713,7 @@
                         <p>โดย : <?php echo $data['AccName'];?></p>
                         <p>อีเมล :  <?php echo $data['Email'];?></p>
                         <p>เบอร์ต่อติด : <?php echo $data['Tel'];?></p>
-                        <p>แจ้งเมื่อวันที่ : <?php echo $data['Date'];?></p>
+                        <p>แจ้งเมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
                         <h3>สถานะ : <?php echo $data['Status'];?></h3>
                     </div>
                     </div>
@@ -807,23 +807,6 @@
               </div>
                             
                           <?php } ?>
-                          
-            <!-- <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
-              <div class="progress mb-4" style="height: 10px">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfpowerpoint <?php echo $pointshow?> <span class="float-right"><?php echo number_format($pointcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt=""></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo $pointcal3?>" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfexcel <?php echo $excelshow?><span class="float-right"><?php echo number_format($excelcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt=""></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $excelcal3?>" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <h4 class="small font-weight-bold">Microsolfword <?php echo $wordshow?> <span class="float-right"><?php echo number_format($wordcal2,1).'%'?></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt=""></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div> -->
                     </div>
                 </div>
                 </div>

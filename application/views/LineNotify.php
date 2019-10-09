@@ -52,7 +52,7 @@
                           icon: "success", 
                         }); 
                         setTimeout(function () {
-                        location.href = '<?=base_url('/Indexcontroller')?>'
+                        location.href = '<?=base_url('/IndexController')?>'
                         }, 
                         2000);
                  }
