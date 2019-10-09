@@ -1,5 +1,5 @@
 <?php
-class LinenotifyController extends CI_Controller
+class LineNotifyController extends CI_Controller
 {
 
     public function _construct()

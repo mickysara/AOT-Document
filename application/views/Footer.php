@@ -183,7 +183,7 @@ $(document).on('submit', '#chatroom_form', function () {
 
     $(document).on('submit', '#notify_form', function () {
           
-          $.post("<?=base_url('LinenotifyController/notify')?>", $("#notify_form").serialize(),
+          $.post("<?=base_url('LineNotifyController/notify')?>", $("#notify_form").serialize(),
               function (data) {
                   
                   d = JSON.parse(data)

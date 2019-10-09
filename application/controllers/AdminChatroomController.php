@@ -65,7 +65,7 @@ class AdminChatroomController extends CI_Controller {
                                                                                 /* width: 50%; */
                                                                                 /* overflow: hidden; */">
                                     <div class="question-item__author truncate">
-                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">Anonymous</p>
+                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">ไม่ระบุตัวตน</p>
                                     </div>
                                     <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['Datetime']));?> </p></div>
                             </div>
@@ -142,7 +142,7 @@ class AdminChatroomController extends CI_Controller {
                                                                                 /* width: 50%; */
                                                                                 /* overflow: hidden; */">
                                     <div class="question-item__author truncate">
-                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">Anonymous</p>
+                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">ไม่ระบุตัวตน</p>
                                     </div>
                                     <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['Datetime']));?> </p></div>
                             </div>
@@ -219,7 +219,7 @@ class AdminChatroomController extends CI_Controller {
                                                                                 /* width: 50%; */
                                                                                 /* overflow: hidden; */">
                                     <div class="question-item__author truncate">
-                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">Anonymous</p>
+                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">ไม่ระบุตัวตน</p>
                                     </div>
                                     <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['Datetime']));?> </p></div>
                             </div>

@@ -5,7 +5,7 @@
             background-color: #f7f8f9;">
 
             <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form name="notify" id="notify_form" action="<?php echo site_url('LinenotifyController/InsertLineNotify');?>" method="post">
+            <form name="notify" id="notify_form" action="<?php echo site_url('LineNotifyController/notify');?>" method="post">
                 <h1 class="display-2">แจ้งปัญหา</h1>
                 <hr>
                 <div class="row">
