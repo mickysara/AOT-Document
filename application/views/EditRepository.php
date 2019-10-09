@@ -41,7 +41,7 @@
  
                     <div class="form-group">
                     <div>รายละเอียด</div>
-                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  required><?php echo $data['Createby']?></textarea>
+                    <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  required><?php echo $data['Detail']?></textarea>
                     </div>
 
                     <div class="form-group">

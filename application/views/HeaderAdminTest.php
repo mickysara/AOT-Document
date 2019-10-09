@@ -598,7 +598,11 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                             <a class="dropdown-item" href="<?php echo site_url('MyDocumentController');?>">My Document</a>
                             <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
-                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">ระบบหลังบ้าน</a>
+                            <?php 
+                            if($this->session->userdata('Status') == "admin" || $this->session->userdata('Status') == "superadmin" )
+                            {?>
+                              <a class="dropdown-item" href="<?php echo site_url('FileController');?>">ระบบหลังบ้าน</a>
+                      <?php } ?>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo site_url('/LoginController/Logout');?>">ออกจากระบบ</a>
                         </div>
