@@ -29,7 +29,7 @@
   
   <!-- Custom styles for this template -->
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/simple-sidebar.css">
-
+  </head>
   <!-- Syntax Highlighter -->
   <!-- Demo CSS -->
 
@@ -534,7 +534,6 @@
             }
 
 </style>
-</head>
 <body style="background-color: #f1f1fb;">
 
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -698,3 +697,48 @@
       <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("d-m-Y h:i:sa",$d);?></font></p>
     </div>
   </nav>
+
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#show-sidebar").toggleClass("toggled");
+    });
+  </script>
+
+  <script>
+    jQuery(function ($) {
+
+          $(".sidebar-dropdown > a").click(function() {
+          $(".sidebar-submenu").slideUp(200);
+          if (
+          $(this)
+            .parent()
+            .hasClass("active")
+          ) {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this)
+            .parent()
+            .removeClass("active");
+          } else {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this)
+            .next(".sidebar-submenu")
+            .slideDown(200);
+          $(this)
+            .parent()
+            .addClass("active");
+          }
+          });
+          $("#close-sidebar").click(function() {
+          $(".page-wrapper").removeClass("toggled");
+          });
+          $("#show-sidebar").click(function() {
+          $(".page-wrapper").addClass("toggled");
+          });
+          
+        
+          });
+  </script>
+  </body>
+
+</html>
