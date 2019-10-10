@@ -10,12 +10,11 @@
     header('Access-Control-Allow-Origin: http://localhost/Aot-Document/');
     ?>
   <!-- Favicon -->
-
+  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
   <!-- Fonts -->
   <link rel="icon" type="image/ico" href="<?php echo base_url(); ?>./assets/img/logo/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=Athiti:300,400,700&amp;subset=thai" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   <!-- Icons -->
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/vendor/nucleo/css/nucleo.css">
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/vendor/font-awesome/css/font-awesome.min.css">
@@ -46,10 +45,57 @@
         overflow: hidden;
         
     }
+    body {
+    font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
     
+  }
+
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
 </style>
 </head>
-<body>
+<body style="background-color: #f1f1fb;">
 
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center; position: sticky; position: sticky; z-index: 1071; top: 0; height: 100px;">
@@ -76,11 +122,14 @@
                         ค้นหา
                     </a>
                 </li> 
+                <?php if($this->session->userdata('_success') == 1)
+                { ?>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="<?php echo site_url('/LineNotifyController');?>"  >
                         แจ้งปัญหา
                     </a>
                 </li> 
+                <?php  } ?>
                 <?php if($this->session->userdata('_success') == '')
                 { ?>
                 <li class="nav-item">
@@ -110,9 +159,13 @@
                         <?=$this->session->userdata('accountName')?>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                            <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="<?php echo site_url('MyDocumentController');?>">My Document</a>
-                            <a class="dropdown-item" href="<?php echo site_url('FileController');?>">File</a>
+                            <a class="dropdown-item" href="<?php echo site_url('ChatroomController');?>">Chatroom</a>
+                            <?php 
+                            if($this->session->userdata('Status') == "admin" || $this->session->userdata('Status') == "superadmin" )
+                            {?>
+                              <a class="dropdown-item" href="<?php echo site_url('FileController');?>">ระบบหลังบ้าน</a>
+                      <?php } ?>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo site_url('/LoginController/Logout');?>">ออกจากระบบ</a>
                         </div>
@@ -125,4 +178,71 @@
           </div>
           </div>
         </nav>
-       
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; เพิ่มเติม</span>
+<div id="mySidenav" class="sidenav" style="margin-top: 100px; background-color: #2d3436;">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
+            <a href="<?php echo site_url('UploadController');?>">
+              <i class="fa fa-upload"></i>
+              <span>อัปโหลดเอกสาร</span>
+            </a>
+          
+            <a href="<?php echo site_url('RepoController');?>">
+              <i class="fa fa-address-card"></i>
+              <span>สร้าง Event</span>
+            </a>
+          
+         
+            <a href="<?php echo site_url('ViewController');?>">
+              <i class="fa fa-book"></i>
+              <span>ข้อมูลเอกสารทั้งหมด</span>
+            </a>
+          
+            <a href="<?php echo site_url('ViewRepositoryController');?>">
+              <i class="fa fa-file"></i>
+              <span>ข้อมูล Event</span>
+            </a>
+         
+            <a href="<?php echo site_url('ViewLineNotifyController');?>">
+              <i class="fa fa-bullhorn"></i>
+              <span>ข้อมูลการแจ้งปัญหา</span>
+            </a>
+          
+            <a href="<?php echo site_url('ViewStatusController');?>">
+              <i class="fa fa-file"></i>
+              <span>ข้อมูลผู้ดูแลระบบ</span>
+            </a>
+         
+            <a href="<?php echo site_url('LogController');?>">
+              <i class="fa fa-file"></i>
+              <span>ข้อมูล Log</span>
+            </a>
+           
+            <a href="<?php echo site_url('ViewFileRepositoryController');?>">
+              <i class="fa fa-file"></i>
+              <span>ข้อมูลเอกสารใน Event</span>
+            </a>
+        
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+                                       <?php $d=strtotime("+5 hours");?>
+    <div class="sidebar-footer" >
+      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("d-m-Y h:i:sa",$d);?></font></p>
+    </div>
+</div>
+    
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+
+}
+</script>
