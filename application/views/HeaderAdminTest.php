@@ -29,7 +29,7 @@
   
   <!-- Custom styles for this template -->
   <link rel = "stylesheet" type = "text/css"  href = "<?php echo base_url(); ?>./assets/css/simple-sidebar.css">
-
+  </head>
   <!-- Syntax Highlighter -->
   <!-- Demo CSS -->
 
@@ -534,12 +534,12 @@
             }
 
 </style>
-</head>
 <body style="background-color: #f1f1fb;">
 
 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#2d3436; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center; position: sticky; position: sticky; z-index: 1071; top: 0; height: 100px;">
           <div class="container">
+          
           <a class="navbar-brand" href="<?php echo site_url("/IndexController");?>" style="font-size: 20px; "><img src="http://airportthai.co.th/wp-content/uploads/2018/04/g20140411085306_g.jpg" style="height: 80px;" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbar-primary" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -617,7 +617,7 @@
         </nav>
         <div class="container" style="max-width: 860px;">
 <div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 14px;">
+<a id = "opensidebar" onclick="openNav()" align="left" class="btn btn-sm btn-dark" href="#" style="font-size: 14px; display:none">
     <i class="fas fa-bars" ></i>
   </a>
   <nav id="sidebar" class="sidebar-wrapper">
@@ -630,13 +630,14 @@
       <br>
       <!-- sidebar-search  -->
       <div class="sidebar-menu" style= "margin-left: 10px;">
-      <a id="close-sidebar" class="btn btn-sm btn-dark" href="#">
+      <a onclick="closeNav()" class="btn btn-sm btn-dark" href="#">
                 <i class="fas fa-bars"></i>
              </a>
         <ul>
         <li class="header-menu">
             <span style="font-size: 20px;">ระบบคลังเอกสาร</span>
           </li>
+          
           <li class="sidebar" style= "margin-top: 20px;">
             <a href="<?php echo site_url('UploadController');?>">
               <i class="fa fa-upload"></i>
@@ -698,3 +699,19 @@
       <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("d-m-Y h:i:sa",$d);?></font></p>
     </div>
   </nav>
+
+<script>
+function openNav() {
+  document.getElementById("sidebar").style.width = "250px";
+  $("#opensidebar").hide();
+}
+
+function closeNav() {
+  document.getElementById("sidebar").style.width = "0";
+  $("#opensidebar").show();
+}
+</script>
+
+  </body>
+
+</html>

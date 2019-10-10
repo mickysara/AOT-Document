@@ -552,7 +552,7 @@
   
 </head>
 
-<body>
+<body >
 <div class="container" style="max-width: 860px;">
 <div class="page-wrapper chiller-theme toggled">
   <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 14px;">
@@ -641,7 +641,7 @@
      <!-- --------------------------------------------ส่วนที่1------------------------------------------------------------------------- -->
   
         <!-- End of Topbar -->
-
+       
         <!-- Begin Page Content -->
         <div class="Header-Content mt-5">
             <div class="row">
@@ -807,12 +807,14 @@
               </div>
                             
                           <?php } ?>
+           
                     </div>
                 </div>
                 </div>
                  
-                </div>
+                
             </div>
+        </div>
         </div>
 
   <!-- Bootstrap core JavaScript-->
@@ -883,140 +885,8 @@
         
           });
   </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
-</body>
 
-</html>
-
-<!--------------------------------------------------- picture set 2----------------------------------------------------------->
-
-  </main>
-  <!-- page-content" -->
-</div>
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
- 
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#show-sidebar").toggleClass("toggled");
-    });
-  </script>
-
-  <script>
-    jQuery(function ($) {
-
-          $(".sidebar-dropdown > a").click(function() {
-          $(".sidebar-submenu").slideUp(200);
-          if (
-          $(this)
-            .parent()
-            .hasClass("active")
-          ) {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .parent()
-            .removeClass("active");
-          } else {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .next(".sidebar-submenu")
-            .slideDown(200);
-          $(this)
-            .parent()
-            .addClass("active");
-          }
-          });
-          $("#close-sidebar").click(function() {
-          $(".page-wrapper").removeClass("toggled");
-          });
-          $("#show-sidebar").click(function() {
-          $(".page-wrapper").addClass("toggled");
-          });
-          
-        
-          });
-  </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
+  
 </body>
 
 </html>

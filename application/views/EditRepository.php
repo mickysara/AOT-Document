@@ -7,7 +7,8 @@
                     if(isset($edit_repo) && is_array($edit_repo) && count($edit_repo)): $i=1;
                     foreach ($edit_repo as $key => $data) {   
                 ?>
-    <div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
+     <div class="container" style="margin-top: 60px;">
+    <div class="ct-example tab-content tab-example-result" style="margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
 
@@ -15,7 +16,7 @@
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('EditRepositoryController/editdatarepo');?>" enctype='multipart/form-data'>
-                <h1 class="display-2" style="color:#2d3436;">Add Repository</h1>
+                <h1 class="display-2" style="color:#2d3436;">แก้ไขข้อมูล Event</h1>
                 <hr>
 
                 <div class="row">
@@ -83,4 +84,5 @@
            
       </body>
             </div>
+</div>
 </div>
