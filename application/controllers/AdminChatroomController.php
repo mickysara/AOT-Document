@@ -54,7 +54,7 @@ class AdminChatroomController extends CI_Controller {
           { ?>
                     <div class="message" style="padding: 30px; border-bottom: 1px solid #adb5bd;">
                             <div class="message-Hader mb-1" style="display: -webkit-flex;">
-                                <div class="avatar" style="margin-right: 15px;">
+                                <div class="avatar" style="margin-right: 15px; width:">
                                     <i class="fa fa-circle-08">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </i>
@@ -63,13 +63,27 @@ class AdminChatroomController extends CI_Controller {
                                                                                 -ms-flex: 1;
                                                                                 /* flex: 1; */
                                                                                 /* width: 50%; */
-                                                                                /* overflow: hidden; */">
+                                                                                /* overflow: hidden; */margin-right: 20px;">
                                     <div class="question-item__author truncate">
-                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">ไม่ระบุตัวตน</p>
+                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px; width: max-content;">ไม่ระบุตัวตน</p>
                                     </div>
-                                    <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['Datetime']));?> </p></div>
-                            </div>
-                            <div class="question-item_like" style="align:right">
+                                    <div class="question-item__date"><p style="font-size: 14px; width: max-content;">
+                                        <?php                                         
+                                        $var_date = $data['Datetime'];
+                                            $strDate = $var_date;
+                                            $strYear = date("Y",strtotime($strDate))+543;
+                                            $strMonth= date("n",strtotime($strDate));
+                                            $strDay= date("j",strtotime($strDate));
+                                            $strH = date("H",strtotime($strDate));
+                                            $stri = date("i",strtotime($strDate));
+                                            $strMonthCut = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรฎาคม","สิงหาคม","กันยายน","ตุลาคม",
+                                            "พฤศจิกายน","ธันวาคม");
+                                            $strMonthThai=$strMonthCut[$strMonth];
+
+                                            echo $strDay." ".$strMonthThai." ".$strYear." เวลา ".$strH.":".$stri;
+                                        ?> </p></div>
+                            
+                            <div class="question-item_like" align="right" style="align:right;">
 
                                 <?php   $this->db->where('likeby', $this->session->userdata('RanDomsess'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
@@ -102,7 +116,7 @@ class AdminChatroomController extends CI_Controller {
                                             </a>
                                 <?php   } 
                                 }?>
-                                
+                                </div>
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">
@@ -129,9 +143,9 @@ class AdminChatroomController extends CI_Controller {
 
         foreach($query->result_array() as $data)
           { ?>
-                    <div class="message" style="padding: 30px; border-bottom: 1px solid #adb5bd;">
+                <div class="message" style="padding: 30px; border-bottom: 1px solid #adb5bd;">
                             <div class="message-Hader mb-1" style="display: -webkit-flex;">
-                                <div class="avatar" style="margin-right: 15px;">
+                                <div class="avatar" style="margin-right: 15px; width:">
                                     <i class="fa fa-circle-08">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </i>
@@ -140,16 +154,29 @@ class AdminChatroomController extends CI_Controller {
                                                                                 -ms-flex: 1;
                                                                                 /* flex: 1; */
                                                                                 /* width: 50%; */
-                                                                                /* overflow: hidden; */">
+                                                                                /* overflow: hidden; */margin-right: 20px;">
                                     <div class="question-item__author truncate">
-                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">ไม่ระบุตัวตน</p>
+                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px; width: max-content;">ไม่ระบุตัวตน</p>
                                     </div>
-                                    <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['Datetime']));?> </p></div>
-                            </div>
-                            <div class="question-item_like" style="align:right">
+                                    <div class="question-item__date"><p style="font-size: 14px; width: max-content;">
+                                        <?php                                         
+                                        $var_date = $data['Datetime'];
+                                            $strDate = $var_date;
+                                            $strYear = date("Y",strtotime($strDate))+543;
+                                            $strMonth= date("n",strtotime($strDate));
+                                            $strDay= date("j",strtotime($strDate));
+                                            $strH = date("H",strtotime($strDate));
+                                            $stri = date("i",strtotime($strDate));
+                                            $strMonthCut = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรฎาคม","สิงหาคม","กันยายน","ตุลาคม",
+                                            "พฤศจิกายน","ธันวาคม");
+                                            $strMonthThai=$strMonthCut[$strMonth];
 
-                               
-                            <?php   $this->db->where('likeby', $this->session->userdata('RanDomsess'));
+                                            echo $strDay." ".$strMonthThai." ".$strYear." เวลา ".$strH.":".$stri;
+                                        ?> </p></div>
+                            
+                            <div class="question-item_like" align="right" style="align:right;">
+
+                                <?php   $this->db->where('likeby', $this->session->userdata('RanDomsess'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
                                         $q  = $this->db->get('Like_Message', 1);
                                         if($re['Status'] == 'หมดอายุ')
@@ -171,16 +198,16 @@ class AdminChatroomController extends CI_Controller {
                                                 </span>
                                                 <span class="btn-inner--text">ถูกใจ</span>  
                                         </a>
-                                        <?php   }else{ ?>
+                                <?php   }else{ ?>
                                             <a id="dislike" class="btn btn-icon btn-3 btn" value="<?php echo $data['Id_Message'] ?>" onClick = "DisLike(<?php echo $data['Id_Message'] ?>);" href="#" style="background-color: #2181c2; color: #fff;">
                                             <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                             <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                             </span>
                                             <span class="btn-inner--text">เลิกถูกใจ</span>  
                                             </a>
-                                        <?php   } 
-                                        }?>
-                                
+                                <?php   } 
+                                }?>
+                                </div>
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">
@@ -208,7 +235,7 @@ class AdminChatroomController extends CI_Controller {
           { ?>
                     <div class="message" style="padding: 30px; border-bottom: 1px solid #adb5bd;">
                             <div class="message-Hader mb-1" style="display: -webkit-flex;">
-                                <div class="avatar" style="margin-right: 15px;">
+                                <div class="avatar" style="margin-right: 15px; width:">
                                     <i class="fa fa-circle-08">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </i>
@@ -217,16 +244,29 @@ class AdminChatroomController extends CI_Controller {
                                                                                 -ms-flex: 1;
                                                                                 /* flex: 1; */
                                                                                 /* width: 50%; */
-                                                                                /* overflow: hidden; */">
+                                                                                /* overflow: hidden; */margin-right: 20px;">
                                     <div class="question-item__author truncate">
-                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px;">ไม่ระบุตัวตน</p>
+                                        <p style="margin-bottom: 0px; font-weight: 600; font-size: 18px; width: max-content;">ไม่ระบุตัวตน</p>
                                     </div>
-                                    <div class="question-item__date"><p style="font-size: 14px;"><?php echo date('d/m/Y h:i', strtotime($data['Datetime']));?> </p></div>
-                            </div>
-                            <div class="question-item_like" style="align:right">
+                                    <div class="question-item__date"><p style="font-size: 14px; width: max-content;">
+                                        <?php                                         
+                                        $var_date = $data['Datetime'];
+                                            $strDate = $var_date;
+                                            $strYear = date("Y",strtotime($strDate))+543;
+                                            $strMonth= date("n",strtotime($strDate));
+                                            $strDay= date("j",strtotime($strDate));
+                                            $strH = date("H",strtotime($strDate));
+                                            $stri = date("i",strtotime($strDate));
+                                            $strMonthCut = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรฎาคม","สิงหาคม","กันยายน","ตุลาคม",
+                                            "พฤศจิกายน","ธันวาคม");
+                                            $strMonthThai=$strMonthCut[$strMonth];
 
-                                
-                            <?php   $this->db->where('likeby', $this->session->userdata('RanDomsess'));
+                                            echo $strDay." ".$strMonthThai." ".$strYear." เวลา ".$strH.":".$stri;
+                                        ?> </p></div>
+                            
+                            <div class="question-item_like" align="right" style="align:right;">
+
+                                <?php   $this->db->where('likeby', $this->session->userdata('RanDomsess'));
                                         $this->db->where('Id_Message', $data['Id_Message']);
                                         $q  = $this->db->get('Like_Message', 1);
                                         if($re['Status'] == 'หมดอายุ')
@@ -238,6 +278,8 @@ class AdminChatroomController extends CI_Controller {
                                                 <span class="btn-inner--text">ถูกใจ</span>  
                                         </button>
                                 <?php   }else{
+
+                                        
                                         if($q->num_rows() == 0)
                                         {?>
                                         <a id="like" class="btn btn-outline-primary" value="<?php echo $data['Id_Message'] ?>" onClick = "Like(<?php echo $data['Id_Message'] ?>);" href="#" style="">
@@ -246,15 +288,16 @@ class AdminChatroomController extends CI_Controller {
                                                 </span>
                                                 <span class="btn-inner--text">ถูกใจ</span>  
                                         </a>
-                                        <?php   }else{ ?>
+                                <?php   }else{ ?>
                                             <a id="dislike" class="btn btn-icon btn-3 btn" value="<?php echo $data['Id_Message'] ?>" onClick = "DisLike(<?php echo $data['Id_Message'] ?>);" href="#" style="background-color: #2181c2; color: #fff;">
                                             <span class="Count-like"><?php echo $data['number_of_like']?></span>
                                             <span class="btn-inner--icon"><i class="ni ni-like-2"></i>
                                             </span>
                                             <span class="btn-inner--text">เลิกถูกใจ</span>  
                                             </a>
-                                        <?php   } 
-                                        }?>
+                                <?php   } 
+                                }?>
+                                </div>
                             </div>
                             </div>
                             <div class="question-item_Body" style="word-wrap: break-word;   overflow-wrap: break-word;  overflow: hidden;">

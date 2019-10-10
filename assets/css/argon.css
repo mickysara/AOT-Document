@@ -110,7 +110,10 @@ hr
     box-sizing: content-box;
     height: 0;
 }
-
+.Container-Message
+{
+    width: 100%;
+}
 h1,
 h2,
 h3,

@@ -54,4 +54,8 @@ class TestController extends CI_Controller {
           
   <?php } 
     }
+    public function Testt()
+    {
+      
     }
+}

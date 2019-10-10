@@ -1,3 +1,4 @@
+
 <div class="container" style="margin-top: 60px;">
     <div class="ct-example tab-content tab-example-result" style="margin: auto; margin-top: 62px; padding: 1.25rem;
                 border-radius: .25rem;
@@ -22,10 +23,10 @@
         </li>
     </ul>
 </div>
-<div class="card shadow mb-5">
-    <div class="card-body" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+<div class="card shadow mb-5" style="">
+    <div class="card-body" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+            <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab" >
                 <div class="Container-Message" id="Message_Chatroom" style="height: 500px;  overflow-y: auto;" >
 
                     <hr>
