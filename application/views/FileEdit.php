@@ -552,7 +552,7 @@
   
 </head>
 
-<body>
+<body >
 <div class="container" style="max-width: 860px;">
 <div class="page-wrapper chiller-theme toggled">
   <a id="show-sidebar" class="btn btn-sm btn-dark" href="#" style="font-size: 14px;">
@@ -582,15 +582,9 @@
             </a>
           </li>
           <li class="sidebar">
-            <a href="<?php echo site_url('TypeController');?>">
-              <i class="fa fa-file"></i>
-              <span>อัปโหลดประเภทเอกสาร</span>
-           </a>
-          </li>
-          <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
-              <span>เพิ่ม Repository</span>
+              <span>สร้าง Event</span>
             </a>
           
           </li>
@@ -600,31 +594,36 @@
           <li style= "margin-top: 20px;">
             <a href="<?php echo site_url('ViewController');?>">
               <i class="fa fa-book"></i>
-              <span>ดูข้อมูลเอกสารทั้งหมด</span>
+              <span>ข้อมูลเอกสารทั้งหมด</span>
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('TypeViewController');?>">
-              <i class="fa fa-calendar"></i>
-              <span>ดูข้อมูลประเภทไฟล์ทั้งหมด</span>
-            </a>
-          </li>
-          <li>
-          <a href="<?php echo site_url('ViewFileDeleteController');?>">
-              <i class="fa fa-undo"></i>
-              <span>ดูข้อมูลไฟล์ที่ถูกลบไปแล้ว</span>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('repositoryController/showdata/1');?>">
+            <a href="<?php echo site_url('ViewRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>Repository</span>
+              <span>ข้อมูล Event</span>
             </a>
           </li>
           <li>
             <a href="<?php echo site_url('ViewLineNotifyController');?>">
               <i class="fa fa-bullhorn"></i>
-              <span>ดูข้อมูลการแจ้งปัญหา</span>
+              <span>ข้อมูลการแจ้งปัญหา</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo site_url('ViewStatusController');?>">
+              <i class="fa fa-file"></i>
+              <span>ข้อมูลผู้ดูแลระบบ</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo site_url('LogController');?>">
+              <i class="fa fa-file"></i>
+              <span>ข้อมูล Log</span>
+            </a>
+            <li>
+            <a href="<?php echo site_url('ViewFileRepositoryController');?>">
+              <i class="fa fa-file"></i>
+              <span>ข้อมูลเอกสารใน Event</span>
             </a>
           </li>
         </ul>
@@ -632,24 +631,25 @@
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
-
+                                       <?php $d=strtotime("+5 hours");?>
     <div class="sidebar-footer" >
-      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("Y-m-d h:i:sa");?></font></p>
+      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("d-m-Y h:i:sa",$d);?></font></p>
     </div>
   </nav>
  
-
+  
      <!-- --------------------------------------------ส่วนที่1------------------------------------------------------------------------- -->
   
         <!-- End of Topbar -->
-
+       
         <!-- Begin Page Content -->
+        <div class="container" style="max-width: 860px;">
         <div class="Header-Content mt-5">
             <div class="row">
                 <div class="col-sm mr-4" style="background-color: #fff;">
                     <div class="content mt-2 mb-2" style="display: -webkit-flex;">
                     <?php
-                    $d = $this->db->get('upload');
+                    $d = $this->db->get('Upload');
                     ?>
                         <div>
                         <div class="h15 mb-0 font-weight-bold text-primary text-uppercase mb-1">จำนวนไฟล์เอกสารทั้งหมด</div>
@@ -658,20 +658,35 @@
                         <i class="fas fa-file fa-2x text-gray-300 ml-5"></i>
                     </div>
                 </div>
+
+                <?php $countload = $this->db->query('SELECT sum(Download)
+                          as sum
+                            FROM Upload');
+                $c =  $countload->row_array();
+                 ?>
+
                 <div class="col-sm mr-4" style="background-color: #fff;">
                     <div class="content mt-2 mb-2" style="display: -webkit-flex;">
+                    
                         <div>
                         <div class="h15 mb-0 font-weight-bold text-success text-uppercase mb-1">จำนวนคนโหลดไฟล์ทั้งหมด</div>
-                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
+                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;"><?php echo $c['sum'];?></div>
                         </div>
                         <i class="fa fa-download fa-2x text-gray-300 ml-5"></i>
                     </div>
                 </div>
+
+                <?php $countchat = $this->db->query('SELECT count(Id_Chatroom)
+                                    as count
+                                    FROM Chatroom');
+                        $c =  $countchat->row_array();
+                  ?> </p>
+
                 <div class="col-sm mr-4" style="background-color: #fff;">
                     <div class="content mt-2 mb-2" style="display: -webkit-flex;">
                         <div>
-                        <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนคนเข้าถึงเอกสารทั้งหมด</div>
-                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;">0</div>
+                        <div class="h15 mb-0 font-weight-bold text-warning text-uppercase mb-1">จำนวนห้องแชทที่สร้างในการประชุม</div>
+                        <div class="h15 mb-0 font-weight-bold text-gray-800" style="-webkit-flex: 1; -ms-flex: 1;"><?php echo $c['count'];?></div>
                         </div>
                         <i class="fas fa-comments fa-2x text-gray-300 ml-5"></i>
                     </div>
@@ -696,11 +711,11 @@
                     <div class="card-body">
                     <div class="text-center">
                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?php echo base_url('/assets/img/Logo/linenotify.png')?>" alt="">
-                        <p>โดย : <?php echo $data['name'];?></p>
-                        <p>อีเมล :  <?php echo $data['email'];?></p>
-                        <p>เบอร์ต่อติด : <?php echo $data['tel'];?></p>
-                        <p>แจ้งเมื่อวันที่ : <?php echo $data['date'];?></p>
-                        <h3>สถานะ : <?php echo $data['status'];?></h3>
+                        <p>โดย : <?php echo $data['AccName'];?></p>
+                        <p>อีเมล :  <?php echo $data['Email'];?></p>
+                        <p>เบอร์ต่อติด : <?php echo $data['Tel'];?></p>
+                        <p>แจ้งเมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
+                        <h3>สถานะ : <?php echo $data['Status'];?></h3>
                     </div>
                     </div>
                 </div>
@@ -713,7 +728,7 @@
                 <div class="card  mb-4" style= "margin-top: 0px;">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
-                    <h2 class="m-0 font-weight-bold text-white">จำนวนแต่ละประเภทไฟล์</h2>
+                    <h2 class="m-0 font-weight-bold text-white">จำนวนไฟล์แต่ละประเภท</h2>
                     <div class="dropdown no-arrow">
                     </div>
                     </div>
@@ -721,40 +736,61 @@
                     <div class="card-body">
 
                         <?php
+                        $allshow = $this->db->get('Upload');
+                        if($allshow->num_rows() == 0){ ?>
+                           
+                          <h4 class="small font-weight-bold">PDF File <span class="float-right"></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
+                          <div class="progress mb-4" style="height: 10px">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width:" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <h4 class="small font-weight-bold">Microsolfpowerpoint <span class="float-right"></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftpowerpoint.png')?>" alt=""></h4>
+                          <div class="progress mb-4"style="height: 10px">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: " aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <h4 class="small font-weight-bold">Microsolfexcel <span class="float-right"></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftexcel.png')?>" alt=""></h4>
+                          <div class="progress mb-4"style="height: 10px">
+                            <div class="progress-bar bg-success" role="progressbar" style="width:" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <h4 class="small font-weight-bold">Microsolfword <span class="float-right"></span><img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/Microsoftword.png')?>" alt=""></h4>
+                          <div class="progress mb-4"style="height: 10px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: " aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+
+                       <?php }else{
+                    
                             // pdf file
-                            $this->db->where('type', 'PDF File');
-                            $pdf = $this->db->get('upload');
+                            $this->db->where('Type', 'PDF File');
+                            $pdf = $this->db->get('Upload');
                             $pdfshow = $pdf->num_rows();
                             $pdfcal = $pdfshow * 100;
                             $pdfcal2 = $pdfcal / $d->num_rows();
                             $pdfcal3 = $pdfcal2.'%';
                             // powerpoint
-                            $this->db->where('type', 'Microsoftpowerpoint');
-                            $point = $this->db->get('upload');
+                            $this->db->where('Type', 'Microsoftpowerpoint');
+                            $point = $this->db->get('Upload');
                             $pointshow = $point->num_rows();
                             $pointcal = $pointshow * 100;
                             $pointcal2 = $pointcal / $d->num_rows();
                             $pointcal3 = $pointcal2.'%';
                             // excel
-                            $this->db->where('type', 'Microsoftexcel');
-                            $excel = $this->db->get('upload');
+                            $this->db->where('Type', 'Microsoftexcel');
+                            $excel = $this->db->get('Upload');
                             $excelshow = $excel->num_rows();
                             $excelcal = $excelshow * 100;
                             $excelcal2 = $excelcal / $d->num_rows();
                             $excelcal3 = $excelcal2.'%';
                             // word
-                            $this->db->where('type', 'Microsoftword');
-                            $word = $this->db->get('upload');
+                            $this->db->where('Type', 'Microsoftword');
+                            $word = $this->db->get('Upload');
                             $wordshow = $word->num_rows();
                             $wordcal = $wordshow * 100;
                             $wordcal2 = $wordcal / $d->num_rows();
                             $wordcal3 = $wordcal2.'%';
-
                             //ไฟล์อื่นๆนอกเหนือจากนี้ คิดคำนวณ
-                            $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
-                            $calanotherfile = $d->num_rows() - $anotherfile;
+                            // $anotherfile = $pdfshow + $pointshow + $excelshow + $wordshow;
+                            // $calanotherfile = $d->num_rows() - $anotherfile;
                         ?>
-            <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
+                        <h4 class="small font-weight-bold">PDF File <?php echo $pdfshow?><span class="float-right"><?php echo number_format($pdfcal2,1).'%'?></span> <img class="" style="width: 50px; height: 50px;" src="<?php echo base_url('/assets/img/logofile/PDF File.png')?>" alt=""></h4>
               <div class="progress mb-4" style="height: 10px">
                 <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pdfcal3?>" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -770,16 +806,17 @@
               <div class="progress mb-4"style="height: 10px">
                 <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo $wordcal3?>" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <h4 class="small font-weight-bold">Another <?php echo $calanotherfile?><span class="float-right">0.0%</span></h4>
-              <div class="progress mb-4"style="height: 10px">
-                <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
+                            
+                          <?php } ?>
+           
                     </div>
                 </div>
                 </div>
-                 <!-- hi            -->
-                </div>
+                 
+                
             </div>
+        </div>
+        </div>
         </div>
 
   <!-- Bootstrap core JavaScript-->
@@ -850,140 +887,8 @@
         
           });
   </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
-</body>
 
-</html>
-
-<!--------------------------------------------------- picture set 2----------------------------------------------------------->
-
-  </main>
-  <!-- page-content" -->
-</div>
-  <!-- /#wrapper -->
-
-  <!-- Bootstrap core JavaScript -->
- 
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#show-sidebar").toggleClass("toggled");
-    });
-  </script>
-
-  <script>
-    jQuery(function ($) {
-
-          $(".sidebar-dropdown > a").click(function() {
-          $(".sidebar-submenu").slideUp(200);
-          if (
-          $(this)
-            .parent()
-            .hasClass("active")
-          ) {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .parent()
-            .removeClass("active");
-          } else {
-          $(".sidebar-dropdown").removeClass("active");
-          $(this)
-            .next(".sidebar-submenu")
-            .slideDown(200);
-          $(this)
-            .parent()
-            .addClass("active");
-          }
-          });
-          $("#close-sidebar").click(function() {
-          $(".page-wrapper").removeClass("toggled");
-          });
-          $("#show-sidebar").click(function() {
-          $(".page-wrapper").addClass("toggled");
-          });
-          
-        
-          });
-  </script>
-  <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-</script>
+  
 </body>
 
 </html>

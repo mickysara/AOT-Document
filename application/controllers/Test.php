@@ -49,5 +49,15 @@ class Test extends CI_Controller {
         
    
     }
+    public function file()
+    {
+        $this->load->view('Header');
+        $this->load->view('Footer');
+        $this->data['view_data']= $this->LineNotify->view_datadashboard(); //Upfile คือชื่อของโมเดล
+        $this->load->view('FileEdit', $this->data, FALSE);
+        
+        
+    }
+    
 
 }

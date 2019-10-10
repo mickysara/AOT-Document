@@ -643,9 +643,10 @@
         <!-- End of Topbar -->
        
         <!-- Begin Page Content -->
+        <div class="container" style="max-width: 860px;">
         <div class="Header-Content mt-5">
             <div class="row">
-                <div class="col-sm mr-4" style="background-color: #fff;">
+                <div class="col-sm mr-4 mb-2" style="background-color: #fff;">
                     <div class="content mt-2 mb-2" style="display: -webkit-flex;">
                     <?php
                     $d = $this->db->get('Upload');
@@ -692,13 +693,13 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-6" style="padding-left: 0px;">          
+                <div class="col" style="padding-left: 0px;">          
                 <?php
                         if(isset($view_data) && is_array($view_data) && count($view_data)): $i=0;
                         foreach ($view_data as $key => $data) { 
                         ?>
                 <!-- Area Chart -->
-                <div class="col-xl-8 col-lg-7"style= "margin-left: 0px;padding-left: 0px;">
+
                 <div class="card  mb-4" style= "margin-top: 0px;">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
@@ -718,12 +719,10 @@
                     </div>
                     </div>
                 </div>
-                </div>
                 <?php } endif; ?> 
             </div>
-                <div class="col-6">
+                <div class="col">
                                 <!-- Area Chart -->
-                <div class="col-xl-8 col-lg-7"style= "margin-left: 0px;padding-left: 0px;">
                 <div class="card  mb-4" style= "margin-top: 0px;">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style = "background-color:#2d3436;">
@@ -811,9 +810,7 @@
                     </div>
                 </div>
                 </div>
-                 
-                
-            </div>
+        </div>
         </div>
         </div>
 
