@@ -197,7 +197,7 @@ class MemberController extends CI_Controller {
         );
         $this->db->insert('Logs', $object);
         
-        //redirect('repositoryController/showdata/'.$repository_id,'refresh');
+        redirect('repositoryController/showdata/'.$repository_id,'refresh');
         
     }
 }

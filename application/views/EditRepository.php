@@ -49,7 +49,6 @@
                     <div>ระดับการเข้าถึงทีม</div>
                     <select name="privacy" id="privacy" required>
                       <option value="" disabled selected>กรุณาเลือกระดับการเข้าถึงทีม</option>
-                      <option value="Private">ส่วนตัว</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
                     </select>
