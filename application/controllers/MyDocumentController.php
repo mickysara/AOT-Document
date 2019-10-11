@@ -155,7 +155,6 @@ class MyDocumentController extends CI_Controller {
                                             <tr>
                                                 <th scope="col"><h4>ชื่อทีม</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ดู</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> แก้ไข </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ลบ</h4></th>
@@ -181,11 +180,7 @@ class MyDocumentController extends CI_Controller {
                                                      <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
                                                 </td>
-                                                <td>
-                                                <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['Privacy'];?>
-                                                </span>
-                                                </td>   
+                                                  
                                                 <td>
                                                 <span class="badge badge-dot mr-4">
                                                 <a href="<?php echo site_url(); ?>repositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              
@@ -248,8 +243,7 @@ class MyDocumentController extends CI_Controller {
                                             <tr>
                                                 <th scope="col"><h4>ชื่อทีม</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ระดับใน Repository </h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>                                          
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> เพิ่มโดย </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>
@@ -282,11 +276,7 @@ class MyDocumentController extends CI_Controller {
                                                      <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
                                                 </td>
-                                                <td>
-                                                <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['Privacy'];?>
-                                                </span>
-                                                </td>   
+                                                 
                                                 <td>
                                                  <?php echo $data['Level'];?>
                                                 </td> 

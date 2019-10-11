@@ -35,21 +35,14 @@ class RepositoryController extends CI_Controller {
         $admin = $query3->row_array();
 
 
-            if($this->session->userdata('_success') == '' && $data['Privacy'] == 'Authen')
-            {
-                $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
-                $this->session->set_userdata('login_referrer', $referrer_value);
-                redirect('AlertController/loginalert');
+            // if($this->session->userdata('_success') == '')
+            // {
+            //     $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+            //     $this->session->set_userdata('login_referrer', $referrer_value);
+            //     redirect('AlertController/loginalert');
 
-            }else if($admin['Status']== 'superadmin'|| $admin['Status']== 'admin')
+             if($admin['Status']== 'superadmin'|| $admin['Status']== 'admin')
             {              
-                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
-                $this->load->view('Header');
-                $this->load->view('repository', $this->data, FALSE);
-                $this->load->view('Footer');
-
-            }else if($data['Privacy'] == 'Public')
-            {
                 $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');
                 $this->load->view('repository', $this->data, FALSE);
@@ -70,7 +63,11 @@ class RepositoryController extends CI_Controller {
                 $this->load->view('Footer');
 
             }else{
-                redirect('AlertController/useralert');
+                // redirect('AlertController/useralert');
+                $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
+                $this->load->view('Header');
+                $this->load->view('repository', $this->data, FALSE);
+                $this->load->view('Footer');
             }
       
         }

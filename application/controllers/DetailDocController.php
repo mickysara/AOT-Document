@@ -107,7 +107,7 @@ class DetailDocController extends CI_Controller {
             $query3 = $this->db->get('Repository_Member');
             $datamem = $query3->row_array();
     
-                if($datarepo['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
+                if($this->session->userdata('_success') == '')
                 {
                     $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
                     $this->session->set_userdata('login_referrer', $referrer_value);
@@ -130,21 +130,21 @@ class DetailDocController extends CI_Controller {
                     $this->db->update('UploadInRepository',$data);
                     redirect('AlertController/downloadalert','refresh');
 
-                }else if($datarepo['Privacy']== 'Public' && $data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
+                }else if($data['Status'] != 'ลบ' && $data['Status'] != 'หมดอายุ')
                 {
                 $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                 $this->load->view('Header');
                 $this->load->view('DetailDocRepository', $this->data, FALSE);
                 $this->load->view('Footer');
 
-                }else if($this->session->userdata('accountName') == $datamem['AccName'] && $datarepo['Privacy'] == 'Authen')
+                }else if($this->session->userdata('accountName') == $datamem['AccName'])
                 {
                     $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                     $this->load->view('Header');
                     $this->load->view('DetailDocRepository', $this->data, FALSE);
                     $this->load->view('Footer');
 
-                }else if($this->session->userdata('_success') == 1 && $datarepo['Privacy'] == 'Authen' && $data['Status'] == 'ใช้งาน')
+                }else if($this->session->userdata('_success') == 1 && $data['Status'] == 'ใช้งาน')
                 {
                     $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                   $this->load->view('Header');
@@ -193,17 +193,11 @@ class DetailDocController extends CI_Controller {
         {
             redirect('AlertController/downloadalert');
 
-        }else if($dataload['Privacy']=='Private' && $this->session->userdata('accountName') !== $dataload['Uploadby'] && $admin['Status'] != 'superadmin')
+        }else if($this->session->userdata('accountName') !== $dataload['Uploadby'] && $admin['Status'] != 'superadmin')
         {
             redirect('AlertController/useralert');
 
-        }else if($dataload['Privacy']=='Private' && $this->session->userdata('_success') == '')
-        {
-            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
-            $this->session->set_userdata('login_referrer', $referrer_value);
-            redirect('AlertController/loginalert');
-
-        }else if($dataload['Privacy']=='Authen' && $this->session->userdata('_success') == '')
+        }else if($this->session->userdata('_success') == '')
         {
             $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
             $this->session->set_userdata('login_referrer', $referrer_value);
