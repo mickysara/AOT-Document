@@ -178,71 +178,7 @@
           </div>
           </div>
         </nav>
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; เพิ่มเติม</span>
-<div id="mySidenav" class="sidenav" style="margin-top: 100px; background-color: #2d3436;">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            
-            <a href="<?php echo site_url('UploadController');?>">
-              <i class="fa fa-upload"></i>
-              <span>อัปโหลดเอกสาร</span>
-            </a>
-          
-            <a href="<?php echo site_url('RepoController');?>">
-              <i class="fa fa-address-card"></i>
-              <span>สร้าง Event</span>
-            </a>
-          
-         
-            <a href="<?php echo site_url('ViewController');?>">
-              <i class="fa fa-book"></i>
-              <span>ข้อมูลเอกสารทั้งหมด</span>
-            </a>
-          
-            <a href="<?php echo site_url('ViewRepositoryController');?>">
-              <i class="fa fa-file"></i>
-              <span>ข้อมูล Event</span>
-            </a>
-         
-            <a href="<?php echo site_url('ViewLineNotifyController');?>">
-              <i class="fa fa-bullhorn"></i>
-              <span>ข้อมูลการแจ้งปัญหา</span>
-            </a>
-          
-            <a href="<?php echo site_url('ViewStatusController');?>">
-              <i class="fa fa-file"></i>
-              <span>ข้อมูลผู้ดูแลระบบ</span>
-            </a>
-         
-            <a href="<?php echo site_url('LogController');?>">
-              <i class="fa fa-file"></i>
-              <span>ข้อมูล Log</span>
-            </a>
-           
-            <a href="<?php echo site_url('ViewFileRepositoryController');?>">
-              <i class="fa fa-file"></i>
-              <span>ข้อมูลเอกสารใน Event</span>
-            </a>
-        
-        </ul>
-      </div>
-      <!-- sidebar-menu  -->
-    </div>
-    <!-- sidebar-content  -->
-                                       <?php $d=strtotime("+5 hours");?>
-    <div class="sidebar-footer" >
-      <p align = "center"><font size = "4"><font color="white"><?php echo("Today ").date("d-m-Y h:i:sa",$d);?></font></p>
-    </div>
-</div>
+       
     
 </div>
 
-<script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-
-}
-</script>

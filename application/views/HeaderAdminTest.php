@@ -615,12 +615,18 @@
           </div>
           </div>
         </nav>
+
+
+
+
+        
         <div class="container" style="max-width: 860px;">
+
 <div class="page-wrapper chiller-theme toggled">
 <a id = "opensidebar" onclick="openNav()" align="left" class="btn btn-sm btn-dark" href="#" style="font-size: 14px; display:none">
     <i class="fas fa-bars" ></i>
   </a>
-  <nav id="sidebar" class="sidebar-wrapper">
+  <nav id="sidebar" class="sidebar-wrapper" style = "display: block;">
     <div class="sidebar-content">
       <div class="sidebar-brand">
         <a align = "center" style="margin-left: -80px;" href="<?php echo site_url('IndexController');?>"><i class="fa fa-home" aria-hidden="true"></i>   Homepage</a>
@@ -704,11 +710,13 @@
 function openNav() {
   document.getElementById("sidebar").style.width = "250px";
   $("#opensidebar").hide();
+  document.getElementById("container").style.marginLeft = "250px";
 }
 
 function closeNav() {
   document.getElementById("sidebar").style.width = "0";
   $("#opensidebar").show();
+  document.getElementById("container").style.marginLeft= "auto";
 }
 </script>
 

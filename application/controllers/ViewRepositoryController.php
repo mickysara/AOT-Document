@@ -31,7 +31,7 @@ class ViewRepositoryController extends CI_Controller {
               <?php 
               if($data['Status']=='admin'|| $data['Status']=='superadmin')
               {
-                $this->load->view('HeaderAdminTest');
+                $this->load->view('Header');
                 $this->load->view('ViewRepository');
                 $this->load->view('Footer');
               }else{

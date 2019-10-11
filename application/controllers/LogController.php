@@ -37,7 +37,7 @@ class LogController extends CI_Controller {
 
               }else if($data['Status']=='admin' || $data['Status']=='superadmin')
               {
-                  $this->load->view('HeaderAdminTest');
+                  $this->load->view('Header');
                   $this->load->view('Log');
                   $this->load->view('Footer');
               }else{
