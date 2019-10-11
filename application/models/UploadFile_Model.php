@@ -277,13 +277,13 @@ public function editdataupload($inputdata){
 
   public function insertRepo($inputdata){
     $dateshow = date("Y/m/d");
-
+    $privacyfix = "Public";
      $data = array(
       'Createby' => $inputdata['name'],
       'Topic' => $inputdata['topic'],
       'Date'=> $dateshow,
       'Detail' => $inputdata['detail'],
-      'Privacy' => $inputdata['privacy']
+      'Privacy' => $privacyfix
 
   );
      $this->db->insert('Repository', $data); 

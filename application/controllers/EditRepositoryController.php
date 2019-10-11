@@ -70,8 +70,19 @@ class EditRepositoryController extends CI_Controller {
 
 
     public function editdatarepo(){
+
+      $status = $this->session->userdata('employeeId');
+      $this->db->where('Id_Emp', $status);
+      $query3 = $this->db->get('Users');
+      $admin = $query3->row_array();
+
+
         $this->repository->editdata_repo($this->input->post());
+        if($admin['Status'] == 'user' || $admin['Status'] == 'admin'){
+        redirect('MyDocumentController','refresh');
+        }else{
         redirect('ViewRepositoryController','refresh');
+        }
     }
 
     public function del($id){

@@ -109,12 +109,13 @@ class Repository_Model extends CI_Model {
 
     public function editdata_repo($inputdata){
       $dateshow = date("Y/m/d");
+      $privacyfix = "Public";
        $data = array(
         'Createby' => $inputdata['name'],
         'Topic' => $inputdata['topic'],
         'Date'=> $dateshow,
         'Detail' => $inputdata['detail'],
-        'Privacy' => $inputdata['privacy']
+        'Privacy' => $privacyfix
     );
     $this->db->where('Id_Repository', $this->input->post('Id_Repository'));
     $query=$this->db->update('Repository',$data);

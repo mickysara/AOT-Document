@@ -45,14 +45,14 @@
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  required><?php echo $data['Detail']?></textarea>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                     <div>ระดับการเข้าถึงทีม</div>
                     <select name="privacy" id="privacy" required>
                       <option value="" disabled selected>กรุณาเลือกระดับการเข้าถึงทีม</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
                     </select>
-                    </div>
+                    </div> -->
 
                     <script>
             </script>

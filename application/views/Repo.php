@@ -41,14 +41,14 @@
                     <textarea class="form-control form-control-alternative" rows="4" id="detail" name="detail"  placeholder="Write a large text here ..." required></textarea>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                     <div>ระดับการเข้าถึงเอกสาร</div>
                     <select name="privacy" id="privacy" required>
                       <option value="" disabled selected>กรุณาเลือกระดับการเข้าถึงเอกสาร</option>
                       <option value="Authen">เฉพาะที่ผู้ที่มีรหัส</option>
                       <option value="Public">สาธารณะ</option>
                     </select>
-                    </div>
+                    </div> -->
 
                     <script>
             </script>

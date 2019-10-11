@@ -30,7 +30,7 @@
         <h1>ชื่อ Event : <?php echo $repo['Topic'];?> </h1>  
         <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['Createby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($repo['Date']));?></p>
-        <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['Privacy'];?> </p>
+        <!-- <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['Privacy'];?> </p> -->
           <?php 
             $this->db->where('Id_Repository', $repo['Id_Repository']);
             $this->db->where('AccName', $this->session->userdata('accountName'));
