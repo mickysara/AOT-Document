@@ -12,6 +12,18 @@
                             <input class="form-control" id="searchtxt" name="name_txt" placeholder="กรุณากรอกชื่อเอกสาร" type="text">                  
 
         </div>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="NameTopic" name="NameTopic" type="checkbox">
+                    <label class="custom-control-label" for="NameTopic">ค้นหาจากชื่อหัวข้อ</label>
+                </div>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="NameFile" name="NameFile" type="checkbox">
+                    <label class="custom-control-label" for="NameFile">ค้นหาจากชื่อไฟล์ที่อัพโหลด</label>
+                </div>
+                <div class="custom-control custom-checkbox mb-3">
+                    <input class="custom-control-input" id="Detail" name="Detail" type="checkbox">
+                    <label class="custom-control-label" for="Detail">ค้นหาจากรายละเอียด</label>
+                </div>
                         <!-- <div class="custom-control custom-radio mb-3">
                         <input name="custom-radio-1" class="custom-control-input" id="customRadio1" value="Card View" type="radio">
                         <label class="custom-control-label" for="customRadio1">Card View</label>

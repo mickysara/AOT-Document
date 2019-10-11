@@ -36,7 +36,7 @@ class AdvanceSearchController extends CI_Controller {
 
         $view =  $this->input->post("custom-radio-1");
 
-        $this->db->like('File',  $name);
+
 
         $this->db->where('Privacy !=','Private');
         $this->db->where('Status !=', 'ลบ');
@@ -54,6 +54,48 @@ class AdvanceSearchController extends CI_Controller {
         if($uploadby != "")
         {
             $this->db->like('Uploadby', $uploadby); 
+        }
+        $i = 0;
+        if($this->input->post("NameTopic") == "on" && $this->input->post("NameFile") == "on" && $this->input->post("Detail") == "on")
+        {
+            $this->db->like('Topic',  $name);
+            $this->db->OR_like('File', $name);
+            $this->db->OR_like('Detail', $name);
+
+        }
+        else
+        {
+            
+
+            if($this->input->post("NameTopic") == "on")
+            {
+                $this->db->like('Topic',  $name);
+                ++$i;
+                echo $i;
+            }
+            if($this->input->post("NameFile") == "on" && $i == 1)
+            {
+                $this->db->OR_like('File', $name);
+                
+            }
+            else if($this->input->post("NameFile") == "on" )
+            {
+                $this->db->like('File',  $name);
+                ++$i;
+                echo $i;
+            }
+            if($this->input->post("Detail") == "on" && $i == 1 )
+            {
+                $this->db->OR_like('Detail', $name);
+                
+            }
+            else if($this->input->post("Detail") == "on")
+            {
+                $this->db->like('Detail',  $name);
+                
+                echo $i;
+            }
+
         }
 
         if($this->input->post("Public") == "on" && $this->input->post("Authen") == "on")
@@ -146,6 +188,8 @@ class AdvanceSearchController extends CI_Controller {
         $d = $this->db->get('Upload');
         $count = $d->num_rows();
         $d->result_array();
+        echo $this->db->last_query();
+        
         if($count == 0)
         {?>
 
