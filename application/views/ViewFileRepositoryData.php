@@ -571,9 +571,6 @@ body {
     </div>
   </nav>
 
-  <?php 
-        $result = $this->db->get('Repository');
-        ?>
   <!-- sidebar-wrapper  -->
   <main class="page-content">
     <div class="container-fluid">
@@ -581,7 +578,7 @@ body {
         $result = $this->db->get('Repository');
         ?>
         <div class="container">
-		<div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
+		<div class="ct-example tab-content tab-example-result" style="width: auto; margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
 
@@ -597,6 +594,8 @@ body {
             <div class="card-header border-0">
               <h3 class="mb-0">ตารางเอกสารทั้งหมด</h3>
             </div>
+          </div> 
+          <td class="">
             <div class="table-responsive">
               <table class="table align-items-center table-flush" id="Filetable">
                 <thead class="thead-light">

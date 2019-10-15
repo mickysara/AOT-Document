@@ -596,7 +596,6 @@ body {
                                             <tr>
                                                 <th scope="col"><h4>ชื่อ Event</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
-                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Delete</h4></th>
@@ -621,12 +620,7 @@ body {
                                                 <span class="badge badge-dot mr-4">
                                                      <?php echo date('d/m/Y', strtotime($data['Date']));?>
                                                 </span>
-                                                </td>
-                                                <td>
-                                                <span class="badge badge-dot mr-4">
-                                                    <i class="bg-success"></i> <?php echo $data['Privacy'];?>
-                                                </span>
-                                                </td>   
+                                                </td> 
                                                 <td>
                                                     <span class="badge badge-dot mr-4">
                                                     <a href="<?php echo site_url(); ?>RepositoryController/showdata/<?php echo  $data['Id_Repository'];?>"  class="btn btn mb-3" style="background-color: #2d3436; color: #fff;">View</a>              

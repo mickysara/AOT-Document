@@ -579,7 +579,7 @@ body {
     <div class="container-fluid">
 	<div class="container" >
         <div class="Header-Content mt-5">
-		<div class="ct-example tab-content tab-example-result" style="width: 1000px; margin: auto; margin-top: 62px; padding: 1.25rem;
+		<div class="ct-example tab-content tab-example-result" style="width: auto; margin: auto; margin-top: 62px; padding: 1.25rem;
             border-radius: .25rem;
             background-color: #f7f8f9;">
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">

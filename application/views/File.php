@@ -651,7 +651,7 @@ body {
                         <p>อีเมล :  <?php echo $data['Email'];?></p>
                         <p>เบอร์ต่อติด : <?php echo $data['Tel'];?></p>
                         <p>แจ้งเมื่อวันที่ : <?php echo date('d/m/Y', strtotime($data['Date']));?></p>
-                        <h3>สถานะ : <?php echo $data['Status'];?></h3>
+                        <h2>สถานะ : <?php echo $data['Status'];?></h2>
                     </div>
                     </div>
                 </div>
