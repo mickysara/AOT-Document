@@ -107,13 +107,13 @@ class DetailDocController extends CI_Controller {
             $query3 = $this->db->get('Repository_Member');
             $datamem = $query3->row_array();
     
-                if($this->session->userdata('_success') == '')
-                {
-                    $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
-                    $this->session->set_userdata('login_referrer', $referrer_value);
-                    redirect('AlertController/loginalert');
+                // if($this->session->userdata('_success') == '')
+                // {
+                //     $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+                //     $this->session->set_userdata('login_referrer', $referrer_value);
+                //     redirect('AlertController/loginalert');
                                 
-                }else if($admin['Status']== 'superadmin')
+                if($admin['Status']== 'superadmin')
                 {
                 $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                 $this->load->view('Header');
@@ -193,11 +193,33 @@ class DetailDocController extends CI_Controller {
         {
             redirect('AlertController/downloadalert');
 
+        }else if($dataload['Privacy'] == 'Public')
+        {
+            $this->load->helper('download');
+            $this->db->where('Url', $url);
+            $data = $this->db->get('Upload', 1);
+            $fileInfo = $data->result_array();
+            foreach($fileInfo as $d)
+            {
+    
+            $object = array(
+                'Download' => $d['Download']+1
+            );
+            $this->db->where('Id_Upload', $d['Id_Upload']);
+            $this->db->update('Upload', $object);
+    
+                echo $d['File'];
+    
+                //Path File
+                $file = 'uploads/'.$d['File'];
+                force_download($file, NULL);
+            }
+
         }else if($this->session->userdata('accountName') !== $dataload['Uploadby'] && $admin['Status'] != 'superadmin')
         {
             redirect('AlertController/useralert');
 
-        }else if($this->session->userdata('_success') == '')
+        }else if($this->session->userdata('_success') == '' && $dataload['Privacy'] != 'Public')
         {
             $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
             $this->session->set_userdata('login_referrer', $referrer_value);
@@ -264,13 +286,13 @@ class DetailDocController extends CI_Controller {
         $query3 = $this->db->get('Repository_Member');
         $datamem = $query3->row_array();
 
-        if($datarepo['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
-        {
-            $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
-            $this->session->set_userdata('login_referrer', $referrer_value);
-            redirect('AlertController/loginalert');
+        // if($datarepo['Privacy'] == 'Authen' && $this->session->userdata('_success') == '')
+        // {
+        //     $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+        //     $this->session->set_userdata('login_referrer', $referrer_value);
+        //     redirect('AlertController/loginalert');
                     
-        }else if($dataload['Dateend'] <= $dataload['Date'] && $dataload['Dateend'] != '1970-01-01')
+         if($dataload['Dateend'] <= $dataload['Date'] && $dataload['Dateend'] != '1970-01-01')
         {
             $changestatus = "หมดอายุ";
             $data = array(
@@ -284,7 +306,7 @@ class DetailDocController extends CI_Controller {
         {
             redirect('AlertController/downloadalert');
         
-        }else if($datarepo['Privacy'] == 'Authen' && $datamem['AddBy'] == $this->session->userdata('accountName'))
+        }else if($datamem['AddBy'] == $this->session->userdata('accountName'))
         {
             $this->load->helper('download');
             $this->db->where('Url', $url);
@@ -306,7 +328,7 @@ class DetailDocController extends CI_Controller {
                 force_download($file, NULL);
             }
             
-        }else if($datarepo['Privacy'] == 'Authen' && $datamem['AccName'] != $this->session->userdata('accountName'))
+        }else if($datamem['AccName'] != $this->session->userdata('accountName'))
         {
             redirect('AlertController/useralert');
 
