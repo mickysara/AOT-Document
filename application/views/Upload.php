@@ -22,7 +22,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                     <div>ชื่อ</div>
-                      <input type="Text" class="form-control form-control-alternative" name="name" value="<?=$this->session->userdata('accountName')?>" required id="name" readonly>
+                      <input type="Text" class="form-control form-control-alternative"  name="name" value="<?=$this->session->userdata('accountName')?>" required id="name" readonly>
                     </div>
                   </div>
 

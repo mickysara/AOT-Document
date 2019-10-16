@@ -586,7 +586,7 @@ body {
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
         <form name="view" id="view_form" method="post">
-                <h1 class="display-2" style="color:#2d3436;">ระบบจัดการเอกสาร</h1>
+                <h1 class="display-2" style="color:#2d3436;">ตางรางเอกสารใน Event</h1>
                 <hr>
                 
         <div class="col">

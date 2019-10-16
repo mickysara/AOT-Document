@@ -588,7 +588,7 @@ body {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">Logs</h2>
+                    <h2 class="" style="font-size: 30px;">ตารางการเก็บ Logs</h2>
                     <hr>      
                     <h2 style=" text-align: center; margin-left: auto; margin-right: auto;">ไม่มีLog ในตอนนี้</h2>
                 </div>
@@ -602,7 +602,7 @@ body {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">Logs</h2>
+                    <h2 class="" style="font-size: 30px;">ตารางการเก็บ Logs</h2>
                     <hr>
                     <div class="table-responsive">  
                     <a href="<?php echo site_url(); ?>LogController/del/" onclick="return confirm('คุณต้องการลบ Log ใช่หรือไม่ ?')" class="btn btn-danger mb-3" style="text-align: right;">ลบข้อมูล Log</a>

@@ -587,7 +587,7 @@ body {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">Event</h2>
+                    <h2 class="" style="font-size: 30px;">ตาราง Event</h2>
                     <hr>
                     <div class="table-responsive">
                     <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้าง Event</a>               
