@@ -586,7 +586,7 @@ body {
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
         <form name="login" id="login_form" method="post">
-                <h1 class="display-2" style="color:#2d3436;">ระบบแสดงการแจ้งปัญหา</h1>
+                <h1 class="display-2" style="color:#2d3436;">ตารางการแจ้งปัญหา</h1>
                 <hr>
                 
                 <div class="col">

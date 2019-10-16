@@ -587,7 +587,7 @@ body {
 
   <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
         <form name="login" id="login_form" method="post">
-                <h1 class="display-2" style="color:#2d3436;">ระบบจัดการสถานะของแอดมิน</h1>
+                <h1 class="display-2" style="color:#2d3436;">ตารางสถานะของแอดมิน</h1>
                 <hr>
                 
         <div class="col">
