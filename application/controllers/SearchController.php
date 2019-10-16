@@ -75,6 +75,7 @@ class SearchController extends CI_Controller {
                                             <thead class="thead-light">
                                             <tr>
                                                 <th scope="col"><h4>ชื่อหัวข้อ</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ชื่อไฟล์</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สร้างโดย</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ความเป็นส่วนตัว</h4></th>
@@ -96,6 +97,9 @@ class SearchController extends CI_Controller {
                                                     </div>
                                                 </div>
                                                 </th>
+                                                <td>
+                                                <?php echo $data['File'];?>
+                                                </td>
                                                 <td>
                                                 <?php echo $data['Uploadby'];?>
                                                 </td>
