@@ -207,7 +207,7 @@ class LoginController extends CI_Controller {
                 ?>
                 
                 <p> ได้ให้สิทธิ์ในการเข้าถึงเอกสาร <p style="font-weight: bold;"> ชื่อ : <?php echo $tt['Topic']?></p></p> 
-                <p> <i class="fa fa-user-plus" aria-hidden="true" style="color: #172b4d;"></i> เมื่อ <?php echo date('d/m/Y ', strtotime($tt['Date']));?></p>
+                <p> <i class="fa fa-user-plus" aria-hidden="true" style="color: #172b4d;"></i> เมื่อ <?php echo date('d/m/Y ', strtotime($d['Date']));?></p>
               </a>
             <div class="dropdown-divider"></div>
            

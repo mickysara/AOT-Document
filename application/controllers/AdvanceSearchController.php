@@ -71,7 +71,7 @@ class AdvanceSearchController extends CI_Controller {
             {
                 $this->db->like('Topic',  $name);
                 ++$i;
-                echo $i;
+
             }
             if($this->input->post("NameFile") == "on" && $i == 1)
             {
@@ -82,7 +82,7 @@ class AdvanceSearchController extends CI_Controller {
             {
                 $this->db->like('File',  $name);
                 ++$i;
-                echo $i;
+
             }
             if($this->input->post("Detail") == "on" && $i == 1 )
             {
@@ -93,7 +93,7 @@ class AdvanceSearchController extends CI_Controller {
             {
                 $this->db->like('Detail',  $name);
                 
-                echo $i;
+
             }
 
         }
@@ -187,8 +187,7 @@ class AdvanceSearchController extends CI_Controller {
         
         $d = $this->db->get('Upload');
         $count = $d->num_rows();
-        $d->result_array();
-        echo $this->db->last_query();
+        $d->result_array(); 
         
         if($count == 0)
         {?>
@@ -226,6 +225,7 @@ class AdvanceSearchController extends CI_Controller {
                                             <thead class="thead-light">
                                             <tr>
                                                 <th scope="col"><h4>ชื่อหัวข้อ</h4></th>
+                                                <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ชื่อไฟล์</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">สร้างโดย</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ความเป็นส่วนตัว</h4></th>
@@ -247,6 +247,9 @@ class AdvanceSearchController extends CI_Controller {
                                                     </div>
                                                 </div>
                                                 </th>
+                                                <td>
+                                                <?php echo $data['File'];?>
+                                                </td>
                                                 <td>
                                                 <?php echo $data['Uploadby'];?>
                                                 </td>
