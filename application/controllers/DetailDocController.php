@@ -107,13 +107,13 @@ class DetailDocController extends CI_Controller {
             $query3 = $this->db->get('Repository_Member');
             $datamem = $query3->row_array();
     
-                if($this->session->userdata('_success') == '')
-                {
-                    $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
-                    $this->session->set_userdata('login_referrer', $referrer_value);
-                    redirect('AlertController/loginalert');
+                // if($this->session->userdata('_success') == '')
+                // {
+                //     $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
+                //     $this->session->set_userdata('login_referrer', $referrer_value);
+                //     redirect('AlertController/loginalert');
                                 
-                }else if($admin['Status']== 'superadmin')
+                if($admin['Status']== 'superadmin')
                 {
                 $this->data['edit_data']= $this->Upload->edit_datarepo($edit_id);
                 $this->load->view('Header');
