@@ -27,7 +27,7 @@
 
 
     <div class="col mt-5" style="background-color: #fff; padding: 36px;">
-        <h1>ชื่อ Event : <?php echo $repo['Topic'];?> </h1>  
+        <h1>ชื่อกิจกรรม : <?php echo $repo['Topic'];?> </h1>  
         <p style="font-weight: 500;">สร้างโดย : <?php echo $repo['Createby'];?></p>
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($repo['Date']));?></p>
         <!-- <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['Privacy'];?> </p> -->
@@ -116,10 +116,10 @@
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-cloud-upload-96 mr-2"></i>รายละเอียด</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ใน Event นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-calendar-grid-58 mr-2"></i>ไฟล์ในกิจกรรมนี้</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>สมาชิกใน Event นี้</a>
+            <a class="nav-link mb-sm-3 mb-md-0" style="" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="fa fa-users mr-2" aria-hidden="true"></i>สมาชิกในกิจกรรมนี้</a>
         </li>
     </ul>
 </div>

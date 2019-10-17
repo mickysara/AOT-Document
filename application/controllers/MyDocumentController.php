@@ -146,14 +146,14 @@ class MyDocumentController extends CI_Controller {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">ทีมของคุณ</h2>
+                    <h2 class="" style="font-size: 30px;">กิจกรรมของคุณ</h2>
                     <hr>
                     <div class="table-responsive">
-                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้างทีม</a>               
+                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้างกิจกรรม</a>               
                                         <table class="table align-items-center table-flush" id="Filesearch">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th scope="col"><h4>ชื่อทีม</h4></th>
+                                                <th scope="col"><h4>ชื่อกิจกรรม</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">ดู</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> แก้ไข </h4></th>
@@ -220,10 +220,10 @@ class MyDocumentController extends CI_Controller {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">ทีมที่คุณเข้าร่วม</h2>
+                    <h2 class="" style="font-size: 30px;">กิจกรรมที่คุณเข้าร่วม</h2>
                     <hr>
-                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้างทีม</a>        
-                    <h2 style=" text-align: center; margin-left: auto; margin-right: auto;">คุณไม่ได้ถูกเชิญให้เข้าทีมในตอนนี้</h2>
+                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้างกิจกรรม</a>        
+                    <h2 style=" text-align: center; margin-left: auto; margin-right: auto;">คุณไม่ได้ถูกเชิญให้เข้ากิจกรรมในตอนนี้</h2>
                 </div>
             </div>
         <?php 
@@ -234,14 +234,14 @@ class MyDocumentController extends CI_Controller {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">ทีมที่คุณเข้าร่วม</h2>
+                    <h2 class="" style="font-size: 30px;">กิจกรรมที่คุณเข้าร่วม</h2>
                     <hr>
                     <div class="table-responsive">
-                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้างทีม</a>               
+                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้างกิจกรรม</a>               
                                         <table class="table align-items-center table-flush" id="Filesearch">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th scope="col"><h4>ชื่อทีม</h4></th>
+                                                <th scope="col"><h4>ชื่อกิจกรรม</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> ความเป็นส่วนตัว </h4></th>                                          
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;"> เพิ่มโดย </h4></th>

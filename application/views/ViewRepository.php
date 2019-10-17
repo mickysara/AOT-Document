@@ -519,7 +519,7 @@ body {
           <li class="sidebar">
             <a href="<?php echo site_url('RepoController');?>">
               <i class="fa fa-address-card"></i>
-              <span>สร้าง Event</span>
+              <span>สร้างกิจกรรม</span>
             </a>
           
           </li>
@@ -535,7 +535,7 @@ body {
           <li>
             <a href="<?php echo site_url('ViewRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>ข้อมูล Event</span>
+              <span>ข้อมูลกิจกรรม</span>
             </a>
           </li>
           <li>
@@ -558,7 +558,7 @@ body {
             <li>
             <a href="<?php echo site_url('ViewFileRepositoryController');?>">
               <i class="fa fa-file"></i>
-              <span>ข้อมูลเอกสารใน Event</span>
+              <span>ข้อมูลเอกสารในกิจกรรม</span>
             </a>
           </li>
         </ul>
@@ -587,14 +587,14 @@ body {
                 background-color: #f7f8f9;">
 
                 <div id="inputs-alternative-component" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-                    <h2 class="" style="font-size: 30px;">ตาราง Event</h2>
+                    <h2 class="" style="font-size: 30px;">ตารางกิจกรรม</h2>
                     <hr>
                     <div class="table-responsive">
-                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้าง Event</a>               
+                    <a href="<?php echo site_url(); ?>RepoController/"  class="btn btn-success mb-3" style="">สร้างกิจกรรม</a>               
                                         <table class="table align-items-center table-flush" id="Filesearch">
                                             <thead class="thead-light">
                                             <tr>
-                                                <th scope="col"><h4>ชื่อ Event</h4></th>
+                                                <th scope="col"><h4>ชื่อกิจกรรม</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">เมื่อวันที่</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">View</h4></th>
                                                 <th style="text-align:center;" scope="col"><h4 style="text-align: left;">Edit</h4></th>

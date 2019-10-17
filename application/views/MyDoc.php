@@ -52,8 +52,8 @@
 <div id="mySidenav" class="sidenav" style="margin-top: 100px; background-color: #2d3436;">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#" id="Mydoc">เอกสารที่อัพโหลดไป </a>
-  <a href="#" id="MyRepos"> ทีมของฉัน </a>
-  <a href="#" id="InRepos"> ทีมที่ฉันเข้าร่วม </a>
+  <a href="#" id="MyRepos"> กิจกรรมของฉัน </a>
+  <a href="#" id="InRepos"> กิจกรรมที่ฉันเข้าร่วม </a>
 </div>
 <div class="container" id="container" style="">
     
