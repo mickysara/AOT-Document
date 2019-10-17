@@ -56,6 +56,11 @@ class TestController extends CI_Controller {
     }
     public function Testt()
     {
+      $this->load->view('Header');
+      $this->load->view('testclock');
+      $this->load->view('Footer');
+      
+      
       
     }
 }

@@ -534,6 +534,46 @@ $(document).ready(function(e) {
       }
 
 </script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2468318573383746',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v4.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+   function facebookLogin(){
+	FB.login(function(response) {
+		var fbuid = response.authResponse.userID; // ไอดีเฟสบุ้ค
+		if (response.authResponse) {
+		 FB.api('/me', { locale: 'en_US', fields: 'name, email' }, function(response) {
+			console.log(JSON.stringify(response));
+			 var name = response.name; // ชื่อและนามสกุล
+             $("#name").text(response.name);
+             $("#Email").text(response.email);
+             $("#Id").text(response.id);
+			 var email = response.email; // อีเมล
+			
+		 });
+		}else{
+		
+		}
+	}, {scope:'email'}); // รายการ permission ที่เว็บไซต์เราร้องขอข้อมูล
+}
+</script>
 
 
 
