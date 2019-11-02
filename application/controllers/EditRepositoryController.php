@@ -37,7 +37,7 @@ class EditRepositoryController extends CI_Controller {
                 $this->session->set_userdata('login_referrer', $referrer_value);
                 redirect('AlertController/loginalert');
 
-              }else if($admin['Id_Emp'] == $this->session->userdata('employeeId') && $admin['Id_Repository'] == $edit_id && $admin['Level'] == 'Manager'){
+              }else if($admin['Id_Emp'] == $this->session->userdata('employeeId') && $admin['Id_Repository'] == $edit_id){
 
                 $this->data['edit_repo']= $this->repository->edit_repo($edit_id);
                 $this->load->view('Header');
@@ -51,6 +51,13 @@ class EditRepositoryController extends CI_Controller {
                 $this->load->view('EditRepository',$this->data, FALSE);
                 $this->load->view('Footer');
 
+              }else if($admin['Level'] == 'Manager'){
+
+                $this->data['edit_repo']= $this->repository->edit_repo($edit_id);
+                $this->load->view('Header');
+                $this->load->view('EditRepository',$this->data, FALSE);
+                $this->load->view('Footer');
+                
               }else if($data['Status']!='superadmin'){
 
                 redirect('AlertController/superadminalert');

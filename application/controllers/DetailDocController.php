@@ -328,10 +328,7 @@ class DetailDocController extends CI_Controller {
                 force_download($file, NULL);
             }
             
-        }else if($datamem['AccName'] != $this->session->userdata('accountName'))
-        {
-            redirect('AlertController/useralert');
-
+       
         }else
         {
 

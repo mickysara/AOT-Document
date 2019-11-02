@@ -36,6 +36,12 @@
             $this->db->where('AccName', $this->session->userdata('accountName'));
             $querystatus = $this->db->get('Repository_Member', 1);
             $resultstatus = $querystatus->row_array();
+
+            $status = $this->session->userdata('employeeId');
+            $this->db->where('Id_Emp', $status);
+            $query3 = $this->db->get('Users');
+            $admin = $query3->row_array();
+
             if($resultstatus == "")
             {
               $this->db->where('Id_Repository', $repo['Id_Repository']);
@@ -49,7 +55,7 @@
           ?>
         
         <?php 
-              if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+              if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
               {
                 $url = current_url();
                 // $repostr = site_url('/UploadFileRepoController/uploadfilerepo/1');
@@ -57,7 +63,7 @@
                 $idRepo = ($arraystate2[5]);?>
                 <a href="<?php echo site_url();?>UploadFileRepoController/uploadfilerepo/<?php echo $idRepo?>"  class="btn btn" style="background-color: #2d3436; color: #fff; margin-top: 20px;">เพิ่มเอกสารลงในทีมนี้</a>
                 <?php 
-                  if($resultstatus['Level'] == "Creater")
+                  if($resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
                   { 
                     $this->db->where('Id_Repository', $repo['Id_Repository']);
                     $qq = $this->db->get('Chatroom', 1);
@@ -140,7 +146,7 @@
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
                     <th style="text-align:center;" scope="col"><h4>View</h4></th>
                     <?php 
-                        if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
                         {?>
                           <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                           <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
@@ -187,7 +193,7 @@
                        
                     </td>
                     <?php 
-                        if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        if($resultstatus['Level'] == "Editor" || $resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
                         {?>
                         <td class="">
                           
@@ -216,7 +222,7 @@
                     <th style="text-align:center;" scope="col"><h4>เพิ่มโดย</h4></th>
                     <th style="text-align:center;" scope="col"><h4>เมื่อวันที่</h4></th>
                     <?php 
-                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
                         {?>
                         <th style="text-align:center;" scope="col"><h4>Edit</h4></th>
                         <th style="text-align:center;" scope="col"><h4>Delete</h4></th>
@@ -227,7 +233,7 @@
                 </thead>
                 <tbody>
                 <?php 
-                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
                         {?>
                     
                    <!-- Button trigger modal -->
@@ -307,7 +313,7 @@
  
                     </td>   
                     <?php 
-                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater")
+                        if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
                         {?>
                       <?php 
                       $t = explode(".", $mem['AccName']);

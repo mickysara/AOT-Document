@@ -17,7 +17,7 @@
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
             <form method="post" id="upload_form" action="<?php echo site_url('EditStatusController/editdata');?>" enctype='multipart/form-data'>
-                <h1 class="display-2" style="color:#2d3436;">แก้ไขประเภทไฟล์</h1>
+                <h1 class="display-2" style="color:#2d3436;">แก้ไขสถานะผู้ดูแลระบ</h1>
                 <hr>
 
                 <div class="row">
@@ -40,7 +40,7 @@
 
                     <input type="hidden" name="Id_Users" value= <?php echo $data['Id_Users'];?>>
                 <button  type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
-                <a href="<?php echo site_url("/TypeViewController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
+                <a href="<?php echo site_url("/ViewStatusController");?>" class="btn btn-primary btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;">ย้อนกลับ</a>
             </form>
             <?php } endif; ?>
 
