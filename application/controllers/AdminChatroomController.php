@@ -57,7 +57,7 @@ class AdminChatroomController extends CI_Controller {
         $this->db->order_by('Datetime', 'asc');
         $query = $this->db->get();
 
-        $this->db->where('Code_Chatroom', $codechat);
+        $this->db->where('Id_Chatroom', $codechat);
         $qq = $this->db->get('Chatroom', 1);
         $re = $qq->row_array(); 
         
@@ -149,7 +149,7 @@ class AdminChatroomController extends CI_Controller {
         $this->db->order_by('Datetime', 'Desc');
         $query = $this->db->get("",1);
 
-        $this->db->where('Code_Chatroom', $codechat);
+        $this->db->where('Id_Chatroom', $codechat);
         $qq = $this->db->get('Chatroom', 1);
         $re = $qq->row_array();
 
@@ -239,7 +239,7 @@ class AdminChatroomController extends CI_Controller {
         $this->db->order_by('number_of_like', 'DESC');
         $query = $this->db->get();
 
-        $this->db->where('Code_Chatroom', $codechat);
+        $this->db->where('Id_Chatroom', $codechat);
         $qq = $this->db->get('Chatroom', 1);
         $re = $qq->row_array();
         

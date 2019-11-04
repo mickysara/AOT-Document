@@ -39,7 +39,7 @@
                 <p class="createby" style="text-align: center;">สร้างโดยคุณ : <?php echo $chat_data['Createby'] ?> </p>
                 <p class="createby" style="text-align: center;">หมดอายุวันที่ : <?php echo date('d/m/Y', strtotime($chat_data['Dateend'])); ?></p>
                 <p class="createby" style="text-align: center;">สถานะ : <?php echo $chat_data['Status'] ?> </p>
-                <input type="hidden" id="idchat" name="idchat" value="<?php echo $chat_data['Code_Chatroom'] ?>">
+                <input type="hidden" id="idchat" name="idchat" value="<?php echo $chat_data['Id_Chatroom'] ?>">
                 <p class="idchat" style="text-align: center;">Qr Code</p>
                 <img id="imgqr" style="width:250px; height:250px; margin-left: auto; margin-right: auto;   display: block;"  src="<?php echo base_url('/assets/img/qrcode/chatroom/'.$chat_data['Code_Chatroom'].".png");?>"/>
                 <div style="text-align:center;">
