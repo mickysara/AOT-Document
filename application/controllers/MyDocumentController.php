@@ -209,9 +209,9 @@ class MyDocumentController extends CI_Controller {
     {
         $accname = $this->session->userdata('accountName');
         $query=$this->db->query("SELECT  Repository.* ,Repository_Member.Level , Repository_Member.AddBy
-                                FROM  Repository,Repository_Member
-                                WHERE Repository.Id_Repository = Repository_Member.Id_Repository 
-                                AND Repository_Member.AccName = '$accname' ");
+                                FROM  Repository,Repository_Member,Users
+                                WHERE Repository.Id_Repository = Repository_Member.Id_Repository
+                                AND Users.AccName = '$accname' ");
         
         if($query->num_rows() == 0)
         {?>
