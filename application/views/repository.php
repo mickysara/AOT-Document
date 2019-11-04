@@ -32,15 +32,16 @@
         <p style="font-weight: 500;">เมื่อวันที่ : <?php echo date('d/m/Y', strtotime($repo['Date']));?></p>
         <!-- <p style="font-weight: 500;">ความเป็นส่วนตัว : <?php echo $repo['Privacy'];?> </p> -->
           <?php 
-            $this->db->where('Id_Repository', $repo['Id_Repository']);
-            $this->db->where('AccName', $this->session->userdata('accountName'));
-            $querystatus = $this->db->get('Repository_Member', 1);
-            $resultstatus = $querystatus->row_array();
 
             $status = $this->session->userdata('employeeId');
             $this->db->where('Id_Emp', $status);
             $query3 = $this->db->get('Users');
             $admin = $query3->row_array();
+
+            $this->db->where('Id_Repository', $repo['Id_Repository']);
+            $this->db->where('Id_Emp', $admin['Id_Emp']);
+            $querystatus = $this->db->get('Repository_Member', 1);
+            $resultstatus = $querystatus->row_array();
 
             if($resultstatus == "")
             {
@@ -284,7 +285,12 @@
                     AND Repository_Member.Id_Repository =".$repo['Id_Repository']);
                     foreach($query->result_array() as $mem)
                     {?>
-
+                    
+                    <?php 
+                    $this->db->where('Id_Emp', $mem['Id_Emp']);
+                    $queryuser = $this->db->get('Users');
+                    $showdata = $queryuser->row_array();
+                    ?>
                         
                   <tr>
                     <th scope="row">
@@ -294,7 +300,7 @@
                         </a>
                       <div class="media align-items-center">
                         <div class="media-body">
-                          <span class="mb-0 text-sm"><?php echo  $mem['AccName'];?></span>
+                          <span class="mb-0 text-sm"><?php echo  $showdata['AccName'];?></span>
                         </div>
                       </div>
                     </th>
@@ -316,7 +322,7 @@
                         if($resultstatus['Level'] == "Manager" || $resultstatus['Level'] == "Creater" || $admin['Status'] == "superadmin")
                         {?>
                       <?php 
-                      $t = explode(".", $mem['AccName']);
+                      $t = explode(".", $showdata['AccName']);
                        ?>
                     <td class="">
                         <div class="ml-4">
@@ -326,7 +332,7 @@
                                 <div class="modal-content" style="color: #2d3436;">
                                
                                     <div class="modal-header">
-                                        <h2 class="modal-title" id="modal-title-default">แก้ไขสิทธิ์ : <?php echo $mem['AccName'];?></h2>
+                                        <h2 class="modal-title" id="modal-title-default">แก้ไขสิทธิ์ : <?php echo $showdata['AccName'];?></h2>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
