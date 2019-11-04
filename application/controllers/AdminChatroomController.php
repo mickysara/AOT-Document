@@ -16,11 +16,23 @@ class AdminChatroomController extends CI_Controller {
         $query = $this->db->get('Chatroom');
         $data = $query->row_array();
        
+        $status = $this->session->userdata('employeeId');
+        $this->db->where('Id_Emp', $status);
+        $query3 = $this->db->get('Users');
+        $admin = $query3->row_array();
+
         if($this->session->userdata('_success') == '')
         {
             $referrer_value = current_url().($_SERVER['QUERY_STRING']!=""?"?".$_SERVER['QUERY_STRING']:"");
             $this->session->set_userdata('login_referrer', $referrer_value);
             redirect('AlertController/loginalert');
+
+        }else if( $admin["Status"] == "superadmin")
+        {
+            $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
+            $this->load->view('HeaderAdminChatroom');
+            $this->load->view('AdminChatroom', $this->data, FALSE);
+             $this->load->view('Footer');
 
         }else if( $data['Createby'] != $this->session->userdata('accountName'))
         {
