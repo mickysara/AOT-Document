@@ -26,6 +26,10 @@ class RepositoryController extends CI_Controller {
         AND Repository_Member.Id_Repository =".$repository_id);
         $mem = $query->row_array();
 
+        $this->db->where('Id_Emp', $mem['Id_Emp']);
+        $queryuser = $this->db->get('Users');
+        $showdata = $queryuser->row_array();
+
         $this->db->where('Id_Repository', $repository_id);
         $query2 = $this->db->get('Repository');
         $data = $query2->row_array();
@@ -48,7 +52,7 @@ class RepositoryController extends CI_Controller {
                 $this->load->view('repository', $this->data, FALSE);
                 $this->load->view('Footer');
 
-            }else if($this->session->userdata('accountName')==$mem['AccName'] && $this->session->userdata('_success') == 1)
+            }else if($this->session->userdata('accountName')==$showdata['AccName'] && $this->session->userdata('_success') == 1)
             {
                 $this->data['repository_data']= $this->Repository_Model->repository_data($repository_id);
                 $this->load->view('Header');

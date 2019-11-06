@@ -67,7 +67,6 @@ class MemberController extends CI_Controller {
                             {
                                 $insert = array(
                                     'id_emp' => $data['employeeId'],
-                                    'accname' => $data['accountName'],
                                     'id_repository' => $repository_id,
                                     'level' => $Level,
                                     'addBy' => $this->session->userdata('accountName'),
@@ -131,7 +130,9 @@ class MemberController extends CI_Controller {
          $qq = $this->db->get('Repository_Member', 1);
          $rr = $qq->row_array();
          
-         
+         $this->db->where('Id_Emp', $rr['Id_Emp']);
+         $queryuser = $this->db->get('Users');
+         $showdata = $queryuser->row_array();
 
          $ipaddress = '';
          if (getenv('HTTP_CLIENT_IP'))
@@ -154,7 +155,7 @@ class MemberController extends CI_Controller {
          $object = array(
            'Id_Emp' =>  $this->session->userdata('employeeId'),
            'Ip'     =>  $ip[0],
-           'Action' =>  'เปลี่ยนระดับของ : ' . $rr['AccName'] . ' , ในทีม : ' . $repository_id . ' , เป็น : ' . $level
+           'Action' =>  'เปลี่ยนระดับของ : ' . $showdata['AccName'] . ' , ในทีม : ' . $repository_id . ' , เป็น : ' . $level
          );
          $this->db->insert('Logs', $object);
 
@@ -168,6 +169,10 @@ class MemberController extends CI_Controller {
         $qq = $this->db->get('Repository_Member', 1);
         $rr = $qq->row_array();
         
+        $this->db->where('Id_Emp', $rr['Id_Emp']);
+        $queryuser = $this->db->get('Users');
+        $showdata = $queryuser->row_array();
+
         $this->db->where('Id_RepositoryMember', $id);
         $this->db->delete('Repository_Member');
 
@@ -189,11 +194,13 @@ class MemberController extends CI_Controller {
             $ipaddress = 'UNKNOWN';
      
         $ip = explode(',',$ipaddress);
-        
+
+       
+
         $object = array(
           'Id_Emp' =>  $this->session->userdata('employeeId'),
           'Ip'     =>  $ip[0],
-          'Action' =>  'ลบ : ' . $rr['AccName'] . ' , ออกจากทีม ID : ' . $repository_id 
+          'Action' =>  'ลบ : ' . $showdata['AccName'] . ' , ออกจากทีม ID : ' . $repository_id 
         );
         $this->db->insert('Logs', $object);
         

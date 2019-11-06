@@ -76,7 +76,7 @@ class LoginController extends CI_Controller {
 
             $this->db->insert('Users', $dbinsert);
             $data['Status'] = $d['Users'];
-
+            
           }else{
 
             $d = $query->row_array();
