@@ -47,10 +47,35 @@ class RepoController extends CI_Controller {
     public function checkstatus()
     {
         $this->load->view('Header');
-        $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
         $this->load->view('Footer');
+        $this->load->view('Repo');       //เรียกใช้หน้าฟอร์ม
+        
 
     }
+    public function CheckTopic()
+        {
+          $topic = $this->input->post("topic");
+          $this->db->where('Topic', $topic);
+          $query = $this->db->get('Repository', 1);
+
+            if($query->num_rows() == 0)
+            {
+              echo json_encode(['status' => 1, 'msg' => 'Success']);
+               
+            }else{
+              echo json_encode(['status' => 0, 'msg' => 'fail']);
+            }
+
+          
+        }
+        public function pagerepo()
+        {
+            $this->db->order_by('Id_Repository', 'desc');
+            $result = $this->db->get('Repository',1);
+            $data = $result->row_array();
+            redirect('RepositoryController/showdata/'.$data['Id_Repository']);
+            
+            
     
-        
+        }
     }

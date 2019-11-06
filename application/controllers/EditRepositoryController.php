@@ -41,22 +41,22 @@ class EditRepositoryController extends CI_Controller {
 
                 $this->data['edit_repo']= $this->repository->edit_repo($edit_id);
                 $this->load->view('Header');
-                $this->load->view('EditRepository',$this->data, FALSE);
                 $this->load->view('Footer');
+                $this->load->view('EditRepository',$this->data, FALSE);               
               
               }else if($repo['Createby'] == $this->session->userdata('accountName')){
 
                 $this->data['edit_repo']= $this->repository->edit_repo($edit_id);
                 $this->load->view('Header');
-                $this->load->view('EditRepository',$this->data, FALSE);
                 $this->load->view('Footer');
+                $this->load->view('EditRepository',$this->data, FALSE);                
 
               }else if($admin['Level'] == 'Manager'){
 
                 $this->data['edit_repo']= $this->repository->edit_repo($edit_id);
                 $this->load->view('Header');
-                $this->load->view('EditRepository',$this->data, FALSE);
                 $this->load->view('Footer');
+                $this->load->view('EditRepository',$this->data, FALSE);
                 
               }else if($data['Status']!='superadmin'){
 
@@ -65,8 +65,8 @@ class EditRepositoryController extends CI_Controller {
               }else{
                 $this->data['edit_repo']= $this->repository->edit_repo($edit_id);
                 $this->load->view('Header');
-                $this->load->view('EditRepository',$this->data, FALSE);
                 $this->load->view('Footer');
+                $this->load->view('EditRepository',$this->data, FALSE);
               }
         
                ?>
@@ -150,7 +150,39 @@ class EditRepositoryController extends CI_Controller {
         
 <?php } 
    }
+   public function CheckTopic()
+   {
+     $topic = $this->input->post("topic");
+     $this->db->where('Topic', $topic);
+     $query = $this->db->get('Repository', 1);
 
+       if($query->num_rows() == 0)
+       {
+         echo json_encode(['status' => 1, 'msg' => 'Success']);
+          
+       }else{
+         echo json_encode(['status' => 0, 'msg' => 'fail']);
+       }
+
+     
+   }
+
+   public function CheckAdmin()
+   {
+    $status = $this->session->userdata('employeeId');
+    $this->db->where('Id_Emp', $status);
+    $query3 = $this->db->get('Users');
+    $admin = $query3->row_array();
+    if($admin['Status'] == 'superadmin'){
+        
+        redirect('ViewRepositoryController');
+        
+    }else{
+        redirect('MyDocumentController');
+    }
+
+     
+   }
 }
 
 /* End of file IndexController.php */

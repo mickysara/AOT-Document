@@ -11,7 +11,7 @@
           <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
             <div class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="inputs-alternative-component-tab">
-            <form method="post" id="upload_form" action="<?php echo site_url('RepoController/insertrepo');?>" enctype='multipart/form-data'>
+            <form method="post" id="upload_form" action="<?php echo site_url('RepoController/CheckTopic');?>" enctype='multipart/form-data'>
                 <h1 class="display-2" style="color:#2d3436;">สร้างกิจกรรม</h1>
                 <hr>
 
@@ -52,7 +52,7 @@
 
                     <script>
             </script>
-                <button type="submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
+                <button type="Submit" class="btn btn-success btn-lg" style="margin-top: 44px; margin-bottom: 44px; width:120px;" value="Submit">ยืนยัน</button>
             </form>
 </div>
 
@@ -73,7 +73,58 @@
                   }
 
                   </script> 
-            
+            <script>    
+                        $(document).on('submit', '#upload_form', function () {                                                                
+                                            $.post("<?=base_url('RepoController/CheckTopic')?>", $("#upload_form").serialize(),
+                                            function (data) {
+                                            console.log(data)
+                                            d = JSON.parse(data);
+
+                                            if(d.status == 0)
+                                            {
+                                              swal({
+                                                  icon: "error",
+                                                  text: "ชื่อกิจกรรมของคุณมีอยู่แล้วในระบบกรุณาเปลี่ยนชื่อกิจกรรมใหม่" ,                                            
+                                              })
+                                            }else{
+                                                testtest();
+                                               
+                                          }
+
+                                      }
+                                  );
+
+                                event.preventDefault();
+                            });
+                            </script>
+    
+                    <script>      
+                    function testtest(){
+                    var formData = new FormData($('#upload_form')[0]);
+
+                    
+                    $.ajax({
+                      type : 'POST',
+                      url : "<?=base_url('RepoController/insertrepo')?>",
+                      data : formData,
+                      processData : false,
+                      contentType : false,
+                      success : function() {
+                        //  alert("Upload Success");
+                        swal({
+                            title: "อัปโหลดเสร็จสมบูรณ์",
+                            text: "กรุณากดปุ่มตกลงเพื่อไปยังหน้าถัดไป",
+                            icon: "success", 
+                            timer: 5000
+                          });
+                          location.href = '<?=base_url('RepoController/pagerepo')?>'
+                      }
+                    });
+                  }
+                  // });
+      
+                  // });
+                  </script> 
            
       </body>
             </div>
