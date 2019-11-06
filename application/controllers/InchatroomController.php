@@ -47,6 +47,11 @@ class InchatroomController extends CI_Controller {
                     $random = random_string('alpha',10);
 
                     $this->session->set_userdata("RanDomsess", $random);
+                    
+                    $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
+                    $this->load->view('Header');
+                    $this->load->view('Inchatroom', $this->data, FALSE);
+                    $this->load->view('Footer');
                 }else{
                     $this->data['chat_data']= $this->Chatroom_Model->chatroom_data($id);
                     $this->load->view('Header');

@@ -101,7 +101,7 @@
                         <script>    
                         $(document).on('submit', '#upload_form', function () {
                                   
-                                  $.post("<?=base_url('UploadController/Checkname')?>", $("#upload_form").serialize(),
+                                  $.post("<?=base_url('UploadController/CheckTopic')?>", $("#upload_form").serialize(),
                                       function (data) {
                                           console.log(data)
                                           d = JSON.parse(data);
@@ -110,13 +110,31 @@
                                           {
                                               swal({
                                                   icon: "error",
-                                                  text: "ชื่อไฟล์นี้มีผู้อื่นอัปโหลดแล้วกรุณาเปลี่ยนชื่อไฟล์ แล้วเลือกใหม่ครับ" ,
+                                                  text: "ชื่อหัวข้อของคุณมีคนใช้แล้วกรุณาเปลี่ยนชื่อหัวข้อใหม่ครับ" ,
                                                   
                                                   
                                                   
                                               })
                                           }else{
+                                            $.post("<?=base_url('UploadController/Checkname')?>", $("#upload_form").serialize(),
+                                            function (data) {
+                                            console.log(data)
+                                            d = JSON.parse(data);
+
+                                            if(d.status == 0)
+                                            {
+                                              swal({
+                                                  icon: "error",
+                                                  text: "ชื่อไฟล์ที่อัปโหลดของคุณมีผู้อื่นใช้แล้วกรุณาเปลี่ยนชื่อไฟล์ครับ" ,
+                                                  
+                                                  
+                                                  
+                                              })
+                                            }else{
                                                 testtest();
+                                                  }
+                                                }
+                                            );
                                           }
 
                                       }
