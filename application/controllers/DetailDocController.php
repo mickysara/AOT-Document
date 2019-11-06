@@ -107,7 +107,7 @@ class DetailDocController extends CI_Controller {
             $query3 = $this->db->get('Repository_Member');
             $datamemcheck = $query3->row_array();
 
-            $this->db->where('Id_Emp', $datamem['Id_Emp']);
+            $this->db->where('Id_Emp', $datamemcheck['Id_Emp']);
             $query4 = $this->db->get('Users');
             $datamem = $query4->row_array();
     
