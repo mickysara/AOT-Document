@@ -46,11 +46,11 @@ class EditController extends CI_Controller {
     public function editdatarepo(){
         // print_r($_POST);
           $this->Upload->editdatauploadrepo($this->input->post());
-          $this->db->select('*');
-          $this->db->order_by('Id_UploadInRepository', 'desc');
-          $result = $this->db->get('UploadInRepository',1);
-          $data = $result->row_array(); 
-          redirect('repositoryController/showdata/'.$data['Id_Repository'],'refresh');
+        //   $this->db->select('*');
+        //   $this->db->order_by('Id_UploadInRepository', 'desc');
+        //   $result = $this->db->get('UploadInRepository',1);
+        //   $data = $result->row_array(); 
+        //   redirect('repositoryController/showdata/'.$data['Id_Repository'],'refresh');
     }
 
     
@@ -83,6 +83,29 @@ class EditController extends CI_Controller {
     //    $this->Upload->editdataupload();
         redirect('MyDoctumentController','refresh');
     }
+
+    public function CheckTopic()
+        {
+          $topic = $this->input->post("topic");
+          $this->db->where('Topic', $topic);
+          $query = $this->db->get('Upload', 1);
+          if($query->num_rows() == 0)
+          {
+            $this->db->where('Topic', $topic);
+            $query = $this->db->get('UploadInRepository', 1);
+
+            if($query->num_rows() == 0)
+            {
+              echo json_encode(['status' => 1, 'msg' => 'Success']);
+               
+            }else{
+              echo json_encode(['status' => 0, 'msg' => 'fail']);
+            }
+          }else{
+              echo json_encode(['status' => 0, 'msg' => 'fail']);
+          }  
+          
+        }
 }
 
 /* End of file IndexController.php */

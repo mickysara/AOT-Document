@@ -93,7 +93,7 @@
 
                                 <input type="hidden" id="name_room" name="name_room" value="<?php echo $repo['Topic'] ?>">
                                 <input type="hidden" id="id_repository" name="id_repository" value="<?php echo $repo['Id_Repository'] ?>">
-                                <input class="form-control datepicker" name="DateEnd" placeholder="คลิกเพื่อเลือกวันที่หมดอายุ" type="text"  required>
+                                <input class="form-control datepicker" name="DateEnd" placeholder="คลิกเพื่อเลือกวันที่หมดอายุ" type="text" autocomplete="off" required>
                                 
                                 
                               </div>
